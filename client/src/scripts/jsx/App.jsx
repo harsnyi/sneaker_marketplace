@@ -1,7 +1,5 @@
-import "../../assets/css/app.css";
-
 const App = () => {
-    return <h1>It works!</h1>
+    return <h1>React works!</h1>
 }
 
 

@@ -1,5 +1,13 @@
+import SearchBar from './SearchBar';
+import NavBar from './NavBar';
+
 const App = () => {
-    return <h1>React works!</h1>
-}
+  return (
+    <>
+      <SearchBar />
+      <NavBar />
+    </>
+  );
+};
 
 export default App;

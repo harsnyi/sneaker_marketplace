@@ -1,0 +1,16 @@
+@import './variables.scss';
+
+.nav-bar {
+  position: sticky;
+  height: 100vh;
+  width: $closed-nav-width;
+  top: 0;
+  left: 0;
+  background-color: $clr-primary-darkgrey;
+  color: $clr-white;
+  transition: width 0.2s $nav-animation-speed;
+
+  &:hover {
+    width: $opened-nav-width;
+  }
+}

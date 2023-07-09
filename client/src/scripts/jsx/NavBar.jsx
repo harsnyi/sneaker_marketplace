@@ -16,9 +16,10 @@ import signupIcon from '../../assets/images/logo&icon/user-plus-solid.svg';
 import settingsIcon from '../../assets/images/logo&icon/gear-solid.svg';
 import moreIcon from '../../assets/images/logo&icon/angles-right-solid.svg';
 import logOutIcon from '../../assets/images/logo&icon/right-to-bracket-solid.svg';
-import profileIcon from '../../assets/images/profile_pics/225746166_2006567569490591_3501118953375513610_n.jpg';
+import profilePicture from '../../assets/images/profile_pics/225746166_2006567569490591_3501118953375513610_n.jpg';
 
 import {useEffect} from 'react';
+import NavUserCard from './NavUserCard';
 
 function delayNavbarText() {
   const navbarTextItems = document.querySelectorAll('.navbar-text');
@@ -151,12 +152,7 @@ const NavBar = () => {
             </li>
           </div>
         </ul>
-        <a className="user-profile-a" href="">
-          <div className="profile-avatar">
-            <img src={profileIcon} alt="" />
-          </div>
-          <span className="navbar-username">Felhasználónév</span>
-        </a>
+        <NavUserCard profilePicture={profilePicture} username="Felhasználónév" />
       </nav>
     </>
   );

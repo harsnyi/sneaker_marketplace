@@ -7,10 +7,14 @@ import bellIcon from '../../assets/images/logo&icon/bell-solid.svg';
 import envelopeIcon from '../../assets/images/logo&icon/envelope-solid.svg';
 import heartIcon from '../../assets/images/logo&icon/heart-solid.svg';
 import uploadIcon from '../../assets/images/logo&icon/arrow-up-from-bracket-solid.svg';
+import userGroupIcon from '../../assets/images/logo&icon/user-group-solid.svg';
+import newsPaperIcon from '../../assets/images/logo&icon/newspaper-solid.svg';
+import infoIcon from '../../assets/images/logo&icon/circle-info-solid.svg';
+import phoneIcon from '../../assets/images/logo&icon/phone-solid.svg';
 
 import {useEffect} from 'react';
 
-function navbarAnimation() {
+function delayNavbarText() {
   const navbarTextItems = document.querySelectorAll('.navbar-text');
   let delay = 0;
 
@@ -22,7 +26,7 @@ function navbarAnimation() {
 
 const NavBar = () => {
   useEffect(() => {
-    navbarAnimation();
+    delayNavbarText();
   }, []);
 
   return (
@@ -70,6 +74,33 @@ const NavBar = () => {
               <a href="">
                 <img className="navbar-svg" src={uploadIcon} alt="" />
                 <span className="navbar-text">&ensp;&nbsp;Eladás</span>
+              </a>
+            </li>
+          </div>
+
+          <div className="dashboard li-group">
+            <li>
+              <a href="">
+                <img className=" navbar-svg" src={userGroupIcon} alt="" />
+                <span className="navbar-text">&ensp;&nbsp;Közösség</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <img className=" navbar-svg" src={newsPaperIcon} alt="" />
+                <span className="navbar-text">&ensp;&nbsp;Hírek</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <img className=" navbar-svg" src={infoIcon} alt="" />
+                <span className="navbar-text">&ensp;&nbsp;Rólunk</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <img className=" navbar-svg" src={phoneIcon} alt="" />
+                <span className="navbar-text"> &ensp;&nbsp;Kapcsolat</span>
               </a>
             </li>
           </div>

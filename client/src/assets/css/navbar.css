@@ -80,4 +80,8 @@
   transform: translateX(-200%);
   opacity: 0;
   transition: opacity 0.2s, transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.li-group {
+  margin-bottom: 1.25rem;
 }/*# sourceMappingURL=navbar.css.map */

@@ -2,9 +2,9 @@
 
 .nav-bar {
   position: sticky;
-  height: 100vh;
+  height: calc(100vh - $search-bar-height);
   width: $closed-nav-width;
-  top: 0;
+  top: $search-bar-height;
   left: 0;
   background-color: $clr-primary-darkgrey;
   color: $clr-white;
@@ -12,5 +12,82 @@
 
   &:hover {
     width: $opened-nav-width;
+
+    .navbar-text,
+    .navbar-username {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
+
+  .logo {
+    width: 40px;
+    height: auto;
+    margin: 0 15px;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      margin: 1rem 0;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    width: 200px;
+    height: 100%;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      overflow-x: hidden;
+      height: 2rem;
+      margin-left: 25px;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        font-size: 1.3rem;
+        opacity: 0.6;
+
+        &:hover,
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.navbar-svg {
+  height: 20px;
+  width: 20px;
+  filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(239deg) brightness(108%) contrast(101%);
+}
+
+.envelope-svg,
+.bell-svg {
+  position: relative;
+}
+
+.new-notification {
+  position: absolute;
+  height: 9px;
+  width: 9px;
+  background-color: $clr-red;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  border: 1px solid $clr-primary-darkgrey;
+  transform: translate(0.95rem, 0.25rem);
+}
+
+.navbar-text,
+.navbar-username {
+  transform: translateX(-200%);
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s $nav-animation-speed;
 }

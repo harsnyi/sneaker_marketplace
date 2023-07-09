@@ -15,6 +15,8 @@ import loginIcon from '../../assets/images/logo&icon/right-to-bracket-solid.svg'
 import signupIcon from '../../assets/images/logo&icon/user-plus-solid.svg';
 import settingsIcon from '../../assets/images/logo&icon/gear-solid.svg';
 import moreIcon from '../../assets/images/logo&icon/angles-right-solid.svg';
+import logOutIcon from '../../assets/images/logo&icon/right-to-bracket-solid.svg';
+import profileIconf from '../../assets/images/logo&icon/right-to-bracket-solid.svg';
 
 import {useEffect} from 'react';
 
@@ -139,7 +141,23 @@ const NavBar = () => {
               </a>
             </li>
           </div>
+
+          <div class="li-group">
+            <li>
+              <a href="">
+                <img className="navbar-svg" src={logOutIcon} alt="" />
+                <span className="navbar-text">&ensp;&nbsp;Kijelentkezés</span>
+              </a>
+            </li>
+          </div>
         </ul>
+
+        <a className="user-profile-a" href="">
+          <div className="avatar">
+            <img src={profileIcon} alt="" loading="lazy" />
+          </div>
+          <span className="navbar-username">Felhasználónév</span>
+        </a>
       </nav>
     </>
   );

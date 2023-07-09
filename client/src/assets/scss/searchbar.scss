@@ -1,0 +1,8 @@
+.search-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: $search-bar-height;
+  background-color: $clr-search-bar;
+  z-index: 99;
+}

@@ -13,6 +13,8 @@ import infoIcon from '../../assets/images/logo&icon/circle-info-solid.svg';
 import phoneIcon from '../../assets/images/logo&icon/phone-solid.svg';
 import loginIcon from '../../assets/images/logo&icon/right-to-bracket-solid.svg';
 import signupIcon from '../../assets/images/logo&icon/user-plus-solid.svg';
+import settingsIcon from '../../assets/images/logo&icon/gear-solid.svg';
+import moreIcon from '../../assets/images/logo&icon/angles-right-solid.svg';
 
 import {useEffect} from 'react';
 
@@ -84,41 +86,56 @@ const NavBar = () => {
           <div className="dashboard li-group">
             <li>
               <a href="">
-                <img className=" navbar-svg" src={userGroupIcon} alt="" />
+                <img className="navbar-svg" src={userGroupIcon} alt="" />
                 <span className="navbar-text">&ensp;&nbsp;Közösség</span>
               </a>
             </li>
             <li>
               <a href="">
-                <img className=" navbar-svg" src={newsPaperIcon} alt="" />
+                <img className="navbar-svg" src={newsPaperIcon} alt="" />
                 <span className="navbar-text">&ensp;&nbsp;Hírek</span>
               </a>
             </li>
             <li>
               <a href="">
-                <img className=" navbar-svg" src={infoIcon} alt="" />
+                <img className="navbar-svg" src={infoIcon} alt="" />
                 <span className="navbar-text">&ensp;&nbsp;Rólunk</span>
               </a>
             </li>
             <li>
               <a href="">
-                <img className=" navbar-svg" src={phoneIcon} alt="" />
+                <img className="navbar-svg" src={phoneIcon} alt="" />
                 <span className="navbar-text"> &ensp;&nbsp;Kapcsolat</span>
               </a>
             </li>
           </div>
 
-          <div class="signup-login li-group">
+          <div className="signup-login li-group">
             <li>
               <a href="">
-                <img className=" navbar-svg" src={loginIcon} alt="" />
+                <img className="navbar-svg" src={loginIcon} alt="" />
                 <span className="navbar-text">&ensp;&nbsp;Bejelentkezés</span>
               </a>
             </li>
             <li>
               <a href="">
-                <img className=" navbar-svg" src={signupIcon} alt="" />
+                <img className="navbar-svg" src={signupIcon} alt="" />
                 <span className="navbar-text">&ensp;&nbsp;Regisztráció</span>
+              </a>
+            </li>
+          </div>
+
+          <div className="settings li-group">
+            <li>
+              <a href="">
+                <img className="navbar-svg" src={settingsIcon} alt="" />
+                <span className="navbar-text">&ensp;&nbsp;Beállítások</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <img className="navbar-svg" src={moreIcon} alt="" />
+                <span className="navbar-text">&ensp;&nbsp;Több</span>
               </a>
             </li>
           </div>

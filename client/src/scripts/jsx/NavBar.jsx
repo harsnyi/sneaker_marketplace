@@ -11,6 +11,8 @@ import userGroupIcon from '../../assets/images/logo&icon/user-group-solid.svg';
 import newsPaperIcon from '../../assets/images/logo&icon/newspaper-solid.svg';
 import infoIcon from '../../assets/images/logo&icon/circle-info-solid.svg';
 import phoneIcon from '../../assets/images/logo&icon/phone-solid.svg';
+import loginIcon from '../../assets/images/logo&icon/right-to-bracket-solid.svg';
+import signupIcon from '../../assets/images/logo&icon/user-plus-solid.svg';
 
 import {useEffect} from 'react';
 
@@ -35,6 +37,7 @@ const NavBar = () => {
         <div className="logo">
           <img src={logo} alt="" />
         </div>
+
         <ul>
           <li>
             <a href="" className="active">
@@ -101,6 +104,21 @@ const NavBar = () => {
               <a href="">
                 <img className=" navbar-svg" src={phoneIcon} alt="" />
                 <span className="navbar-text"> &ensp;&nbsp;Kapcsolat</span>
+              </a>
+            </li>
+          </div>
+
+          <div class="signup-login li-group">
+            <li>
+              <a href="">
+                <img className=" navbar-svg" src={loginIcon} alt="" />
+                <span className="navbar-text">&ensp;&nbsp;Bejelentkezés</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <img className=" navbar-svg" src={signupIcon} alt="" />
+                <span className="navbar-text">&ensp;&nbsp;Regisztráció</span>
               </a>
             </li>
           </div>

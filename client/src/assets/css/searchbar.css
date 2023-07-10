@@ -13,6 +13,7 @@
   width: -moz-fit-content;
   width: fit-content;
   display: flex;
+  align-items: center;
   justify-content: center;
   background-color: #252525;
   padding: 0 1rem;
@@ -24,8 +25,8 @@
   color: #ffffff;
   font-family: "Oswald", sans-serif;
   border-right: 3px solid #0c0c0c;
-  width: 30vw;
-  letter-spacing: 1px;
+  width: 15vw;
+  letter-spacing: 2px;
 }
 .search-bar form input[type=search]::-webkit-search-cancel-button {
   -webkit-appearance: none;
@@ -38,6 +39,9 @@
   width: 1rem;
   height: 100%;
   margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .search-bar form button img {
   -o-object-fit: cover;

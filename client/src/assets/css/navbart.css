@@ -16,7 +16,8 @@
 }
 .nav-bar .nav-list .logo {
   width: 3rem;
-  margin: 1rem;
+  height: 2rem;
+  margin: 1.5rem;
 }
 .nav-bar .nav-list .logo .nav-link img {
   -o-object-fit: cover;
@@ -26,45 +27,13 @@
 .nav-bar .nav-list .nav-list-item {
   width: 100%;
 }
-.nav-bar .nav-list .nav-list-item:last-child {
-  margin-top: auto;
-}
-.nav-bar .nav-list .nav-list-item:last-child .nav-link {
-  height: 4.25rem;
-  background-color: #252525;
-  filter: grayscale(0%) opacity(1);
-}
-.nav-bar .nav-list .nav-list-item:last-child .nav-link .profile-avatar {
-  width: 3rem;
-  height: 3rem;
-  min-height: 3.5rem;
-  min-width: 3.5rem;
-  z-index: 3;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: #141414;
-  border: 2px solid #141414;
-  margin: 0 0.75rem;
-}
-.nav-bar .nav-list .nav-list-item:last-child .nav-link .profile-avatar img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.nav-bar .nav-list .nav-list-item:last-child .nav-link .navbar-username {
-  opacity: 0;
-  margin-left: 1rem;
-  font-size: 1.5rem;
-  transform: translateX(-100%);
-  transition: opacity 0.2s, transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
 .nav-bar .nav-list .nav-list-item .nav-link {
   display: flex;
   align-items: center;
   height: 2.25rem;
   text-decoration: none;
   filter: grayscale(100%) opacity(0.5);
+  transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .nav-bar .nav-list .nav-list-item .nav-link .navbar-svg {
   min-width: 2rem;
@@ -72,7 +41,8 @@
   margin: 0 1.5rem;
   filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(239deg) brightness(108%) contrast(101%);
 }
-.nav-bar .nav-list .nav-list-item .nav-link .navbar-text {
+.nav-bar .nav-list .nav-list-item .nav-link .navbar-text,
+.nav-bar .nav-list .nav-list-item .nav-link .navbar-username {
   margin-left: 0.5rem;
   transform: translateX(-100%);
   opacity: 0;
@@ -89,10 +59,7 @@
 .nav-bar:hover {
   width: 16rem;
 }
-.nav-bar:hover .nav-list .nav-list-item .nav-link .navbar-text {
-  opacity: 1;
-  transform: translateX(0);
-}
+.nav-bar:hover .nav-list .nav-list-item .nav-link .navbar-text,
 .nav-bar:hover .nav-list .nav-list-item .nav-link .navbar-username {
   opacity: 1;
   transform: translateX(0);
@@ -114,4 +81,4 @@
   border-radius: 50%;
   border: 1px solid $clr-primary-darkgrey;
 }
-*//*# sourceMappingURL=navbar.css.map */
+*//*# sourceMappingURL=navbart.css.map */

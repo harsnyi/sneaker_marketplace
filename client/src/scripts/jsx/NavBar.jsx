@@ -39,120 +39,126 @@ const NavBar = () => {
   return (
     <>
       <nav className="nav-bar">
-        <div className="logo">
-          <img src={logo} alt="" />
-        </div>
-
-        <ul>
-          <li>
-            <a href="" className="active">
-              <img className="navbar-svg" src={houseIcon} alt="" />
-              <span className="navbar-text">&ensp;&nbsp;Kezdőlap</span>
+        <ul className="nav-list">
+          <li className="logo">
+            <a href="" className="nav-link">
+              <img src={logo} alt="" />
             </a>
           </li>
 
-          <div className="account li-group">
-            <li>
-              <a href="">
-                <img className="navbar-svg" src={userIcon} alt="" />
-                <span className="navbar-text">&ensp;&nbsp;Fiók</span>
-              </a>
-            </li>
-            <li>
-              <a href="" className="bell-svg">
-                <img className="navbar-svg" src={bellIcon} alt="" />
-                <span className="new-notification"></span>
-                <span className="navbar-text">&ensp;&nbsp;Értesítések</span>
-              </a>
-            </li>
-            <li>
-              <a href="" className="envelope-svg">
-                <img className="navbar-svg" src={envelopeIcon} alt="" />
-                <span className="new-notification"></span>
-                <span className="navbar-text">&ensp;&nbsp;Üzenetek</span>
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <img className="navbar-svg" src={heartIcon} alt="" />
-                <span className="navbar-text">&ensp;&nbsp;Kedvencek</span>
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <img className="navbar-svg" src={uploadIcon} alt="" />
-                <span className="navbar-text">&ensp;&nbsp;Eladás</span>
-              </a>
-            </li>
-          </div>
+          <li className="nav-list-item">
+            <a href="" className="active nav-link">
+              <img className="navbar-svg" src={houseIcon} alt="" />
+              <span className="navbar-text">Kezdőlap</span>
+            </a>
+          </li>
 
-          <div className="dashboard li-group">
-            <li>
-              <a href="">
-                <img className="navbar-svg" src={userGroupIcon} alt="" />
-                <span className="navbar-text">&ensp;&nbsp;Közösség</span>
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <img className="navbar-svg" src={newsPaperIcon} alt="" />
-                <span className="navbar-text">&ensp;&nbsp;Hírek</span>
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <img className="navbar-svg" src={infoIcon} alt="" />
-                <span className="navbar-text">&ensp;&nbsp;Rólunk</span>
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <img className="navbar-svg" src={phoneIcon} alt="" />
-                <span className="navbar-text"> &ensp;&nbsp;Kapcsolat</span>
-              </a>
-            </li>
-          </div>
+          <li className="nav-list-item">
+            <a href="" className="nav-link">
+              <img className="navbar-svg" src={userIcon} alt="" />
+              <span className="navbar-text">Fiók</span>
+            </a>
+          </li>
 
-          <div className="signup-login li-group">
-            <li>
-              <a href="">
-                <img className="navbar-svg" src={loginIcon} alt="" />
-                <span className="navbar-text">&ensp;&nbsp;Bejelentkezés</span>
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <img className="navbar-svg" src={signupIcon} alt="" />
-                <span className="navbar-text">&ensp;&nbsp;Regisztráció</span>
-              </a>
-            </li>
-          </div>
+          <li className="nav-list-item">
+            <a href="" className="nav-link">
+              <img className="navbar-svg" src={bellIcon} alt="" />
+              <span className="new-notification"></span>
+              <span className="navbar-text">Értesítések</span>
+            </a>
+          </li>
 
-          <div className="settings li-group">
-            <li>
-              <a href="">
-                <img className="navbar-svg" src={settingsIcon} alt="" />
-                <span className="navbar-text">&ensp;&nbsp;Beállítások</span>
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <img className="navbar-svg" src={moreIcon} alt="" />
-                <span className="navbar-text">&ensp;&nbsp;Több</span>
-              </a>
-            </li>
-          </div>
+          <li className="nav-list-item">
+            <a href="" className="nav-link">
+              <img className="navbar-svg" src={envelopeIcon} alt="" />
+              <span className="new-notification"></span>
+              <span className="navbar-text">Üzenetek</span>
+            </a>
+          </li>
 
-          <div className="li-group">
-            <li>
-              <a href="">
-                <img className="navbar-svg" src={logOutIcon} alt="" />
-                <span className="navbar-text">&ensp;&nbsp;Kijelentkezés</span>
-              </a>
-            </li>
-          </div>
+          <li className="nav-list-item">
+            <a href="" className="nav-link">
+              <img className="navbar-svg" src={heartIcon} alt="" />
+              <span className="navbar-text">Kedvencek</span>
+            </a>
+          </li>
+
+          <li className="nav-list-item last-in-group">
+            <a href="" className="nav-link">
+              <img className="navbar-svg" src={uploadIcon} alt="" />
+              <span className="navbar-text">Eladás</span>
+            </a>
+          </li>
+
+          <li className="nav-list-item">
+            <a href="" className="nav-link">
+              <img className="navbar-svg" src={userGroupIcon} alt="" />
+              <span className="navbar-text">Közösség</span>
+            </a>
+          </li>
+
+          <li className="nav-list-item">
+            <a href="" className="nav-link">
+              <img className="navbar-svg" src={newsPaperIcon} alt="" />
+              <span className="navbar-text">Hírek</span>
+            </a>
+          </li>
+
+          <li className="nav-list-item">
+            <a href="" className="nav-link">
+              <img className="navbar-svg" src={infoIcon} alt="" />
+              <span className="navbar-text">Rólunk</span>
+            </a>
+          </li>
+
+          <li className="nav-list-item last-in-group">
+            <a href="" className="nav-link">
+              <img className="navbar-svg" src={phoneIcon} alt="" />
+              <span className="navbar-text"> Kapcsolat</span>
+            </a>
+          </li>
+
+          <li className="nav-list-item">
+            <a href="" className="nav-link">
+              <img className="navbar-svg" src={loginIcon} alt="" />
+              <span className="navbar-text">Bejelentkezés</span>
+            </a>
+          </li>
+
+          <li className="nav-list-item last-in-group">
+            <a href="" className="nav-link">
+              <img className="navbar-svg" src={signupIcon} alt="" />
+              <span className="navbar-text">Regisztráció</span>
+            </a>
+          </li>
+
+          <li className="nav-list-item">
+            <a href="" className="nav-link">
+              <img className="navbar-svg" src={settingsIcon} alt="" />
+              <span className="navbar-text">Beállítások</span>
+            </a>
+          </li>
+
+          <li className="nav-list-item last-in-group">
+            <a href="" className="nav-link">
+              <img className="navbar-svg" src={moreIcon} alt="" />
+              <span className="navbar-text">Több</span>
+            </a>
+          </li>
+
+          <li className="nav-list-item">
+            <a href="" className="nav-link">
+              <img className="navbar-svg" src={logOutIcon} alt="" />
+              <span className="navbar-text">Kijelentkezés</span>
+            </a>
+          </li>
+
+          <li className="nav-list-item">
+            <a href="" className="nav-link">
+              <NavUserCard profilePicture={profilePicture} username="Felhasználónév" />
+            </a>
+          </li>
         </ul>
-        <NavUserCard profilePicture={profilePicture} username="Felhasználónév" />
       </nav>
     </>
   );

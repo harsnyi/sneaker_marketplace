@@ -83,6 +83,9 @@
   filter: grayscale(0%) opacity(1);
   background-color: #0f0f0f;
 }
+.nav-bar .nav-list .nav-list-item .nav-link:hover .profile-avatar, .nav-bar .nav-list .nav-list-item .nav-link.active .profile-avatar {
+  opacity: 0.8;
+}
 .nav-bar .nav-list .last-in-group {
   margin-bottom: 1.5rem;
 }

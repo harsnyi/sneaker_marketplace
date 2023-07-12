@@ -94,6 +94,10 @@
         &.active {
           filter: grayscale(0%) opacity(1);
           background-color: darken($color: $clr-primary-darkgrey, $amount: 2%);
+
+          .profile-avatar {
+            opacity: 0.8;
+          }
         }
       }
     }

@@ -62,16 +62,20 @@ const NavBar = () => {
 
           <li className="nav-list-item">
             <a href="" className="nav-link">
-              <img className="navbar-svg" src={bellIcon} alt="" />
-              <span className="new-notification"></span>
+              <div className="notification-icon">
+                <img className="navbar-svg" src={bellIcon} alt="" />
+                <span className="new-notification"></span>
+              </div>
               <span className="navbar-text">Értesítések</span>
             </a>
           </li>
 
           <li className="nav-list-item">
             <a href="" className="nav-link">
-              <img className="navbar-svg" src={envelopeIcon} alt="" />
-              <span className="new-notification"></span>
+              <div className="notification-icon">
+                <img className="navbar-svg" src={envelopeIcon} alt="" />
+                <span className="new-notification"></span>
+              </div>
               <span className="navbar-text">Üzenetek</span>
             </a>
           </li>

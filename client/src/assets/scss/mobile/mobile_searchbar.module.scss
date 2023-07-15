@@ -1,4 +1,4 @@
-@import './desktop_variables.scss';
+@import './mobile_variables.scss';
 
 .search-bar {
   position: fixed;
@@ -26,7 +26,7 @@
       color: $clr-white;
       font-family: 'Oswald', sans-serif;
       border-right: 3px solid $clr-search-bar;
-      width: 15vw;
+      width: 50vw;
       letter-spacing: 2px;
 
       &::-webkit-search-cancel-button {

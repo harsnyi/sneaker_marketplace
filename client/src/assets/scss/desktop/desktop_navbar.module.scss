@@ -19,10 +19,6 @@
             opacity: 1;
             transform: translateX(0);
           }
-          .navbar-username {
-            opacity: 1;
-            transform: translateX(0);
-          }
         }
       }
     }
@@ -78,11 +74,9 @@
           }
 
           .navbar-username {
-            opacity: 0;
+            opacity: 1;
             margin-left: 1rem;
             font-size: 1.5rem;
-            transform: translateX(-100%);
-            transition: opacity 0.2s, transform 0.2s $nav-animation-speed;
           }
         }
       }
@@ -108,8 +102,8 @@
 
           .new-notification {
             position: absolute;
-            height: 0.55rem;
-            width: 0.55rem;
+            height: 0.6rem;
+            width: 0.6rem;
             background-color: $clr-red;
             top: 0;
             right: 0;

@@ -1,4 +1,4 @@
-import '../../assets/css/navbar.css';
+import '../../../assets/css/desktop_navbar.css';
 
 const NavUserCard = (props) => {
   return (

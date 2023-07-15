@@ -1,13 +1,13 @@
-import SearchBar from './SearchBar';
-import NavBar from './NavBar';
+import React from 'react';
+import {useMediaQuery} from 'react-responsive';
+
+import MobileLayout from './MobileLayout';
+import DesktopLayout from './DesktopLayout';
 
 const App = () => {
-  return (
-    <>
-      <SearchBar />
-      <NavBar />
-    </>
-  );
+  const isMobile = useMediaQuery({query: '(max-width: 768px)'});
+
+  return <>{isMobile ? <MobileLayout /> : <DesktopLayout />}</>;
 };
 
 export default App;

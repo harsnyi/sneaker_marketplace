@@ -1,5 +1,5 @@
-import '../../assets/css/searchbar.css';
-import searchIcon from '../../assets/images/logo&icon/magnifying-glass-solid.svg';
+import '../../../assets/css/desktop_searchbar.css';
+import searchIcon from '../../../assets/images/logo&icon/magnifying-glass-solid.svg';
 
 const SearchBar = () => {
   const handleSearchSubmit = (event) => {

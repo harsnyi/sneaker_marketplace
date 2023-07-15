@@ -1,13 +1,32 @@
-@import './variables.scss';
+@import './desktop_variables.scss';
 
 .nav-bar {
-  width: $closed-nav-width;
-  height: calc(100vh - $search-bar-height);
-  top: $search-bar-height;
   position: sticky;
   background-color: $clr-primary-darkgrey;
   transition: width 0.2s $nav-animation-speed;
   color: $clr-white;
+  width: $closed-nav-width;
+  height: calc(100vh - $search-bar-height);
+  top: $search-bar-height;
+
+  &:hover {
+    width: $opened-nav-width;
+
+    .nav-list {
+      .nav-list-item {
+        .nav-link {
+          .navbar-text {
+            opacity: 1;
+            transform: translateX(0);
+          }
+          .navbar-username {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      }
+    }
+  }
 
   .nav-list {
     list-style-type: none;
@@ -76,6 +95,7 @@
         filter: opacity(0.6);
 
         .notification-icon {
+          height: 1.25rem;
           position: relative;
           margin: 0 1.5rem;
 
@@ -130,25 +150,6 @@
 
     .last-in-group {
       margin-bottom: 1.5rem;
-    }
-  }
-
-  &:hover {
-    width: $opened-nav-width;
-
-    .nav-list {
-      .nav-list-item {
-        .nav-link {
-          .navbar-text {
-            opacity: 1;
-            transform: translateX(0);
-          }
-          .navbar-username {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-      }
     }
   }
 }

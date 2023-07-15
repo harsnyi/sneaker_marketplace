@@ -1,0 +1,8 @@
+.nav-bar {
+  position: sticky;
+  top: calc(100vh - 4rem);
+  background-color: #141414;
+  height: 4rem;
+  color: #ffffff;
+  width: 100vw;
+}/*# sourceMappingURL=mobile_navbar.module.css.map */

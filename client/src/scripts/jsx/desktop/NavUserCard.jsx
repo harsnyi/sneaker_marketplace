@@ -1,12 +1,12 @@
-import '../../../assets/css/desktop_navbar.css';
+import dnavbar from '../../../assets/css/desktop_navbar.module.css';
 
 const NavUserCard = (props) => {
   return (
     <>
-      <div className="profile-avatar">
+      <div className={dnavbar['profile-avatar']}>
         <img src={props.profilePicture} alt="" />
       </div>
-      <span className="navbar-username">{props.username}</span>
+      <span className={dnavbar['navbar-username']}>{props.username}</span>
     </>
   );
 };

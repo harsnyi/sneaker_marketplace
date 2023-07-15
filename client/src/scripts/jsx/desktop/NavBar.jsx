@@ -1,4 +1,4 @@
-import '../../../assets/css/desktop_navbar.css';
+import dnavbar from '../../../assets/css/desktop_navbar.module.css';
 
 import logo from '../../../assets/images/logo&icon/laced-logo.png';
 import houseIcon from '../../../assets/images/logo&icon/house-chimney-solid.svg';
@@ -15,18 +15,18 @@ import loginIcon from '../../../assets/images/logo&icon/right-to-bracket-solid.s
 import signupIcon from '../../../assets/images/logo&icon/user-plus-solid.svg';
 import settingsIcon from '../../../assets/images/logo&icon/gear-solid.svg';
 import moreIcon from '../../../assets/images/logo&icon/angles-right-solid.svg';
-import logOutIcon from '../../../assets/images/logo&icon/right-to-bracket-solid.svg';
+import logOutIcon from '../../../assets/images/logo&icon/right-from-bracket-solid.svg';
 import profilePicture from '../../../assets/images/profile_pics/225746166_2006567569490591_3501118953375513610_n.jpg';
 
 import {useEffect} from 'react';
 import NavUserCard from './NavUserCard';
 
 function delayNavbarText() {
-  const navbarTextItems = document.querySelectorAll('.navbar-text');
+  const navbarTextItems = document.querySelectorAll(`.${dnavbar['navbar-text']}`);
   let delay = 0;
 
   navbarTextItems.forEach((item) => {
-    item.style.transitionDelay = delay + 's';
+    item.style.transitionDelay = `${delay}s`;
     delay += 0.04;
   });
 }
@@ -38,127 +38,127 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="nav-bar">
-        <ul className="nav-list">
-          <li className="logo">
-            <a href="" className="nav-link">
+      <nav className={dnavbar['nav-bar']}>
+        <ul className={dnavbar['nav-list']}>
+          <li className={dnavbar.logo}>
+            <a href="" className={dnavbar['nav-link']}>
               <img src={logo} alt="" />
             </a>
           </li>
 
-          <li className="nav-list-item">
-            <a href="" className="active nav-link">
-              <img className="navbar-svg" src={houseIcon} alt="" />
-              <span className="navbar-text">Kezdőlap</span>
+          <li className={dnavbar['nav-list-item']}>
+            <a href="" className={`${dnavbar.active} ${dnavbar['nav-link']}`}>
+              <img className={dnavbar['navbar-svg']} src={houseIcon} alt="" />
+              <span className={dnavbar['navbar-text']}>Kezdőlap</span>
             </a>
           </li>
 
-          <li className="nav-list-item">
-            <a href="" className="nav-link">
-              <img className="navbar-svg" src={userIcon} alt="" />
-              <span className="navbar-text">Fiók</span>
+          <li className={dnavbar['nav-list-item']}>
+            <a href="" className={dnavbar['nav-link']}>
+              <img className={dnavbar['navbar-svg']} src={userIcon} alt="" />
+              <span className={dnavbar['navbar-text']}>Fiók</span>
             </a>
           </li>
 
-          <li className="nav-list-item">
-            <a href="" className="nav-link">
-              <div className="notification-icon">
-                <img className="navbar-svg" src={bellIcon} alt="" />
-                <span className="new-notification"></span>
+          <li className={dnavbar['nav-list-item']}>
+            <a href="" className={dnavbar['nav-link']}>
+              <div className={dnavbar['notification-icon']}>
+                <img className={dnavbar['navbar-svg']} src={bellIcon} alt="" />
+                <span className={dnavbar['new-notification']}></span>
               </div>
-              <span className="navbar-text">Értesítések</span>
+              <span className={dnavbar['navbar-text']}>Értesítések</span>
             </a>
           </li>
 
-          <li className="nav-list-item">
-            <a href="" className="nav-link">
-              <div className="notification-icon">
-                <img className="navbar-svg" src={envelopeIcon} alt="" />
-                <span className="new-notification"></span>
+          <li className={dnavbar['nav-list-item']}>
+            <a href="" className={dnavbar['nav-link']}>
+              <div className={dnavbar['notification-icon']}>
+                <img className={dnavbar['navbar-svg']} src={envelopeIcon} alt="" />
+                <span className={dnavbar['new-notification']}></span>
               </div>
-              <span className="navbar-text">Üzenetek</span>
+              <span className={dnavbar['navbar-text']}>Üzenetek</span>
             </a>
           </li>
 
-          <li className="nav-list-item">
-            <a href="" className="nav-link">
-              <img className="navbar-svg" src={heartIcon} alt="" />
-              <span className="navbar-text">Kedvencek</span>
+          <li className={dnavbar['nav-list-item']}>
+            <a href="" className={dnavbar['nav-link']}>
+              <img className={dnavbar['navbar-svg']} src={heartIcon} alt="" />
+              <span className={dnavbar['navbar-text']}>Kedvencek</span>
             </a>
           </li>
 
-          <li className="nav-list-item last-in-group">
-            <a href="" className="nav-link">
-              <img className="navbar-svg" src={uploadIcon} alt="" />
-              <span className="navbar-text">Eladás</span>
+          <li className={`${dnavbar['nav-list-item']} ${dnavbar['last-in-group']}`}>
+            <a href="" className={dnavbar['nav-link']}>
+              <img className={dnavbar['navbar-svg']} src={uploadIcon} alt="" />
+              <span className={dnavbar['navbar-text']}>Eladás</span>
             </a>
           </li>
 
-          <li className="nav-list-item">
-            <a href="" className="nav-link">
-              <img className="navbar-svg" src={userGroupIcon} alt="" />
-              <span className="navbar-text">Közösség</span>
+          <li className={dnavbar['nav-list-item']}>
+            <a href="" className={dnavbar['nav-link']}>
+              <img className={dnavbar['navbar-svg']} src={userGroupIcon} alt="" />
+              <span className={dnavbar['navbar-text']}>Közösség</span>
             </a>
           </li>
 
-          <li className="nav-list-item">
-            <a href="" className="nav-link">
-              <img className="navbar-svg" src={newsPaperIcon} alt="" />
-              <span className="navbar-text">Hírek</span>
+          <li className={dnavbar['nav-list-item']}>
+            <a href="" className={dnavbar['nav-link']}>
+              <img className={dnavbar['navbar-svg']} src={newsPaperIcon} alt="" />
+              <span className={dnavbar['navbar-text']}>Hírek</span>
             </a>
           </li>
 
-          <li className="nav-list-item">
-            <a href="" className="nav-link">
-              <img className="navbar-svg" src={infoIcon} alt="" />
-              <span className="navbar-text">Rólunk</span>
+          <li className={dnavbar['nav-list-item']}>
+            <a href="" className={dnavbar['nav-link']}>
+              <img className={dnavbar['navbar-svg']} src={infoIcon} alt="" />
+              <span className={dnavbar['navbar-text']}>Rólunk</span>
             </a>
           </li>
 
-          <li className="nav-list-item last-in-group">
-            <a href="" className="nav-link">
-              <img className="navbar-svg" src={phoneIcon} alt="" />
-              <span className="navbar-text"> Kapcsolat</span>
+          <li className={`${dnavbar['nav-list-item']} ${dnavbar['last-in-group']}`}>
+            <a href="" className={dnavbar['nav-link']}>
+              <img className={dnavbar['navbar-svg']} src={phoneIcon} alt="" />
+              <span className={dnavbar['navbar-text']}> Kapcsolat</span>
             </a>
           </li>
 
-          <li className="nav-list-item">
-            <a href="" className="nav-link">
-              <img className="navbar-svg" src={loginIcon} alt="" />
-              <span className="navbar-text">Bejelentkezés</span>
+          <li className={dnavbar['nav-list-item']}>
+            <a href="" className={dnavbar['nav-link']}>
+              <img className={dnavbar['navbar-svg']} src={loginIcon} alt="" />
+              <span className={dnavbar['navbar-text']}>Bejelentkezés</span>
             </a>
           </li>
 
-          <li className="nav-list-item last-in-group">
-            <a href="" className="nav-link">
-              <img className="navbar-svg" src={signupIcon} alt="" />
-              <span className="navbar-text">Regisztráció</span>
+          <li className={`${dnavbar['nav-list-item']} ${dnavbar['last-in-group']}`}>
+            <a href="" className={dnavbar['nav-link']}>
+              <img className={dnavbar['navbar-svg']} src={signupIcon} alt="" />
+              <span className={dnavbar['navbar-text']}>Regisztráció</span>
             </a>
           </li>
 
-          <li className="nav-list-item">
-            <a href="" className="nav-link">
-              <img className="navbar-svg" src={settingsIcon} alt="" />
-              <span className="navbar-text">Beállítások</span>
+          <li className={dnavbar['nav-list-item']}>
+            <a href="" className={dnavbar['nav-link']}>
+              <img className={dnavbar['navbar-svg']} src={settingsIcon} alt="" />
+              <span className={dnavbar['navbar-text']}>Beállítások</span>
             </a>
           </li>
 
-          <li className="nav-list-item last-in-group">
-            <a href="" className="nav-link">
-              <img className="navbar-svg" src={moreIcon} alt="" />
-              <span className="navbar-text">Több</span>
+          <li className={`${dnavbar['nav-list-item']} ${dnavbar['last-in-group']}`}>
+            <a href="" className={dnavbar['nav-link']}>
+              <img className={dnavbar['navbar-svg']} src={moreIcon} alt="" />
+              <span className={dnavbar['navbar-text']}>Több</span>
             </a>
           </li>
 
-          <li className="nav-list-item">
-            <a href="" className="nav-link">
-              <img className="navbar-svg" src={logOutIcon} alt="" />
-              <span className="navbar-text">Kijelentkezés</span>
+          <li className={dnavbar['nav-list-item']}>
+            <a href="" className={dnavbar['nav-link']}>
+              <img className={dnavbar['navbar-svg']} src={logOutIcon} alt="" />
+              <span className={dnavbar['navbar-text']}>Kijelentkezés</span>
             </a>
           </li>
 
-          <li className="nav-list-item">
-            <a href="" className="nav-link">
+          <li className={dnavbar['nav-list-item']}>
+            <a href="" className={dnavbar['nav-link']}>
               <NavUserCard profilePicture={profilePicture} username="Felhasználónév" />
             </a>
           </li>

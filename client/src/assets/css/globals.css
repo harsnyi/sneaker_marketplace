@@ -34,9 +34,9 @@ html {
 
 a {
   text-decoration: none;
-  color: #ffffff;
+  color: white;
 }
 
 #root {
   height: 200vh;
-}/*# sourceMappingURL=desktop_globals.css.map */
+}/*# sourceMappingURL=globals.css.map */

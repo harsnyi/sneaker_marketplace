@@ -1,10 +1,10 @@
-import mnavbar from '../../../assets/css/mobile_navbar.module.css';
+import mobileNavStyle from '../../../assets/css/mobile_navbar.module.css';
 
 const NavBar = () => {
   return (
     <>
-      <nav className={mnavbar['nav-bar']}>
-        <ul className={mnavbar['nav-list']}></ul>
+      <nav className={mobileNavStyle['nav-bar']}>
+        <ul className={mobileNavStyle['nav-list']}></ul>
       </nav>
     </>
   );

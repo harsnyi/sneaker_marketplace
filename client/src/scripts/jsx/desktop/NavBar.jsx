@@ -1,4 +1,4 @@
-import dnavbar from '../../../assets/css/desktop_navbar.module.css';
+import desktopNavStyle from '../../../assets/css/desktop_navbar.module.css';
 
 import logo from '../../../assets/images/logo&icon/laced-logo.png';
 import houseIcon from '../../../assets/images/logo&icon/house-chimney-solid.svg';
@@ -22,7 +22,7 @@ import {useEffect} from 'react';
 import NavUserCard from './NavUserCard';
 
 function delayNavbarText() {
-  const navbarTextItems = document.querySelectorAll(`.${dnavbar['navbar-text']}`);
+  const navbarTextItems = document.querySelectorAll(`.${desktopNavStyle['navbar-text']}`);
   let delay = 0;
 
   navbarTextItems.forEach((item) => {
@@ -38,127 +38,127 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className={dnavbar['nav-bar']}>
-        <ul className={dnavbar['nav-list']}>
-          <li className={dnavbar.logo}>
-            <a href="" className={dnavbar['nav-link']}>
+      <nav className={desktopNavStyle['nav-bar']}>
+        <ul className={desktopNavStyle['nav-list']}>
+          <li className={desktopNavStyle.logo}>
+            <a href="" className={desktopNavStyle['nav-link']}>
               <img src={logo} alt="" />
             </a>
           </li>
 
-          <li className={dnavbar['nav-list-item']}>
-            <a href="" className={`${dnavbar.active} ${dnavbar['nav-link']}`}>
-              <img className={dnavbar['navbar-svg']} src={houseIcon} alt="" />
-              <span className={dnavbar['navbar-text']}>Kezdőlap</span>
+          <li className={desktopNavStyle['nav-list-item']}>
+            <a href="" className={`${desktopNavStyle.active} ${desktopNavStyle['nav-link']}`}>
+              <img className={desktopNavStyle['navbar-svg']} src={houseIcon} alt="" />
+              <span className={desktopNavStyle['navbar-text']}>Kezdőlap</span>
             </a>
           </li>
 
-          <li className={dnavbar['nav-list-item']}>
-            <a href="" className={dnavbar['nav-link']}>
-              <img className={dnavbar['navbar-svg']} src={userIcon} alt="" />
-              <span className={dnavbar['navbar-text']}>Fiók</span>
+          <li className={desktopNavStyle['nav-list-item']}>
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <img className={desktopNavStyle['navbar-svg']} src={userIcon} alt="" />
+              <span className={desktopNavStyle['navbar-text']}>Fiók</span>
             </a>
           </li>
 
-          <li className={dnavbar['nav-list-item']}>
-            <a href="" className={dnavbar['nav-link']}>
-              <div className={dnavbar['notification-icon']}>
-                <img className={dnavbar['navbar-svg']} src={bellIcon} alt="" />
-                <span className={dnavbar['new-notification']}></span>
+          <li className={desktopNavStyle['nav-list-item']}>
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <div className={desktopNavStyle['notification-icon']}>
+                <img className={desktopNavStyle['navbar-svg']} src={bellIcon} alt="" />
+                <span className={desktopNavStyle['new-notification']}></span>
               </div>
-              <span className={dnavbar['navbar-text']}>Értesítések</span>
+              <span className={desktopNavStyle['navbar-text']}>Értesítések</span>
             </a>
           </li>
 
-          <li className={dnavbar['nav-list-item']}>
-            <a href="" className={dnavbar['nav-link']}>
-              <div className={dnavbar['notification-icon']}>
-                <img className={dnavbar['navbar-svg']} src={envelopeIcon} alt="" />
-                <span className={dnavbar['new-notification']}></span>
+          <li className={desktopNavStyle['nav-list-item']}>
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <div className={desktopNavStyle['notification-icon']}>
+                <img className={desktopNavStyle['navbar-svg']} src={envelopeIcon} alt="" />
+                <span className={desktopNavStyle['new-notification']}></span>
               </div>
-              <span className={dnavbar['navbar-text']}>Üzenetek</span>
+              <span className={desktopNavStyle['navbar-text']}>Üzenetek</span>
             </a>
           </li>
 
-          <li className={dnavbar['nav-list-item']}>
-            <a href="" className={dnavbar['nav-link']}>
-              <img className={dnavbar['navbar-svg']} src={heartIcon} alt="" />
-              <span className={dnavbar['navbar-text']}>Kedvencek</span>
+          <li className={desktopNavStyle['nav-list-item']}>
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <img className={desktopNavStyle['navbar-svg']} src={heartIcon} alt="" />
+              <span className={desktopNavStyle['navbar-text']}>Kedvencek</span>
             </a>
           </li>
 
-          <li className={`${dnavbar['nav-list-item']} ${dnavbar['last-in-group']}`}>
-            <a href="" className={dnavbar['nav-link']}>
-              <img className={dnavbar['navbar-svg']} src={uploadIcon} alt="" />
-              <span className={dnavbar['navbar-text']}>Eladás</span>
+          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`}>
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <img className={desktopNavStyle['navbar-svg']} src={uploadIcon} alt="" />
+              <span className={desktopNavStyle['navbar-text']}>Eladás</span>
             </a>
           </li>
 
-          <li className={dnavbar['nav-list-item']}>
-            <a href="" className={dnavbar['nav-link']}>
-              <img className={dnavbar['navbar-svg']} src={userGroupIcon} alt="" />
-              <span className={dnavbar['navbar-text']}>Közösség</span>
+          <li className={desktopNavStyle['nav-list-item']}>
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <img className={desktopNavStyle['navbar-svg']} src={userGroupIcon} alt="" />
+              <span className={desktopNavStyle['navbar-text']}>Közösség</span>
             </a>
           </li>
 
-          <li className={dnavbar['nav-list-item']}>
-            <a href="" className={dnavbar['nav-link']}>
-              <img className={dnavbar['navbar-svg']} src={newsPaperIcon} alt="" />
-              <span className={dnavbar['navbar-text']}>Hírek</span>
+          <li className={desktopNavStyle['nav-list-item']}>
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <img className={desktopNavStyle['navbar-svg']} src={newsPaperIcon} alt="" />
+              <span className={desktopNavStyle['navbar-text']}>Hírek</span>
             </a>
           </li>
 
-          <li className={dnavbar['nav-list-item']}>
-            <a href="" className={dnavbar['nav-link']}>
-              <img className={dnavbar['navbar-svg']} src={infoIcon} alt="" />
-              <span className={dnavbar['navbar-text']}>Rólunk</span>
+          <li className={desktopNavStyle['nav-list-item']}>
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <img className={desktopNavStyle['navbar-svg']} src={infoIcon} alt="" />
+              <span className={desktopNavStyle['navbar-text']}>Rólunk</span>
             </a>
           </li>
 
-          <li className={`${dnavbar['nav-list-item']} ${dnavbar['last-in-group']}`}>
-            <a href="" className={dnavbar['nav-link']}>
-              <img className={dnavbar['navbar-svg']} src={phoneIcon} alt="" />
-              <span className={dnavbar['navbar-text']}> Kapcsolat</span>
+          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`}>
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <img className={desktopNavStyle['navbar-svg']} src={phoneIcon} alt="" />
+              <span className={desktopNavStyle['navbar-text']}> Kapcsolat</span>
             </a>
           </li>
 
-          <li className={dnavbar['nav-list-item']}>
-            <a href="" className={dnavbar['nav-link']}>
-              <img className={dnavbar['navbar-svg']} src={loginIcon} alt="" />
-              <span className={dnavbar['navbar-text']}>Bejelentkezés</span>
+          <li className={desktopNavStyle['nav-list-item']}>
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <img className={desktopNavStyle['navbar-svg']} src={loginIcon} alt="" />
+              <span className={desktopNavStyle['navbar-text']}>Bejelentkezés</span>
             </a>
           </li>
 
-          <li className={`${dnavbar['nav-list-item']} ${dnavbar['last-in-group']}`}>
-            <a href="" className={dnavbar['nav-link']}>
-              <img className={dnavbar['navbar-svg']} src={signupIcon} alt="" />
-              <span className={dnavbar['navbar-text']}>Regisztráció</span>
+          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`}>
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <img className={desktopNavStyle['navbar-svg']} src={signupIcon} alt="" />
+              <span className={desktopNavStyle['navbar-text']}>Regisztráció</span>
             </a>
           </li>
 
-          <li className={dnavbar['nav-list-item']}>
-            <a href="" className={dnavbar['nav-link']}>
-              <img className={dnavbar['navbar-svg']} src={settingsIcon} alt="" />
-              <span className={dnavbar['navbar-text']}>Beállítások</span>
+          <li className={desktopNavStyle['nav-list-item']}>
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <img className={desktopNavStyle['navbar-svg']} src={settingsIcon} alt="" />
+              <span className={desktopNavStyle['navbar-text']}>Beállítások</span>
             </a>
           </li>
 
-          <li className={`${dnavbar['nav-list-item']} ${dnavbar['last-in-group']}`}>
-            <a href="" className={dnavbar['nav-link']}>
-              <img className={dnavbar['navbar-svg']} src={moreIcon} alt="" />
-              <span className={dnavbar['navbar-text']}>Több</span>
+          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`}>
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <img className={desktopNavStyle['navbar-svg']} src={moreIcon} alt="" />
+              <span className={desktopNavStyle['navbar-text']}>Több</span>
             </a>
           </li>
 
-          <li className={dnavbar['nav-list-item']}>
-            <a href="" className={dnavbar['nav-link']}>
-              <img className={dnavbar['navbar-svg']} src={logOutIcon} alt="" />
-              <span className={dnavbar['navbar-text']}>Kijelentkezés</span>
+          <li className={desktopNavStyle['nav-list-item']}>
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <img className={desktopNavStyle['navbar-svg']} src={logOutIcon} alt="" />
+              <span className={desktopNavStyle['navbar-text']}>Kijelentkezés</span>
             </a>
           </li>
 
-          <li className={dnavbar['nav-list-item']}>
-            <a href="" className={dnavbar['nav-link']}>
+          <li className={desktopNavStyle['nav-list-item']}>
+            <a href="" className={desktopNavStyle['nav-link']}>
               <NavUserCard profilePicture={profilePicture} username="Felhasználónév" />
             </a>
           </li>

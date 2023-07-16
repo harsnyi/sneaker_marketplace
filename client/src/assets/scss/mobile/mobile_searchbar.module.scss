@@ -18,6 +18,7 @@
     justify-content: center;
     background-color: $clr-secondary-darkgrey;
     padding: 0 1rem;
+    height: 1.35rem;
 
     input[type='search'] {
       outline: none;
@@ -26,7 +27,7 @@
       color: $clr-white;
       font-family: 'Oswald', sans-serif;
       border-right: 3px solid $clr-search-bar;
-      width: 50vw;
+      width: 40vw;
       letter-spacing: 2px;
 
       &::-webkit-search-cancel-button {

@@ -7,4 +7,57 @@
   height: $mobile-nav-height;
   color: $clr-white;
   width: 100vw;
+
+  .nav-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    .nav-list-item {
+      .nav-link {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        margin: 0 4.5vw;
+
+        .notification-icon {
+          position: relative;
+          display: flex;
+          align-items: center;
+
+          .navbar-svg {
+            margin: 0;
+            min-width: 2rem;
+            height: 1.35rem;
+            filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(239deg) brightness(108%) contrast(101%);
+          }
+
+          .new-notification {
+            position: absolute;
+            height: 0.6rem;
+            width: 0.6rem;
+            background-color: $clr-red;
+            top: 0;
+            right: 0;
+            border-radius: 50%;
+            border: 1px solid $clr-primary-darkgrey;
+            z-index: 99;
+            transform: translate(0, -25%);
+            filter: grayscale(0%) opacity(1);
+          }
+        }
+
+        .navbar-svg {
+          margin: 0;
+          min-width: 2rem;
+          height: 1.35rem;
+          filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(239deg) brightness(108%) contrast(101%);
+        }
+      }
+    }
+  }
 }

@@ -5,7 +5,7 @@ import MobileLayout from './MobileLayout';
 import DesktopLayout from './DesktopLayout';
 
 const App = () => {
-  const isMobile = useMediaQuery({query: '(max-width: 768px)'});
+  const isMobile = useMediaQuery({query: '(max-width: 600px)'});
 
   return <>{isMobile ? <MobileLayout /> : <DesktopLayout />}</>;
 };

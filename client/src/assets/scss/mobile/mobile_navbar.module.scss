@@ -1,0 +1,10 @@
+@import './mobile_variables.scss';
+
+.nav-bar {
+  position: sticky;
+  top: calc(100vh - $mobile-nav-height);
+  background-color: $clr-primary-darkgrey;
+  height: $mobile-nav-height;
+  color: $clr-white;
+  width: 100vw;
+}

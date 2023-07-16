@@ -1,4 +1,4 @@
-import msearchbar from '../../../assets/css/mobile_searchbar.module.css';
+import mobileSearchStyle from '../../../assets/css/mobile_searchbar.module.css';
 import searchIcon from '../../../assets/images/logo&icon/magnifying-glass-solid.svg';
 
 const SearchBar = () => {
@@ -9,7 +9,7 @@ const SearchBar = () => {
 
   return (
     <>
-      <header className={msearchbar['search-bar']}>
+      <header className={mobileSearchStyle['search-bar']}>
         <form onSubmit={handleSearchSubmit}>
           <input type="search" name="search" className="search-input" placeholder="Keresés . . ." autoComplete="off" required />
           <button type="submit">

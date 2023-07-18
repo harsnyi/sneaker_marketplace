@@ -20,7 +20,7 @@ import moreIcon from '../../assets/images/logo&icon/angles-right-solid.svg';
 import logOutIcon from '../../assets/images/logo&icon/right-from-bracket-solid.svg';
 import profilePicture from '../../assets/images/profile_pics/225746166_2006567569490591_3501118953375513610_n.jpg';
 
-import {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import NavUserCard from './NavUserCard';
 
 function delayNavbarText() {
@@ -38,12 +38,19 @@ const DesktopNavBar = () => {
     delayNavbarText();
   }, []);
 
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
+  const navbarClassNames = `${desktopNavStyle['nav-bar']} ${isNavOpen ? desktopNavStyle['opened'] : desktopNavStyle['closed']}`;
+
   return (
     <>
       
-      <nav className={desktopNavStyle['nav-bar']}>
-        <div className={desktopNavStyle['open-close-sidebar']}>
-          <img src={hamburgerIcon} alt="" />
+      <nav className={navbarClassNames}>
+        <div className={desktopNavStyle['open-close-sidebar']} onClick={toggleNav}>
+          <img src={isNavOpen ? xMarkIcon : hamburgerIcon} alt="" />
         </div>
         <ul className={desktopNavStyle['nav-list']}>
           <li className={desktopNavStyle['logo']}>

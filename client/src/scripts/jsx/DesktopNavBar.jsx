@@ -1,6 +1,8 @@
 import desktopNavStyle from '../../assets/css/desktop_navbar.module.css';
 
 import logo from '../../assets/images/logo&icon/laced-logo.png';
+import hamburgerIcon from '../../assets/images/logo&icon/bars-solid.svg';
+import xMarkIcon from '../../assets/images/logo&icon/xmark-solid.svg';
 import houseIcon from '../../assets/images/logo&icon/house-chimney-solid.svg';
 import userIcon from '../../assets/images/logo&icon/user-solid.svg';
 import bellIcon from '../../assets/images/logo&icon/bell-solid.svg';
@@ -38,9 +40,14 @@ const DesktopNavBar = () => {
 
   return (
     <>
+      
       <nav className={desktopNavStyle['nav-bar']}>
+        <div className={desktopNavStyle['open-close-sidebar']}>
+          <img src={hamburgerIcon} alt="" />
+        </div>
         <ul className={desktopNavStyle['nav-list']}>
-          <li className={desktopNavStyle.logo}>
+          <li className={desktopNavStyle['logo']}>
+   
             <a href="" className={desktopNavStyle['nav-link']}>
               <img src={logo} alt="" />
             </a>

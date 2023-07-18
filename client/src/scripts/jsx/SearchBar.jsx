@@ -1,5 +1,5 @@
-import desktopSearchStyle from '../../../assets/css/desktop_searchbar.module.css';
-import searchIcon from '../../../assets/images/logo&icon/magnifying-glass-solid.svg';
+import '../../assets/css/searchbar.css';
+import searchIcon from '../../assets/images/logo&icon/magnifying-glass-solid.svg';
 
 const SearchBar = () => {
   const handleSearchSubmit = (event) => {
@@ -9,7 +9,7 @@ const SearchBar = () => {
 
   return (
     <>
-      <header className={desktopSearchStyle['search-bar']}>
+      <header className='search-bar'>
         <form onSubmit={handleSearchSubmit}>
           <input type="search" name="search" className="search-input" placeholder="Keresés . . ." autoComplete="off" required />
           <button type="submit">

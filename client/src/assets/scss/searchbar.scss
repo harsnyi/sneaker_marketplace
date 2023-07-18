@@ -1,4 +1,4 @@
-@import './mobile_variables.scss';
+@import './variables';
 
 .search-bar {
   position: fixed;
@@ -27,7 +27,7 @@
       color: $clr-white;
       font-family: 'Oswald', sans-serif;
       border-right: 3px solid $clr-search-bar;
-      width: 40vw;
+      width: 30vw;
       letter-spacing: 2px;
 
       &::-webkit-search-cancel-button {
@@ -61,4 +61,17 @@
       }
     }
   }
+}
+
+@media only screen and (max-width: 600px){
+  .search-bar {
+    height: $mobile-nav-height;
+
+    form {
+      input[type='search'] {
+        width: 40vw;
+      }
+    }
+  }
+
 }

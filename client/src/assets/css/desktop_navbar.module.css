@@ -92,7 +92,7 @@
   border-radius: 50%;
   border: 1px solid #141414;
   z-index: 99;
-  transform: translate(-25%, -25%);
+  transform: translate(-10%, -25%);
   filter: grayscale(0%) opacity(1);
 }
 .nav-bar .nav-list .nav-list-item .nav-link .navbar-svg {

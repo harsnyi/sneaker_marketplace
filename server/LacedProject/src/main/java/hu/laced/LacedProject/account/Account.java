@@ -1,12 +1,9 @@
 package hu.laced.LacedProject.account;
 
-
+import hu.laced.LacedProject.product.Product;
 import hu.laced.LacedProject.user.User;
 import hu.laced.LacedProject.user.UserRole;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +11,7 @@ import lombok.Setter;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,6 +24,8 @@ public class Account extends User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     private LocalDate dateOfBirth;
+    @OneToMany(mappedBy = "account")
+    private List<Product> productList;
 
     //TODO Number class
     private String phoneNumber;

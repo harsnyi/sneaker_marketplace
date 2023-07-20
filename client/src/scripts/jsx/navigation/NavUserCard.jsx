@@ -1,4 +1,4 @@
-import desktopNavStyle from '../../assets/css/desktop_navbar.module.css';
+import desktopNavStyle from '../../../assets/css/desktop_navbar.module.css';
 
 const NavUserCard = (props) => {
   return (

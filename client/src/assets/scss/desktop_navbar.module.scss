@@ -8,16 +8,27 @@
   width: $closed-nav-width;
   height: calc(100vh - $search-bar-height);
   top: $search-bar-height;
+  z-index: 99;
+
+  
 
   &.opened {
     width: $opened-nav-width;
-
     .nav-list {
       .nav-list-item {
         .nav-link {
           .navbar-text {
             opacity: 1;
             transform: translateX(0);
+          }
+        }
+
+        &:last-child{
+          .nav-link {
+            .navbar-username {
+              opacity: 1;
+              transform: translateX(0);
+            }
           }
         }
       }
@@ -56,6 +67,7 @@
     flex-direction: column;
     align-items: center;
     height: 100%;
+      overflow: hidden;
 
     .logo {
       width: 3rem;
@@ -102,9 +114,11 @@
           }
 
           .navbar-username {
-            opacity: 1;
+            opacity: 0;
             margin-left: 1rem;
             font-size: 1.5rem;
+            transform: translateX(-100%);
+            transition: opacity 0.2s, transform 0.2s $nav-animation-speed;
           }
         }
       }

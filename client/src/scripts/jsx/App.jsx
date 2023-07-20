@@ -6,6 +6,7 @@ import '../../assets/css/globals.css';
 import SearchBar from './search/SearchBar';
 import MobileNavBar from './navigation/MobileNavBar';
 import DesktopNavbar from './navigation/DesktopNavBar';
+import Home from './home/Home';
 
 
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
     <SearchBar />
     {isMobile ? <MobileNavBar /> : <DesktopNavbar />}
     <div className='main-content'>
-      <h1>Main Content</h1>
+      <Home />
     </div>
    </>;
 };

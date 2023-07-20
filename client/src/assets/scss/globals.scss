@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 @font-face {
   font-family: 'Staatliches';
   font-style: normal;
@@ -39,3 +41,14 @@ a {
 #root {
   min-height: 200vh;
 }
+
+.main-content{
+  background-color: royalblue;
+  width: calc(100% - $closed-nav-width);
+  height: calc(100% - $search-bar-height);
+  top: $search-bar-height;
+  left: $closed-nav-width;
+  position: absolute;
+  z-index: 0;
+}
+  

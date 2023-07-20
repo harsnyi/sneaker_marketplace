@@ -7,6 +7,7 @@
   height: $mobile-nav-height;
   color: $clr-white;
   width: 100vw;
+  z-index: 99;
 
   .nav-list {
     list-style-type: none;

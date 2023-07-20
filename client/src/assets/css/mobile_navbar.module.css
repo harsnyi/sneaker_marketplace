@@ -5,6 +5,7 @@
   height: 3rem;
   color: #ffffff;
   width: 100vw;
+  z-index: 99;
 }
 .nav-bar .nav-list {
   list-style-type: none;

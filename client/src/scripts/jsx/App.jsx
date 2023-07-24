@@ -10,7 +10,7 @@ import Home from './home/Home';
 
 
 const App = () => {
-  const isMobile = useMediaQuery({query: '(max-width: 600px)'});
+  const isMobile = useMediaQuery({query: '(max-width: 768px)'});
   
   return <>
     <SearchBar />

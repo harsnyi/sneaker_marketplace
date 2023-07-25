@@ -1,19 +1,45 @@
 package hu.laced.LacedProject.user;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import hu.laced.LacedProject.product.Product;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.math.BigInteger;
+import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 @Getter
+@Entity
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements UserDetails {
+public class AppUser implements UserDetails {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer id;
+    private LocalDate dateOfBirth;
+    @OneToMany(mappedBy = "appUser")
+    private List<Product> productList;
+
+    //TODO Number class
+    private String phoneNumber;
+    private BigInteger sumOfRatings = BigInteger.valueOf(0);
+    private Integer numberOfRatings = 0;
+    private Integer activePosts = 0;
+    private Integer activity = 0;
+
+    //TODO Image
+    private boolean profilePicture;
+
+    //TODO
+    private String location;
 
     private String firstName;
     private String lastName;
@@ -25,7 +51,8 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
+        return Collections.singletonList(authority);
     }
 
     @Override
@@ -52,7 +79,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override

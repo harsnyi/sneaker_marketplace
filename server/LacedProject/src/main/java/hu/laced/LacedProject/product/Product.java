@@ -1,6 +1,6 @@
 package hu.laced.LacedProject.product;
 
-import hu.laced.LacedProject.account.Account;
+import hu.laced.LacedProject.user.AppUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,8 +35,8 @@ public class Product {
     private String model;
 
     @ManyToOne
-    @JoinColumn(name = "account_id")
-    private Account account;
+    @JoinColumn(name = "appuser_id")
+    private AppUser appUser;
     private LocalDate dateOfPost;
     private Integer views;
     private Integer likes;

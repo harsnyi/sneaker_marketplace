@@ -1,11 +1,16 @@
 package hu.laced.LacedProject.user;
 
+import hu.laced.LacedProject.registration.token.ConfirmationToken;
+import hu.laced.LacedProject.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -14,6 +19,7 @@ public class UserService implements UserDetailsService {
     private final static String USER_NOT_FOUND_MSG = "User with the given email address not found";
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final ConfirmationTokenService confirmationTokenService;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -33,8 +39,14 @@ public class UserService implements UserDetailsService {
         appUser.setPassword(encodedPassword);
         userRepository.save(appUser);
 
-        //TODO: Config token
-
-        return "it works";
+        String token = UUID.randomUUID().toString();
+        ConfirmationToken confirmationToken = new ConfirmationToken(
+                token,
+                LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(15),
+                appUser
+        );
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
+        return token;
     }
 }

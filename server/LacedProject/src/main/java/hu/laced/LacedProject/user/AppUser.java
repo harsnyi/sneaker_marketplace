@@ -49,6 +49,21 @@ public class AppUser implements UserDetails {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
+
+    public AppUser(String firstName,
+                   String lastName,
+                   String email,
+                   String location,
+                   LocalDate dateOfBirth,
+                   String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.location = location;
+        this.password = password;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());

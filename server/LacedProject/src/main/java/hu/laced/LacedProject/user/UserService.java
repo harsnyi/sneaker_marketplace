@@ -18,7 +18,6 @@ public class UserService implements UserDetailsService {
 
     private final static String USER_NOT_FOUND_MSG = "User with the given email address not found";
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
 
     @Override
@@ -33,10 +32,8 @@ public class UserService implements UserDetailsService {
         if(userExists){
             throw new IllegalStateException("Email already taken");
         }
-        String encodedPassword = bCryptPasswordEncoder
-                .encode(appUser.getPassword());
 
-        appUser.setPassword(encodedPassword);
+
         userRepository.save(appUser);
 
         String token = UUID.randomUUID().toString();

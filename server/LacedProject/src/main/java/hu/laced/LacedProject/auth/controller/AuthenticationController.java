@@ -5,7 +5,6 @@ import hu.laced.LacedProject.auth.AuthenticationResponse;
 import hu.laced.LacedProject.auth.RegisterRequest;
 import hu.laced.LacedProject.auth.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

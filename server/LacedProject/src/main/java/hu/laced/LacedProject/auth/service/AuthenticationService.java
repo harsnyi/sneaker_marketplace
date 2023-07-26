@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -23,6 +25,12 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest request) {
+
+        Optional<AppUser> existing = userRepository.findByEmail(request.getEmail());
+        if(existing.isPresent()){
+            throw new IllegalArgumentException("The user exists with the given email address.");
+        }
+
         AppUser user = new AppUser(
                 request.getFirstName(),
                 request.getLastName(),

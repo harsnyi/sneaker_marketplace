@@ -1,6 +1,6 @@
 package hu.laced.LacedProject.security.configuration;
 
-import hu.laced.LacedProject.user.UserService;
+import hu.laced.LacedProject.user.service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

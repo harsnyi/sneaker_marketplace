@@ -2,6 +2,7 @@ package hu.laced.LacedProject.user.model;
 
 import hu.laced.LacedProject.product.Product;
 import hu.laced.LacedProject.token.Token;
+import hu.laced.LacedProject.user.Sex;
 import hu.laced.LacedProject.user.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
@@ -37,6 +38,7 @@ public class AppUser implements UserDetails {
     private Integer numberOfRatings = 0;
     private Integer activePosts = 0;
     private Integer activity = 0;
+    private Sex sex;
 
     //TODO Image
     private boolean profilePicture;

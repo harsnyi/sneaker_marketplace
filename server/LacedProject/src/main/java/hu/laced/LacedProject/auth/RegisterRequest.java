@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class RegisterRequest {
 
+    //TODO: Add username,sex,phone number
     private String firstName;
     private String lastName;
     private LocalDate dob;

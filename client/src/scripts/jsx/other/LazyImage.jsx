@@ -6,7 +6,7 @@ const LazyImage = (props) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const { ref, inView } = useInView({
     triggerOnce: true, // Ensures the image loads only once when it comes into view
-    threshold: 0.25, // Customize the treshold if you want to trigger the loading a bit earlier or later -> 0.25 = 25%
+    threshold: 0.10, // Customize the treshold if you want to trigger the loading a bit earlier or later -> 0.25 = 25%
   });
 
   useEffect(() => {

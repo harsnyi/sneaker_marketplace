@@ -19,7 +19,7 @@ import settingsIcon from '../../../assets/images/logo&icon/gear-solid.svg';
 import moreIcon from '../../../assets/images/logo&icon/angles-right-solid.svg';
 import logOutIcon from '../../../assets/images/logo&icon/right-from-bracket-solid.svg';
 import profilePicture from '../../../assets/images/profile_pics/225746166_2006567569490591_3501118953375513610_n.jpg';
-import { Link,BrowserRouter } from "react-router-dom";
+import {Link, BrowserRouter} from 'react-router-dom';
 
 import React, {useEffect, useState} from 'react';
 import NavUserCard from './NavUserCard';
@@ -48,9 +48,8 @@ const DesktopNavBar = () => {
 
   return (
     <>
-      
       <nav className={navbarClassNames}>
-        <div className={desktopNavStyle['open-close-sidebar']} onClick={toggleNav} title='Menü'>
+        <div className={desktopNavStyle['open-close-sidebar']} onClick={toggleNav} title="Menü">
           <img src={isNavOpen ? xMarkIcon : hamburgerIcon} alt="Menü" />
         </div>
         <ul className={desktopNavStyle['nav-list']}>
@@ -62,7 +61,7 @@ const DesktopNavBar = () => {
             </Link>
           </li>
 
-          <li className={desktopNavStyle['nav-list-item']} title='Kezdőlap'>
+          <li className={desktopNavStyle['nav-list-item']} title="Kezdőlap">
             <Link to="/home">
               <a href="" className={`${desktopNavStyle.active} ${desktopNavStyle['nav-link']}`}>
                 <img className={desktopNavStyle['navbar-svg']} src={houseIcon} alt="Kezdőlap" />
@@ -71,16 +70,16 @@ const DesktopNavBar = () => {
             </Link>
           </li>
 
-          <li className={desktopNavStyle['nav-list-item']}  title='Fiók'>
+          <li className={desktopNavStyle['nav-list-item']} title="Fiók">
             <Link to="/profile">
               <a href="" className={desktopNavStyle['nav-link']}>
-                <img className={desktopNavStyle['navbar-svg']} src={userIcon} alt="Fiók"/>
+                <img className={desktopNavStyle['navbar-svg']} src={userIcon} alt="Fiók" />
                 <span className={desktopNavStyle['navbar-text']}>Fiók</span>
               </a>
             </Link>
           </li>
 
-          <li className={desktopNavStyle['nav-list-item']} title='Értesítések'>
+          <li className={desktopNavStyle['nav-list-item']} title="Értesítések">
             <Link to="/notifications">
               <a href="" className={desktopNavStyle['nav-link']}>
                 <div className={desktopNavStyle['notification-icon']}>
@@ -92,7 +91,7 @@ const DesktopNavBar = () => {
             </Link>
           </li>
 
-          <li className={desktopNavStyle['nav-list-item']} title='Üzenetek'>
+          <li className={desktopNavStyle['nav-list-item']} title="Üzenetek">
             <Link to="/messages">
               <a href="" className={desktopNavStyle['nav-link']}>
                 <div className={desktopNavStyle['notification-icon']}>
@@ -104,25 +103,25 @@ const DesktopNavBar = () => {
             </Link>
           </li>
 
-          <li className={desktopNavStyle['nav-list-item']} title='Kedvencek'>
+          <li className={desktopNavStyle['nav-list-item']} title="Kedvencek">
             <Link to="/favourites">
-            <a href="" className={desktopNavStyle['nav-link']}>
-              <img className={desktopNavStyle['navbar-svg']} src={heartIcon} alt="Kedvencek" />
-              <span className={desktopNavStyle['navbar-text']}>Kedvencek</span>
-            </a>
+              <a href="" className={desktopNavStyle['nav-link']}>
+                <img className={desktopNavStyle['navbar-svg']} src={heartIcon} alt="Kedvencek" />
+                <span className={desktopNavStyle['navbar-text']}>Kedvencek</span>
+              </a>
             </Link>
           </li>
 
-          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`}  title='Eladás'>
+          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Eladás">
             <Link to="/selling">
               <a href="" className={desktopNavStyle['nav-link']}>
-                <img className={desktopNavStyle['navbar-svg']} src={uploadIcon} alt="Eladás"/>
+                <img className={desktopNavStyle['navbar-svg']} src={uploadIcon} alt="Eladás" />
                 <span className={desktopNavStyle['navbar-text']}>Eladás</span>
               </a>
             </Link>
           </li>
 
-          <li className={desktopNavStyle['nav-list-item']} title='Közösség'>
+          <li className={desktopNavStyle['nav-list-item']} title="Közösség">
             <Link to="/community">
               <a href="" className={desktopNavStyle['nav-link']}>
                 <img className={desktopNavStyle['navbar-svg']} src={userGroupIcon} alt="Közösség" />
@@ -131,25 +130,25 @@ const DesktopNavBar = () => {
             </Link>
           </li>
 
-          <li className={desktopNavStyle['nav-list-item']} title='Hírek'>
+          <li className={desktopNavStyle['nav-list-item']} title="Hírek">
             <Link to="/news">
               <a href="" className={desktopNavStyle['nav-link']}>
-                <img className={desktopNavStyle['navbar-svg']} src={newsPaperIcon} alt="Hírek"  />
+                <img className={desktopNavStyle['navbar-svg']} src={newsPaperIcon} alt="Hírek" />
                 <span className={desktopNavStyle['navbar-text']}>Hírek</span>
               </a>
             </Link>
           </li>
 
-          <li className={desktopNavStyle['nav-list-item']} title='Rólunk'>
+          <li className={desktopNavStyle['nav-list-item']} title="Rólunk">
             <Link to="/about">
               <a href="" className={desktopNavStyle['nav-link']}>
-                <img className={desktopNavStyle['navbar-svg']} src={infoIcon} alt="Rólunk"  />
+                <img className={desktopNavStyle['navbar-svg']} src={infoIcon} alt="Rólunk" />
                 <span className={desktopNavStyle['navbar-text']}>Rólunk</span>
               </a>
             </Link>
           </li>
 
-          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`}  title='Kapcsolat'>
+          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Kapcsolat">
             <Link to="/contact">
               <a href="" className={desktopNavStyle['nav-link']}>
                 <img className={desktopNavStyle['navbar-svg']} src={phoneIcon} alt="Kapcsolat" />
@@ -158,46 +157,44 @@ const DesktopNavBar = () => {
             </Link>
           </li>
 
-          <li className={desktopNavStyle['nav-list-item']} title='Bejelentkezés'>
+          <li className={desktopNavStyle['nav-list-item']} title="Bejelentkezés">
             <Link to="/login">
               <a href="" className={desktopNavStyle['nav-link']}>
-                <img className={desktopNavStyle['navbar-svg']} src={loginIcon} alt="Bejelentkezés"  />
+                <img className={desktopNavStyle['navbar-svg']} src={loginIcon} alt="Bejelentkezés" />
                 <span className={desktopNavStyle['navbar-text']}>Bejelentkezés</span>
               </a>
             </Link>
           </li>
 
-          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title='Regisztráció'>
+          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Regisztráció">
             <Link to="/registration">
               <a href="" className={desktopNavStyle['nav-link']}>
-                <img className={desktopNavStyle['navbar-svg']} src={signupIcon} alt="Regisztráció"  />
+                <img className={desktopNavStyle['navbar-svg']} src={signupIcon} alt="Regisztráció" />
                 <span className={desktopNavStyle['navbar-text']}>Regisztráció</span>
               </a>
             </Link>
           </li>
 
-          <li className={desktopNavStyle['nav-list-item']} title='Beállítások'>
-            <Link to="settings">
+          <li className={desktopNavStyle['nav-list-item']} title="Beállítások">
+            <Link to="/settings">
               <a href="" className={desktopNavStyle['nav-link']}>
-                <img className={desktopNavStyle['navbar-svg']} src={settingsIcon} alt="Beállítások"  />
+                <img className={desktopNavStyle['navbar-svg']} src={settingsIcon} alt="Beállítások" />
                 <span className={desktopNavStyle['navbar-text']}>Beállítások</span>
               </a>
             </Link>
           </li>
 
-          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title='Több'>
-            <Link to="/more">
-              <a href="" className={desktopNavStyle['nav-link']}>
-                <img className={desktopNavStyle['navbar-svg']} src={moreIcon} alt="Több" />
-                <span className={desktopNavStyle['navbar-text']}>Több</span>
-              </a>
-            </Link>
+          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Több">
+            <a href="" className={desktopNavStyle['nav-link']}>
+              <img className={desktopNavStyle['navbar-svg']} src={moreIcon} alt="Több" />
+              <span className={desktopNavStyle['navbar-text']}>Több</span>
+            </a>
           </li>
 
-          <li className={desktopNavStyle['nav-list-item']} title='Kijelentkezés'>
+          <li className={desktopNavStyle['nav-list-item']} title="Kijelentkezés">
             <Link to="/logout">
               <a href="" className={desktopNavStyle['nav-link']}>
-                <img className={desktopNavStyle['navbar-svg']} src={logOutIcon} alt="Kijelentkezés"  />
+                <img className={desktopNavStyle['navbar-svg']} src={logOutIcon} alt="Kijelentkezés" />
                 <span className={desktopNavStyle['navbar-text']}>Kijelentkezés</span>
               </a>
             </Link>
@@ -212,7 +209,6 @@ const DesktopNavBar = () => {
           </li>
         </ul>
       </nav>
-      
     </>
   );
 };

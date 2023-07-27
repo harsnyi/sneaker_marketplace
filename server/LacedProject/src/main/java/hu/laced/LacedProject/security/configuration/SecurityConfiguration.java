@@ -1,11 +1,8 @@
 package hu.laced.LacedProject.security.configuration;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,9 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import static hu.laced.LacedProject.user.UserRole.ADMIN;
-import static org.springframework.http.HttpMethod.*;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -27,6 +22,7 @@ public class SecurityConfiguration {
 
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
+    private final LogoutHandler logoutHandler;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -40,7 +36,10 @@ public class SecurityConfiguration {
                         .authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .logout(log -> log.logoutUrl("/api/auth/logout")
+                        .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
+                        .addLogoutHandler(logoutHandler));
 
         return http.build();
     }
@@ -52,8 +51,6 @@ public class SecurityConfiguration {
                         .requestMatchers(PUT, "/api/v1/management/**").hasAnyAuthority(ADMIN_UPDATE.name(), MANAGER_UPDATE.name())
                         .requestMatchers(DELETE, "/api/v1/management/**").hasAnyAuthority(ADMIN_DELETE.name(), MANAGER_DELETE.name())
 
-                        .logout(log -> log.logoutUrl("/api/auth/logout")
-                        .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
-                        .addLogoutHandler(logoutHandler));
+
 
                         */

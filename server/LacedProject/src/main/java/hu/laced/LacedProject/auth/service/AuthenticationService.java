@@ -4,6 +4,9 @@ import hu.laced.LacedProject.auth.AuthenticationRequest;
 import hu.laced.LacedProject.auth.AuthenticationResponse;
 import hu.laced.LacedProject.auth.RegisterRequest;
 import hu.laced.LacedProject.security.configuration.JwtService;
+import hu.laced.LacedProject.token.Token;
+import hu.laced.LacedProject.token.TokenRepository;
+import hu.laced.LacedProject.token.TokenType;
 import hu.laced.LacedProject.user.model.AppUser;
 import hu.laced.LacedProject.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +22,7 @@ import java.util.Optional;
 public class AuthenticationService {
 
     private final UserRepository userRepository;
+    private final TokenRepository tokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -38,16 +42,28 @@ public class AuthenticationService {
                 request.getDob(),
                 passwordEncoder.encode(request.getPassword())
         );
-        userRepository.save(user);
+        var savedUser = userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
+        saveAppUserToken(savedUser, jwtToken);
+
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
     }
 
+    private void saveAppUserToken(AppUser savedUser, String jwtToken) {
+        var token = Token.builder()
+                .appUser(savedUser)
+                .token(jwtToken)
+                .tokenType(TokenType.BEARER)
+                .expired(false)
+                .revoked(false)
+                .build();
+        tokenRepository.save(token);
+    }
+
     public AuthenticationResponse authentication(AuthenticationRequest request) {
-        System.out.println(request.getEmail());
-        System.out.println(request.getPassword());
+
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -55,9 +71,9 @@ public class AuthenticationService {
                 )
         );
         var user = userRepository.findByEmail(request.getEmail()).orElseThrow();
-        System.out.println(user.getEmail());
-
         var jwtToken = jwtService.generateToken(user);
+        saveAppUserToken(user,jwtToken);
+
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();

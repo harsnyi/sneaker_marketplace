@@ -35,4 +35,12 @@ public class Token {
     public void setRevoked(boolean revoked) {
         this.revoked = revoked;
     }
+
+    public boolean isExpired() {
+        return expired;
+    }
+
+    public boolean isRevoked() {
+        return revoked;
+    }
 }

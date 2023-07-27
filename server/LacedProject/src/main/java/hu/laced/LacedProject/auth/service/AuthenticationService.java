@@ -4,12 +4,11 @@ import hu.laced.LacedProject.auth.AuthenticationRequest;
 import hu.laced.LacedProject.auth.AuthenticationResponse;
 import hu.laced.LacedProject.auth.RegisterRequest;
 import hu.laced.LacedProject.security.configuration.JwtService;
-import hu.laced.LacedProject.user.AppUser;
+import hu.laced.LacedProject.user.model.AppUser;
 import hu.laced.LacedProject.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

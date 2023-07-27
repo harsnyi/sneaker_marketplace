@@ -1,6 +1,6 @@
 package hu.laced.LacedProject.product;
 
-import hu.laced.LacedProject.user.AppUser;
+import hu.laced.LacedProject.user.model.AppUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

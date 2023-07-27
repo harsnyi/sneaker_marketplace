@@ -1,6 +1,8 @@
-package hu.laced.LacedProject.user;
+package hu.laced.LacedProject.user.model;
 
 import hu.laced.LacedProject.product.Product;
+import hu.laced.LacedProject.token.Token;
+import hu.laced.LacedProject.user.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -51,6 +53,9 @@ public class AppUser implements UserDetails {
     private UserRole role = UserRole.USER;
     private Boolean locked = false;
     private Boolean enabled = true;
+
+    @OneToMany(mappedBy = "appUser")
+    private List<Token> tokens;
 
 
     public AppUser(String firstName,

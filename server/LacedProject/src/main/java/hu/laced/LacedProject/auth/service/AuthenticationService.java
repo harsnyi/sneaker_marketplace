@@ -15,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -51,17 +52,6 @@ public class AuthenticationService {
                 .build();
     }
 
-    private void saveAppUserToken(AppUser savedUser, String jwtToken) {
-        var token = Token.builder()
-                .appUser(savedUser)
-                .token(jwtToken)
-                .tokenType(TokenType.BEARER)
-                .expired(false)
-                .revoked(false)
-                .build();
-        tokenRepository.save(token);
-    }
-
     public AuthenticationResponse authentication(AuthenticationRequest request) {
 
         authenticationManager.authenticate(
@@ -72,10 +62,34 @@ public class AuthenticationService {
         );
         var user = userRepository.findByEmail(request.getEmail()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
+        revokeAllAppUserTokens(user);
         saveAppUserToken(user,jwtToken);
 
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
+    }
+
+    private void revokeAllAppUserTokens(AppUser appUser){
+        ArrayList<Token> validTokens = (ArrayList<Token>) tokenRepository.findAllValidTokensByAppUser(appUser.getId());
+        if(validTokens.isEmpty()){
+            return;
+        }
+        validTokens.forEach(token -> {
+            token.setExpired(true);
+            token.setRevoked(true);
+        });
+        tokenRepository.saveAll(validTokens);
+    }
+
+    private void saveAppUserToken(AppUser savedUser, String jwtToken) {
+        var token = Token.builder()
+                .appUser(savedUser)
+                .token(jwtToken)
+                .tokenType(TokenType.BEARER)
+                .expired(false)
+                .revoked(false)
+                .build();
+        tokenRepository.save(token);
     }
 }

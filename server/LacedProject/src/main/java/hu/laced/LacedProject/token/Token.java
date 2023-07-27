@@ -28,4 +28,11 @@ public class Token {
     @JoinColumn(name="appuser_id")
     private AppUser appUser;
 
+    public void setExpired(boolean expired) {
+        this.expired = expired;
+    }
+
+    public void setRevoked(boolean revoked) {
+        this.revoked = revoked;
+    }
 }

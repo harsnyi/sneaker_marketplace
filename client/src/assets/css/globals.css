@@ -48,6 +48,45 @@ a {
   z-index: 0;
 }
 
+.btn-main {
+  all: unset;
+  font-weight: bold;
+  box-shadow: 0;
+  transition: box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-size: 1em;
+  padding: 0.4em 1em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 2px;
+}
+.btn-main:active {
+  opacity: 0.75;
+}
+
+.btn-white {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+.btn-white:hover, .btn-white:focus .btn-white:active {
+  box-shadow: 7px 7px #ffffff;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+.btn-black {
+  color: #000000;
+  border: 1px solid #000000;
+}
+.btn-black:hover, .btn-black:focus .btn-black:active {
+  box-shadow: 7px 7px #000000;
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
 @media only screen and (max-width: 768px) {
   html {
     font-size: 0.9rem;

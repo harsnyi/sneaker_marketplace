@@ -48,7 +48,10 @@ public class AuthenticationService {
         AppUser user = new AppUser(
                 request.getFirstName(),
                 request.getLastName(),
+                request.getUsername(),
+                request.getSex(),
                 request.getEmail(),
+                request.getPhoneNumber(),
                 request.getLocation(),
                 request.getDob(),
                 passwordEncoder.encode(request.getPassword())

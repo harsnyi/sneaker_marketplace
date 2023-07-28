@@ -29,6 +29,7 @@ public class AppUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     private LocalDate dateOfBirth;
+    private String username;
     @OneToMany(mappedBy = "appUser")
     private List<Product> productList;
 
@@ -38,6 +39,8 @@ public class AppUser implements UserDetails {
     private Integer numberOfRatings = 0;
     private Integer activePosts = 0;
     private Integer activity = 0;
+
+    @Enumerated(EnumType.STRING)
     private Sex sex;
 
     //TODO Image
@@ -52,7 +55,7 @@ public class AppUser implements UserDetails {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private UserRole role = UserRole.USER;
+    private UserRole role;
     private Boolean locked = false;
     private Boolean enabled = true;
 
@@ -62,14 +65,21 @@ public class AppUser implements UserDetails {
 
     public AppUser(String firstName,
                    String lastName,
+                   String username,
+                   Integer sex,
                    String email,
+                   String phoneNumber,
                    String location,
                    LocalDate dateOfBirth,
                    String password) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.username = username;
+        this.setSex(sex);
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
+        this.role = UserRole.ROLE_ADMIN;
         this.location = location;
         this.password = password;
     }
@@ -78,6 +88,15 @@ public class AppUser implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
         return Collections.singletonList(authority);
+    }
+
+    private void setSex(Integer sexNumber) {
+        switch (sexNumber) {
+            case 1 -> this.sex = Sex.MALE;
+            case 2 -> this.sex = Sex.FEMALE;
+            case 3 -> this.sex = Sex.OTHER;
+            default -> throw new IllegalArgumentException("Illegal number for setting the Sex attribute");
+        }
     }
 
     @Override

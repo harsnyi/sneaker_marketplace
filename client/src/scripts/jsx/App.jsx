@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {useMediaQuery} from 'react-responsive';
 
 import '../../assets/css/globals.css';
@@ -18,7 +18,6 @@ import Community from './components/Community';
 import News from './components/News';
 import Contact from './components/Contact';
 import Settings from './components/Settings';
-import AuthenticationPage from './components/AuthenticationPage';
 
 function App() {
   const isMobile = useMediaQuery({query: '(max-width: 768px)'});
@@ -27,183 +26,127 @@ function App() {
     return isMobile ? <MobileNavBar /> : <DesktopNavbar />;
   }
 
+  const CommonLayout = ({children}) => (
+    <>
+      <SearchBar />
+      {renderNavBar()}
+      <div className="main-content">{children}</div>
+    </>
+  );
+
+  const routes = [
+    {
+      path: '/',
+      element: (
+        <CommonLayout>
+          <Home />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/home',
+      element: (
+        <CommonLayout>
+          <Home />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/about',
+      element: (
+        <CommonLayout>
+          <About />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/profile',
+      element: (
+        <CommonLayout>
+          <Profile />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/notifications',
+      element: (
+        <CommonLayout>
+          <Notifications />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/messages',
+      element: (
+        <CommonLayout>
+          <Messages />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/favourites',
+      element: (
+        <CommonLayout>
+          <Favourites />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/selling',
+      element: (
+        <CommonLayout>
+          <Selling />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/community',
+      element: (
+        <CommonLayout>
+          <Community />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/news',
+      element: (
+        <CommonLayout>
+          <News />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/about',
+      element: (
+        <CommonLayout>
+          <About />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/contact',
+      element: (
+        <CommonLayout>
+          <Contact />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/settings',
+      element: (
+        <CommonLayout>
+          <Settings />
+        </CommonLayout>
+      ),
+    },
+  ];
+
   return (
     <BrowserRouter basename="/">
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <SearchBar />
-              {renderNavBar()}
-              <div className="main-content">
-                <Home />
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/home"
-          element={
-            <>
-              <SearchBar />
-              {renderNavBar()}
-              <div className="main-content">
-                <Home />
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <>
-              <SearchBar />
-              {renderNavBar()}
-              <div className="main-content">
-                <About />
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            <>
-              <SearchBar />
-              {renderNavBar()}
-              <div className="main-content">
-                <Profile />
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/notifications"
-          element={
-            <>
-              <SearchBar />
-              {renderNavBar()}
-              <div className="main-content">
-                <Notifications />
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/messages"
-          element={
-            <>
-              <SearchBar />
-              {renderNavBar()}
-              <div className="main-content">
-                <Messages />
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/favourites"
-          element={
-            <>
-              <SearchBar />
-              {renderNavBar()}
-              <div className="main-content">
-                <Favourites />
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/selling"
-          element={
-            <>
-              <SearchBar />
-              {renderNavBar()}
-              <div className="main-content">
-                <Selling />
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/community"
-          element={
-            <>
-              <SearchBar />
-              {renderNavBar()}
-              <div className="main-content">
-                <Community />
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/news"
-          element={
-            <>
-              <SearchBar />
-              {renderNavBar()}
-              <div className="main-content">
-                <News />
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <>
-              <SearchBar />
-              {renderNavBar()}
-              <div className="main-content">
-                <About />
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            <>
-              <SearchBar />
-              {renderNavBar()}
-              <div className="main-content">
-                <Contact />
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/settings"
-          element={
-            <>
-              <SearchBar />
-              {renderNavBar()}
-              <div className="main-content">
-                <Settings />
-              </div>
-            </>
-          }
-        />
-
-        <Route
-          path="/login"
-          element={
-            <>
-              <AuthenticationPage />
-            </>
-          }
-        />
-
-        <Route
-          path="/registration"
-          element={
-            <>
-              <AuthenticationPage />
-            </>
-          }
-        />
+        {routes.map(({path, element}) => (
+          <Route key={path} path={path} element={element} />
+        ))}
       </Routes>
     </BrowserRouter>
   );

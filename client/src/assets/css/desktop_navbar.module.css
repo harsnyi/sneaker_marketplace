@@ -1,5 +1,5 @@
 .nav-bar {
-  position: sticky;
+  position: fixed;
   background-color: #141414;
   transition: width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   color: #ffffff;
@@ -144,9 +144,22 @@
 .nav-bar .nav-list .nav-list-item .nav-link:hover, .nav-bar .nav-list .nav-list-item .nav-link.active {
   filter: grayscale(0%) opacity(1);
   background-color: #0f0f0f;
+  cursor: pointer;
+  position: relative;
 }
 .nav-bar .nav-list .nav-list-item .nav-link:hover .profile-avatar, .nav-bar .nav-list .nav-list-item .nav-link.active .profile-avatar {
   opacity: 0.8;
+}
+.nav-bar .nav-list .nav-list-item .nav-link.active::after {
+  content: "";
+  position: absolute;
+  width: 0.15rem;
+  height: 100%;
+  background-color: #ffffff;
+  left: 0;
+  top: 0;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 .nav-bar .nav-list .last-in-group {
   margin-bottom: 1.5rem;

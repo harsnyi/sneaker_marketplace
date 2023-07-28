@@ -34,7 +34,8 @@ a {
 }
 
 #root {
-  min-height: 200vh;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .main-content {

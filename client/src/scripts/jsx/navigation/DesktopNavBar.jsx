@@ -23,6 +23,7 @@ import {NavLink} from 'react-router-dom';
 
 import React, {useEffect, useState, useMatch} from 'react';
 import NavUserCard from './NavUserCard';
+import AuthenticationPage from '../components/AuthenticationPage';
 
 function delayNavbarText() {
   const navbarTextItems = document.querySelectorAll(`.${desktopNavStyle['navbar-text']}`);
@@ -46,6 +47,11 @@ const DesktopNavBar = () => {
 
   const navbarClassNames = `${desktopNavStyle['nav-bar']} ${isNavOpen ? desktopNavStyle['opened'] : desktopNavStyle['closed']}`;
   const location = window.location.pathname;
+
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const toggleAuth = () => {
+    setIsAuthOpen(true);
+  };
 
   return (
     <>
@@ -137,17 +143,17 @@ const DesktopNavBar = () => {
           </li>
 
           <li className={desktopNavStyle['nav-list-item']} title="Bejelentkezés">
-            <NavLink to="/login" className={desktopNavStyle['nav-link']}>
+            <a href="#login" onClick={toggleAuth} className={desktopNavStyle['nav-link']}>
               <img className={desktopNavStyle['navbar-svg']} src={loginIcon} alt="Bejelentkezés" />
               <span className={desktopNavStyle['navbar-text']}>Bejelentkezés</span>
-            </NavLink>
+            </a>
           </li>
 
           <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Regisztráció">
-            <NavLink to="/registration" className={desktopNavStyle['nav-link']}>
+            <a href="#register" onClick={toggleAuth} className={desktopNavStyle['nav-link']}>
               <img className={desktopNavStyle['navbar-svg']} src={signupIcon} alt="Regisztráció" />
               <span className={desktopNavStyle['navbar-text']}>Regisztráció</span>
-            </NavLink>
+            </a>
           </li>
 
           <li className={desktopNavStyle['nav-list-item']} title="Beállítások">
@@ -178,6 +184,8 @@ const DesktopNavBar = () => {
           </li>
         </ul>
       </nav>
+
+      {isAuthOpen && <AuthenticationPage setIsAuthOpen={setIsAuthOpen} />}
     </>
   );
 };

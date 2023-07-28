@@ -1,7 +1,7 @@
 @import './variables';
 
 .nav-bar {
-  position: sticky;
+  position: fixed;
   top: calc(100vh - $mobile-nav-height);
   background-color: $clr-primary-darkgrey;
   height: $mobile-nav-height;

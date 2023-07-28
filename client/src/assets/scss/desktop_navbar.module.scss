@@ -1,7 +1,7 @@
 @import './variables';
 
 .nav-bar {
-  position: sticky;
+  position: fixed;
   background-color: $clr-primary-darkgrey;
   transition: width 0.2s $nav-animation-speed;
   color: $clr-white;

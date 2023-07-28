@@ -14,7 +14,6 @@
   src: url('../fonts/Oswald-Light.ttf') format('truetype');
 }
 
-
 * {
   margin: 0;
   padding: 0;
@@ -42,7 +41,7 @@ a {
   height: fit-content;
 }
 
-.main-content{
+.main-content {
   background-color: $clr-white;
   width: calc(100% - $closed-nav-width);
   height: calc(100% - $search-bar-height);
@@ -52,6 +51,50 @@ a {
   z-index: 0;
 }
 
+.btn-main {
+  all: unset;
+  font-weight: bold;
+  box-shadow: 0;
+  transition: box-shadow 0.2s $animation-speed;
+  font-size: 1em;
+  padding: 0.4em 1em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 2px;
+
+  &:active {
+    opacity: 0.75;
+  }
+}
+
+.btn-white {
+  color: $clr-white;
+  border: 1px solid $clr-white;
+
+  &:hover,
+  &:focus &:active {
+    box-shadow: 7px 7px $clr-white;
+    background-color: $clr-white;
+    border: 1px solid $clr-black;
+    color: $clr-black;
+  }
+}
+
+.btn-black {
+  color: $clr-black;
+  border: 1px solid $clr-black;
+
+  &:hover,
+  &:focus &:active {
+    box-shadow: 7px 7px $clr-black;
+    background-color: $clr-black;
+    border: 1px solid $clr-white;
+    color: $clr-white;
+  }
+}
+
 // Media Queries - Tablet
 @media only screen and (max-width: 768px) {
   html {
@@ -59,7 +102,7 @@ a {
     line-height: 1.2rem;
   }
 
-  .main-content{
+  .main-content {
     padding: 0;
     left: 0;
     top: $search-bar-height;
@@ -68,7 +111,6 @@ a {
     height: 100%;
   }
 }
-
 
 // Media Queries - Mobile
 @media only screen and (max-width: 500px) {

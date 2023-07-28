@@ -3,7 +3,7 @@
 .nav-bar {
   position: fixed;
   background-color: $clr-primary-darkgrey;
-  transition: width 0.2s $nav-animation-speed;
+  transition: width 0.2s $animation-speed;
   color: $clr-white;
   width: $closed-nav-width;
   height: calc(100vh - $search-bar-height);
@@ -116,7 +116,7 @@
             margin-left: 1rem;
             font-size: 1.5rem;
             transform: translateX(-100%);
-            transition: opacity 0.2s, transform 0.2s $nav-animation-speed;
+            transition: opacity 0.2s, transform 0.2s $animation-speed;
           }
         }
       }
@@ -166,7 +166,7 @@
           margin-left: 0.5rem;
           transform: translateX(-100%);
           opacity: 0;
-          transition: opacity 0.2s, transform 0.2s $nav-animation-speed;
+          transition: opacity 0.2s, transform 0.2s $animation-speed;
           font-size: 1.3rem;
         }
 

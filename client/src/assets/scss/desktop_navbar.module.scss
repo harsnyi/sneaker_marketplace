@@ -10,8 +10,6 @@
   top: $search-bar-height;
   z-index: 99;
 
-  
-
   &.opened {
     width: $opened-nav-width;
     .nav-list {
@@ -23,7 +21,7 @@
           }
         }
 
-        &:last-child{
+        &:last-child {
           .nav-link {
             .navbar-username {
               opacity: 1;
@@ -35,31 +33,31 @@
     }
   }
 
-    .open-close-sidebar {
-      width: 2rem;
-      height: 2rem;
-      background-color: $clr-primary-darkgrey;
-      border: 2px solid $clr-white;
-      border-radius: 50%;
-      right: -1rem;
-      top: 2.5rem;
-      position: absolute;
-      margin-left: $closed-nav-width;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  .open-close-sidebar {
+    width: 2rem;
+    height: 2rem;
+    background-color: $clr-primary-darkgrey;
+    border: 2px solid $clr-white;
+    border-radius: 50%;
+    right: -1rem;
+    top: 2.5rem;
+    position: absolute;
+    margin-left: $closed-nav-width;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-      img{
-        width: 1.15rem;
-        height: 1.15rem;
-        filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(239deg) brightness(108%) contrast(101%);
-      }
-
-      &:hover{
-        cursor: pointer;
-      }
+    img {
+      width: 1.15rem;
+      height: 1.15rem;
+      filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(239deg) brightness(108%) contrast(101%);
     }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
   .nav-list {
     list-style-type: none;
@@ -67,14 +65,14 @@
     flex-direction: column;
     align-items: center;
     height: 100%;
-      overflow: hidden;
+    overflow: hidden;
 
     .logo {
       width: 3rem;
       margin: 1rem;
       display: flex;
       justify-content: center;
-    
+
       .nav-link {
         img {
           object-fit: cover;
@@ -176,10 +174,24 @@
         &.active {
           filter: grayscale(0%) opacity(1);
           background-color: darken($color: $clr-primary-darkgrey, $amount: 2%);
+          cursor: pointer;
+          position: relative;
 
           .profile-avatar {
             opacity: 0.8;
           }
+        }
+
+        &.active::after {
+          content: '';
+          position: absolute;
+          width: 0.15rem;
+          height: 100%;
+          background-color: $clr-white;
+          left: 0;
+          top: 0;
+          border-top-right-radius: 25px;
+          border-bottom-right-radius: 25px;
         }
       }
     }
@@ -189,5 +201,3 @@
     }
   }
 }
-
-

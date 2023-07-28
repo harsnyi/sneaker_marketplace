@@ -21,9 +21,9 @@ import logOutIcon from '../../../assets/images/logo&icon/right-from-bracket-soli
 import profilePicture from '../../../assets/images/profile_pics/225746166_2006567569490591_3501118953375513610_n.jpg';
 import {NavLink} from 'react-router-dom';
 
-import React, {useEffect, useState, useMatch} from 'react';
+import React, {useEffect, useState} from 'react';
 import NavUserCard from './NavUserCard';
-import AuthenticationPage from '../components/AuthenticationPage';
+import AuthenticationPage from '../auth/AuthenticationPage';
 
 function delayNavbarText() {
   const navbarTextItems = document.querySelectorAll(`.${desktopNavStyle['navbar-text']}`);
@@ -67,21 +67,21 @@ const DesktopNavBar = () => {
           </li>
 
           <li className={desktopNavStyle['nav-list-item']} title="Kezdőlap">
-            <NavLink to="/home" className={`${desktopNavStyle['nav-link']} ${location == '/home' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
+            <NavLink to="/home" className={`${desktopNavStyle['nav-link']} ${location === '/home' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
               <img className={desktopNavStyle['navbar-svg']} src={houseIcon} alt="Kezdőlap" />
               <span className={desktopNavStyle['navbar-text']}>Kezdőlap</span>
             </NavLink>
           </li>
 
           <li className={desktopNavStyle['nav-list-item']} title="Fiók">
-            <NavLink to="/profile" className={`${desktopNavStyle['nav-link']} ${location == '/profile' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
+            <NavLink to="/profile" className={`${desktopNavStyle['nav-link']} ${location === '/profile' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
               <img className={desktopNavStyle['navbar-svg']} src={userIcon} alt="Fiók" />
               <span className={desktopNavStyle['navbar-text']}>Fiók</span>
             </NavLink>
           </li>
 
           <li className={desktopNavStyle['nav-list-item']} title="Értesítések">
-            <NavLink to="/notifications" className={`${desktopNavStyle['nav-link']} ${location == '/notifications' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
+            <NavLink to="/notifications" className={`${desktopNavStyle['nav-link']} ${location === '/notifications' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
               <div className={desktopNavStyle['notification-icon']}>
                 <img className={desktopNavStyle['navbar-svg']} src={bellIcon} alt="Értesítések" />
                 <span className={desktopNavStyle['new-notification']}></span>
@@ -91,7 +91,7 @@ const DesktopNavBar = () => {
           </li>
 
           <li className={desktopNavStyle['nav-list-item']} title="Üzenetek">
-            <NavLink to="/messages" className={`${desktopNavStyle['nav-link']} ${location == '/messages' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
+            <NavLink to="/messages" className={`${desktopNavStyle['nav-link']} ${location === '/messages' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
               <div className={desktopNavStyle['notification-icon']}>
                 <img className={desktopNavStyle['navbar-svg']} src={envelopeIcon} alt="Üzenetek" />
                 <span className={desktopNavStyle['new-notification']}></span>
@@ -101,42 +101,42 @@ const DesktopNavBar = () => {
           </li>
 
           <li className={desktopNavStyle['nav-list-item']} title="Kedvencek">
-            <NavLink to="/favourites" className={`${desktopNavStyle['nav-link']} ${location == '/favourites' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
+            <NavLink to="/favourites" className={`${desktopNavStyle['nav-link']} ${location === '/favourites' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
               <img className={desktopNavStyle['navbar-svg']} src={heartIcon} alt="Kedvencek" />
               <span className={desktopNavStyle['navbar-text']}>Kedvencek</span>
             </NavLink>
           </li>
 
           <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Eladás">
-            <NavLink to="/selling" className={`${desktopNavStyle['nav-link']} ${location == '/selling' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
+            <NavLink to="/selling" className={`${desktopNavStyle['nav-link']} ${location === '/selling' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
               <img className={desktopNavStyle['navbar-svg']} src={uploadIcon} alt="Eladás" />
               <span className={desktopNavStyle['navbar-text']}>Eladás</span>
             </NavLink>
           </li>
 
           <li className={desktopNavStyle['nav-list-item']} title="Közösség">
-            <NavLink to="/community" className={`${desktopNavStyle['nav-link']} ${location == '/community' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
+            <NavLink to="/community" className={`${desktopNavStyle['nav-link']} ${location === '/community' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
               <img className={desktopNavStyle['navbar-svg']} src={userGroupIcon} alt="Közösség" />
               <span className={desktopNavStyle['navbar-text']}>Közösség</span>
             </NavLink>
           </li>
 
           <li className={desktopNavStyle['nav-list-item']} title="Hírek">
-            <NavLink to="/news" className={`${desktopNavStyle['nav-link']} ${location == '/news' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
+            <NavLink to="/news" className={`${desktopNavStyle['nav-link']} ${location === '/news' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
               <img className={desktopNavStyle['navbar-svg']} src={newsPaperIcon} alt="Hírek" />
               <span className={desktopNavStyle['navbar-text']}>Hírek</span>
             </NavLink>
           </li>
 
           <li className={desktopNavStyle['nav-list-item']} title="Rólunk">
-            <NavLink to="/about" className={`${desktopNavStyle['nav-link']} ${location == '/about' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
+            <NavLink to="/about" className={`${desktopNavStyle['nav-link']} ${location === '/about' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
               <img className={desktopNavStyle['navbar-svg']} src={infoIcon} alt="Rólunk" />
               <span className={desktopNavStyle['navbar-text']}>Rólunk</span>
             </NavLink>
           </li>
 
           <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Kapcsolat">
-            <NavLink to="/contact" className={`${desktopNavStyle['nav-link']} ${location == '/contact' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
+            <NavLink to="/contact" className={`${desktopNavStyle['nav-link']} ${location === '/contact' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
               <img className={desktopNavStyle['navbar-svg']} src={phoneIcon} alt="Kapcsolat" />
               <span className={desktopNavStyle['navbar-text']}>Kapcsolat</span>
             </NavLink>
@@ -157,7 +157,7 @@ const DesktopNavBar = () => {
           </li>
 
           <li className={desktopNavStyle['nav-list-item']} title="Beállítások">
-            <NavLink to="/settings" className={`${desktopNavStyle['nav-link']} ${location == '/settings' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
+            <NavLink to="/settings" className={`${desktopNavStyle['nav-link']} ${location === '/settings' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
               <img className={desktopNavStyle['navbar-svg']} src={settingsIcon} alt="Beállítások" />
               <span className={desktopNavStyle['navbar-text']}>Beállítások</span>
             </NavLink>

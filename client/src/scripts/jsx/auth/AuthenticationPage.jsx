@@ -1,6 +1,8 @@
 import '../../../assets/css/authentication_page.css';
 import {useNavigate} from 'react-router-dom';
 
+import Tabs from './Tabs';
+
 import xMarkIcon from '../../../assets/images/logo&icon/xmark-solid.svg';
 
 const AuthenticationPage = (props) => {
@@ -18,6 +20,7 @@ const AuthenticationPage = (props) => {
           <button onClick={handleDisable} className="btn-close-form">
             <img src={xMarkIcon} alt="Bezár" />
           </button>
+          <Tabs />
         </div>
       </div>
     </>

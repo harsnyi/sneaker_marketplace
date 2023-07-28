@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {useMediaQuery} from 'react-responsive';
 
 import '../../assets/css/globals.css';
@@ -18,7 +18,6 @@ import Community from './components/Community';
 import News from './components/News';
 import Contact from './components/Contact';
 import Settings from './components/Settings';
-import AuthenticationPage from './components/AuthenticationPage';
 
 function App() {
   const isMobile = useMediaQuery({query: '(max-width: 768px)'});

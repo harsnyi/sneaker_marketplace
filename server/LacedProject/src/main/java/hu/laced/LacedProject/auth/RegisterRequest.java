@@ -14,9 +14,13 @@ import java.time.LocalDate;
 public class RegisterRequest {
 
     //TODO: Add username,sex,phone number
+
     private String firstName;
     private String lastName;
+    private String username;
     private LocalDate dob;
+    private Integer sex;
+    private String phoneNumber;
     private String location;
     private String password;
     private String email;

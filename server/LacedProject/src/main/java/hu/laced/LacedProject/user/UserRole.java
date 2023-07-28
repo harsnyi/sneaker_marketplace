@@ -1,8 +1,8 @@
 package hu.laced.LacedProject.user;
 
 public enum UserRole {
-    USER,
-    ADMIN,
-    CONTRIBUTOR,
-    MODERATOR,
+    ROLE_USER,
+    ROLE_ADMIN,
+    ROLE_CONTRIBUTOR,
+    ROLE_MODERATOR,
 }

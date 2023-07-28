@@ -79,7 +79,7 @@ public class AppUser implements UserDetails {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
-        this.role = UserRole.ROLE_USER;
+        this.role = UserRole.ROLE_ADMIN;
         this.location = location;
         this.password = password;
     }

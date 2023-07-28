@@ -19,8 +19,63 @@ const Tabs = () => {
           </div>
         </div>
         <div className="tabs-content">
-          <div className={activeTab === 1 ? 'tabs-content-item active-content' : 'tabs-content-item'}>Bejelentkezés</div>
-          <div className={activeTab === 2 ? 'tabs-content-item active-content' : 'tabs-content-item'}>Regisztráció</div>
+          <div className={activeTab === 1 ? 'tabs-content-item active-content' : 'tabs-content-item'}>
+            <form>
+              <label>E-Mail</label>
+              <br />
+              <input type="email" />
+              <br />
+              <label>Jelszó</label>
+              <br />
+              <input type="password" />
+              <br />
+              <button type="submit">Bejelentkezés</button>
+            </form>
+          </div>
+          <div className={activeTab === 2 ? 'tabs-content-item active-content' : 'tabs-content-item'}>
+            <form>
+              <label>Vezetéknév</label>
+              <br />
+              <input type="text" />
+              <br />
+              <label>Keresztnév</label>
+              <br />
+              <input type="text" />
+              <br />
+              <label>E-Mail</label>
+              <br />
+              <input type="email" />
+              <br />
+              <label>Felhasználónév</label>
+              <br />
+              <input type="text" />
+              <br />
+              <label>Jelszó</label>
+              <br />
+              <input type="password" />
+              <br />
+              <label>Jelszó megerősítése</label>
+              <br />
+              <input type="password" />
+              <br />
+              <label>Telefonszám</label>
+              <br />
+              <input type="tel" />
+              <br />
+              <label>Nem</label>
+              <br />
+              <select>
+                <option value="0" disabled selected>
+                  Válaszd ki a nemed.
+                </option>
+                <option value="1">Férfi</option>
+                <option value="2">Nő</option>
+                <option value="3">Egyéb</option>
+              </select>
+              <br />
+              <button type="submit">Regisztráció</button>
+            </form>
+          </div>
         </div>
       </div>
     </>

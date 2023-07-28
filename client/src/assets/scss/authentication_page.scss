@@ -103,6 +103,7 @@
       .tabs-content {
         .tabs-content-item {
           display: none;
+          padding-top: 1rem;
 
           &.active-content {
             display: flex;

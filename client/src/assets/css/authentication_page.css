@@ -88,6 +88,7 @@
 }
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item {
   display: none;
+  padding-top: 1rem;
 }
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content {
   display: flex;

@@ -3,5 +3,37 @@
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 99999;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.authentication-page .form-container {
+  background-color: #ffffff;
+  width: 30rem;
+  height: 45rem;
+  position: relative;
+  padding: 3rem;
+}
+.authentication-page .form-container .btn-close-form {
+  all: unset;
   position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  --webkit-appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.authentication-page .form-container .btn-close-form img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.authentication-page .form-container .btn-close-form:hover img {
+  opacity: 0.5;
 }/*# sourceMappingURL=authentication_page.css.map */

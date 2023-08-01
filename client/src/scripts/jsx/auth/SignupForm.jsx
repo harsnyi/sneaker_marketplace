@@ -10,7 +10,7 @@ const SignupForm = () => {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [gender, setGender] = useState(0);
+  const [gender, setGender] = useState('');
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ const SignupForm = () => {
           <Input
             type="text"
             value={lastName}
-            label="Vezetéknév"
+            label="Vezetéknév * "
             onChange={(value) => {
               setLastName(value);
             }}
@@ -36,7 +36,7 @@ const SignupForm = () => {
           <Input
             type="text"
             value={firstName}
-            label="Keresztnév"
+            label="Keresztnév * "
             onChange={(value) => {
               setFirstName(value);
             }}
@@ -45,11 +45,10 @@ const SignupForm = () => {
             required
           />
         </div>
-
         <Input
           type="email"
           value={email}
-          label="E-Mail"
+          label="E-Mail * "
           onChange={(value) => {
             setEmail(value);
           }}
@@ -60,7 +59,7 @@ const SignupForm = () => {
         <Input
           type="text"
           value={username}
-          label="Felhasználónév"
+          label="Felhasználónév * "
           onChange={(value) => {
             setUsername(value);
           }}
@@ -72,7 +71,7 @@ const SignupForm = () => {
           <Input
             type="password"
             value={password}
-            label="Jelszó"
+            label="Jelszó * "
             onChange={(value) => {
               setPassword(value);
             }}
@@ -83,7 +82,7 @@ const SignupForm = () => {
           <Input
             type="password"
             value={passwordConfirmation}
-            label="Jelszó újra"
+            label="Jelszó újra * "
             onChange={(value) => {
               setPasswordConfirmation(value);
             }}
@@ -102,21 +101,23 @@ const SignupForm = () => {
           className="input-field"
           name=""
         />
-        <label>Nem</label>
-        <select onChange={(e) => setGender(e.target.value)} defaultValue={gender}>
-          <option value="0" disabled>
-            Válassz az alábbiak közül.
-          </option>
-          <option value="1">Férfi</option>
-          <option value="2">Nő</option>
-          <option value="3">Egyéb</option>
-        </select>
+        <div className="select-wrapper">
+          <select onChange={(e) => setGender(e.target.value)} defaultValue={gender} className="select-menu" required>
+            <option value=""></option>
+            <option value="1">Férfi</option>
+            <option value="2">Nő</option>
+            <option value="3">Egyéb</option>
+            <option value="4">Most nem</option>
+          </select>
+          <label>Nem * </label>
+        </div>
         <button type="submit" className="btn-main btn-black">
           Regisztráció
         </button>
         <div className="bg-line">
           <h3>vagy</h3>
         </div>
+        TODO: Implement social media login
       </form>
     </>
   );

@@ -34,7 +34,7 @@ html {
 
 a {
   text-decoration: none;
-  color: white;
+  color: $clr-white;
 }
 
 #root {
@@ -141,6 +141,15 @@ a {
 
         & ~ label {
           color: $clr-red;
+        }
+      }
+
+      &.input-success {
+        border: 2px solid $clr-green;
+        color: $clr-green;
+
+        & ~ label {
+          color: $clr-green;
         }
       }
     }

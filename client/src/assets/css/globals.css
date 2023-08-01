@@ -30,7 +30,7 @@ html {
 
 a {
   text-decoration: none;
-  color: white;
+  color: #ffffff;
 }
 
 #root {
@@ -137,6 +137,13 @@ a {
 }
 .input-wrapper .input-group .input-field.input-error ~ label {
   color: #eb0000;
+}
+.input-wrapper .input-group .input-field.input-success {
+  border: 2px solid #00eb00;
+  color: #00eb00;
+}
+.input-wrapper .input-group .input-field.input-success ~ label {
+  color: #00eb00;
 }
 
 @media only screen and (max-width: 768px) {

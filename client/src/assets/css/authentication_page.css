@@ -161,7 +161,7 @@
 }
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content .bg-line {
   width: 100%;
-  margin: 1rem 0;
+  margin: 2rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -181,6 +181,6 @@
   content: "";
   width: 100%;
   position: absolute;
-  height: 2px;
+  height: 1px;
   background-color: #a0a0a0;
 }/*# sourceMappingURL=authentication_page.css.map */

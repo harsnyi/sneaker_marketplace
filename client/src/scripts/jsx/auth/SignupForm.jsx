@@ -21,28 +21,31 @@ const SignupForm = () => {
     <>
       <h1>Még nem vagy tag?</h1>
       <form onSubmit={handleFormSubmit}>
-        <Input
-          type="text"
-          value={lastName}
-          label="Vezetéknév"
-          onChange={(value) => {
-            setLastName(value);
-          }}
-          className="input-field"
-          name=""
-          required
-        />
-        <Input
-          type="text"
-          value={firstName}
-          label="Keresztnév"
-          onChange={(value) => {
-            setFirstName(value);
-          }}
-          className="input-field"
-          name=""
-          required
-        />
+        <div className="field-wrapper">
+          <Input
+            type="text"
+            value={lastName}
+            label="Vezetéknév"
+            onChange={(value) => {
+              setLastName(value);
+            }}
+            className="input-field"
+            name=""
+            required
+          />
+          <Input
+            type="text"
+            value={firstName}
+            label="Keresztnév"
+            onChange={(value) => {
+              setFirstName(value);
+            }}
+            className="input-field"
+            name=""
+            required
+          />
+        </div>
+
         <Input
           type="email"
           value={email}
@@ -65,28 +68,30 @@ const SignupForm = () => {
           name=""
           required
         />
-        <Input
-          type="password"
-          value={password}
-          label="Jelszó"
-          onChange={(value) => {
-            setPassword(value);
-          }}
-          className="input-field"
-          name=""
-          required
-        />
-        <Input
-          type="password"
-          value={passwordConfirmation}
-          label="Jelszó újra"
-          onChange={(value) => {
-            setPasswordConfirmation(value);
-          }}
-          className="input-field"
-          name=""
-          required
-        />
+        <div className="field-wrapper">
+          <Input
+            type="password"
+            value={password}
+            label="Jelszó"
+            onChange={(value) => {
+              setPassword(value);
+            }}
+            className="input-field"
+            name=""
+            required
+          />
+          <Input
+            type="password"
+            value={passwordConfirmation}
+            label="Jelszó újra"
+            onChange={(value) => {
+              setPasswordConfirmation(value);
+            }}
+            className="input-field"
+            name=""
+            required
+          />
+        </div>
         <Input
           type="tel"
           value={phoneNumber}
@@ -109,6 +114,9 @@ const SignupForm = () => {
         <button type="submit" className="btn-main btn-black">
           Regisztráció
         </button>
+        <div className="bg-line">
+          <h3>vagy</h3>
+        </div>
       </form>
     </>
   );

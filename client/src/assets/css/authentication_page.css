@@ -10,21 +10,21 @@
 }
 .authentication-page .form-container {
   background-color: #ffffff;
-  min-width: 30rem;
+  min-width: 30vw;
   min-height: 75vh;
   position: relative;
-  padding: 3rem;
+  padding: 2rem;
 }
 .authentication-page .form-container .btn-close-form {
   all: unset;
   position: absolute;
   top: 0;
   right: 0;
-  margin: 1rem;
+  margin: 0.5rem;
   -webkit-appearance: none;
-     -moz-appearance: none;
           appearance: none;
   --webkit-appearance: none;
+  -moz-appearance: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,8 +110,17 @@
   justify-content: center;
   width: 100%;
 }
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .field-wrapper {
+  display: flex;
+  flex-direction: row;
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
+}
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .field-wrapper .input-wrapper {
+  width: 100%;
+}
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form button {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content .bg-line {
   width: 100%;

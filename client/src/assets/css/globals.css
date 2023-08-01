@@ -54,7 +54,7 @@ a {
   box-shadow: 0;
   transition: box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font-size: 1em;
-  padding: 0.4em 1em;
+  padding: 0.75em 1em;
   margin-bottom: 1rem;
   text-transform: uppercase;
   cursor: pointer;
@@ -87,22 +87,56 @@ a {
   color: #ffffff;
 }
 
-.input-error-div {
+.input-wrapper {
+  margin: 0.5rem 0;
+}
+.input-wrapper .input-group {
+  position: relative;
   display: flex;
   width: 100%;
   flex-direction: column;
-  margin: 0.25rem 0;
-}
-.input-error-div .input-field {
-  padding: 0.25rem;
   margin: 0.2rem 0;
 }
-.input-error-div .input-field:focus, .input-error-div .input-field:active {
-  outline: #000000;
+.input-wrapper .input-group label {
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  font-size: 1.2rem;
+  transform: translateY(-50%);
+  color: #474747;
+  pointer-events: none;
+  transition: 0.2s;
+  padding: 0 0.2rem;
 }
-.input-error-div .input-error {
-  border: 1px solid #eb0000;
+.input-wrapper .input-group .input-field {
+  padding: 0.75rem;
   outline: none;
+  font-size: 0.9rem;
+}
+.input-wrapper .input-group .input-field:not(:-moz-placeholder-shown) {
+  border: 2px solid #000000;
+}
+.input-wrapper .input-group .input-field:focus, .input-wrapper .input-group .input-field:invalid, .input-wrapper .input-group .input-field:not(:placeholder-shown) {
+  border: 2px solid #000000;
+}
+.input-wrapper .input-group .input-field:not(:-moz-placeholder-shown) ~ label {
+  top: 0;
+  color: #000000;
+  font-size: 1.1rem;
+  background-color: #ffffff;
+}
+.input-wrapper .input-group .input-field:focus ~ label, .input-wrapper .input-group .input-field:invalid ~ label, .input-wrapper .input-group .input-field:not(:placeholder-shown) ~ label {
+  top: 0;
+  color: #000000;
+  font-size: 1.1rem;
+  background-color: #ffffff;
+}
+.input-wrapper .input-group .input-field.input-error {
+  border: 2px solid #eb0000;
+  color: #eb0000;
+}
+.input-wrapper .input-group .input-field.input-error ~ label {
+  color: #eb0000;
 }
 
 @media only screen and (max-width: 768px) {

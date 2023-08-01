@@ -1,7 +1,8 @@
-import { useState } from "react";
+import {useState} from 'react';
+
+import Input from '../other/Input';
 
 const SignupForm = () => {
-  
   const [lastName, setLastName] = useState('');
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
@@ -11,25 +12,79 @@ const SignupForm = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [gender, setGender] = useState(0);
 
-
   return (
-
-       <h1>Még nem vagy tag?</h1>
+    <>
+      <h1>Még nem vagy tag?</h1>
       <form onSubmit="">
-        <label>Vezetéknév</label>
-        <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-        <label>Keresztnév</label>
-        <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-        <label>E-Mail</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <label>Felhasználónév</label>
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-        <label>Jelszó</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <label>Jelszó újra</label>
-        <input type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
-        <label>Telefonszám</label>
-        <input type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+        <Input
+          type="text"
+          value={lastName}
+          label="Vezetéknév"
+          onChange={(value) => {
+            setLastName(value);
+          }}
+          className=""
+          required
+        />
+        <Input
+          type="text"
+          value={firstName}
+          label="Keresztnév"
+          onChange={(value) => {
+            setFirstName(value);
+          }}
+          className=""
+          required
+        />
+        <Input
+          type="email"
+          value={email}
+          label="E-Mail"
+          onChange={(value) => {
+            setEmail(value);
+          }}
+          className=""
+          required
+        />
+        <Input
+          type="text"
+          value={username}
+          label="Felhasználónév"
+          onChange={(value) => {
+            setUsername(value);
+          }}
+          className=""
+          required
+        />
+        <Input
+          type="password"
+          value={password}
+          label="Jelszó"
+          onChange={(value) => {
+            setPassword(value);
+          }}
+          className=""
+          required
+        />
+        <Input
+          type="password"
+          value={passwordConfirmation}
+          label="Jelszó újra"
+          onChange={(value) => {
+            setPasswordConfirmation(value);
+          }}
+          className=""
+          required
+        />
+        <Input
+          type="tel"
+          value={phoneNumber}
+          label="Telefonszám"
+          onChange={(value) => {
+            setPhoneNumber(value);
+          }}
+          className=""
+        />
         <label>Nem</label>
         <select value={gender} onChange={(e) => setGender(e.target.value)} defaultValue={0}>
           <option value="0" disabled>

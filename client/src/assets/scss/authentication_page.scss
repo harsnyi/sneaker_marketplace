@@ -12,8 +12,8 @@
 
   .form-container {
     background-color: $clr-white;
-    width: 30rem;
-    height: 45rem;
+    min-width: 30rem;
+    min-height: 75vh;
     position: relative;
     padding: 3rem;
 

@@ -67,7 +67,7 @@ const DesktopNavBar = () => {
           </li>
 
           <li className={desktopNavStyle['nav-list-item']} title="Kezdőlap">
-            <NavLink to="/home" className={`${desktopNavStyle['nav-link']} ${location === '/home' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
+            <NavLink to="/home" className={`${desktopNavStyle['nav-link']} ${location === '/home' || location === '/' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
               <img className={desktopNavStyle['navbar-svg']} src={houseIcon} alt="Kezdőlap" />
               <span className={desktopNavStyle['navbar-text']}>Kezdőlap</span>
             </NavLink>

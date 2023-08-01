@@ -12,10 +12,15 @@ const SignupForm = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [gender, setGender] = useState(0);
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Perform signup logic here
+  };
+
   return (
     <>
       <h1>Még nem vagy tag?</h1>
-      <form onSubmit="">
+      <form onSubmit={handleFormSubmit}>
         <Input
           type="text"
           value={lastName}
@@ -23,7 +28,8 @@ const SignupForm = () => {
           onChange={(value) => {
             setLastName(value);
           }}
-          className=""
+          className="input-field"
+          name=""
           required
         />
         <Input
@@ -33,7 +39,8 @@ const SignupForm = () => {
           onChange={(value) => {
             setFirstName(value);
           }}
-          className=""
+          className="input-field"
+          name=""
           required
         />
         <Input
@@ -43,7 +50,8 @@ const SignupForm = () => {
           onChange={(value) => {
             setEmail(value);
           }}
-          className=""
+          className="input-field"
+          name=""
           required
         />
         <Input
@@ -53,7 +61,8 @@ const SignupForm = () => {
           onChange={(value) => {
             setUsername(value);
           }}
-          className=""
+          className="input-field"
+          name=""
           required
         />
         <Input
@@ -63,7 +72,8 @@ const SignupForm = () => {
           onChange={(value) => {
             setPassword(value);
           }}
-          className=""
+          className="input-field"
+          name=""
           required
         />
         <Input
@@ -73,7 +83,8 @@ const SignupForm = () => {
           onChange={(value) => {
             setPasswordConfirmation(value);
           }}
-          className=""
+          className="input-field"
+          name=""
           required
         />
         <Input
@@ -83,10 +94,11 @@ const SignupForm = () => {
           onChange={(value) => {
             setPhoneNumber(value);
           }}
-          className=""
+          className="input-field"
+          name=""
         />
         <label>Nem</label>
-        <select value={gender} onChange={(e) => setGender(e.target.value)} defaultValue={0}>
+        <select onChange={(e) => setGender(e.target.value)} defaultValue={gender}>
           <option value="0" disabled>
             Válassz az alábbiak közül.
           </option>

@@ -104,16 +104,37 @@
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content h1 {
   margin: 1rem 0;
 }
-.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content h3 {
-  margin: 1rem 0;
-  color: #a0a0a0;
-  position: relative;
-  text-transform: uppercase;
-  text-align: center;
-}
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 80%;
+  width: 100%;
+}
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form button {
+  margin: 1rem 0;
+}
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content .bg-line {
+  width: 100%;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content .bg-line h3 {
+  color: #a0a0a0;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: #ffffff;
+  width: -moz-fit-content;
+  width: fit-content;
+  z-index: 999;
+  padding: 0 1rem;
+}
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content .bg-line::after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  height: 2px;
+  background-color: #a0a0a0;
 }/*# sourceMappingURL=authentication_page.css.map */

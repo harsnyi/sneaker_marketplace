@@ -20,7 +20,7 @@ const LoginForm = () => {
         <Input
           type="email"
           value={email}
-          label="E-Mail"
+          label="E-Mail * "
           onChange={(value) => {
             setEmail(value);
           }}
@@ -31,7 +31,7 @@ const LoginForm = () => {
         <Input
           type="password"
           value={password}
-          label="Jelszó"
+          label="Jelszó * "
           onChange={(value) => {
             setPassword(value);
           }}
@@ -46,6 +46,7 @@ const LoginForm = () => {
       <div className="bg-line">
         <h3>vagy</h3>
       </div>
+      TODO: Implement social media login
     </>
   );
 };

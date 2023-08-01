@@ -12,19 +12,20 @@
 
   .form-container {
     background-color: $clr-white;
-    min-width: 30rem;
+    min-width: 30vw;
     min-height: 75vh;
     position: relative;
-    padding: 3rem;
+    padding: 2rem;
 
     .btn-close-form {
       all: unset;
       position: absolute;
       top: 0;
       right: 0;
-      margin: 1rem;
+      margin: 0.5rem;
       appearance: none;
       --webkit-appearance: none;
+      -moz-appearance: none;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -129,8 +130,60 @@
               justify-content: center;
               width: 100%;
 
+              .field-wrapper {
+                display: flex;
+                flex-direction: row;
+                column-gap: 0.5rem;
+
+                .input-wrapper {
+                  width: 100%;
+                }
+              }
+
               button {
-                margin: 1rem 0;
+                margin: 0.5rem 0;
+              }
+
+              .select-wrapper {
+                width: 100%;
+                margin: 0.7rem 0;
+                position: relative;
+
+                label {
+                  position: absolute;
+                  left: 0.5rem;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  font-size: 1.2rem;
+                  color: darken($color: $clr-primary-grey, $amount: 60);
+                  pointer-events: none;
+                  transition: 0.2s;
+                  padding: 0 0.2rem;
+                }
+
+                .select-menu {
+                  width: 100%;
+                  padding: 0.75rem;
+                  appearance: none;
+                  --webkit-appearance: none;
+                  -moz-appearance: none;
+                  cursor: pointer;
+                  background-color: $clr-white;
+                  font-size: 0.9rem;
+                  transition: border 0.1s $animation-speed;
+                  border: 1px solid darken($color: $clr-primary-grey, $amount: 25);
+
+                  &:focus,
+                  &:valid {
+                    border: 2px solid $clr-black;
+
+                    & ~ label {
+                      color: $clr-black;
+                      top: 0;
+                      background-color: $clr-white;
+                    }
+                  }
+                }
               }
             }
 
@@ -157,7 +210,7 @@
                 width: 100%;
                 position: absolute;
                 height: 2px;
-                background-color: darken($color: $clr-primary-grey, $amount: 25);
+                background-color: darken($color: $clr-primary-grey, $amount: 25); // $clr-yellow
               }
             }
           }

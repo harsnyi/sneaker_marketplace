@@ -10,21 +10,21 @@
 }
 .authentication-page .form-container {
   background-color: #ffffff;
-  min-width: 30rem;
+  min-width: 30vw;
   min-height: 75vh;
   position: relative;
-  padding: 3rem;
+  padding: 2rem;
 }
 .authentication-page .form-container .btn-close-form {
   all: unset;
   position: absolute;
   top: 0;
   right: 0;
-  margin: 1rem;
+  margin: 0.5rem;
   -webkit-appearance: none;
-     -moz-appearance: none;
           appearance: none;
   --webkit-appearance: none;
+  -moz-appearance: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,8 +110,54 @@
   justify-content: center;
   width: 100%;
 }
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .field-wrapper {
+  display: flex;
+  flex-direction: row;
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
+}
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .field-wrapper .input-wrapper {
+  width: 100%;
+}
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form button {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
+}
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .select-wrapper {
+  width: 100%;
+  margin: 0.7rem 0;
+  position: relative;
+}
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .select-wrapper label {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #474747;
+  pointer-events: none;
+  transition: 0.2s;
+  padding: 0 0.2rem;
+}
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .select-wrapper .select-menu {
+  width: 100%;
+  padding: 0.75rem;
+  -webkit-appearance: none;
+          appearance: none;
+  --webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  background-color: #ffffff;
+  font-size: 0.9rem;
+  transition: border 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid #a0a0a0;
+}
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .select-wrapper .select-menu:focus, .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .select-wrapper .select-menu:valid {
+  border: 2px solid #000000;
+}
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .select-wrapper .select-menu:focus ~ label, .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .select-wrapper .select-menu:valid ~ label {
+  color: #000000;
+  top: 0;
+  background-color: #ffffff;
 }
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content .bg-line {
   width: 100%;

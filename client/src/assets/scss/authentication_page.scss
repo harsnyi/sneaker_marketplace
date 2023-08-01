@@ -123,19 +123,42 @@
               margin: 1rem 0;
             }
 
-            h3 {
-              margin: 1rem 0;
-              color: darken($color: $clr-primary-grey, $amount: 25);
-              position: relative;
-              text-transform: uppercase;
-              text-align: center;
-            }
-
             form {
               display: flex;
               flex-direction: column;
               justify-content: center;
-              width: 80%;
+              width: 100%;
+
+              button {
+                margin: 1rem 0;
+              }
+            }
+
+            .bg-line {
+              width: 100%;
+              margin: 1rem 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+
+              h3 {
+                color: darken($color: $clr-primary-grey, $amount: 25);
+                text-transform: uppercase;
+                text-align: center;
+                background-color: $clr-white;
+                width: fit-content;
+                z-index: 999;
+                padding: 0 1rem;
+              }
+
+              &::after {
+                content: '';
+                width: 100%;
+                position: absolute;
+                height: 2px;
+                background-color: darken($color: $clr-primary-grey, $amount: 25);
+              }
             }
           }
         }

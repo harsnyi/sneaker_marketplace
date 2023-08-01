@@ -100,6 +100,21 @@ a {
   width: 100%;
   flex-direction: column;
   margin: 0.25rem 0;
+
+  .input-field {
+    padding: 0.25rem;
+    margin: 0.2rem 0;
+
+    &:focus,
+    &:active {
+      outline: $clr-black;
+    }
+  }
+
+  .input-error {
+    border: 1px solid $clr-red;
+    outline: none;
+  }
 }
 
 // Media Queries - Tablet

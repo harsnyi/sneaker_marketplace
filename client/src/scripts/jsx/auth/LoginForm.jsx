@@ -6,7 +6,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     // Perform login logic here
     // Access the 'email' and 'password' state variables to handle the login process
@@ -16,7 +16,7 @@ const LoginForm = () => {
   return (
     <>
       <h1>Üdv újra!</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <Input
           type="email"
           value={email}
@@ -24,7 +24,8 @@ const LoginForm = () => {
           onChange={(value) => {
             setEmail(value);
           }}
-          className=""
+          className="input-field"
+          name=""
           required
         />
         <Input
@@ -34,14 +35,17 @@ const LoginForm = () => {
           onChange={(value) => {
             setPassword(value);
           }}
-          className=""
+          className="input-field"
+          name=""
           required
         />
         <button type="submit" className="btn-main btn-black">
           Bejelentkezés
         </button>
       </form>
-      <h3>vagy</h3>
+      <div className="bg-line">
+        <h3>vagy</h3>
+      </div>
     </>
   );
 };

@@ -93,6 +93,17 @@ a {
   flex-direction: column;
   margin: 0.25rem 0;
 }
+.input-error-div .input-field {
+  padding: 0.25rem;
+  margin: 0.2rem 0;
+}
+.input-error-div .input-field:focus, .input-error-div .input-field:active {
+  outline: #000000;
+}
+.input-error-div .input-error {
+  border: 1px solid #eb0000;
+  outline: none;
+}
 
 @media only screen and (max-width: 768px) {
   html {

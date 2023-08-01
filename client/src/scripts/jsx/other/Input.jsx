@@ -18,12 +18,14 @@ const Input = (props) => {
     props.onChange(inputValue);
   };
 
+  const inputClassName = props.className + (error ? ' input-error' : ''); // Append 'input-error' class when error is present
+
   return (
     <>
       <div className="input-error-div">
         <label>{props.label}</label>
-        <input type={props.type} value={props.value} onChange={handleInputChange} className={props.className} />
-        {error && <span style={{color: 'red'}}>{error}</span>}
+        <input type={props.type} value={props.value} onChange={handleInputChange} name={props.name} className={inputClassName} />
+        {error && <span style={{color: '#eb0000'}}>{error}</span>}
       </div>
     </>
   );

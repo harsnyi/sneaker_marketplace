@@ -25,7 +25,7 @@ const LoginForm = () => {
             setEmail(value);
           }}
           className="input-field"
-          name=""
+          name="email"
           required
         />
         <Input

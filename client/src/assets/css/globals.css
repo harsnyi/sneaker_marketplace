@@ -146,6 +146,14 @@ a {
   color: #00eb00;
 }
 
+/* Change Autocomplete styles*/
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus {
+  -webkit-text-fill-color: #000000;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+}
+
 @media only screen and (max-width: 768px) {
   html {
     font-size: 0.9rem;

@@ -156,6 +156,14 @@ a {
   }
 }
 
+/* Change Autocomplete styles*/
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus {
+  -webkit-text-fill-color: $clr-black;
+  -webkit-box-shadow: 0 0 0px 1000px $clr-white inset;
+}
+
 // Media Queries - Tablet
 @media only screen and (max-width: 768px) {
   html {

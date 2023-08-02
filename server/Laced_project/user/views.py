@@ -1,10 +1,13 @@
 from rest_framework.views import APIView
 from rest_framework import status
+from rest_framework_jwt.views import refresh_jwt_token
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
 from user.user_profile.serializer.user_serializer import UserRegistrationSerializer, UserLoginSerializer
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework_jwt.views import refresh_jwt_token
+from django.contrib.auth import logout
 
 
 class HelloView(APIView):
@@ -46,3 +49,5 @@ def login_view(request):
 def secured_endpoint(request):
     # Your secured endpoint logic here
     return Response({'message': 'This is a secured endpoint. You need a valid JWT token to access it.'})
+
+

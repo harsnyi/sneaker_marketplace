@@ -1,5 +1,8 @@
 from datetime import timedelta
 from pathlib import Path
+import django
+from django.utils.translation import gettext
+django.utils.translation.ugettext = gettext
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user.apps.UserConfig',
     'rest_framework_simplejwt',
+    'rest_framework_jwt',
+    'rest_framework',
     'corsheaders',
 ]
 
@@ -43,6 +48,7 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME_GRACE_PERIOD': timedelta(minutes=10),
     'SLIDING_TOKEN_REFRESH_TIMEOUT': timedelta(days=30),
     'ROTATE_REFRESH_TOKENS': False,
+    'JWT_ALLOW_REFRESH': True,
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
     'VERIFYING_KEY': None,

@@ -30,7 +30,7 @@ const SignupForm = () => {
               setLastName(value);
             }}
             className="input-field"
-            name=""
+            name="name"
             required
           />
           <Input
@@ -41,7 +41,7 @@ const SignupForm = () => {
               setFirstName(value);
             }}
             className="input-field"
-            name=""
+            name="name"
             required
           />
         </div>
@@ -53,7 +53,7 @@ const SignupForm = () => {
             setEmail(value);
           }}
           className="input-field"
-          name=""
+          name="email"
           required
         />
         <Input
@@ -64,7 +64,7 @@ const SignupForm = () => {
             setUsername(value);
           }}
           className="input-field"
-          name=""
+          name="username"
           required
         />
         <div className="field-wrapper">
@@ -76,7 +76,7 @@ const SignupForm = () => {
               setPassword(value);
             }}
             className="input-field"
-            name=""
+            name="password"
             required
           />
           <Input
@@ -87,29 +87,30 @@ const SignupForm = () => {
               setPasswordConfirmation(value);
             }}
             className="input-field"
-            name=""
+            name="passwordAgain"
             required
           />
         </div>
         <Input
           type="tel"
           value={phoneNumber}
-          label="Telefonszám"
+          label="Telefonszám * "
           onChange={(value) => {
             setPhoneNumber(value);
           }}
           className="input-field"
-          name=""
+          name="phone"
+          required
         />
         <div className="select-wrapper">
           <select onChange={(e) => setGender(e.target.value)} defaultValue={gender} className="select-menu" required>
-            <option value=""></option>
+            <option value="" disabled></option>
             <option value="1">Férfi</option>
             <option value="2">Nő</option>
             <option value="3">Egyéb</option>
             <option value="4">Most nem</option>
           </select>
-          <label>Nem * </label>
+          <label>Nem</label>
         </div>
         <button type="submit" className="btn-main btn-black">
           Regisztráció

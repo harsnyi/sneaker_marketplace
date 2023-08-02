@@ -172,6 +172,7 @@
                   font-size: 0.9rem;
                   transition: border 0.1s $animation-speed;
                   border: 1px solid darken($color: $clr-primary-grey, $amount: 25);
+                  outline: none;
 
                   &:focus,
                   &:valid {

@@ -1,13 +1,31 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import Input from '../other/Input';
+
+const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({});
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    // Validate email
+    if (email && !EMAIL_REGEX.test(email)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: 'Hibás e-mail cím formátum.',
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: '',
+      }));
+    }
+  }, [email]);
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
     // Perform login logic here
     // Access the 'email' and 'password' state variables to handle the login process
     // You can implement your login logic here, e.g., send a login request to the server
@@ -25,7 +43,8 @@ const LoginForm = () => {
             setEmail(value);
           }}
           className="input-field"
-          name="email"
+          name="lgn-email"
+          error={errors.email}
           required
         />
         <Input
@@ -36,7 +55,8 @@ const LoginForm = () => {
             setPassword(value);
           }}
           className="input-field"
-          name=""
+          name="lgn-pass"
+          error={errors.password}
           required
         />
         <button type="submit" className="btn-main btn-black">

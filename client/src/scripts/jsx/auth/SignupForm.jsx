@@ -1,16 +1,159 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 import Input from '../other/Input';
 
+const NAME_REGEX = /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+([ -][A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+)*$/;
+const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+const USERNAME_REGEX = /^(?!.*\s{2})[a-z0-9_. ]+(?<!\s)$/i;
+const PHONE_REGEX = /^\+?[0-9]{11}$/;
+
 const SignupForm = () => {
-  const [lastName, setLastName] = useState('');
+  const [errors, setErrors] = useState({}); // Store input errors
   const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [gender, setGender] = useState('');
+
+  useEffect(() => {
+    // Validate first name and last name
+    if (firstName && !NAME_REGEX.test(firstName)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        firstName: 'Hibás keresztnév formátum.',
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        firstName: '',
+      }));
+    }
+
+    if (lastName && !NAME_REGEX.test(lastName)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        lastName: 'Hibás vezetéknév formátum.',
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        lastName: '',
+      }));
+    }
+  }, [firstName, lastName]);
+
+  useEffect(() => {
+    // Validate email
+    if (email && !EMAIL_REGEX.test(email)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: 'Hibás e-mail cím formátum.',
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: '',
+      }));
+    }
+  }, [email]);
+
+  useEffect(() => {
+    // Validate username
+    if (username && !USERNAME_REGEX.test(username)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        username: 'Hibás felhasználónév formátum.',
+      }));
+    } else if (username && username.length < 4) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        username: 'A felhasználónévnek legalább 4 karakter hosszúnak kell lennie.',
+      }));
+    } else if (username && username.length > 16) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        username: 'A felhasználónév legfeljebb 16 karakter hosszú lehet.',
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        username: '',
+      }));
+    }
+  }, [username]);
+
+  useEffect(() => {
+    // Validate password
+    if (password && password.length < 8) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: 'A jelszónak legalább 8 karakter hosszúnak kell lennie.',
+      }));
+    } else if (password && password.length > 20) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: 'A jelszó legfeljebb 20 karakter hosszú lehet.',
+      }));
+    } else if (password && !/\d/.test(password)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: 'A jelszónak tartalmaznia kell legalább egy számot.',
+      }));
+    } else if (password && !/[a-z]/.test(password)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: 'A jelszónak tartalmaznia kell legalább egy kisbetűt.',
+      }));
+    } else if (password && !/[A-Z]/.test(password)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: 'A jelszónak tartalmaznia kell legalább egy nagybetűt.',
+      }));
+    } else if (password && !PHONE_REGEX.test(password)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: 'A jelszónak tartalmaznia kell legalább egy speciális karaktert.',
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: '',
+      }));
+    }
+  }, [password]);
+
+  useEffect(() => {
+    // Validate password confirmation
+    if (passwordConfirmation && password !== passwordConfirmation) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        passwordConfirmation: 'A jelszavak nem egyeznek.',
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        passwordConfirmation: '',
+      }));
+    }
+  }, [password, passwordConfirmation]);
+
+  useEffect(() => {
+    // Validate phone number
+    if (phoneNumber && !/^\+?[0-9]{8,15}$/.test(phoneNumber)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        phoneNumber: 'Hibás telefonszám formátum.',
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        phoneNumber: '',
+      }));
+    }
+  }, [phoneNumber]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +173,8 @@ const SignupForm = () => {
               setLastName(value);
             }}
             className="input-field"
-            name="name"
+            name="reg-lastname"
+            error={errors.lastName}
             required
           />
           <Input
@@ -41,7 +185,8 @@ const SignupForm = () => {
               setFirstName(value);
             }}
             className="input-field"
-            name="name"
+            name="reg-firstname"
+            error={errors.firstName}
             required
           />
         </div>
@@ -53,7 +198,8 @@ const SignupForm = () => {
             setEmail(value);
           }}
           className="input-field"
-          name="email"
+          name="reg-email"
+          error={errors.email}
           required
         />
         <Input
@@ -64,7 +210,8 @@ const SignupForm = () => {
             setUsername(value);
           }}
           className="input-field"
-          name="username"
+          name="reg-username"
+          error={errors.username}
           required
         />
         <div className="field-wrapper">
@@ -76,7 +223,8 @@ const SignupForm = () => {
               setPassword(value);
             }}
             className="input-field"
-            name="password"
+            name="reg-password"
+            error={errors.password}
             required
           />
           <Input
@@ -87,7 +235,8 @@ const SignupForm = () => {
               setPasswordConfirmation(value);
             }}
             className="input-field"
-            name="passwordAgain"
+            name="reg-password-again"
+            error={errors.passwordConfirmation}
             required
           />
         </div>
@@ -99,7 +248,8 @@ const SignupForm = () => {
             setPhoneNumber(value);
           }}
           className="input-field"
-          name="phone"
+          name="reg-phone"
+          error={errors.phoneNumber}
           required
         />
         <div className="select-wrapper">

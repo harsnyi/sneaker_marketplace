@@ -112,6 +112,7 @@ a {
   padding: 0.75rem;
   outline: none;
   font-size: 0.9rem;
+  color: #474747;
 }
 .input-wrapper .input-group .input-field:not(:-moz-placeholder-shown) {
   border: 2px solid #000000;
@@ -133,17 +134,12 @@ a {
 }
 .input-wrapper .input-group .input-field.input-error {
   border: 2px solid #eb0000;
-  color: #eb0000;
 }
-.input-wrapper .input-group .input-field.input-error ~ label {
-  color: #eb0000;
+.input-wrapper .input-group .input-field.input-error:focus {
+  outline: 2px solid #ffd2d2;
 }
 .input-wrapper .input-group .input-field.input-success {
   border: 2px solid #00eb00;
-  color: #00eb00;
-}
-.input-wrapper .input-group .input-field.input-success ~ label {
-  color: #00eb00;
 }
 
 /* Change Autocomplete styles*/

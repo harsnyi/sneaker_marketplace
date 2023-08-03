@@ -214,6 +214,39 @@
                 background-color: darken($color: $clr-primary-grey, $amount: 25); // $clr-yellow
               }
             }
+
+            .social-icons-wrapper {
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-around;
+
+              .social-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                cursor: pointer;
+
+                &.facebook-icon {
+                  background-color: $clr-facebook;
+                }
+                &.google-icon {
+                  background-color: $clr-google;
+                }
+                &.instagram-icon {
+                  background-color: $clr-instagram;
+                }
+
+                img {
+                  width: 2rem;
+                  height: 2rem;
+                  margin: 0.5rem;
+                  filter: invert(99%) sepia(3%) saturate(828%) hue-rotate(203deg) brightness(118%) contrast(100%);
+                }
+              }
+            }
           }
         }
       }

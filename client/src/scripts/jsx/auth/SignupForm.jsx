@@ -5,6 +5,7 @@ import Input from '../other/Input';
 const NAME_REGEX = /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+([ -][A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+)*$/;
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const USERNAME_REGEX = /^(?!.*\s{2})[a-z0-9_. ]+(?<!\s)$/i;
+const PHONE_REGEX = /^\+?[0-9]{11}$/;
 
 const SignupForm = () => {
   const [errors, setErrors] = useState({}); // Store input errors
@@ -111,13 +112,48 @@ const SignupForm = () => {
         ...prevErrors,
         password: 'A jelszónak tartalmaznia kell legalább egy nagybetűt.',
       }));
-    } else if (password && /[!@#$%^&*()\-_=+[{\]}\\|;:'",<.>/?]+/.test(password)) {
+    } else if (password && !PHONE_REGEX.test(password)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
         password: 'A jelszónak tartalmaznia kell legalább egy speciális karaktert.',
       }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: '',
+      }));
     }
   }, [password]);
+
+  useEffect(() => {
+    // Validate password confirmation
+    if (passwordConfirmation && password !== passwordConfirmation) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        passwordConfirmation: 'A jelszavak nem egyeznek.',
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        passwordConfirmation: '',
+      }));
+    }
+  }, [password, passwordConfirmation]);
+
+  useEffect(() => {
+    // Validate phone number
+    if (phoneNumber && !/^\+?[0-9]{8,15}$/.test(phoneNumber)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        phoneNumber: 'Hibás telefonszám formátum.',
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        phoneNumber: '',
+      }));
+    }
+  }, [phoneNumber]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -200,7 +236,7 @@ const SignupForm = () => {
             }}
             className="input-field"
             name="reg-password-again"
-            error={errors.passwordAgain}
+            error={errors.passwordConfirmation}
             required
           />
         </div>

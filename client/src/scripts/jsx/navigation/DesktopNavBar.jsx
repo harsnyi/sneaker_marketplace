@@ -150,7 +150,7 @@ const DesktopNavBar = () => {
           </li>
 
           <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Regisztráció">
-            <a href="#register" onClick={toggleAuth} className={desktopNavStyle['nav-link']}>
+            <a href="#signup" onClick={toggleAuth} className={desktopNavStyle['nav-link']}>
               <img className={desktopNavStyle['navbar-svg']} src={signupIcon} alt="Regisztráció" />
               <span className={desktopNavStyle['navbar-text']}>Regisztráció</span>
             </a>

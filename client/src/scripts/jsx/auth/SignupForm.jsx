@@ -2,6 +2,10 @@ import {useState, useEffect} from 'react';
 
 import Input from '../other/Input';
 
+import facebookLogo from '../../../assets/images/logo&icon/facebook-f.svg';
+import googleLogo from '../../../assets/images/logo&icon/google-plus-g.svg';
+import instagramLogo from '../../../assets/images/logo&icon/instagram.svg';
+
 const NAME_REGEX = /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+([ -][A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+)*$/;
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const USERNAME_REGEX = /^(?!.*\s{2})[a-z0-9_. ]+(?<!\s)$/i;
@@ -268,7 +272,17 @@ const SignupForm = () => {
         <div className="bg-line">
           <h3>vagy</h3>
         </div>
-        TODO: Implement social media login
+        <div className="social-icons-wrapper">
+          <span className="social-icon facebook-icon">
+            <img src={facebookLogo} alt="Regisztráció Facebook-al" title="Regisztráció Facebook-al." />
+          </span>
+          <span className="social-icon google-icon">
+            <img src={googleLogo} alt="Regisztráció Google-al" title="Regisztráció Google-al." />
+          </span>
+          <span className="social-icon instagram-icon">
+            <img src={instagramLogo} alt="Regisztráció Instagram-al" title="Regisztráció Instagram-al." />
+          </span>
+        </div>
       </form>
     </>
   );

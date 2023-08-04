@@ -198,15 +198,30 @@
   justify-content: center;
   border-radius: 50%;
   cursor: pointer;
+  outline: 0px;
+  outline-offset: 0px;
+  transition: outline-offset 0.05s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content .social-icons-wrapper .social-icon.facebook-icon {
   background-color: #3b5998;
 }
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content .social-icons-wrapper .social-icon.facebook-icon:hover {
+  outline: 2px solid #3b5998;
+  outline-offset: 2px;
+}
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content .social-icons-wrapper .social-icon.google-icon {
   background-color: #db4437;
 }
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content .social-icons-wrapper .social-icon.google-icon:hover {
+  outline: 2px solid #db4437;
+  outline-offset: 2px;
+}
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content .social-icons-wrapper .social-icon.instagram-icon {
   background-color: #e1306c;
+}
+.authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content .social-icons-wrapper .social-icon.instagram-icon:hover {
+  outline: 2px solid #e1306c;
+  outline-offset: 2px;
 }
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content .social-icons-wrapper .social-icon img {
   width: 2rem;

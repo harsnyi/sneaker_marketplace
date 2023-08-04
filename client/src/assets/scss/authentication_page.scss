@@ -228,15 +228,33 @@
                 justify-content: center;
                 border-radius: 50%;
                 cursor: pointer;
+                outline: 0px;
+                outline-offset: 0px;
+                transition: outline-offset 0.05s $animation-speed;
 
                 &.facebook-icon {
                   background-color: $clr-facebook;
+
+                  &:hover {
+                    outline: 2px solid $clr-facebook;
+                    outline-offset: 2px;
+                  }
                 }
                 &.google-icon {
                   background-color: $clr-google;
+
+                  &:hover {
+                    outline: 2px solid $clr-google;
+                    outline-offset: 2px;
+                  }
                 }
                 &.instagram-icon {
                   background-color: $clr-instagram;
+
+                  &:hover {
+                    outline: 2px solid $clr-instagram;
+                    outline-offset: 2px;
+                  }
                 }
 
                 img {

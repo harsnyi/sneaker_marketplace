@@ -72,13 +72,13 @@ const LoginForm = () => {
       </div>
       <div className="social-icons-wrapper">
         <span className="social-icon facebook-icon">
-          <img src={facebookLogo} alt="Bejelentkezés Facebook-al" />
+          <img src={facebookLogo} alt="Bejelentkezés Facebook-al" title="Bejelentkezés Facebook-al." />
         </span>
         <span className="social-icon google-icon">
-          <img src={googleLogo} alt="Bejelentkezés Google-al" />
+          <img src={googleLogo} alt="Bejelentkezés Google-al" title="Bejelentkezés Google-al." />
         </span>
         <span className="social-icon instagram-icon">
-          <img src={instagramLogo} alt="Bejelentkezés Instagram-al" />
+          <img src={instagramLogo} alt="Bejelentkezés Instagram-al" title="Bejelentkezés Instagram-al." />
         </span>
       </div>
     </>

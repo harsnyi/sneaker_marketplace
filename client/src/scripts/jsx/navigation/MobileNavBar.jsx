@@ -18,45 +18,49 @@ import moreIcon from '../../../assets/images/logo&icon/angles-right-solid.svg';
 import logOutIcon from '../../../assets/images/logo&icon/right-from-bracket-solid.svg';
 import profilePicture from '../../../assets/images/profile_pics/225746166_2006567569490591_3501118953375513610_n.jpg';
 
+import {NavLink} from 'react-router-dom';
+
 const MobileNavBar = () => {
+  const location = window.location.pathname;
+
   return (
     <>
       <nav className={mobileNavStyle['nav-bar']}>
         <ul className={mobileNavStyle['nav-list']}>
           <li className={mobileNavStyle['nav-list-item']}>
-            <a href="" className={mobileNavStyle['nav-link']}>
-              <img className={mobileNavStyle['navbar-svg']} src={houseIcon} alt="" />
-            </a>
+            <NavLink to="/home" className={`${mobileNavStyle['nav-link']} ${location === '/home' || location === '/' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
+              <img className={mobileNavStyle['navbar-svg']} src={houseIcon} alt="Kezdőlap" />
+            </NavLink>
           </li>
 
           <li className={mobileNavStyle['nav-list-item']}>
-            <a href="" className={mobileNavStyle['nav-link']}>
-              <img className={mobileNavStyle['navbar-svg']} src={heartIcon} alt="" />
-            </a>
+            <NavLink to="/favourites" className={`${mobileNavStyle['nav-link']} ${location === '/favourites' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
+              <img className={mobileNavStyle['navbar-svg']} src={heartIcon} alt="Kedvencek" />
+            </NavLink>
           </li>
 
           <li className={mobileNavStyle['nav-list-item']}>
-            <a href="" className={mobileNavStyle['nav-link']}>
-              <img className={mobileNavStyle['navbar-svg']} src={uploadIcon} alt="" />
-            </a>
+            <NavLink to="/selling" className={`${mobileNavStyle['nav-link']} ${location === '/selling' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
+              <img className={mobileNavStyle['navbar-svg']} src={uploadIcon} alt="Eladás" />
+            </NavLink>
           </li>
 
           <li className={mobileNavStyle['nav-list-item']}>
-            <a href="" className={mobileNavStyle['nav-link']}>
+            <NavLink to="/messages" className={`${mobileNavStyle['nav-link']} ${location === '/messages' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
               <div className={mobileNavStyle['notification-icon']}>
-                <img className={mobileNavStyle['navbar-svg']} src={envelopeIcon} alt="" />
+                <img className={mobileNavStyle['navbar-svg']} src={envelopeIcon} alt="Üzenetek" />
                 <span className={mobileNavStyle['new-notification']}></span>
               </div>
-            </a>
+            </NavLink>
           </li>
 
           <li className={mobileNavStyle['nav-list-item']}>
-            <a href="" className={mobileNavStyle['nav-link']}>
+            <NavLink to="/notifications" className={`${mobileNavStyle['nav-link']} ${location === '/notifications' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
               <div className={mobileNavStyle['notification-icon']}>
-                <img className={mobileNavStyle['navbar-svg']} src={bellIcon} alt="" />
+                <img className={mobileNavStyle['navbar-svg']} src={bellIcon} alt="Értesítések" />
                 <span className={mobileNavStyle['new-notification']}></span>
               </div>
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>

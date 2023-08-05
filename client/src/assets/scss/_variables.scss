@@ -22,8 +22,12 @@ $clr-secondary-darkgrey: #252525;
 $closed-nav-width: 5rem;
 $opened-nav-width: 16rem;
 
-$mobile-nav-height: 3rem;
+$mobile-nav-height: 3.5rem;
 $search-bar-height: 2.5rem;
 
 //cubic-bezier
 $animation-speed: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+//fonts
+$font-display: 'Staatliches', cursive;
+$font-content: 'Oswald', sans-serif;

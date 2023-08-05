@@ -25,7 +25,7 @@
       border: none;
       background-color: transparent;
       color: $clr-white;
-      font-family: 'Oswald', sans-serif;
+      font-family: $font-content;
       border-right: 3px solid $clr-search-bar;
       width: 30vw;
       letter-spacing: 2px;
@@ -63,7 +63,7 @@
   }
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
   .search-bar {
     height: $mobile-nav-height;
 
@@ -73,5 +73,4 @@
       }
     }
   }
-
 }

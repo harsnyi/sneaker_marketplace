@@ -24,6 +24,7 @@ import {NavLink} from 'react-router-dom';
 import React, {useEffect, useState} from 'react';
 import NavUserCard from './NavUserCard';
 import AuthenticationPage from '../auth/AuthenticationPage';
+import SearchBar from '../search/SearchBar';
 
 function delayNavbarText() {
   const navbarTextItems = document.querySelectorAll(`.${desktopNavStyle['navbar-text']}`);
@@ -55,6 +56,8 @@ const DesktopNavBar = () => {
 
   return (
     <>
+      <SearchBar />
+
       <nav className={navbarClassNames}>
         <div className={desktopNavStyle['open-close-sidebar']} onClick={toggleNav} title="Menü">
           <img src={isNavOpen ? xMarkIcon : hamburgerIcon} alt="Menü" />

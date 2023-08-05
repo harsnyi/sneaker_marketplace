@@ -18,6 +18,7 @@ import Community from './components/Community';
 import News from './components/News';
 import Contact from './components/Contact';
 import Settings from './components/Settings';
+import PageNotFound from './other/PageNotFound';
 
 function App() {
   const isMobile = useMediaQuery({query: '(max-width: 768px)'});
@@ -28,7 +29,6 @@ function App() {
 
   const CommonLayout = ({children}) => (
     <>
-      <SearchBar />
       {renderNavBar()}
       <div className="main-content">{children}</div>
     </>
@@ -138,6 +138,10 @@ function App() {
           <Settings />
         </CommonLayout>
       ),
+    },
+    {
+      path: '/*',
+      element: <PageNotFound />,
     },
   ];
 

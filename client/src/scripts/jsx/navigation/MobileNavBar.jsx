@@ -24,6 +24,9 @@ import searchIcon from '../../../assets/images/logo&icon/magnifying-glass-solid.
 import {NavLink} from 'react-router-dom';
 import {useState} from 'react';
 
+import NavUserCard from './NavUserCard';
+import AuthenticationPage from '../auth/AuthenticationPage';
+
 const MobileNavBar = () => {
   const location = window.location.pathname;
 
@@ -166,9 +169,17 @@ const MobileNavBar = () => {
                 <span className={mobileNavStyle['side-text']}>Kijelentkezés</span>
               </NavLink>
             </li>
+
+            <li className={mobileNavStyle['side-list-item']}>
+              <NavLink to="/profile" className={mobileNavStyle['side-link']}>
+                <NavUserCard profilePicture={profilePicture} username="Felhasználónév" divClassName={mobileNavStyle['profile-avatar']} spanClassName={mobileNavStyle['side-username']} />
+              </NavLink>
+            </li>
           </ul>
         </div>
       </aside>
+
+      {isAuthOpen && <AuthenticationPage setIsAuthOpen={setIsAuthOpen} />}
     </>
   );
 };

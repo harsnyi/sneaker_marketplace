@@ -22,17 +22,24 @@ import profilePicture from '../../../assets/images/profile_pics/225746166_200656
 import searchIcon from '../../../assets/images/logo&icon/magnifying-glass-solid.svg';
 
 import {NavLink} from 'react-router-dom';
+import {useState} from 'react';
 
 const MobileNavBar = () => {
   const location = window.location.pathname;
 
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
+  const navbarClassNames = `${mobileNavStyle['nav-aside-wrapper']} ${isNavOpen ? mobileNavStyle['opened'] : mobileNavStyle['closed']}`;
   return (
     <>
       <header className={mobileNavStyle['mobile-header-wrapper']}>
         <ul className={mobileNavStyle['header-list']}>
           <li className={mobileNavStyle['header-list-item']}>
-            <span className={`${mobileNavStyle['header-link']} `}>
-              <img className={mobileNavStyle['header-svg']} src={hamburgerIcon} alt="Menü" />
+            <span className={`${mobileNavStyle['header-link']} `} onClick={toggleNav}>
+              <img className={mobileNavStyle['header-svg']} src={isNavOpen ? xMarkIcon : hamburgerIcon} alt="Menü" />
             </span>
             <span className={`${mobileNavStyle['header-link']} `}>
               <span className={mobileNavStyle['header-svg']}></span>
@@ -89,6 +96,9 @@ const MobileNavBar = () => {
           </li>
         </ul>
       </nav>
+      <aside className={navbarClassNames}>
+        <div className={mobileNavStyle['nav-aside']}></div>
+      </aside>
     </>
   );
 };

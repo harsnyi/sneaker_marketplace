@@ -22,17 +22,29 @@ import profilePicture from '../../../assets/images/profile_pics/225746166_200656
 import searchIcon from '../../../assets/images/logo&icon/magnifying-glass-solid.svg';
 
 import {NavLink} from 'react-router-dom';
+import {useState} from 'react';
 
 const MobileNavBar = () => {
   const location = window.location.pathname;
 
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const toggleAuth = () => {
+    setIsAuthOpen(true);
+  };
+
+  const navbarClassNames = `${mobileNavStyle['nav-aside-wrapper']} ${isNavOpen ? mobileNavStyle['opened'] : mobileNavStyle['closed']}`;
   return (
     <>
       <header className={mobileNavStyle['mobile-header-wrapper']}>
         <ul className={mobileNavStyle['header-list']}>
           <li className={mobileNavStyle['header-list-item']}>
-            <span className={`${mobileNavStyle['header-link']} `}>
-              <img className={mobileNavStyle['header-svg']} src={hamburgerIcon} alt="Menü" />
+            <span className={`${mobileNavStyle['header-link']} `} onClick={toggleNav}>
+              <img className={mobileNavStyle['header-svg']} src={isNavOpen ? xMarkIcon : hamburgerIcon} alt="Menü" />
             </span>
             <span className={`${mobileNavStyle['header-link']} `}>
               <span className={mobileNavStyle['header-svg']}></span>
@@ -89,6 +101,74 @@ const MobileNavBar = () => {
           </li>
         </ul>
       </nav>
+      <aside className={navbarClassNames}>
+        <div className={mobileNavStyle['nav-aside']}>
+          <ul className={mobileNavStyle['side-list']}>
+            <li className={mobileNavStyle['side-list-item']}>
+              <NavLink to="/community" className={`${mobileNavStyle['side-link']} ${location === '/community' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
+                <img className={mobileNavStyle['side-svg']} src={userGroupIcon} alt="Közösség" />
+                <span className={mobileNavStyle['side-text']}>Közösség</span>
+              </NavLink>
+            </li>
+
+            <li className={mobileNavStyle['side-list-item']}>
+              <NavLink to="/news" className={`${mobileNavStyle['side-link']} ${location === '/news' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
+                <img className={mobileNavStyle['side-svg']} src={newsPaperIcon} alt="Hírek" />
+                <span className={mobileNavStyle['side-text']}>Hírek</span>
+              </NavLink>
+            </li>
+
+            <li className={mobileNavStyle['side-list-item']}>
+              <NavLink to="/about" className={`${mobileNavStyle['side-link']} ${location === '/about' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
+                <img className={mobileNavStyle['side-svg']} src={infoIcon} alt="Rólunk" />
+                <span className={mobileNavStyle['side-text']}>Rólunk</span>
+              </NavLink>
+            </li>
+
+            <li className={`${mobileNavStyle['side-list-item']} ${mobileNavStyle['last-in-group']}`}>
+              <NavLink to="/contact" className={`${mobileNavStyle['side-link']} ${location === '/contact' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
+                <img className={mobileNavStyle['side-svg']} src={phoneIcon} alt="Kapcsolat" />
+                <span className={mobileNavStyle['side-text']}>Kapcsolat</span>
+              </NavLink>
+            </li>
+
+            <li className={mobileNavStyle['side-list-item']}>
+              <a href="#login" onClick={toggleAuth} className={mobileNavStyle['side-link']}>
+                <img className={mobileNavStyle['side-svg']} src={loginIcon} alt="Bejelentkezés" />
+                <span className={mobileNavStyle['side-text']}>Bejelentkezés</span>
+              </a>
+            </li>
+
+            <li className={`${mobileNavStyle['side-list-item']} ${mobileNavStyle['last-in-group']}`}>
+              <a href="#signup" onClick={toggleAuth} className={mobileNavStyle['side-link']}>
+                <img className={mobileNavStyle['side-svg']} src={signupIcon} alt="Regisztráció" />
+                <span className={mobileNavStyle['side-text']}>Regisztráció</span>
+              </a>
+            </li>
+
+            <li className={mobileNavStyle['side-list-item']}>
+              <NavLink to="/settings" className={`${mobileNavStyle['side-link']} ${location === '/settings' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
+                <img className={mobileNavStyle['side-svg']} src={settingsIcon} alt="Beállítások" />
+                <span className={mobileNavStyle['side-text']}>Beállítások</span>
+              </NavLink>
+            </li>
+
+            <li className={`${mobileNavStyle['side-list-item']} ${mobileNavStyle['last-in-group']}`}>
+              <NavLink to="#more" className={mobileNavStyle['side-link']}>
+                <img className={mobileNavStyle['side-svg']} src={moreIcon} alt="Több" />
+                <span className={mobileNavStyle['side-text']}>Több</span>
+              </NavLink>
+            </li>
+
+            <li className={mobileNavStyle['side-list-item']}>
+              <NavLink to="/logout" className={mobileNavStyle['side-link']}>
+                <img className={mobileNavStyle['side-svg']} src={logOutIcon} alt="Kijelentkezés" />
+                <span className={mobileNavStyle['side-text']}>Kijelentkezés</span>
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </aside>
     </>
   );
 };

@@ -153,7 +153,7 @@
 .nav-bar .nav-list .nav-list-item .nav-link.active::after {
   content: "";
   position: absolute;
-  width: 0.15rem;
+  width: 0.2rem;
   height: 100%;
   background-color: #ffffff;
   left: 0;

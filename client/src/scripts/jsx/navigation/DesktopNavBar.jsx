@@ -182,7 +182,7 @@ const DesktopNavBar = () => {
 
           <li className={desktopNavStyle['nav-list-item']}>
             <NavLink to="/profile" className={desktopNavStyle['nav-link']}>
-              <NavUserCard profilePicture={profilePicture} username="Felhasználónév" />
+              <NavUserCard profilePicture={profilePicture} username="Felhasználónév" divClassName={desktopNavStyle['profile-avatar']} spanClassName={desktopNavStyle['navbar-username']} />
             </NavLink>
           </li>
         </ul>

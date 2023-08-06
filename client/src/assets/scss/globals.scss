@@ -47,7 +47,7 @@ a {
 .main-content {
   background-color: $clr-white;
   width: calc(100% - $closed-nav-width);
-  height: calc(100% - $search-bar-height);
+  height: calc(100svh - $search-bar-height);
   top: $search-bar-height;
   left: $closed-nav-width;
   position: relative;

@@ -43,7 +43,7 @@ a {
 .main-content {
   background-color: #ffffff;
   width: calc(100% - 5rem);
-  height: calc(100% - 2.5rem);
+  height: calc(100svh - 2.5rem);
   top: 2.5rem;
   left: 5rem;
   position: relative;

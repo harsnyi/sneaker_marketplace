@@ -28,6 +28,13 @@ html {
   font-size: 1rem;
 }
 
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
 a {
   text-decoration: none;
   color: #ffffff;
@@ -39,8 +46,9 @@ a {
   height: calc(100% - 2.5rem);
   top: 2.5rem;
   left: 5rem;
-  position: absolute;
+  position: relative;
   z-index: 0;
+  margin-bottom: 90svh;
 }
 
 .btn-main {

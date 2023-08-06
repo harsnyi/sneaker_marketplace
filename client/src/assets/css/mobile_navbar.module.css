@@ -1,6 +1,6 @@
 .nav-bar {
   position: fixed;
-  top: calc(100vh - 3.5rem);
+  bottom: 0;
   background-color: #0c0c0c;
   height: 3.5rem;
   color: #ffffff;
@@ -118,13 +118,13 @@
 .nav-aside-wrapper {
   width: 0;
   z-index: 99;
-  height: calc(100vh - 7rem);
+  height: 100vh;
   position: fixed;
   top: 3.5rem;
 }
 .nav-aside-wrapper .nav-aside {
   width: 0;
-  height: calc(100vh - 7rem);
+  height: calc(100% - 7rem);
   top: 3.5rem;
   left: 0;
   position: fixed;
@@ -136,11 +136,11 @@
   display: none;
 }
 .nav-aside-wrapper.opened {
-  background-color: rgba(0, 0, 0, 0.4);
-  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
 }
 .nav-aside-wrapper.opened .nav-aside {
-  width: 60vw;
+  width: 60%;
   border-right: 2px solid #0c0c0c;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list {
@@ -160,7 +160,7 @@
   margin-top: auto;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list .side-list-item:last-child .side-link {
-  height: 4.25rem;
+  height: 5rem;
   background-color: #252525;
   opacity: 1;
 }

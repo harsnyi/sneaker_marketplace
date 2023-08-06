@@ -32,23 +32,27 @@ html {
   font-size: 1rem; // 16px
 }
 
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
 a {
   text-decoration: none;
   color: $clr-white;
 }
 
-#root {
-  height: fit-content;
-}
-
 .main-content {
   background-color: $clr-white;
   width: calc(100% - $closed-nav-width);
-  height: calc(100% - $search-bar-height);
+  height: calc(100svh - $search-bar-height);
   top: $search-bar-height;
   left: $closed-nav-width;
-  position: absolute;
+  position: relative;
   z-index: 0;
+  margin-bottom: $footer-height;
 }
 
 .btn-main {

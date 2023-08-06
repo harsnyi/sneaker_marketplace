@@ -68,7 +68,7 @@
   margin-top: auto;
 }
 .nav-bar .nav-list .nav-list-item:last-child .nav-link {
-  height: 4.25rem;
+  height: 5rem;
   background-color: #252525;
   filter: grayscale(0%) opacity(1);
 }
@@ -143,7 +143,7 @@
 }
 .nav-bar .nav-list .nav-list-item .nav-link:hover, .nav-bar .nav-list .nav-list-item .nav-link.active {
   filter: grayscale(0%) opacity(1);
-  background-color: #0f0f0f;
+  background-color: #111111;
   cursor: pointer;
   position: relative;
 }

@@ -1,0 +1,35 @@
+.footer {
+  width: 100%;
+  height: 90svh;
+  left: 5rem;
+  bottom: 0;
+  position: fixed;
+  background-color: #e0e0e0;
+  color: #000000;
+  z-index: -1;
+}
+.footer .footer-content-wrapper {
+  width: 100%;
+  height: 100%;
+  padding-top: 3rem;
+}
+.footer .footer-bottom {
+  background-color: #0c0c0c;
+  width: 100%;
+  height: 5rem;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    left: 0;
+    bottom: 3.5rem;
+  }
+  .footer-bottom {
+    background-color: #252525;
+  }
+}/*# sourceMappingURL=footer.css.map */

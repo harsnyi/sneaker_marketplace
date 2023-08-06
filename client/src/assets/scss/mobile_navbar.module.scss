@@ -2,7 +2,7 @@
 
 .nav-bar {
   position: fixed;
-  top: calc(100vh - $mobile-nav-height);
+  bottom: 0;
   background-color: $clr-search-bar;
   height: $mobile-nav-height;
   color: $clr-white;
@@ -135,13 +135,13 @@
 .nav-aside-wrapper {
   width: 0;
   z-index: 99;
-  height: calc(100vh - 2 * $mobile-nav-height);
+  height: 100vh;
   position: fixed;
   top: $mobile-nav-height;
 
   .nav-aside {
     width: 0;
-    height: calc(100vh - 2 * $mobile-nav-height);
+    height: calc(100% - 2 * $mobile-nav-height);
     top: $mobile-nav-height;
     left: 0;
     position: fixed;
@@ -155,11 +155,11 @@
   }
 
   &.opened {
-    background-color: rgb(0, 0, 0, 0.4);
-    width: 100vw;
+    background-color: rgb(0, 0, 0, 0.5);
+    width: 100%;
 
     .nav-aside {
-      width: 60vw;
+      width: 60%;
       border-right: 2px solid $clr-search-bar;
 
       .side-list {
@@ -179,7 +179,7 @@
             margin-top: auto;
 
             .side-link {
-              height: 4.25rem;
+              height: 5rem;
               background-color: $clr-secondary-darkgrey;
               opacity: 1;
 

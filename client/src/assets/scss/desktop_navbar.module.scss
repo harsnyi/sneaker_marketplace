@@ -88,7 +88,7 @@
         margin-top: auto;
 
         .nav-link {
-          height: 4.25rem;
+          height: 5rem;
           background-color: $clr-secondary-darkgrey;
           filter: grayscale(0%) opacity(1);
 
@@ -173,7 +173,7 @@
         &:hover,
         &.active {
           filter: grayscale(0%) opacity(1);
-          background-color: darken($color: $clr-primary-darkgrey, $amount: 2%);
+          background-color: darken($color: $clr-primary-darkgrey, $amount: 1%);
           cursor: pointer;
           position: relative;
 

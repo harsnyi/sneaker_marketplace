@@ -18,6 +18,7 @@ import News from './components/News';
 import Contact from './components/Contact';
 import Settings from './components/Settings';
 import PageNotFound from './other/PageNotFound';
+import Footer from './footer/Footer';
 
 function App() {
   const isMobile = useMediaQuery({query: '(max-width: 768px)'});
@@ -30,6 +31,7 @@ function App() {
     <>
       {renderNavBar()}
       <div className="main-content">{children}</div>
+      <Footer />
     </>
   );
 

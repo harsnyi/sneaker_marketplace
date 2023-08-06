@@ -3,7 +3,6 @@ import {useMediaQuery} from 'react-responsive';
 
 import '../../assets/css/globals.css';
 
-import SearchBar from './search/SearchBar';
 import MobileNavBar from './navigation/MobileNavBar';
 import DesktopNavbar from './navigation/DesktopNavBar';
 import Home from './home/Home';

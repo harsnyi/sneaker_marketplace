@@ -65,45 +65,6 @@ const MobileNavBar = () => {
         </ul>
       </header>
 
-      <nav className={mobileNavStyle['nav-bar']}>
-        <ul className={mobileNavStyle['nav-list']}>
-          <li className={mobileNavStyle['nav-list-item']}>
-            <NavLink to="/home" className={`${mobileNavStyle['nav-link']} ${location === '/home' || location === '/' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
-              <img className={mobileNavStyle['navbar-svg']} src={houseIcon} alt="Kezdőlap" />
-            </NavLink>
-          </li>
-
-          <li className={mobileNavStyle['nav-list-item']}>
-            <NavLink to="/favourites" className={`${mobileNavStyle['nav-link']} ${location === '/favourites' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
-              <img className={mobileNavStyle['navbar-svg']} src={heartIcon} alt="Kedvencek" />
-            </NavLink>
-          </li>
-
-          <li className={`${mobileNavStyle['nav-list-item']}`}>
-            <NavLink to="/selling" className={`${mobileNavStyle['nav-link']} ${location === '/selling' ? mobileNavStyle['active'] : mobileNavStyle['inactive']} `}>
-              <img className={mobileNavStyle['navbar-svg']} src={uploadIcon} alt="Eladás" />
-            </NavLink>
-          </li>
-
-          <li className={mobileNavStyle['nav-list-item']}>
-            <NavLink to="/messages" className={`${mobileNavStyle['nav-link']} ${location === '/messages' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
-              <div className={mobileNavStyle['notification-icon']}>
-                <img className={mobileNavStyle['navbar-svg']} src={envelopeIcon} alt="Üzenetek" />
-                <span className={mobileNavStyle['new-notification']}></span>
-              </div>
-            </NavLink>
-          </li>
-
-          <li className={mobileNavStyle['nav-list-item']}>
-            <NavLink to="/notifications" className={`${mobileNavStyle['nav-link']} ${location === '/notifications' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
-              <div className={mobileNavStyle['notification-icon']}>
-                <img className={mobileNavStyle['navbar-svg']} src={bellIcon} alt="Értesítések" />
-                <span className={mobileNavStyle['new-notification']}></span>
-              </div>
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
       <aside className={navbarClassNames}>
         <div className={mobileNavStyle['nav-aside']}>
           <ul className={mobileNavStyle['side-list']}>
@@ -178,6 +139,46 @@ const MobileNavBar = () => {
           </ul>
         </div>
       </aside>
+
+      <nav className={mobileNavStyle['nav-bar']}>
+        <ul className={mobileNavStyle['nav-list']}>
+          <li className={mobileNavStyle['nav-list-item']}>
+            <NavLink to="/home" className={`${mobileNavStyle['nav-link']} ${location === '/home' || location === '/' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
+              <img className={mobileNavStyle['navbar-svg']} src={houseIcon} alt="Kezdőlap" />
+            </NavLink>
+          </li>
+
+          <li className={mobileNavStyle['nav-list-item']}>
+            <NavLink to="/favourites" className={`${mobileNavStyle['nav-link']} ${location === '/favourites' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
+              <img className={mobileNavStyle['navbar-svg']} src={heartIcon} alt="Kedvencek" />
+            </NavLink>
+          </li>
+
+          <li className={`${mobileNavStyle['nav-list-item']}`}>
+            <NavLink to="/selling" className={`${mobileNavStyle['nav-link']} ${location === '/selling' ? mobileNavStyle['active'] : mobileNavStyle['inactive']} `}>
+              <img className={mobileNavStyle['navbar-svg']} src={uploadIcon} alt="Eladás" />
+            </NavLink>
+          </li>
+
+          <li className={mobileNavStyle['nav-list-item']}>
+            <NavLink to="/messages" className={`${mobileNavStyle['nav-link']} ${location === '/messages' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
+              <div className={mobileNavStyle['notification-icon']}>
+                <img className={mobileNavStyle['navbar-svg']} src={envelopeIcon} alt="Üzenetek" />
+                <span className={mobileNavStyle['new-notification']}></span>
+              </div>
+            </NavLink>
+          </li>
+
+          <li className={mobileNavStyle['nav-list-item']}>
+            <NavLink to="/notifications" className={`${mobileNavStyle['nav-link']} ${location === '/notifications' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
+              <div className={mobileNavStyle['notification-icon']}>
+                <img className={mobileNavStyle['navbar-svg']} src={bellIcon} alt="Értesítések" />
+                <span className={mobileNavStyle['new-notification']}></span>
+              </div>
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
 
       {isAuthOpen && <AuthenticationPage setIsAuthOpen={setIsAuthOpen} />}
     </>

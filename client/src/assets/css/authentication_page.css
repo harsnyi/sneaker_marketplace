@@ -1,6 +1,6 @@
 .authentication-page {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 99999;
   position: fixed;
@@ -10,8 +10,6 @@
 }
 .authentication-page .form-container {
   background-color: #ffffff;
-  min-width: 30vw;
-  min-height: 75vh;
   position: relative;
   padding: 2rem;
 }
@@ -56,7 +54,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 0;
+  padding: 1rem;
   cursor: pointer;
 }
 .authentication-page .form-container .tabs-wrapper .tabs-header .tabs-header-item::after {
@@ -78,6 +76,7 @@
   font-size: 1rem;
   color: #a0a0a0;
   transition: color 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin: 0 1rem;
 }
 .authentication-page .form-container .tabs-wrapper .tabs-header .tabs-header-item.active-tab::after {
   content: "";
@@ -93,7 +92,6 @@
 }
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item {
   display: none;
-  padding-top: 1rem;
 }
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content {
   display: flex;

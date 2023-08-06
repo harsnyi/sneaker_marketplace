@@ -37,10 +37,6 @@ a {
   color: $clr-white;
 }
 
-#root {
-  height: fit-content;
-}
-
 .main-content {
   background-color: $clr-white;
   width: calc(100% - $closed-nav-width);

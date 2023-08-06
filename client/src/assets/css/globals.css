@@ -33,11 +33,6 @@ a {
   color: #ffffff;
 }
 
-#root {
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
 .main-content {
   background-color: #ffffff;
   width: calc(100% - 5rem);

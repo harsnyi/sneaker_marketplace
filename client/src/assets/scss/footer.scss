@@ -13,7 +13,6 @@
   .footer-content-wrapper {
     width: 100%;
     height: 100%;
-    padding-top: 3rem;
   }
 
   .footer-bottom {
@@ -30,7 +29,9 @@
 
 @media only screen and (max-width: 768px) {
   .footer {
+    height: calc(100svh - $mobile-header-height - $mobile-nav-height);
     left: 0;
+    top: $mobile-header-height;
     bottom: $mobile-nav-height;
   }
 

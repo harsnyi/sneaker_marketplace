@@ -140,7 +140,7 @@
   width: 100%;
 }
 .nav-aside-wrapper.opened .nav-aside {
-  width: 60%;
+  width: 75%;
   border-right: 2px solid #0c0c0c;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list {
@@ -151,6 +151,7 @@
   height: 100%;
   overflow: hidden;
   padding-top: 2rem;
+  overflow: auto;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list .side-list-item {
   width: 100%;

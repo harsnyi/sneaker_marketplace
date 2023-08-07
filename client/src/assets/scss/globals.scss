@@ -47,12 +47,12 @@ a {
 .main-content {
   background-color: $clr-white;
   width: calc(100% - $closed-nav-width);
-  height: calc(100svh - $search-bar-height);
+  min-height: calc(100% - $search-bar-height);
   top: $search-bar-height;
   left: $closed-nav-width;
   position: relative;
   z-index: 0;
-  margin-bottom: $footer-height;
+  margin-bottom: calc($footer-height + $search-bar-height);
 }
 
 .btn-main {
@@ -174,9 +174,9 @@ a {
     padding: 0;
     left: 0;
     top: $mobile-header-height;
-    bottom: $mobile-nav-height;
+    min-height: calc(100% - $mobile-header-height - $mobile-nav-height);
     width: 100%;
-    height: 100%;
+    margin-bottom: calc($footer-height + $mobile-header-height + $mobile-nav-height);
   }
 }
 

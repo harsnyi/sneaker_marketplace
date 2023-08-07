@@ -159,7 +159,7 @@
     width: 100%;
 
     .nav-aside {
-      width: 60%;
+      width: 75%;
       border-right: 2px solid $clr-search-bar;
 
       .side-list {
@@ -170,6 +170,7 @@
         height: 100%;
         overflow: hidden;
         padding-top: 2rem;
+        overflow: auto;
 
         .side-list-item {
           width: 100%;

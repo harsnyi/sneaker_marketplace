@@ -46,9 +46,8 @@
   .home-header-content {
     position: relative;
     width: 100%;
-    height: 90svh;
+    height: 90%;
     z-index: 3;
-    padding-left: 3rem;
 
     h1 {
       top: 0;
@@ -61,5 +60,11 @@
       font-size: 15rem;
       line-height: 1;
     }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .home-header {
+    height: calc(100svh - $mobile-header-height - $mobile-nav-height);
   }
 }

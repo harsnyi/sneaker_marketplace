@@ -1,22 +1,24 @@
 import {useState, useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 
 const AuthTabs = () => {
-  const [activeTab, setActiveTab] = useState(1);
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState();
 
-  const toggleTab = (index) => {
-    setActiveTab(index);
-  };
+  useEffect(() => {
+    setActiveTab(location.hash === '#login' ? 1 : 2);
+  }, [location.hash]);
 
   return (
     <>
       <div className="tabs-wrapper">
         <div className="tabs-header">
-          <a href="#login" className={activeTab === 1 ? 'tabs-header-item active-tab' : 'tabs-header-item'} onClick={() => toggleTab(1)}>
+          <a href="#login" className={activeTab === 1 ? 'tabs-header-item active-tab' : 'tabs-header-item'}>
             <h3>Bejelentkezés</h3>
           </a>
-          <a href="#signup" className={activeTab === 2 ? 'tabs-header-item active-tab' : 'tabs-header-item'} onClick={() => toggleTab(2)}>
+          <a href="#signup" className={activeTab === 2 ? 'tabs-header-item active-tab' : 'tabs-header-item'}>
             <h3>Regisztráció</h3>
           </a>
         </div>

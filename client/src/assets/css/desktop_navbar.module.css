@@ -97,6 +97,12 @@
   transform: translateX(-100%);
   transition: opacity 0.2s, transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+.nav-bar .nav-list .nav-list-item:last-child .nav-link:hover {
+  cursor: pointer;
+  filter: none !important;
+  background-color: #252525 !important;
+  opacity: 0.75;
+}
 .nav-bar .nav-list .nav-list-item .nav-link {
   display: flex;
   align-items: center;
@@ -146,9 +152,6 @@
   background-color: #111111;
   cursor: pointer;
   position: relative;
-}
-.nav-bar .nav-list .nav-list-item .nav-link:hover .profile-avatar, .nav-bar .nav-list .nav-list-item .nav-link.active .profile-avatar {
-  opacity: 0.8;
 }
 .nav-bar .nav-list .nav-list-item .nav-link.active::after {
   content: "";

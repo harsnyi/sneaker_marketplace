@@ -118,6 +118,13 @@
             transform: translateX(-100%);
             transition: opacity 0.2s, transform 0.2s $animation-speed;
           }
+
+          &:hover {
+            cursor: pointer;
+            filter: none !important;
+            background-color: $clr-secondary-darkgrey !important;
+            opacity: 0.75;
+          }
         }
       }
 
@@ -176,10 +183,6 @@
           background-color: darken($color: $clr-primary-darkgrey, $amount: 1%);
           cursor: pointer;
           position: relative;
-
-          .profile-avatar {
-            opacity: 0.8;
-          }
         }
 
         &.active::after {

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 
 function Profile() {
   useEffect(() => {
-    document.title = 'Profil | Laced.';
+    document.title = 'Profil | Footwr.';
   }, []);
 
   return <h1>Hello from the profile page</h1>;

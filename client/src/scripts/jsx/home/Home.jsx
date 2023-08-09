@@ -9,7 +9,7 @@ import {useEffect} from 'react';
 
 const Home = () => {
   useEffect(() => {
-    document.title = 'Kezdőlap | Laced.';
+    document.title = 'Kezdőlap | Footwr.';
   }, []);
 
   return (

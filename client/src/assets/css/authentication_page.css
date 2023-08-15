@@ -47,6 +47,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-bottom: 0.25rem;
 }
 .authentication-page .form-container .tabs-wrapper .tabs-header .tabs-header-item {
   position: relative;
@@ -118,7 +119,7 @@
   width: 100%;
 }
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form button {
-  margin: 0.5rem 0;
+  margin: 0.25rem 0;
 }
 .authentication-page .form-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .select-wrapper {
   width: 100%;

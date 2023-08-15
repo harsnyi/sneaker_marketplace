@@ -10,6 +10,7 @@ import envelopeIcon from '../../../assets/images/logo&icon/envelope-solid.svg';
 import heartIcon from '../../../assets/images/logo&icon/heart-solid.svg';
 import uploadIcon from '../../../assets/images/logo&icon/arrow-up-from-bracket-solid.svg';
 import userGroupIcon from '../../../assets/images/logo&icon/user-group-solid.svg';
+import auctionHammerIcon from '../../../assets/images/logo&icon/gavel-solid.svg';
 import newsPaperIcon from '../../../assets/images/logo&icon/newspaper-solid.svg';
 import infoIcon from '../../../assets/images/logo&icon/circle-info-solid.svg';
 import phoneIcon from '../../../assets/images/logo&icon/phone-solid.svg';
@@ -72,6 +73,13 @@ const MobileNavBar = () => {
               <NavLink to="/community" className={`${mobileNavStyle['side-link']} ${location === '/community' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
                 <img className={mobileNavStyle['side-svg']} src={userGroupIcon} alt="Közösség" />
                 <span className={mobileNavStyle['side-text']}>Közösség</span>
+              </NavLink>
+            </li>
+
+            <li className={mobileNavStyle['side-list-item']}>
+              <NavLink to="/auction" className={`${mobileNavStyle['side-link']} ${location === '/auction' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
+                <img className={mobileNavStyle['side-svg']} src={auctionHammerIcon} alt="Licitek" />
+                <span className={mobileNavStyle['side-text']}>Licitek</span>
               </NavLink>
             </li>
 

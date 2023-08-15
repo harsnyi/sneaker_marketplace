@@ -9,7 +9,7 @@ import instagramLogo from '../../../assets/images/logo&icon/instagram.svg';
 const NAME_REGEX = /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+([ -][A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+)*$/;
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const USERNAME_REGEX = /^(?!.*\s{2})[a-z0-9_. ]+(?<!\s)$/i;
-const PHONE_REGEX = /^\+?[0-9]{11}$/;
+const PHONE_REGEX = /(\()?(\+36|0036|06)?(\))?(-| )?(1|20|2[2-9]|3[0-7]|40|42|4[4-9]|5[2-7]|59|60|62|63|66|68|69|70|7[2-9]|80|8[2-5]|8[7-9]]|90|9[2-9])([\\\/ ])?(\d{6,7}|\d{3}(-| )\d{3,4}|\d{3,4}(-| )\d{3})/;
 
 const SignupForm = () => {
   const [errors, setErrors] = useState({}); // Store input errors
@@ -116,12 +116,17 @@ const SignupForm = () => {
         ...prevErrors,
         password: 'A jelszónak tartalmaznia kell legalább egy nagybetűt.',
       }));
-    } else if (password && !PHONE_REGEX.test(password)) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        password: 'A jelszónak tartalmaznia kell legalább egy speciális karaktert.',
-      }));
     } else {
+      {
+        /* else if (password && ) {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              password: 'A jelszónak tartalmaznia kell legalább egy speciális karaktert.',
+            }));
+          }
+        */
+      }
+
       setErrors((prevErrors) => ({
         ...prevErrors,
         password: '',
@@ -146,10 +151,10 @@ const SignupForm = () => {
 
   useEffect(() => {
     // Validate phone number
-    if (phoneNumber && !/^\+?[0-9]{8,15}$/.test(phoneNumber)) {
+    if (phoneNumber && !PHONE_REGEX.test(phoneNumber)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        phoneNumber: 'Hibás telefonszám formátum.',
+        phoneNumber: 'Hibás telefonszám.',
       }));
     } else {
       setErrors((prevErrors) => ({

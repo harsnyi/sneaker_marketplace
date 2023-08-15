@@ -14,6 +14,7 @@ import Messages from './components/Messages';
 import Favourites from './components/Favourites';
 import Selling from './components/Selling';
 import Community from './components/Community';
+import Auction from './components/Auction';
 import News from './components/News';
 import Contact from './components/Contact';
 import Settings from './components/Settings';
@@ -105,6 +106,14 @@ function App() {
       element: (
         <CommonLayout>
           <Community />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/auction',
+      element: (
+        <CommonLayout>
+          <Auction />
         </CommonLayout>
       ),
     },

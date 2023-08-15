@@ -53,6 +53,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        margin-bottom: 0.25rem;
 
         .tabs-header-item {
           position: relative;
@@ -138,7 +139,7 @@
               }
 
               button {
-                margin: 0.5rem 0;
+                margin: 0.25rem 0;
               }
 
               .select-wrapper {
@@ -175,7 +176,7 @@
                   &:valid {
                     border: 2px solid $clr-black;
 
-                    & ~ label {
+                    &~label {
                       color: $clr-black;
                       top: 0;
                       background-color: $clr-white;
@@ -237,6 +238,7 @@
                     outline-offset: 2px;
                   }
                 }
+
                 &.google-icon {
                   background-color: $clr-google;
 
@@ -245,6 +247,7 @@
                     outline-offset: 2px;
                   }
                 }
+
                 &.instagram-icon {
                   background-color: $clr-instagram;
 

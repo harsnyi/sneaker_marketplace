@@ -10,6 +10,7 @@ import envelopeIcon from '../../../assets/images/logo&icon/envelope-solid.svg';
 import heartIcon from '../../../assets/images/logo&icon/heart-solid.svg';
 import uploadIcon from '../../../assets/images/logo&icon/arrow-up-from-bracket-solid.svg';
 import userGroupIcon from '../../../assets/images/logo&icon/user-group-solid.svg';
+import auctionHammerIcon from '../../../assets/images/logo&icon/gavel-solid.svg';
 import newsPaperIcon from '../../../assets/images/logo&icon/newspaper-solid.svg';
 import infoIcon from '../../../assets/images/logo&icon/circle-info-solid.svg';
 import phoneIcon from '../../../assets/images/logo&icon/phone-solid.svg';
@@ -121,6 +122,13 @@ const DesktopNavBar = () => {
             <NavLink to="/community" className={`${desktopNavStyle['nav-link']} ${location === '/community' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
               <img className={desktopNavStyle['navbar-svg']} src={userGroupIcon} alt="Közösség" />
               <span className={desktopNavStyle['navbar-text']}>Közösség</span>
+            </NavLink>
+          </li>
+
+          <li className={desktopNavStyle['nav-list-item']} title="Licitek">
+            <NavLink to="/auction" className={`${desktopNavStyle['nav-link']} ${location === '/auction' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
+              <img className={desktopNavStyle['navbar-svg']} src={auctionHammerIcon} alt="Licitek" />
+              <span className={desktopNavStyle['navbar-text']}>Licitek</span>
             </NavLink>
           </li>
 

@@ -54,7 +54,7 @@ const MobileNavBar = () => {
               <span className={mobileNavStyle['header-svg']}></span>
             </span>
             <NavLink to="/home" className={`${mobileNavStyle['logo']} `}>
-              <img src={logo} className={mobileNavStyle['header-logo']} alt="Logo" />
+              <h2>Footwr.</h2>
             </NavLink>
             <span className={`${mobileNavStyle['header-link']} `}>
               <img className={mobileNavStyle['header-svg']} src={searchIcon} alt="Menü" />

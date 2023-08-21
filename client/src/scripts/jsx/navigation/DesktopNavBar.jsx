@@ -196,7 +196,7 @@ const DesktopNavBar = () => {
         </ul>
       </nav>
 
-      {isAuthOpen && <AuthenticationPage setIsAuthOpen={setIsAuthOpen} />}
+      {isAuthOpen && <AuthenticationPage isAuthOpen={isAuthOpen} setIsAuthOpen={setIsAuthOpen} />}
     </>
   );
 };

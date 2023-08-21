@@ -1,6 +1,5 @@
 import mobileNavStyle from '../../../assets/css/mobile_navbar.module.css';
 
-import logo from '../../../assets/images/logo&icon/laced-logo.png';
 import hamburgerIcon from '../../../assets/images/logo&icon/bars-solid.svg';
 import xMarkIcon from '../../../assets/images/logo&icon/xmark-solid.svg';
 import houseIcon from '../../../assets/images/logo&icon/house-chimney-solid.svg';
@@ -54,7 +53,7 @@ const MobileNavBar = () => {
               <span className={mobileNavStyle['header-svg']}></span>
             </span>
             <NavLink to="/home" className={`${mobileNavStyle['logo']} `}>
-              <img src={logo} className={mobileNavStyle['header-logo']} alt="Logo" />
+              <h2>Footwr.</h2>
             </NavLink>
             <span className={`${mobileNavStyle['header-link']} `}>
               <img className={mobileNavStyle['header-svg']} src={searchIcon} alt="Menü" />
@@ -188,7 +187,7 @@ const MobileNavBar = () => {
         </ul>
       </nav>
 
-      {isAuthOpen && <AuthenticationPage setIsAuthOpen={setIsAuthOpen} />}
+      {isAuthOpen && <AuthenticationPage isAuthOpen={isAuthOpen} setIsAuthOpen={setIsAuthOpen} />}
     </>
   );
 };

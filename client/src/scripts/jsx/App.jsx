@@ -20,6 +20,7 @@ import Contact from './components/Contact';
 import Settings from './components/Settings';
 import PageNotFound from './other/PageNotFound';
 import Footer from './footer/Footer';
+import Dialog from './other/Dialog';
 
 function App() {
   const isMobile = useMediaQuery({query: '(max-width: 768px)'});
@@ -32,6 +33,7 @@ function App() {
     <>
       {renderNavBar()}
       <div className="main-content">{children}</div>
+      <Dialog type="success" message="test dialog test asddas" />
       <Footer />
     </>
   );

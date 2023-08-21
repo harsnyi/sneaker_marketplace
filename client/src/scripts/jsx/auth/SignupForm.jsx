@@ -262,7 +262,7 @@ const SignupForm = () => {
           required
         />
         <div className="select-wrapper">
-          <select onChange={(e) => setGender(e.target.value)} defaultValue={gender} className="select-menu" required>
+          <select onChange={(e) => setGender(e.target.value)} defaultValue={gender} className="select-menu">
             <option value="" disabled></option>
             <option value="1">Férfi</option>
             <option value="2">Nő</option>

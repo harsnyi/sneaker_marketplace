@@ -7,20 +7,19 @@ import MobileNavBar from './navigation/MobileNavBar';
 import DesktopNavbar from './navigation/DesktopNavBar';
 import Home from './home/Home';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
-import About from './components/About';
-import Profile from './components/Profile';
-import Notifications from './components/Notifications';
-import Messages from './components/Messages';
-import Favourites from './components/Favourites';
-import Selling from './components/Selling';
-import Community from './components/Community';
-import Auction from './components/Auction';
-import News from './components/News';
-import Contact from './components/Contact';
-import Settings from './components/Settings';
+import About from './pages/About';
+import Profile from './pages/Profile';
+import Notifications from './pages/Notifications';
+import Messages from './pages/Messages';
+import Favourites from './pages/Favourites';
+import Selling from './pages/Selling';
+import Community from './pages/Community';
+import Auction from './pages/Auction';
+import News from './pages/News';
+import Contact from './pages/Contact';
+import Settings from './pages/Settings';
 import PageNotFound from './other/PageNotFound';
 import Footer from './footer/Footer';
-import Dialog from './other/Dialog';
 
 function App() {
   const isMobile = useMediaQuery({query: '(max-width: 768px)'});
@@ -33,7 +32,6 @@ function App() {
     <>
       {renderNavBar()}
       <div className="main-content">{children}</div>
-      <Dialog type="success" message="test dialog test asddas" />
       <Footer />
     </>
   );

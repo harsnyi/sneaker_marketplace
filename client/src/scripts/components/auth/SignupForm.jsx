@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 
 import Input from '../other/Input';
+import Dialog from '../other/Dialog';
 
 import facebookLogo from '../../../assets/images/logo&icon/facebook-f.svg';
 import googleLogo from '../../../assets/images/logo&icon/google-plus-g.svg';
@@ -166,6 +167,7 @@ const SignupForm = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    console.log('submitting form');
     // Perform signup logic here
   };
 
@@ -184,7 +186,7 @@ const SignupForm = () => {
             className="input-field"
             name="reg-lastname"
             error={errors.lastName}
-            required
+            autoFocus
           />
           <Input
             type="text"
@@ -196,7 +198,6 @@ const SignupForm = () => {
             className="input-field"
             name="reg-firstname"
             error={errors.firstName}
-            required
           />
         </div>
         <Input
@@ -209,7 +210,6 @@ const SignupForm = () => {
           className="input-field"
           name="reg-email"
           error={errors.email}
-          required
         />
         <Input
           type="text"
@@ -221,7 +221,6 @@ const SignupForm = () => {
           className="input-field"
           name="reg-username"
           error={errors.username}
-          required
         />
         <div className="field-wrapper">
           <Input
@@ -234,7 +233,6 @@ const SignupForm = () => {
             className="input-field"
             name="reg-password"
             error={errors.password}
-            required
           />
           <Input
             type="password"
@@ -246,7 +244,6 @@ const SignupForm = () => {
             className="input-field"
             name="reg-password-again"
             error={errors.passwordConfirmation}
-            required
           />
         </div>
         <Input
@@ -259,7 +256,6 @@ const SignupForm = () => {
           className="input-field"
           name="reg-phone"
           error={errors.phoneNumber}
-          required
         />
         <div className="select-wrapper">
           <select onChange={(e) => setGender(e.target.value)} defaultValue={gender} className="select-menu">

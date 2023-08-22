@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 
 import Input from '../other/Input';
+import Dialog from '../other/Dialog';
 
 import facebookLogo from '../../../assets/images/logo&icon/facebook-f.svg';
 import googleLogo from '../../../assets/images/logo&icon/google-plus-g.svg';
@@ -28,11 +29,10 @@ const LoginForm = () => {
     }
   }, [email]);
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // Perform login logic here
-    // Access the 'email' and 'password' state variables to handle the login process
-    // You can implement your login logic here, e.g., send a login request to the server
+
+    // Simulating login logic
   };
 
   return (
@@ -49,7 +49,7 @@ const LoginForm = () => {
           className="input-field"
           name="lgn-email"
           error={errors.email}
-          required
+          autoFocus
         />
         <Input
           type="password"
@@ -61,7 +61,6 @@ const LoginForm = () => {
           className="input-field"
           name="lgn-pass"
           error={errors.password}
-          required
         />
         <button type="submit" className="btn-main btn-black">
           Bejelentkezés

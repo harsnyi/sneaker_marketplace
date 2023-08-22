@@ -8,15 +8,35 @@ import questionIcon from '../../../assets/images/logo&icon/circle-question-regul
 import {useEffect, useState} from 'react';
 
 const Dialog = ({type, message}) => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [animationClass, setAnimationClass] = useState('');
 
   useEffect(() => {
-    setIsVisible(true);
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-    }, 3000); // Adjust the time (in milliseconds) as needed
-    return () => clearTimeout(timer);
-  }, [message]);
+    // Show the dialog after a delay
+    const showTimeout = setTimeout(() => {
+      setAnimationClass('visible');
+
+      // After another delay, trigger slide-up and fade-out animations
+      const hideTimeout = setTimeout(() => {
+        setAnimationClass('hidden');
+        handleExitAnimationEnd();
+      }, 4000); // 4 seconds
+
+      return () => clearTimeout(hideTimeout);
+    }, 0); // Initially hidden
+
+    return () => clearTimeout(showTimeout);
+  }, []);
+
+  // After the exit animation, remove the component from the DOM
+  const handleExitAnimationEnd = () => {
+    // Perform any cleanup here if needed
+    setTimeout(() => {
+      // Perform any additional cleanup if needed
+      console.log('unmounting dialog');
+      setVisible(false);
+    }, 200);
+  };
 
   var icon = null;
 
@@ -45,14 +65,14 @@ const Dialog = ({type, message}) => {
     return null;
   }
 
-  const dialogClassName = `dialog ${isVisible ? 'visible' : 'visible'} ${type}`;
+  const dialogClassName = `dialog ${animationClass} ${type}`;
 
-  return (
+  return visible ? (
     <div className={dialogClassName}>
       <img src={icon} alt={type} />
       <p>{message}</p>
     </div>
-  );
+  ) : null;
 };
 
 export default Dialog;

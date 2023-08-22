@@ -12,13 +12,11 @@
     padding: 0.65rem 1.5rem;
     z-index: 999999999999;
 
-    // Initial state (hidden)
     transform: translateX(100%);
     opacity: 0;
     transition: transform 0.2s, opacity 0.2s $animation-speed;
 
     p {
-
         font-size: 1.1rem;
         color: $clr-white;
         letter-spacing: 1px;
@@ -48,29 +46,22 @@
 
     &.success {
         background-color: $clr-dialog-success;
-        border: 1px solid darken($color: $clr-dialog-success, $amount: 25);
+        border: 1px solid darken($color: $clr-dialog-success, $amount: 10);
     }
 
     &.error {
         background-color: $clr-dialog-error;
-        border: 1px solid darken($color: $clr-dialog-error, $amount: 25);
+        border: 1px solid darken($color: $clr-dialog-error, $amount: 15);
     }
 
     &.warning {
         background-color: $clr-dialog-warning;
-        border: 1px solid darken($color: $clr-dialog-warning, $amount: 25);
+        border: 1px solid darken($color: $clr-dialog-warning, $amount: 15);
 
-        p {
-            color: $clr-black;
-        }
-
-        img {
-            filter: none;
-        }
     }
 
-    &.other {
+    &.info {
         background-color: $clr-dialog-other;
-        border: 1px solid darken($color: $clr-dialog-other, $amount: 25);
+        border: 1px solid darken($color: $clr-dialog-other, $amount: 15);
     }
 }

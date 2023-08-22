@@ -1,50 +1,46 @@
-import '../../../assets/css/dialog.css';
-
+import React, {useEffect, useState, useContext} from 'react';
+import {DialogContext} from '../../bin/DialogProvider.js';
 import successIcon from '../../../assets/images/logo&icon/circle-check-regular.svg';
 import warningIcon from '../../../assets/images/logo&icon/circle-exclamation-solid.svg';
 import errorIcon from '../../../assets/images/logo&icon/circle-xmark-regular.svg';
 import questionIcon from '../../../assets/images/logo&icon/circle-question-regular.svg';
+import '../../../assets/css/dialog.css';
 
-import {useEffect, useState} from 'react';
-
-const Dialog = ({type, message}) => {
-  const [visible, setVisible] = useState(true);
+const Dialog = () => {
+  const dialogCtx = useContext(DialogContext);
+  const [isVisible, setIsVisible] = useState(false); // Manage dialog visibility
   const [animationClass, setAnimationClass] = useState('');
-
-  useEffect(() => {
-    // Show the dialog after a delay
-    const showTimeout = setTimeout(() => {
-      setAnimationClass('visible');
-
-      // After another delay, trigger slide-up and fade-out animations
-      const hideTimeout = setTimeout(() => {
-        setAnimationClass('hidden');
-        handleExitAnimationEnd();
-      }, 4000); // 4 seconds
-
-      return () => clearTimeout(hideTimeout);
-    }, 0); // Initially hidden
-
-    return () => clearTimeout(showTimeout);
-  }, []);
-
-  // After the exit animation, remove the component from the DOM
-  const handleExitAnimationEnd = () => {
-    // Perform any cleanup here if needed
-    setTimeout(() => {
-      // Perform any additional cleanup if needed
-      console.log('unmounting dialog');
-      setVisible(false);
-    }, 200);
-  };
 
   var icon = null;
 
-  if (type !== 'success' && type !== 'warning' && type !== 'error') {
-    type = 'other';
-  }
+  useEffect(() => {
+    if (dialogCtx.type) {
+      setIsVisible(true);
+      const showTimeout = setTimeout(() => {
+        setAnimationClass('visible');
+      }, 100);
 
-  switch (type) {
+      const hideTimeout = setTimeout(() => {
+        setAnimationClass('hidden');
+        handleExitAnimationEnd();
+      }, 5000);
+
+      return () => {
+        clearTimeout(showTimeout);
+        clearTimeout(hideTimeout);
+      };
+    }
+  }, [dialogCtx.type, dialogCtx.message]);
+
+  const handleExitAnimationEnd = () => {
+    setTimeout(() => {
+      dialogCtx.clear(); // Hide the dialog after the exit animation
+      setIsVisible(false);
+      setAnimationClass('');
+    }, 200);
+  };
+
+  switch (dialogCtx.type) {
     case 'success':
       icon = successIcon;
       break;
@@ -54,25 +50,21 @@ const Dialog = ({type, message}) => {
     case 'error':
       icon = errorIcon;
       break;
-    case 'other':
+    case 'info':
       icon = questionIcon;
       break;
     default:
-      icon = questionIcon;
+      icon = null;
   }
 
-  if (!message) {
-    return null;
-  }
-
-  const dialogClassName = `dialog ${animationClass} ${type}`;
-
-  return visible ? (
-    <div className={dialogClassName}>
-      <img src={icon} alt={type} />
-      <p>{message}</p>
-    </div>
-  ) : null;
+  return (
+    isVisible && (
+      <div className={`dialog ${animationClass} ${dialogCtx.type}`}>
+        <img src={icon} alt={dialogCtx.type} />
+        <p>{dialogCtx.message}</p>
+      </div>
+    )
+  );
 };
 
 export default Dialog;

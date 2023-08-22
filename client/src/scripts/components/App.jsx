@@ -21,6 +21,9 @@ import Settings from './pages/Settings';
 import PageNotFound from './other/PageNotFound';
 import Footer from './footer/Footer';
 
+import Dialog from './other/Dialog';
+import {DialogProvider} from '../bin/DialogProvider.js';
+
 function App() {
   const isMobile = useMediaQuery({query: '(max-width: 768px)'});
 
@@ -156,13 +159,17 @@ function App() {
   ];
 
   return (
-    <BrowserRouter basename="/">
-      <Routes>
-        {routes.map(({path, element}) => (
-          <Route key={path} path={path} element={element} />
-        ))}
-      </Routes>
-    </BrowserRouter>
+    <DialogProvider>
+      <Dialog />
+
+      <BrowserRouter basename="/">
+        <Routes>
+          {routes.map(({path, element}) => (
+            <Route key={path} path={path} element={element} />
+          ))}
+        </Routes>
+      </BrowserRouter>
+    </DialogProvider>
   );
 }
 

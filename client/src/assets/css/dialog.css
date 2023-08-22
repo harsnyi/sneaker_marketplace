@@ -37,23 +37,17 @@
 }
 .dialog.success {
   background-color: #00874f;
-  border: 1px solid #000804;
+  border: 1px solid #005431;
 }
 .dialog.error {
   background-color: #b63b32;
-  border: 1px solid #521b17;
+  border: 1px solid #7a2822;
 }
 .dialog.warning {
-  background-color: #f0d801;
-  border: 1px solid #716600;
+  background-color: #d87a00;
+  border: 1px solid #8c4f00;
 }
-.dialog.warning p {
-  color: #000000;
-}
-.dialog.warning img {
-  filter: none;
-}
-.dialog.other {
+.dialog.info {
   background-color: #2e67a8;
-  border: 1px solid #132a44;
+  border: 1px solid #1e426c;
 }/*# sourceMappingURL=dialog.css.map */

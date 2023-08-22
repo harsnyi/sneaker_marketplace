@@ -1,7 +1,7 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useContext} from 'react';
 
 import Input from '../other/Input';
-import Dialog from '../other/Dialog';
+import {DialogContext} from '../../bin/DialogProvider.js';
 
 import facebookLogo from '../../../assets/images/logo&icon/facebook-f.svg';
 import googleLogo from '../../../assets/images/logo&icon/google-plus-g.svg';
@@ -10,6 +10,8 @@ import instagramLogo from '../../../assets/images/logo&icon/instagram.svg';
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
 const LoginForm = () => {
+  const dialogCtx = useContext(DialogContext);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
@@ -33,6 +35,11 @@ const LoginForm = () => {
     event.preventDefault();
 
     // Simulating login logic
+    if (email === 'test@example.com' && password === 'password') {
+      dialogCtx.success('Sikeresen bejelentkeztél!');
+    } else {
+      dialogCtx.error('Hibás e-mail cím vagy jelszó!');
+    }
   };
 
   return (

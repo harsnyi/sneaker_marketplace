@@ -8,6 +8,7 @@ import questionIcon from '../../../assets/images/logo&icon/circle-question-regul
 import {useEffect, useState} from 'react';
 
 const Dialog = ({type, message}) => {
+  const [visible, setVisible] = useState(true);
   const [animationClass, setAnimationClass] = useState('');
 
   useEffect(() => {
@@ -18,17 +19,24 @@ const Dialog = ({type, message}) => {
       // After another delay, trigger slide-up and fade-out animations
       const hideTimeout = setTimeout(() => {
         setAnimationClass('hidden');
-      }, 5000); // 5 seconds
+        handleExitAnimationEnd();
+      }, 4000); // 4 seconds
 
-      return () => {
-        clearTimeout(hideTimeout);
-      };
+      return () => clearTimeout(hideTimeout);
     }, 0); // Initially hidden
 
-    return () => {
-      clearTimeout(showTimeout);
-    };
+    return () => clearTimeout(showTimeout);
   }, []);
+
+  // After the exit animation, remove the component from the DOM
+  const handleExitAnimationEnd = () => {
+    // Perform any cleanup here if needed
+    setTimeout(() => {
+      // Perform any additional cleanup if needed
+      console.log('unmounting dialog');
+      setVisible(false);
+    }, 200);
+  };
 
   var icon = null;
 
@@ -59,12 +67,12 @@ const Dialog = ({type, message}) => {
 
   const dialogClassName = `dialog ${animationClass} ${type}`;
 
-  return (
+  return visible ? (
     <div className={dialogClassName}>
       <img src={icon} alt={type} />
       <p>{message}</p>
     </div>
-  );
+  ) : null;
 };
 
 export default Dialog;

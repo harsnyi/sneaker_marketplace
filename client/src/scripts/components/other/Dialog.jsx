@@ -23,13 +23,14 @@ const Dialog = () => {
       const hideTimeout = setTimeout(() => {
         setAnimationClass('hidden');
         handleExitAnimationEnd();
-      }, 5000);
+      }, 4000);
 
       return () => {
         clearTimeout(showTimeout);
         clearTimeout(hideTimeout);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dialogCtx.type, dialogCtx.message]);
 
   const handleExitAnimationEnd = () => {
@@ -38,6 +39,13 @@ const Dialog = () => {
       setIsVisible(false);
       setAnimationClass('');
     }, 200);
+  };
+
+  const handleDialogClick = (event) => {
+    if (event.target.classList.contains('visible')) {
+      setAnimationClass('hidden');
+      handleExitAnimationEnd();
+    }
   };
 
   switch (dialogCtx.type) {
@@ -59,7 +67,7 @@ const Dialog = () => {
 
   return (
     isVisible && (
-      <div className={`dialog ${animationClass} ${dialogCtx.type}`}>
+      <div className={`dialog ${animationClass} ${dialogCtx.type}`} onDoubleClick={handleDialogClick}>
         <img src={icon} alt={dialogCtx.type} />
         <p>{dialogCtx.message}</p>
       </div>

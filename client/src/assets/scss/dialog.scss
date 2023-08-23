@@ -11,6 +11,9 @@
     align-items: center;
     padding: 0.65rem 1.5rem;
     z-index: 999999999999;
+    line-height: 1.5rem;
+    cursor: pointer;
+    user-select: none;
 
     transform: translateX(100%);
     opacity: 0;
@@ -26,7 +29,7 @@
 
     img {
         width: auto;
-        height: 100%;
+        height: 1.7rem;
         margin-right: 1rem;
         filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(276deg) brightness(103%) contrast(101%);
     }
@@ -64,4 +67,34 @@
         background-color: $clr-dialog-other;
         border: 1px solid darken($color: $clr-dialog-other, $amount: 15);
     }
+}
+
+@media only screen and (max-width: 768px) {
+    .dialog {
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-width: 100%;
+        border-radius: 0;
+        transform: translateY(-100%);
+        padding: 0.5rem .75rem;
+
+        p {
+            font-size: 1rem;
+        }
+
+        img {
+            margin-right: .5rem;
+        }
+
+        &.visible {
+            transform: translateY(0);
+        }
+
+        &.hidden {
+            transform: translateY(-100%);
+        }
+    }
+
+
 }

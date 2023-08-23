@@ -34,11 +34,16 @@ const LoginForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // Simulating login logic
-    if (email === 'test@example.com' && password === 'password') {
-      dialogCtx.success('Sikeresen bejelentkeztél!');
+    if (email && password) {
+      // Simulating login logic
+      if (email === 'test@example.com' && password === 'password') {
+        dialogCtx.success('Sikeresen bejelentkeztél!');
+      } else {
+        dialogCtx.error('Hibás e-mail cím vagy jelszó!');
+      }
     } else {
-      dialogCtx.error('Hibás e-mail cím vagy jelszó!');
+      dialogCtx.error('A csillaggal jelölt mezők kitöltése kötelező!');
+      return;
     }
   };
 
@@ -56,7 +61,6 @@ const LoginForm = () => {
           className="input-field"
           name="lgn-email"
           error={errors.email}
-          autoFocus
         />
         <Input
           type="password"

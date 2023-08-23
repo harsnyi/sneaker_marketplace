@@ -12,6 +12,7 @@
 
   &.opened {
     width: $opened-nav-width;
+
     .nav-list {
       .nav-list-item {
         .nav-link {
@@ -66,6 +67,7 @@
     align-items: center;
     height: 100%;
     overflow: hidden;
+    overflow-y: auto;
 
     .logo {
       width: 3rem;

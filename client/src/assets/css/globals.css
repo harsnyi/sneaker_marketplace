@@ -129,6 +129,15 @@ a {
   transition: 0.2s;
   padding: 0 0.2rem;
 }
+.input-wrapper .input-group img {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
 .input-wrapper .input-group .input-field {
   padding: 0.75rem;
   outline: none;

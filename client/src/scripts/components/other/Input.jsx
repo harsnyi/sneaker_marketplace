@@ -1,16 +1,29 @@
+import React, {useState} from 'react';
+
+import showEye from '../../../assets/images/logo&icon/eye-regular.svg';
+import hideEye from '../../../assets/images/logo&icon/eye-slash-regular.svg';
+
 const Input = (props) => {
-  const handleOnChange = (event) => {
-    props.onChange(event.target.value); // Call the onChange function passed as a prop
+  const [isPasswordVisible, setPasswordVisible] = useState(false);
+
+  const handleTogglePasswordVisibility = () => {
+    setPasswordVisible((prevVisible) => !prevVisible);
   };
 
-  const inputClassName = props.className + (props.error ? ' input-error' : ' ') + (props.succes ? ' input-success' : ' '); // Append 'input-error' class when error is present
+  const handleOnChange = (event) => {
+    props.onChange(event.target.value);
+  };
+
+  const inputType = isPasswordVisible ? 'text' : props.type;
+  const inputClassName = props.className + (props.error ? ' input-error' : ' ') + (props.succes ? ' input-success' : ' ');
 
   return (
     <>
       <div className="input-wrapper">
         <div className="input-group">
-          <input type={props.type} value={props.value} onChange={handleOnChange} name={props.name} className={inputClassName} placeholder=" " />
+          <input type={inputType} value={props.value} onChange={handleOnChange} name={props.name} className={inputClassName} placeholder=" " />
           <label>{props.label}</label>
+          {props.type === 'password' && <img src={isPasswordVisible ? hideEye : showEye} alt=" " onClick={handleTogglePasswordVisibility} />}
         </div>
         {props.error && <span style={{color: '#eb0000'}}>{props.error}</span>}
       </div>

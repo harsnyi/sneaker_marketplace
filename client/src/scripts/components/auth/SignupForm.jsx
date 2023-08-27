@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react';
 
 import Input from '../other/Input';
-import Dialog from '../other/Dialog';
 
+import angleDown from '../../../assets/images/logo&icon/angle-down-solid.svg';
 import facebookLogo from '../../../assets/images/logo&icon/facebook-f.svg';
 import googleLogo from '../../../assets/images/logo&icon/google-plus-g.svg';
 import instagramLogo from '../../../assets/images/logo&icon/instagram.svg';
@@ -266,6 +266,7 @@ const SignupForm = () => {
             <option value="4">Most nem</option>
           </select>
           <label>Nem</label>
+          <img className="select-icon-down" src={angleDown} alt=" " />
         </div>
         <button type="submit" className="btn-main btn-black">
           Regisztráció

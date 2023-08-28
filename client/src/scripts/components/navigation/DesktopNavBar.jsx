@@ -4,6 +4,7 @@ import logo from '../../../assets/images/logo&icon/laced-logo.png';
 import hamburgerIcon from '../../../assets/images/logo&icon/bars-solid.svg';
 import xMarkIcon from '../../../assets/images/logo&icon/xmark-solid.svg';
 import houseIcon from '../../../assets/images/logo&icon/house-chimney-solid.svg';
+import magnifyingGlassIcon from '../../../assets/images/logo&icon/magnifying-glass-solid.svg';
 import userIcon from '../../../assets/images/logo&icon/user-solid.svg';
 import bellIcon from '../../../assets/images/logo&icon/bell-solid.svg';
 import envelopeIcon from '../../../assets/images/logo&icon/envelope-solid.svg';
@@ -23,9 +24,9 @@ import profilePicture from '../../../assets/images/profile_pics/225746166_200656
 import {NavLink} from 'react-router-dom';
 
 import React, {useEffect, useState} from 'react';
+import Search from '../search/Search';
 import NavUserCard from './NavUserCard';
 import AuthenticationPage from '../auth/AuthenticationPage';
-import SearchBar from '../search/SearchBar';
 
 function delayNavbarText() {
   const navbarTextItems = document.querySelectorAll(`.${desktopNavStyle['navbar-text']}`);
@@ -55,10 +56,13 @@ const DesktopNavBar = () => {
     setIsAuthOpen(true);
   };
 
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const toggleSearch = () => {
+    setIsSearchOpen(true);
+  };
+
   return (
     <>
-      <SearchBar />
-
       <nav className={navbarClassNames}>
         <div className={desktopNavStyle['open-close-sidebar']} onClick={toggleNav} title="Menü">
           <img src={isNavOpen ? xMarkIcon : hamburgerIcon} alt="Menü" />
@@ -75,6 +79,13 @@ const DesktopNavBar = () => {
               <img className={desktopNavStyle['navbar-svg']} src={houseIcon} alt="Kezdőlap" />
               <span className={desktopNavStyle['navbar-text']}>Kezdőlap</span>
             </NavLink>
+          </li>
+
+          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Keresés">
+            <a href="#search" onClick={toggleSearch} className={`${desktopNavStyle['nav-link']}`}>
+              <img className={desktopNavStyle['navbar-svg']} src={magnifyingGlassIcon} alt="Keresés" />
+              <span className={desktopNavStyle['navbar-text']}>Keresés</span>
+            </a>
           </li>
 
           <li className={desktopNavStyle['nav-list-item']} title="Fiók">
@@ -196,6 +207,7 @@ const DesktopNavBar = () => {
         </ul>
       </nav>
 
+      {isSearchOpen && <Search isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />}
       {isAuthOpen && <AuthenticationPage isAuthOpen={isAuthOpen} setIsAuthOpen={setIsAuthOpen} />}
     </>
   );

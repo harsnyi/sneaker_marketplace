@@ -6,8 +6,8 @@
   transition: width 0.2s $animation-speed;
   color: $clr-white;
   width: $closed-nav-width;
-  height: calc(100vh - $search-bar-height);
-  top: $search-bar-height;
+  height: 100vh;
+  top: 0;
   z-index: 99;
 
   &.opened {

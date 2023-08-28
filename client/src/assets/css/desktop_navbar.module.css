@@ -4,8 +4,8 @@
   transition: width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   color: #ffffff;
   width: 5rem;
-  height: calc(100vh - 2.5rem);
-  top: 2.5rem;
+  height: 100vh;
+  top: 0;
   z-index: 99;
 }
 .nav-bar.opened {

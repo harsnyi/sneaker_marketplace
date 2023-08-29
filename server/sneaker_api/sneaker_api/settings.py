@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "user.apps.UserConfig",
     "home.apps.HomeConfig",
-    "rest_framework_simplejwt.token_blacklist"
+    "rest_framework_simplejwt.token_blacklist",
+    "corsheaders",
 ]
 
 REST_FRAMEWORK = {
@@ -102,6 +103,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "sneaker_api.urls"
@@ -178,3 +181,6 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'user.User'
+
+#For testing only TODO in the future
+CORS_ALLOW_ALL_ORIGINS = True

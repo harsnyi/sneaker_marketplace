@@ -37,3 +37,24 @@ def register_view(request):
         
         return Response(status=status.HTTP_201_CREATED)
     return Response(serializer.errors)
+
+
+@api_view(['POST'])
+def login_view(request):
+    serializer = UserLoginSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+    user = serializer.validated_data['user']
+
+    # Generate JWT tokens
+    refresh = RefreshToken.for_user(user)
+    access_token = str(refresh.access_token)
+
+    return Response({'access_token': access_token}, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def secured_endpoint(request):
+    # Your secured endpoint logic here
+    return Response({'message': 'This is a secured endpoint. You need a valid JWT token to access it.'})
+

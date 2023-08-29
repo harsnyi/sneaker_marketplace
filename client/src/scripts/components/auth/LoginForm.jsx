@@ -1,16 +1,19 @@
 import {useEffect, useState, useContext} from 'react';
-
+import AuthContext from '../context/AuthProvider';
 import Input from '../other/Input';
 import {DialogContext} from '../../bin/DialogProvider.js';
 
 import facebookLogo from '../../../assets/images/logo&icon/facebook-f.svg';
 import googleLogo from '../../../assets/images/logo&icon/google-plus-g.svg';
 import instagramLogo from '../../../assets/images/logo&icon/instagram.svg';
+import axios from '../api/axios';
 
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+const LOGIN_URL = '/auth/';
 
 const LoginForm = () => {
   const dialogCtx = useContext(DialogContext);
+  const { setAuth } = useContext(AuthContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -47,7 +50,24 @@ const LoginForm = () => {
       return;
     }
     */
+    try{
+      const response = await axios.post(LOGIN_URL,
+        JSON.stringify({email, password}),
+        {
+          headers: {'Content-Type':'application/json'},
+          withCredentials: true
+        }
+      );
+      console.log(JSON.stringify(response?.data));
+      const accessToken = response?.data?.accessToken;
+      setAuth({email,password,accessToken});
+      dialogCtx.success('Sikeresen bejelentkeztél!');
 
+    } catch(error) {
+        console.log(error.response.status);
+        dialogCtx.error('Hibás e-mail cím vagy jelszó!');
+
+    }
 
   };
 

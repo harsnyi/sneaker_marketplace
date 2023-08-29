@@ -1,5 +1,6 @@
 import '../../../assets/css/searchbar.css';
 
+import magnifyingGlassIcon from '../../../assets/images/logo&icon/magnifying-glass-solid.svg';
 import xMarkIcon from '../../../assets/images/logo&icon/xmark-solid.svg';
 
 import {useEffect} from 'react';
@@ -29,7 +30,14 @@ const Search = (props) => {
 
   return (
     <>
-      <div className="search-wrapper"></div>
+      <div className="search-wrapper">
+        <button className="btn-search">
+          <img src={magnifyingGlassIcon} alt="Keresés..." />
+        </button>
+        <div className="search-bar">
+          <img onClick={handleDisable} src={xMarkIcon} alt="Bezár" />
+        </div>
+      </div>
     </>
   );
 };

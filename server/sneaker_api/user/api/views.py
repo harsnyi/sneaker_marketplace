@@ -3,6 +3,9 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.views import APIView
+from user.user_serializer import UserRegistrationSerializer
+from rest_framework import status
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -25,3 +28,13 @@ def getRoutes(request):
         '/api/token/refresh'
     ]
     return Response(routes)
+
+@api_view(['POST'])
+def register_view(request):
+    serializer = UserRegistrationSerializer(data=request.data)
+    if serializer.is_valid():
+        user = serializer.save()
+        success = "Success"
+
+        return Response({'success': success}, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

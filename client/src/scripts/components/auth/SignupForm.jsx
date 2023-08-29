@@ -162,19 +162,21 @@ const SignupForm = () => {
     
     try {
       const response = await axios.post(REGISTER_URL,
-        JSON.stringify({username:username,
-                        password:password,
-                        lastname:lastName,
-                        firstname:firstName,
-                        email,
-                        phone_number:phoneNumber,
-                        gender}),
-                        {
-                          headers: {'Content-type':'application/json'},
-                          withCredentials: true
-                        }
-                      );
-                      console.log(response.data);
+        JSON.stringify({
+          username:username,
+          password:password,
+          last_name:lastName,
+          first_name:firstName,
+          email,
+          phone_number:phoneNumber,
+          gender
+          }),
+          {
+            headers: {'Content-type':'application/json'},
+            withCredentials: true
+          }
+        );
+        console.log(response.data);
     } catch (error){
       if(error.response?.status == 409){
         //Username taken

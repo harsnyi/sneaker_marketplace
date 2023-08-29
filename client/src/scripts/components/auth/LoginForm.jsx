@@ -31,9 +31,10 @@ const LoginForm = () => {
     }
   }, [email]);
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
 
+    /*
     if (email && password) {
       // Simulating login logic
       if (email === 'test@example.com' && password === 'password') {
@@ -45,6 +46,9 @@ const LoginForm = () => {
       dialogCtx.error('A csillaggal jelölt mezők kitöltése kötelező!');
       return;
     }
+    */
+
+
   };
 
   return (

@@ -4,8 +4,15 @@ from rest_framework.decorators import api_view
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.views import APIView
-from user.user_serializer import UserRegistrationSerializer
+from user.user_serializer import UserRegistrationSerializer, UserLoginSerializer
 from rest_framework import status
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.authtoken.models import Token
+from django.contrib.auth import authenticate
+
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -39,22 +46,17 @@ def register_view(request):
     return Response(serializer.errors)
 
 
-@api_view(['POST'])
-def login_view(request):
-    serializer = UserLoginSerializer(data=request.data)
-    serializer.is_valid(raise_exception=True)
-    user = serializer.validated_data['user']
 
-    # Generate JWT tokens
-    refresh = RefreshToken.for_user(user)
-    access_token = str(refresh.access_token)
-
-    return Response({'access_token': access_token}, status=status.HTTP_200_OK)
-
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def secured_endpoint(request):
-    # Your secured endpoint logic here
-    return Response({'message': 'This is a secured endpoint. You need a valid JWT token to access it.'})
-
+class LoginView(APIView):
+    def post(self, request, format=None):
+        serializer = UserLoginSerializer(data=request.data)
+        if serializer.is_valid():
+            email = serializer.validated_data['email']
+            password = serializer.validated_data['password']
+            user = authenticate(request, username=email, password=password)
+            if user:
+                refresh = RefreshToken.for_user(user)
+                access_token = str(refresh.access_token)
+                return Response({'access_token': access_token})
+            return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+        return Response(serializer.errors)

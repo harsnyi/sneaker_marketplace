@@ -159,7 +159,6 @@ const SignupForm = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    
     try {
       const response = await axios.post(REGISTER_URL,
         JSON.stringify({
@@ -182,10 +181,6 @@ const SignupForm = () => {
         //Username taken
       }
     }
-    
-    
-    
-
   };
 
   return (

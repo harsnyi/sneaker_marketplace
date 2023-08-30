@@ -9,8 +9,7 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
-
-
+    column-gap: .5rem;
 
     .btn-search {
         all: unset;
@@ -19,32 +18,39 @@
         width: 4rem;
         height: 4rem;
         cursor: pointer;
-        background-color: $clr-black;
         border-radius: 50%;
+        background-color: $clr-yellow;
+
         display: flex;
-        align-items: center;
         justify-content: center;
-        z-index: 99999999;
+        align-items: center;
+        outline: 0px solid $clr-yellow;
+        outline-offset: 0px;
+        transition: all 0.1s $animation-speed;
 
         img {
             width: 1.5rem;
             height: 1.5rem;
+
+            &:hover {
+                opacity: 1;
+            }
         }
 
         &:hover {
-            opacity: 0.5;
+            outline: 2px solid $clr-yellow;
+            outline-offset: 4px;
         }
-
     }
 
     .search-bar {
         position: relative;
         z-index: 999999;
         height: 4rem;
-        width: 40vw;
+        width: 30vw;
         background-color: $clr-white;
         top: 20%;
-        border-radius: 0 0.5rem 0.5rem 0;
+        border-radius: 3rem;
 
         img {
             position: absolute;
@@ -60,5 +66,4 @@
             }
         }
     }
-
 }

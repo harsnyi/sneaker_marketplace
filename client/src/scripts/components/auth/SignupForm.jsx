@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import axios from '../api/axios';
 
 import Input from '../other/Input';
 
@@ -11,6 +12,7 @@ const NAME_REGEX = /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+([ -][A-ZÁ�
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const USERNAME_REGEX = /^(?!.*\s{2})[a-z0-9_. ]+(?<!\s)$/i;
 const PHONE_REGEX = /(\()?(\+36|0036|06)?(\))?(-| )?(1|20|2[2-9]|3[0-7]|40|42|4[4-9]|5[2-7]|59|60|62|63|66|68|69|70|7[2-9]|80|8[2-5]|8[7-9]]|90|9[2-9])([\\/ ])?(\d{6,7}|\d{3}(-| )\d{3,4}|\d{3,4}(-| )\d{3})/;
+const REGISTER_URL = '/api/v1/register/';
 
 const SignupForm = () => {
   const [errors, setErrors] = useState({}); // Store input errors
@@ -155,8 +157,30 @@ const SignupForm = () => {
     }
   }, [phoneNumber]);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await axios.post(REGISTER_URL,
+        JSON.stringify({
+          username:username,
+          password:password,
+          last_name:lastName,
+          first_name:firstName,
+          email,
+          phone_number:phoneNumber,
+          gender
+          }),
+          {
+            headers: {'Content-type':'application/json'},
+            withCredentials: true
+          }
+        );
+        console.log(response.data);
+    } catch (error){
+      if(error.response?.status == 409){
+        //Username taken
+      }
+    }
   };
 
   return (

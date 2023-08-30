@@ -157,8 +157,6 @@ const SignupForm = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log('submitting form');
-    // Perform signup logic here
   };
 
   return (

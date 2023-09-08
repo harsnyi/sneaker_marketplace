@@ -1,6 +1,6 @@
 .nav-bar {
   position: fixed;
-  background-color: #141414;
+  background-color: #161C24;
   transition: width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   color: #ffffff;
   width: 5rem;
@@ -22,7 +22,7 @@
 .nav-bar .open-close-sidebar {
   width: 2rem;
   height: 2rem;
-  background-color: #141414;
+  background-color: #161C24;
   border: 2px solid #ffffff;
   border-radius: 50%;
   right: -1rem;
@@ -70,7 +70,7 @@
 }
 .nav-bar .nav-list .nav-list-item:last-child .nav-link {
   height: 5rem;
-  background-color: #252525;
+  background-color: #212B36;
   filter: grayscale(0%) opacity(1);
 }
 .nav-bar .nav-list .nav-list-item:last-child .nav-link .profile-avatar {
@@ -81,8 +81,8 @@
   z-index: 3;
   border-radius: 50%;
   overflow: hidden;
-  background-color: #141414;
-  border: 2px solid #141414;
+  background-color: #161C24;
+  border: 2px solid #161C24;
   margin: 0 0.75rem;
 }
 .nav-bar .nav-list .nav-list-item:last-child .nav-link .profile-avatar img {
@@ -101,7 +101,7 @@
 .nav-bar .nav-list .nav-list-item:last-child .nav-link:hover {
   cursor: pointer;
   filter: none !important;
-  background-color: #252525 !important;
+  background-color: #212B36 !important;
   opacity: 0.75;
 }
 .nav-bar .nav-list .nav-list-item .nav-link {
@@ -109,7 +109,7 @@
   align-items: center;
   height: 2.25rem;
   text-decoration: none;
-  filter: opacity(0.6);
+  filter: opacity(0.7);
 }
 .nav-bar .nav-list .nav-list-item .nav-link .notification-icon {
   height: 1.25rem;
@@ -126,11 +126,11 @@
   position: absolute;
   height: 0.6rem;
   width: 0.6rem;
-  background-color: #eb0000;
+  background-color: #FF1F32;
   top: 0;
   right: 0;
   border-radius: 50%;
-  border: 1px solid #141414;
+  border: 1px solid #161C24;
   z-index: 99;
   transform: translate(-10%, -25%);
   filter: grayscale(0%) opacity(1);
@@ -150,7 +150,7 @@
 }
 .nav-bar .nav-list .nav-list-item .nav-link:hover, .nav-bar .nav-list .nav-list-item .nav-link.active {
   filter: grayscale(0%) opacity(1);
-  background-color: #111111;
+  background-color: #10151b;
   cursor: pointer;
   position: relative;
 }

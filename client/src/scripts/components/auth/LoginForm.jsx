@@ -13,7 +13,7 @@ const LOGIN_URL = '/api/v1/auth/';
 
 const LoginForm = () => {
   const dialogCtx = useContext(DialogContext);
-  const { setAuth } = useContext(AuthContext);
+  const {setAuth} = useContext(AuthContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -36,7 +36,6 @@ const LoginForm = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
     /*
     if (email && password) {
       // Simulating login logic
@@ -49,26 +48,21 @@ const LoginForm = () => {
       dialogCtx.error('A csillaggal jelölt mezők kitöltése kötelező!');
       return;
     }
+
     */
-    try{
-      const response = await axios.post(LOGIN_URL,
-        JSON.stringify({email, password}),
-        {
-          headers: {'Content-Type':'application/json'},
-          withCredentials: true
-        }
-      );
+    try {
+      const response = await axios.post(LOGIN_URL, JSON.stringify({email, password}), {
+        headers: {'Content-Type': 'application/json'},
+        withCredentials: true,
+      });
       console.log(JSON.stringify(response?.data));
       const accessToken = response?.data?.accessToken;
-      setAuth({email,password,accessToken});
+      setAuth({email, password, accessToken});
       dialogCtx.success('Sikeresen bejelentkeztél!');
-
-    } catch(error) {
-        console.log(error.response.status);
-        dialogCtx.error('Hibás e-mail cím vagy jelszó!');
-
+    } catch (error) {
+      console.log(error.response.status);
+      dialogCtx.error('Hibás e-mail cím vagy jelszó!');
     }
-
   };
 
   return (

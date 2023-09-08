@@ -4,7 +4,7 @@
   left: 5rem;
   bottom: 0;
   position: fixed;
-  background-color: #e0e0e0;
+  background-color: #C4CDD5;
   color: #000000;
   z-index: -1;
 }
@@ -13,7 +13,7 @@
   height: 100%;
 }
 .footer .footer-bottom {
-  background-color: #0c0c0c;
+  background-color: #161C24;
   width: 100%;
   height: 5rem;
   bottom: 0;
@@ -31,6 +31,6 @@
     bottom: 3.5rem;
   }
   .footer-bottom {
-    background-color: #252525;
+    background-color: #161C24;
   }
 }/*# sourceMappingURL=footer.css.map */

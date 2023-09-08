@@ -1,28 +1,30 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import {useMediaQuery} from 'react-responsive';
 
 import '../../assets/css/globals.css';
 
+import {Routes, Route, BrowserRouter} from 'react-router-dom';
+import {DialogProvider} from '../bin/DialogProvider.js';
+
 import MobileNavBar from './navigation/MobileNavBar';
 import DesktopNavbar from './navigation/DesktopNavBar';
-import Home from './home/Home';
-import {Routes, Route, BrowserRouter} from 'react-router-dom';
-import About from './pages/About';
-import Profile from './pages/Profile';
-import Notifications from './pages/Notifications';
-import Messages from './pages/Messages';
-import Favourites from './pages/Favourites';
-import Selling from './pages/Selling';
-import Community from './pages/Community';
-import Auction from './pages/Auction';
-import News from './pages/News';
-import Contact from './pages/Contact';
-import Settings from './pages/Settings';
-import PageNotFound from './other/PageNotFound';
+import Dialog from './other/Dialog';
+import Loader from './other/Loader';
 import Footer from './footer/Footer';
 
-import Dialog from './other/Dialog';
-import {DialogProvider} from '../bin/DialogProvider.js';
+const Home = lazy(() => import('./home/Home'));
+const About = lazy(() => import('./pages/About'));
+const Profile = lazy(() => import('./pages/Profile'));
+const Notifications = lazy(() => import('./pages/Notifications'));
+const Messages = lazy(() => import('./pages/Messages'));
+const Favourites = lazy(() => import('./pages/Favourites'));
+const Selling = lazy(() => import('./pages/Selling'));
+const Community = lazy(() => import('./pages/Community'));
+const Auction = lazy(() => import('./pages/Auction'));
+const News = lazy(() => import('./pages/News'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Settings = lazy(() => import('./pages/Settings'));
+const PageNotFound = lazy(() => import('./other/PageNotFound'));
 
 function App() {
   const isMobile = useMediaQuery({query: '(max-width: 768px)'});
@@ -162,13 +164,15 @@ function App() {
     <DialogProvider>
       <Dialog />
 
-      <BrowserRouter basename="/">
-        <Routes>
-          {routes.map(({path, element}) => (
-            <Route key={path} path={path} element={element} />
-          ))}
-        </Routes>
-      </BrowserRouter>
+      <Suspense fallback={<Loader />}>
+        <BrowserRouter basename="/">
+          <Routes>
+            {routes.map(({path, element}) => (
+              <Route key={path} path={path} element={element} />
+            ))}
+          </Routes>
+        </BrowserRouter>
+      </Suspense>
     </DialogProvider>
   );
 }

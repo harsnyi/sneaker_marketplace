@@ -136,7 +136,7 @@ a {
       left: 0.5rem;
       font-size: 1.2rem;
       transform: translateY(-50%);
-      color: darken($color: $clr-primary-grey, $amount: 60);
+      color: darken($color: $clr-grey-900, $amount: 60);
       pointer-events: none;
       transition: 0.2s;
       padding: 0 0.2rem;
@@ -159,7 +159,7 @@ a {
       padding: 0.75rem;
       outline: none;
       font-size: 0.9rem;
-      color: darken($color: $clr-primary-grey, $amount: 60);
+      color: darken($color: $clr-grey-900, $amount: 60);
 
       &:focus,
       &:invalid,
@@ -178,7 +178,7 @@ a {
         border: 2px solid $clr-red;
 
         &:focus {
-          outline: 2px solid lighten($color: $clr-red, $amount: 45);
+          outline: 2px solid $clr-red-lighter;
         }
       }
 

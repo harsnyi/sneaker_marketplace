@@ -18,12 +18,12 @@
   height: 4rem;
   cursor: pointer;
   border-radius: 50%;
-  background-color: #f4b115;
+  background-color: #C4CDD5;
   display: flex;
   justify-content: center;
   align-items: center;
-  outline: 0px solid #f4b115;
-  outline-offset: 0px;
+  outline: 2px solid #C4CDD5;
+  outline-offset: -2px;
   transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .search-wrapper .btn-search img {
@@ -34,7 +34,6 @@
   opacity: 1;
 }
 .search-wrapper .btn-search:hover {
-  outline: 2px solid #f4b115;
   outline-offset: 4px;
 }
 .search-wrapper .search-bar {

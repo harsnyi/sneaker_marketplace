@@ -19,13 +19,12 @@
         height: 4rem;
         cursor: pointer;
         border-radius: 50%;
-        background-color: $clr-yellow;
-
+        background-color: $clr-grey-400;
         display: flex;
         justify-content: center;
         align-items: center;
-        outline: 0px solid $clr-yellow;
-        outline-offset: 0px;
+        outline: 2px solid $clr-grey-400;
+        outline-offset: -2px;
         transition: all 0.1s $animation-speed;
 
         img {
@@ -38,7 +37,7 @@
         }
 
         &:hover {
-            outline: 2px solid $clr-yellow;
+
             outline-offset: 4px;
         }
     }

@@ -1,12 +1,12 @@
 .nav-bar {
   position: fixed;
   bottom: 0;
-  background-color: #0c0c0c;
+  background-color: #161C24;
   height: 3.5rem;
   color: #ffffff;
   width: 100vw;
   z-index: 99;
-  border-top: 1px solid #252525;
+  border-top: 1px solid #212B36;
 }
 .nav-bar .nav-list {
   list-style-type: none;
@@ -54,11 +54,11 @@
   position: absolute;
   height: 0.6rem;
   width: 0.6rem;
-  background-color: #eb0000;
+  background-color: #FF1F32;
   top: 0;
   right: 0;
   border-radius: 50%;
-  border: 1px solid #141414;
+  border: 1px solid #161C24;
   z-index: 99;
   transform: translate(0, -25%);
   filter: grayscale(0%) opacity(1);
@@ -74,9 +74,9 @@
   position: fixed;
   width: 100%;
   height: 3.5rem;
-  background-color: #0c0c0c;
+  background-color: #161C24;
   z-index: 999;
-  border-bottom: 1px solid #252525;
+  border-bottom: 1px solid #212B36;
 }
 .mobile-header-wrapper .header-list {
   list-style-type: none;
@@ -133,7 +133,7 @@
   top: 3.5rem;
   left: 0;
   position: fixed;
-  background-color: #141414;
+  background-color: #161C24;
   z-index: 99;
   transition: width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -146,7 +146,7 @@
 }
 .nav-aside-wrapper.opened .nav-aside {
   width: 75%;
-  border-right: 2px solid #0c0c0c;
+  border-right: 2px solid #212B36;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list {
   list-style-type: none;
@@ -166,7 +166,7 @@
 }
 .nav-aside-wrapper.opened .nav-aside .side-list .side-list-item:last-child .side-link {
   height: 5rem;
-  background-color: #252525;
+  background-color: #212B36;
   opacity: 1;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list .side-list-item:last-child .side-link .profile-avatar {
@@ -177,8 +177,8 @@
   z-index: 3;
   border-radius: 50%;
   overflow: hidden;
-  background-color: #141414;
-  border: 2px solid #141414;
+  background-color: #161C24;
+  border: 2px solid #161C24;
   transform: translateX(calc(-50% + 0.75rem));
 }
 .nav-aside-wrapper.opened .nav-aside .side-list .side-list-item:last-child .side-link .profile-avatar img {
@@ -207,9 +207,9 @@
   font-size: 1.5rem;
   margin-left: 2.5rem;
 }
-.nav-aside-wrapper.opened .nav-aside .side-list .side-list-item .side-link.active {
+.nav-aside-wrapper.opened .nav-aside .side-list .side-list-item .side-link.active, .nav-aside-wrapper.opened .nav-aside .side-list .side-list-item .side-link:hover {
   opacity: 1;
-  background-color: #0f0f0f;
+  background-color: #10151b;
   position: relative;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list .side-list-item .side-link.active::after {

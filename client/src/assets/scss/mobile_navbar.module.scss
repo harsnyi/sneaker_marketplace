@@ -3,12 +3,12 @@
 .nav-bar {
   position: fixed;
   bottom: 0;
-  background-color: $clr-search-bar;
+  background-color: $clr-grey-900;
   height: $mobile-nav-height;
   color: $clr-white;
   width: 100vw;
   z-index: 99;
-  border-top: 1px solid $clr-secondary-darkgrey;
+  border-top: 1px solid $clr-grey-800;
 
   .nav-list {
     list-style-type: none;
@@ -64,7 +64,7 @@
             top: 0;
             right: 0;
             border-radius: 50%;
-            border: 1px solid $clr-primary-darkgrey;
+            border: 1px solid $clr-grey-900;
             z-index: 99;
             transform: translate(0, -25%);
             filter: grayscale(0%) opacity(1);
@@ -86,9 +86,9 @@
   position: fixed;
   width: 100%;
   height: $mobile-header-height;
-  background-color: $clr-search-bar;
+  background-color: $clr-grey-900;
   z-index: 999;
-  border-bottom: 1px solid $clr-secondary-darkgrey;
+  border-bottom: 1px solid $clr-grey-800;
 
   .header-list {
     list-style-type: none;
@@ -151,7 +151,7 @@
     top: $mobile-nav-height;
     left: 0;
     position: fixed;
-    background-color: $clr-primary-darkgrey;
+    background-color: $clr-grey-900;
     z-index: 99;
     transition: width 0.2s $animation-speed;
 
@@ -166,7 +166,7 @@
 
     .nav-aside {
       width: 75%;
-      border-right: 2px solid $clr-search-bar;
+      border-right: 2px solid $clr-grey-800;
 
       .side-list {
         list-style-type: none;
@@ -186,7 +186,7 @@
 
             .side-link {
               height: 5rem;
-              background-color: $clr-secondary-darkgrey;
+              background-color: $clr-grey-800;
               opacity: 1;
 
               .profile-avatar {
@@ -197,8 +197,8 @@
                 z-index: 3;
                 border-radius: 50%;
                 overflow: hidden;
-                background-color: $clr-primary-darkgrey;
-                border: 2px solid $clr-primary-darkgrey;
+                background-color: $clr-grey-900;
+                border: 2px solid $clr-grey-900;
                 transform: translateX(calc(-50% + 0.75rem));
 
                 img {
@@ -233,9 +233,10 @@
               margin-left: 2.5rem;
             }
 
-            &.active {
+            &.active,
+            &:hover {
               opacity: 1;
-              background-color: darken($color: $clr-primary-darkgrey, $amount: 2%);
+              background-color: darken($color: $clr-grey-900, $amount: 3%);
               position: relative;
             }
 

@@ -2,7 +2,7 @@
 
 .nav-bar {
   position: fixed;
-  background-color: $clr-primary-darkgrey;
+  background-color: $clr-grey-900;
   transition: width 0.2s $animation-speed;
   color: $clr-white;
   width: $closed-nav-width;
@@ -37,7 +37,7 @@
   .open-close-sidebar {
     width: 2rem;
     height: 2rem;
-    background-color: $clr-primary-darkgrey;
+    background-color: $clr-grey-900;
     border: 2px solid $clr-white;
     border-radius: 50%;
     right: -1rem;
@@ -91,7 +91,7 @@
 
         .nav-link {
           height: 5rem;
-          background-color: $clr-secondary-darkgrey;
+          background-color: $clr-grey-800;
           filter: grayscale(0%) opacity(1);
 
           .profile-avatar {
@@ -102,8 +102,8 @@
             z-index: 3;
             border-radius: 50%;
             overflow: hidden;
-            background-color: $clr-primary-darkgrey;
-            border: 2px solid $clr-primary-darkgrey;
+            background-color: $clr-grey-900;
+            border: 2px solid $clr-grey-900;
             margin: 0 0.75rem;
 
             img {
@@ -124,7 +124,7 @@
           &:hover {
             cursor: pointer;
             filter: none !important;
-            background-color: $clr-secondary-darkgrey !important;
+            background-color: $clr-grey-800 !important;
             opacity: 0.75;
           }
         }
@@ -135,7 +135,7 @@
         align-items: center;
         height: 2.25rem;
         text-decoration: none;
-        filter: opacity(0.6);
+        filter: opacity(0.7);
 
         .notification-icon {
           height: 1.25rem;
@@ -157,7 +157,7 @@
             top: 0;
             right: 0;
             border-radius: 50%;
-            border: 1px solid $clr-primary-darkgrey;
+            border: 1px solid $clr-grey-900;
             z-index: 99;
             transform: translate(-10%, -25%);
             filter: grayscale(0%) opacity(1);
@@ -182,7 +182,7 @@
         &:hover,
         &.active {
           filter: grayscale(0%) opacity(1);
-          background-color: darken($color: $clr-primary-darkgrey, $amount: 1%);
+          background-color: darken($color: $clr-grey-900, $amount: 3%);
           cursor: pointer;
           position: relative;
         }

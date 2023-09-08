@@ -41,16 +41,16 @@
   transition: transform 0.2s, opacity 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .dialog.success {
-  background-color: #00874f;
-  border: 1px solid #005431;
+  background-color: #00A76F;
+  border: 1px solid #00744d;
 }
 .dialog.error {
   background-color: #b63b32;
   border: 1px solid #7a2822;
 }
 .dialog.warning {
-  background-color: #d87a00;
-  border: 1px solid #8c4f00;
+  background-color: #FFAB00;
+  border: 1px solid #b37800;
 }
 .dialog.info {
   background-color: #2e67a8;

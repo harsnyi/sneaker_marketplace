@@ -13,8 +13,6 @@
     z-index: 999999999999;
     line-height: 1.5rem;
     cursor: pointer;
-    user-select: none;
-
     transform: translateX(100%);
     opacity: 0;
     transition: transform 0.2s, opacity 0.2s $animation-speed;
@@ -48,24 +46,24 @@
     }
 
     &.success {
-        background-color: $clr-dialog-success;
-        border: 1px solid darken($color: $clr-dialog-success, $amount: 10);
+        background-color: $clr-green;
+        border: 1px solid $clr-green-darker;
     }
 
     &.error {
-        background-color: $clr-dialog-error;
-        border: 1px solid darken($color: $clr-dialog-error, $amount: 15);
+        background-color: $clr-red;
+        border: 1px solid $clre-red-darker;
     }
 
     &.warning {
-        background-color: $clr-dialog-warning;
-        border: 1px solid darken($color: $clr-dialog-warning, $amount: 15);
+        background-color: $clr-yellow;
+        border: 1px solid $clr-yellow-darker;
 
     }
 
     &.info {
-        background-color: $clr-dialog-other;
-        border: 1px solid darken($color: $clr-dialog-other, $amount: 15);
+        background-color: $clr-blue;
+        border: 1px solid $clr-blue-darker;
     }
 }
 

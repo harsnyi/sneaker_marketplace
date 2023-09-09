@@ -93,17 +93,17 @@ a {
 .btn-white:hover, .btn-white:focus .btn-white:active {
   box-shadow: 7px 7px #ffffff;
   background-color: #ffffff;
-  border: 1px solid #000000;
-  color: #000000;
+  border: 1px solid #161C24;
+  color: #161C24;
 }
 
 .btn-black {
-  color: #000000;
-  border: 1px solid #000000;
+  color: #161C24;
+  border: 1px solid #161C24;
 }
 .btn-black:hover, .btn-black:focus .btn-black:active {
-  box-shadow: 7px 7px #000000;
-  background-color: #000000;
+  box-shadow: 7px 7px #161C24;
+  background-color: #161C24;
   border: 1px solid #ffffff;
   color: #ffffff;
 }

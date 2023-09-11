@@ -40,6 +40,15 @@ const MobileNavBar = () => {
     setIsAuthOpen(true);
   };
 
+  function scrollToBottom() {
+    setIsNavOpen(false);
+
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
+  }
+
   const navbarClassNames = `${mobileNavStyle['nav-aside-wrapper']} ${isNavOpen ? mobileNavStyle['opened'] : mobileNavStyle['closed']}`;
   return (
     <>
@@ -124,7 +133,7 @@ const MobileNavBar = () => {
               </NavLink>
             </li>
 
-            <li className={`${mobileNavStyle['side-list-item']} ${mobileNavStyle['last-in-group']}`}>
+            <li className={`${mobileNavStyle['side-list-item']} ${mobileNavStyle['last-in-group']}`} onClick={scrollToBottom}>
               <NavLink to="#more" className={mobileNavStyle['side-link']}>
                 <img className={mobileNavStyle['side-svg']} src={moreIcon} alt="Több" />
                 <span className={mobileNavStyle['side-text']}>Több</span>

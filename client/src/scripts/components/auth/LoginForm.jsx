@@ -1,7 +1,7 @@
 import {useEffect, useState, useContext} from 'react';
 import AuthContext from '../context/AuthProvider';
 import Input from '../other/Input';
-import {DialogContext} from '../../bin/DialogProvider.js';
+import {DialogContext} from '../../bin/DialogProvider.jsx';
 
 import facebookLogo from '../../../assets/images/logo&icon/facebook-f.svg';
 import googleLogo from '../../../assets/images/logo&icon/google-plus-g.svg';

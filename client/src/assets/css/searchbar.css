@@ -18,11 +18,11 @@
   height: 4rem;
   cursor: pointer;
   border-radius: 50%;
-  background-color: #C4CDD5;
+  background-color: #FFAB00;
   display: flex;
   justify-content: center;
   align-items: center;
-  outline: 2px solid #C4CDD5;
+  outline: 2px solid #FFAB00;
   outline-offset: -2px;
   transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }

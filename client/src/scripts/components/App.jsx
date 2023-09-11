@@ -4,7 +4,7 @@ import {useMediaQuery} from 'react-responsive';
 import '../../assets/css/globals.css';
 
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
-import {DialogProvider} from '../bin/DialogProvider.js';
+import {DialogProvider} from '../bin/DialogProvider.jsx';
 
 import MobileNavBar from './navigation/MobileNavBar';
 import DesktopNavbar from './navigation/DesktopNavBar';

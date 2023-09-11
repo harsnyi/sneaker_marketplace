@@ -90,21 +90,21 @@
         margin-top: auto;
 
         .nav-link {
-          height: 5rem;
+          height: $closed-nav-width;
           background-color: $clr-grey-800;
           filter: grayscale(0%) opacity(1);
 
           .profile-avatar {
             width: 3rem;
             height: 3rem;
-            min-height: 3.5rem;
-            min-width: 3.5rem;
+            min-height: 4rem;
+            min-width: 4rem;
             z-index: 3;
             border-radius: 50%;
             overflow: hidden;
             background-color: $clr-grey-900;
             border: 2px solid $clr-grey-900;
-            margin: 0 0.75rem;
+            margin: 0 0.5rem;
 
             img {
               width: 100%;
@@ -202,7 +202,7 @@
     }
 
     .last-in-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
   }
 }

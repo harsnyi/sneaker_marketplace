@@ -1,6 +1,7 @@
 import {useEffect, useState, useContext} from 'react';
 import AuthContext from '../context/AuthProvider';
 import Input from '../other/Input';
+import Button from '../other/Button';
 import {DialogContext} from '../../bin/DialogProvider.jsx';
 
 import facebookLogo from '../../../assets/images/logo&icon/facebook-f.svg';
@@ -91,9 +92,7 @@ const LoginForm = () => {
           name="lgn-pass"
           error={errors.password}
         />
-        <button type="submit" className="btn-main btn-black">
-          Bejelentkezés
-        </button>
+        <Button type="submit" text="Bejelentkezés" className="btn-dark" />
       </form>
       <div className="bg-line">
         <h3>vagy</h3>

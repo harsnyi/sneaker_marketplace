@@ -1,32 +1,19 @@
 @font-face {
-  font-family: "Staatliches";
+  font-family: 'Staatliches';
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/Staatliches-Regular.ttf") format("truetype");
+  src: url('../fonts/Staatliches-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: "Oswald";
+  font-family: 'Oswald';
   font-style: normal;
   font-weight: 300;
-  src: url("../fonts/Oswald-Light.ttf") format("truetype");
+  src: url('../fonts/Oswald-Light.ttf') format('truetype');
 }
 @font-face {
-  font-family: "MeshedDisplay";
+  font-family: 'Thunder';
   font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/MeshedDisplay-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Humane";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/Humane-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Mango";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/MangoGrotesque-Regular.ttf") format("truetype");
+  src: url('../fonts/Thunder-VF.ttf') format('truetype');
 }
 * {
   margin: 0;
@@ -41,7 +28,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   line-height: 1.3;
   font-size: 1rem;
 }
@@ -86,24 +73,26 @@ a {
   opacity: 0.75;
 }
 
-.btn-white {
+.btn-light {
   color: #ffffff;
   border: 1px solid #ffffff;
 }
-.btn-white:hover, .btn-white:focus .btn-white:active {
+.btn-light:hover,
+.btn-light:focus .btn-light:active {
   box-shadow: 7px 7px #ffffff;
   background-color: #ffffff;
-  border: 1px solid #161C24;
-  color: #161C24;
+  border: 1px solid #161c24;
+  color: #161c24;
 }
 
-.btn-black {
-  color: #161C24;
-  border: 1px solid #161C24;
+.btn-dark {
+  color: #161c24;
+  border: 1px solid #161c24;
 }
-.btn-black:hover, .btn-black:focus .btn-black:active {
-  box-shadow: 7px 7px #161C24;
-  background-color: #161C24;
+.btn-dark:hover,
+.btn-dark:focus .btn-dark:active {
+  box-shadow: 7px 7px #161c24;
+  background-color: #161c24;
   border: 1px solid #ffffff;
   color: #ffffff;
 }
@@ -150,7 +139,9 @@ a {
 .input-wrapper .input-group .input-field:not(:-moz-placeholder-shown) {
   border: 2px solid #000000;
 }
-.input-wrapper .input-group .input-field:focus, .input-wrapper .input-group .input-field:invalid, .input-wrapper .input-group .input-field:not(:placeholder-shown) {
+.input-wrapper .input-group .input-field:focus,
+.input-wrapper .input-group .input-field:invalid,
+.input-wrapper .input-group .input-field:not(:placeholder-shown) {
   border: 2px solid #000000;
 }
 .input-wrapper .input-group .input-field:not(:-moz-placeholder-shown) ~ label {
@@ -159,20 +150,22 @@ a {
   font-size: 1.1rem;
   background-color: #ffffff;
 }
-.input-wrapper .input-group .input-field:focus ~ label, .input-wrapper .input-group .input-field:invalid ~ label, .input-wrapper .input-group .input-field:not(:placeholder-shown) ~ label {
+.input-wrapper .input-group .input-field:focus ~ label,
+.input-wrapper .input-group .input-field:invalid ~ label,
+.input-wrapper .input-group .input-field:not(:placeholder-shown) ~ label {
   top: 0;
   color: #000000;
   font-size: 1.1rem;
   background-color: #ffffff;
 }
 .input-wrapper .input-group .input-field.input-error {
-  border: 2px solid #FF1F32;
+  border: 2px solid #ff1f32;
 }
 .input-wrapper .input-group .input-field.input-error:focus {
-  outline: 2px solid #FFD6D9;
+  outline: 2px solid #ffd6d9;
 }
 .input-wrapper .input-group .input-field.input-success {
-  border: 2px solid #00A76F;
+  border: 2px solid #00a76f;
 }
 
 /* Change Autocomplete styles*/
@@ -202,4 +195,4 @@ a {
     font-size: 0.75rem;
     line-height: 1rem;
   }
-}/*# sourceMappingURL=globals.css.map */
+} /*# sourceMappingURL=globals.css.map */

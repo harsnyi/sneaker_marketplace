@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import axios from '../api/axios';
 
 import Input from '../other/Input';
+import Button from '../other/Button';
 
 import angleDown from '../../../assets/images/logo&icon/angle-down-solid.svg';
 import facebookLogo from '../../../assets/images/logo&icon/facebook-f.svg';
@@ -160,24 +161,25 @@ const SignupForm = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(REGISTER_URL,
+      const response = await axios.post(
+        REGISTER_URL,
         JSON.stringify({
-          username:username,
-          password:password,
-          last_name:lastName,
-          first_name:firstName,
+          username: username,
+          password: password,
+          last_name: lastName,
+          first_name: firstName,
           email,
-          phone_number:phoneNumber,
-          gender
-          }),
-          {
-            headers: {'Content-type':'application/json'},
-            withCredentials: true
-          }
-        );
-        console.log(response.data);
-    } catch (error){
-      if(error.response?.status == 409){
+          phone_number: phoneNumber,
+          gender,
+        }),
+        {
+          headers: {'Content-type': 'application/json'},
+          withCredentials: true,
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      if (error.response?.status == 409) {
         //Username taken
       }
     }
@@ -280,9 +282,8 @@ const SignupForm = () => {
           <label>Nem</label>
           <img className="select-icon-down" src={angleDown} alt=" " />
         </div>
-        <button type="submit" className="btn-main btn-black">
-          Regisztráció
-        </button>
+        <Button type="submit" text="Regisztráció" className="btn-dark" />
+
         <div className="bg-line">
           <h3>vagy</h3>
         </div>

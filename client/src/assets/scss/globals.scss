@@ -14,25 +14,11 @@
   src: url('../fonts/Oswald-Light.ttf') format('truetype');
 }
 
-@font-face {
-  font-family: 'MeshedDisplay';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/MeshedDisplay-Regular.ttf') format('truetype');
-}
 
 @font-face {
-  font-family: 'Humane';
+  font-family: 'Thunder';
   font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/Humane-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Mango';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/MangoGrotesque-Regular.ttf') format('truetype');
+  src: url('../fonts/Thunder-VF.ttf') format('truetype');
 }
 
 * {
@@ -94,7 +80,7 @@ a {
   }
 }
 
-.btn-white {
+.btn-light {
   color: $clr-white;
   border: 1px solid $clr-white;
 
@@ -107,7 +93,7 @@ a {
   }
 }
 
-.btn-black {
+.btn-dark {
   color: $clr-grey-900;
   border: 1px solid $clr-grey-900;
 

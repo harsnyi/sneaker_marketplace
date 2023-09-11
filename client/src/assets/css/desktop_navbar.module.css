@@ -76,14 +76,14 @@
 .nav-bar .nav-list .nav-list-item:last-child .nav-link .profile-avatar {
   width: 3rem;
   height: 3rem;
-  min-height: 3.5rem;
-  min-width: 3.5rem;
+  min-height: 4rem;
+  min-width: 4rem;
   z-index: 3;
   border-radius: 50%;
   overflow: hidden;
   background-color: #161C24;
   border: 2px solid #161C24;
-  margin: 0 0.75rem;
+  margin: 0 0.5rem;
 }
 .nav-bar .nav-list .nav-list-item:last-child .nav-link .profile-avatar img {
   width: 100%;
@@ -166,5 +166,5 @@
   border-bottom-right-radius: 25px;
 }
 .nav-bar .nav-list .last-in-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }/*# sourceMappingURL=desktop_navbar.module.css.map */

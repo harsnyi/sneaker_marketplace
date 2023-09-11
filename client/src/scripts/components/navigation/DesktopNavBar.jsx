@@ -61,6 +61,15 @@ const DesktopNavBar = () => {
     setIsSearchOpen(true);
   };
 
+  function scrollToBottom() {
+    setIsNavOpen(false);
+
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
+  }
+
   return (
     <>
       <nav className={navbarClassNames}>
@@ -185,7 +194,7 @@ const DesktopNavBar = () => {
             </NavLink>
           </li>
 
-          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Több">
+          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Több" onClick={scrollToBottom}>
             <NavLink to="#more" className={desktopNavStyle['nav-link']}>
               <img className={desktopNavStyle['navbar-svg']} src={moreIcon} alt="Több" />
               <span className={desktopNavStyle['navbar-text']}>Több</span>

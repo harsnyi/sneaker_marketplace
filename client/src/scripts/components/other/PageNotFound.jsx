@@ -28,7 +28,7 @@ const PageNotFound = () => {
       <h2>Hibás URL cím.</h2>
       <p>Automatikus átírányítás {secondsLeft} másodpercen belül.</p>
       <NavLink to="/" id="navLinkButton">
-        <button className="btn-main btn-white">Vissza a főoldalra</button>
+        <button className="btn-main btn-light">Vissza a főoldalra</button>
       </NavLink>
     </div>
   );

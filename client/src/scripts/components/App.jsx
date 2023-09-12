@@ -3,7 +3,7 @@ import {useMediaQuery} from 'react-responsive';
 
 import '../../assets/css/globals.css';
 
-import {Routes, Route, BrowserRouter} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import {DialogProvider} from '../bin/DialogProvider.jsx';
 
 import MobileNavBar from './navigation/MobileNavBar';
@@ -11,6 +11,7 @@ import DesktopNavbar from './navigation/DesktopNavBar';
 import Dialog from './other/Dialog';
 import Loader from './other/Loader';
 import Footer from './footer/Footer';
+import RequireAuth from './auth/RequireAuth';
 
 const Home = lazy(() => import('./home/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -41,137 +42,40 @@ function App() {
     </>
   );
 
-  const routes = [
-    {
-      path: '/',
-      element: (
-        <CommonLayout>
-          <Home />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/home',
-      element: (
-        <CommonLayout>
-          <Home />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/about',
-      element: (
-        <CommonLayout>
-          <About />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/profile',
-      element: (
-        <CommonLayout>
-          <Profile />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/notifications',
-      element: (
-        <CommonLayout>
-          <Notifications />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/messages',
-      element: (
-        <CommonLayout>
-          <Messages />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/favourites',
-      element: (
-        <CommonLayout>
-          <Favourites />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/selling',
-      element: (
-        <CommonLayout>
-          <Selling />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/community',
-      element: (
-        <CommonLayout>
-          <Community />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/auction',
-      element: (
-        <CommonLayout>
-          <Auction />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/news',
-      element: (
-        <CommonLayout>
-          <News />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/about',
-      element: (
-        <CommonLayout>
-          <About />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/contact',
-      element: (
-        <CommonLayout>
-          <Contact />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/settings',
-      element: (
-        <CommonLayout>
-          <Settings />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/*',
-      element: <PageNotFound />,
-    },
-  ];
-
   return (
     <DialogProvider>
       <Dialog />
 
       <Suspense fallback={<Loader />}>
-        <BrowserRouter basename="/">
-          <Routes>
-            {routes.map(({path, element}) => (
-              <Route key={path} path={path} element={element} />
-            ))}
-          </Routes>
-        </BrowserRouter>
+      <CommonLayout>
+        <Routes>
+
+            {/*Public routes*/}
+            <Route path="/" element={<Home />} ></Route>
+            <Route path="/home" element={<Home />} ></Route>
+            <Route path="/about" element={<About />} ></Route>
+            <Route path="/contact" element={<Contact />} ></Route>
+            <Route path="/news" element={<News />} ></Route>
+
+            {/*Protected Routes*/}
+            <Route element={<RequireAuth/>}>
+              <Route path="/profile" element={<Profile />} ></Route>
+              <Route path="/notifications" element={<Notifications />} ></Route>
+              <Route path="/messages" element={<Messages />} ></Route>
+              <Route path="/favourites" element={<Favourites />} ></Route>
+              <Route path="/selling" element={<Selling />} ></Route>
+              <Route path="/community" element={<Community />} ></Route>
+              <Route path="/auction" element={<Auction />} ></Route>
+              <Route path="/settings" element={<Settings />} ></Route>
+            </Route>
+            {/*Page not found not working as it should work*/}
+            <Route path="/*" element={<PageNotFound />} />
+            
+        </Routes>
+        </CommonLayout>
+
+            
+
       </Suspense>
     </DialogProvider>
   );

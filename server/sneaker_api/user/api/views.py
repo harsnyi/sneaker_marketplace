@@ -6,7 +6,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.views import APIView
 from user.user_serializer import UserRegistrationSerializer, UserLoginSerializer
 from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -55,8 +55,7 @@ class LoginView(APIView):
             password = serializer.validated_data['password']
             user = authenticate(request, username=email, password=password)
             if user:
-                refresh = RefreshToken.for_user(user)
-                access_token = str(refresh.access_token)
-                return Response({'access_token': access_token})
+                token,created = Token.objects.create(user=user)
+                return Response({'access_token': token.key})
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         return Response(serializer.errors)

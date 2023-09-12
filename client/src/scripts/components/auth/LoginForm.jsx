@@ -1,5 +1,5 @@
-import {useEffect, useState, useContext} from 'react';
-import AuthContext from '../context/AuthProvider';
+import {useEffect, useState,useContext} from 'react';
+import useAuth from '../hooks/useAuth';
 import Input from '../other/Input';
 import Button from '../other/Button';
 import {DialogContext} from '../../bin/DialogProvider.jsx';
@@ -14,7 +14,7 @@ const LOGIN_URL = '/api/v1/auth/';
 
 const LoginForm = () => {
   const dialogCtx = useContext(DialogContext);
-  const {setAuth} = useContext(AuthContext);
+  const {setAuth} = useAuth();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

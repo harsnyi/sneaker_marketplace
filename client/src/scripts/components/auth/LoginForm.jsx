@@ -58,7 +58,8 @@ const LoginForm = () => {
       });
       console.log(JSON.stringify(response?.data));
       const accessToken = response?.data?.accessToken;
-      setAuth({email, password, accessToken});
+      setAuth({email,accessToken});
+      
       dialogCtx.success('Sikeresen bejelentkeztél!');
     } catch (error) {
       console.log(error.response.status);

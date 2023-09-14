@@ -10,7 +10,7 @@ import instagramLogo from '../../../assets/images/logo&icon/instagram.svg';
 import axios from '../api/axios';
 
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-const LOGIN_URL = '/api/v1/auth/';
+const LOGIN_URL = '/api/v1/token/';
 
 const LoginForm = () => {
   const dialogCtx = useContext(DialogContext);
@@ -52,13 +52,23 @@ const LoginForm = () => {
 
     */
     try {
-      const response = await axios.post(LOGIN_URL, JSON.stringify({email, password}), {
+      const response = await axios.post(LOGIN_URL, JSON.stringify({username:email, password}), {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
       });
+      
+      {/*Must delete*/}
       console.log(JSON.stringify(response?.data));
-      const accessToken = response?.data?.accessToken;
-      setAuth({email, password, accessToken});
+
+      const accessToken = response?.data?.access;
+      const tokenParts = accessToken.split('.');      
+      const payload = JSON.parse(atob(tokenParts[1]));
+
+      const role = payload.role; 
+      console.log(role);
+
+      setAuth({email,role,accessToken});
+      
       dialogCtx.success('Sikeresen bejelentkeztél!');
     } catch (error) {
       console.log(error.response.status);

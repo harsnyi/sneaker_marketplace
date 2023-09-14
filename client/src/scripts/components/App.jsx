@@ -58,7 +58,7 @@ function App() {
             <Route path="/news" element={<News />} ></Route>
 
             {/*Protected Routes*/}
-            <Route element={<RequireAuth/>}>
+            <Route element={<RequireAuth allowedRole={5001}/>}>
               <Route path="/profile" element={<Profile />} ></Route>
               <Route path="/notifications" element={<Notifications />} ></Route>
               <Route path="/messages" element={<Messages />} ></Route>

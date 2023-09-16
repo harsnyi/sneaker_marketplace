@@ -1,7 +1,7 @@
 import '../../../assets/css/searchbar.css';
 
-import magnifyingGlassIcon from '../../../assets/images/logo&icon/magnifying-glass-solid.svg';
-import xMarkIcon from '../../../assets/images/logo&icon/xmark-solid.svg';
+import magnifyingGlassIcon from '../../../assets/icons/magnifying-glass-solid.svg';
+import xMarkIcon from '../../../assets/icons/xmark-solid.svg';
 
 import {useEffect} from 'react';
 import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock';

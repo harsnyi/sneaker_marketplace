@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
-import showEye from '../../../assets/images/logo&icon/eye-regular.svg';
-import hideEye from '../../../assets/images/logo&icon/eye-slash-regular.svg';
+import showEye from '../../../assets/icons/eye-regular.svg';
+import hideEye from '../../../assets/icons/eye-slash-regular.svg';
 
 const Input = (props) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);

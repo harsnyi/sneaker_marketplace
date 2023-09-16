@@ -1,9 +1,9 @@
 import React, {useEffect, useState, useContext} from 'react';
 import {DialogContext} from '../../bin/DialogProvider.jsx';
-import successIcon from '../../../assets/images/logo&icon/circle-check-regular.svg';
-import warningIcon from '../../../assets/images/logo&icon/circle-exclamation-solid.svg';
-import errorIcon from '../../../assets/images/logo&icon/circle-xmark-regular.svg';
-import questionIcon from '../../../assets/images/logo&icon/circle-question-regular.svg';
+import successIcon from '../../../assets/icons/circle-check-regular.svg';
+import warningIcon from '../../../assets/icons/circle-exclamation-solid.svg';
+import errorIcon from '../../../assets/icons/circle-xmark-regular.svg';
+import questionIcon from '../../../assets/icons/circle-question-regular.svg';
 import '../../../assets/css/dialog.css';
 
 const Dialog = () => {

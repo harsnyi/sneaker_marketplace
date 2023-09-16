@@ -3,7 +3,7 @@ import {useMediaQuery} from 'react-responsive';
 
 import '../../assets/css/globals.css';
 
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import {DialogProvider} from '../bin/DialogProvider.jsx';
 
 import MobileNavBar from './navigation/MobileNavBar';
@@ -42,43 +42,193 @@ function App() {
     </>
   );
 
+  const routes = [
+    {
+      path: '/',
+      element: (
+        <CommonLayout>
+          <Home />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/home',
+      element: (
+        <CommonLayout>
+          <Home />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/about',
+      element: (
+        <CommonLayout>
+          <About />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/profile',
+      element: (
+        <CommonLayout>
+          <RequireAuth allowedRole={5001}>
+            <Profile />
+          </RequireAuth>
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/notifications',
+      element: (
+        <CommonLayout>
+          <RequireAuth allowedRole={5001}>
+            <Notifications />
+          </RequireAuth>
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/messages',
+      element: (
+        <CommonLayout>
+          <RequireAuth allowedRole={5001}>
+            <Messages />
+          </RequireAuth>
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/favourites',
+      element: (
+        <CommonLayout>
+          <RequireAuth allowedRole={5001}>
+            <Favourites />
+          </RequireAuth>
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/selling',
+      element: (
+        <CommonLayout>
+          <RequireAuth allowedRole={5001}>
+            <Selling />
+          </RequireAuth>
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/community',
+      element: (
+        <CommonLayout>
+          <RequireAuth allowedRole={5001}>
+            <Community />
+          </RequireAuth>
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/auction',
+      element: (
+        <CommonLayout>
+          <RequireAuth allowedRole={5001}>
+            <Auction />
+          </RequireAuth>
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/news',
+      element: (
+        <CommonLayout>
+          <News />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/about',
+      element: (
+        <CommonLayout>
+          <About />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/contact',
+      element: (
+        <CommonLayout>
+          <Contact />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/settings',
+      element: (
+        <CommonLayout>
+          <RequireAuth allowedRole={5001}>
+            <Settings />
+          </RequireAuth>
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/*',
+      element: <PageNotFound />,
+    },
+  ];
+
   return (
     <DialogProvider>
       <Dialog />
 
       <Suspense fallback={<Loader />}>
-      <CommonLayout>
-        <Routes>
-
-            {/*Public routes*/}
-            <Route path="/" element={<Home />} ></Route>
-            <Route path="/home" element={<Home />} ></Route>
-            <Route path="/about" element={<About />} ></Route>
-            <Route path="/contact" element={<Contact />} ></Route>
-            <Route path="/news" element={<News />} ></Route>
-
-            {/*Protected Routes*/}
-            <Route element={<RequireAuth allowedRole={5001}/>}>
-              <Route path="/profile" element={<Profile />} ></Route>
-              <Route path="/notifications" element={<Notifications />} ></Route>
-              <Route path="/messages" element={<Messages />} ></Route>
-              <Route path="/favourites" element={<Favourites />} ></Route>
-              <Route path="/selling" element={<Selling />} ></Route>
-              <Route path="/community" element={<Community />} ></Route>
-              <Route path="/auction" element={<Auction />} ></Route>
-              <Route path="/settings" element={<Settings />} ></Route>
-            </Route>
-            {/*Page not found not working as it should work*/}
-            <Route path="/*" element={<PageNotFound />} />
-            
-        </Routes>
-        </CommonLayout>
-
-            
-
+        <BrowserRouter basename="/">
+          <Routes>
+            {routes.map(({path, element}) => (
+              <Route key={path} path={path} element={element} />
+            ))}
+          </Routes>
+        </BrowserRouter>
       </Suspense>
     </DialogProvider>
   );
+
+  /*
+  return (
+    <DialogProvider>
+      <Dialog />
+
+      <Suspense fallback={<Loader />}>
+        <CommonLayout>
+          <Routes>
+            // Public Routes
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/home" element={<Home />}></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/contact" element={<Contact />}></Route>
+            <Route path="/news" element={<News />}></Route>
+
+            //Protected Routes
+            <Route element={<RequireAuth allowedRole={5001} />}>
+              <Route path="/profile" element={<Profile />}></Route>
+              <Route path="/notifications" element={<Notifications />}></Route>
+              <Route path="/messages" element={<Messages />}></Route>
+              <Route path="/favourites" element={<Favourites />}></Route>
+              <Route path="/selling" element={<Selling />}></Route>
+              <Route path="/community" element={<Community />}></Route>
+              <Route path="/auction" element={<Auction />}></Route>
+              <Route path="/settings" element={<Settings />}></Route>
+            </Route>
+
+            
+            //Page not found not working as it should work
+            <Route path="/*" element={<PageNotFound />} />
+          </Routes>
+        </CommonLayout>
+      </Suspense>
+    </DialogProvider>
+  );
+  */
 }
 
 export default App;

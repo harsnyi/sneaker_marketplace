@@ -1,7 +1,7 @@
 import '../../../assets/css/authentication_page.css';
 
 import AuthTabs from './AuthTabs';
-import xMarkIcon from '../../../assets/images/logo&icon/xmark-solid.svg';
+import xMarkIcon from '../../../assets/icons/xmark-solid.svg';
 import {useEffect} from 'react';
 import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock';
 

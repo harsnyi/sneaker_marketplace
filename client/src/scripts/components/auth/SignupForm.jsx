@@ -4,10 +4,10 @@ import axios from '../api/axios';
 import Input from '../other/Input';
 import Button from '../other/Button';
 
-import angleDown from '../../../assets/images/logo&icon/angle-down-solid.svg';
-import facebookLogo from '../../../assets/images/logo&icon/facebook-f.svg';
-import googleLogo from '../../../assets/images/logo&icon/google-plus-g.svg';
-import instagramLogo from '../../../assets/images/logo&icon/instagram.svg';
+import angleDown from '../../../assets/icons/angle-down-solid.svg';
+import facebookLogo from '../../../assets/icons/facebook-f.svg';
+import googleLogo from '../../../assets/icons/google-plus-g.svg';
+import instagramLogo from '../../../assets/icons/instagram.svg';
 
 const NAME_REGEX = /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+([ -][A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+)*$/;
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;

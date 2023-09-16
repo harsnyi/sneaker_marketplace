@@ -1,12 +1,12 @@
-import {useEffect, useState,useContext} from 'react';
+import {useEffect, useState, useContext} from 'react';
 import useAuth from '../hooks/useAuth';
 import Input from '../other/Input';
 import Button from '../other/Button';
 import {DialogContext} from '../../bin/DialogProvider.jsx';
 
-import facebookLogo from '../../../assets/images/logo&icon/facebook-f.svg';
-import googleLogo from '../../../assets/images/logo&icon/google-plus-g.svg';
-import instagramLogo from '../../../assets/images/logo&icon/instagram.svg';
+import facebookLogo from '../../../assets/icons/facebook-f.svg';
+import googleLogo from '../../../assets/icons/google-plus-g.svg';
+import instagramLogo from '../../../assets/icons/instagram.svg';
 import axios from '../api/axios';
 
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -52,23 +52,26 @@ const LoginForm = () => {
 
     */
     try {
-      const response = await axios.post(LOGIN_URL, JSON.stringify({username:email, password}), {
+      const response = await axios.post(LOGIN_URL, JSON.stringify({username: email, password}), {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
       });
-      
-      {/*Must delete*/}
+      /*
+      {
+      Must delete
+      }
+      */
       console.log(JSON.stringify(response?.data));
 
       const accessToken = response?.data?.access;
-      const tokenParts = accessToken.split('.');      
+      const tokenParts = accessToken.split('.');
       const payload = JSON.parse(atob(tokenParts[1]));
 
-      const role = payload.role; 
+      const role = payload.role;
       console.log(role);
 
-      setAuth({email,role,accessToken});
-      
+      setAuth({email, role, accessToken});
+
       dialogCtx.success('Sikeresen bejelentkeztél!');
     } catch (error) {
       console.log(error.response.status);

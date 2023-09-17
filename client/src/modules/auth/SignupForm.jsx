@@ -1,8 +1,10 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import axios from '../../setup/Axios';
 
 import Input from '../../common/Input';
 import Button from '../../common/Button';
+
+import {DialogContext} from '../../setup/DialogProvider';
 
 import angleDown from '../../assets/icons/angle-down-solid.svg';
 import facebookLogo from '../../assets/icons/facebook-f.svg';
@@ -25,6 +27,8 @@ const SignupForm = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [gender, setGender] = useState('');
+
+  const dialogCtx = useContext(DialogContext);
 
   useEffect(() => {
     // Validate first name and last name
@@ -159,6 +163,7 @@ const SignupForm = () => {
   }, [phoneNumber]);
 
   const handleFormSubmit = async (e) => {
+    dialogCtx.success('Sikeres regisztráció!');
     e.preventDefault();
     try {
       const response = await axios.post(

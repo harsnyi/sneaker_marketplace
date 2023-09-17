@@ -16,6 +16,7 @@ const Dialog = () => {
   useEffect(() => {
     if (dialogCtx.type) {
       setIsVisible(true);
+
       const showTimeout = setTimeout(() => {
         setAnimationClass('visible');
       }, 100);

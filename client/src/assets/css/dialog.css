@@ -11,9 +11,6 @@
   z-index: 999999999999;
   line-height: 1.5rem;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
   transform: translateX(100%);
   opacity: 0;
   transition: transform 0.2s, opacity 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -42,19 +39,19 @@
 }
 .dialog.success {
   background-color: #00A76F;
-  border: 1px solid #00744d;
+  border: 1px solid #004B50;
 }
 .dialog.error {
-  background-color: #b63b32;
-  border: 1px solid #7a2822;
+  background-color: #FF1F32;
+  border: 1px solid #8C001A;
 }
 .dialog.warning {
   background-color: #FFAB00;
-  border: 1px solid #b37800;
+  border: 1px solid #7A4100;
 }
 .dialog.info {
-  background-color: #2e67a8;
-  border: 1px solid #1e426c;
+  background-color: #00B8D9;
+  border: 1px solid #003768;
 }
 
 @media only screen and (max-width: 768px) {

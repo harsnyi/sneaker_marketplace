@@ -5,6 +5,7 @@ import './assets/css/globals.css';
 
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import {DialogProvider} from './setup/DialogProvider';
+import {LoaderProvider} from './setup/LoaderProvider';
 
 import MobileNavBar from './modules/navigation/MobileNavBar';
 import DesktopNavbar from './modules/navigation/DesktopNavBar';
@@ -178,57 +179,22 @@ function App() {
   ];
 
   return (
-    <DialogProvider>
-      <Dialog />
+    <LoaderProvider>
+      <DialogProvider>
+        <Dialog />
 
-      <Suspense fallback={<Loader />}>
-        <BrowserRouter basename="/">
-          <Routes>
-            {routes.map(({path, element}) => (
-              <Route key={path} path={path} element={element} />
-            ))}
-          </Routes>
-        </BrowserRouter>
-      </Suspense>
-    </DialogProvider>
+        <Suspense fallback={<Loader />}>
+          <BrowserRouter basename="/">
+            <Routes>
+              {routes.map(({path, element}) => (
+                <Route key={path} path={path} element={element} />
+              ))}
+            </Routes>
+          </BrowserRouter>
+        </Suspense>
+      </DialogProvider>
+    </LoaderProvider>
   );
-
-  /*
-  return (
-    <DialogProvider>
-      <Dialog />
-
-      <Suspense fallback={<Loader />}>
-        <CommonLayout>
-          <Routes>
-            // Public Routes
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/home" element={<Home />}></Route>
-            <Route path="/about" element={<About />}></Route>
-            <Route path="/contact" element={<Contact />}></Route>
-            <Route path="/news" element={<News />}></Route>
-
-            //Protected Routes
-            <Route element={<RequireAuth allowedRole={5001} />}>
-              <Route path="/profile" element={<Profile />}></Route>
-              <Route path="/notifications" element={<Notifications />}></Route>
-              <Route path="/messages" element={<Messages />}></Route>
-              <Route path="/favourites" element={<Favourites />}></Route>
-              <Route path="/selling" element={<Selling />}></Route>
-              <Route path="/community" element={<Community />}></Route>
-              <Route path="/auction" element={<Auction />}></Route>
-              <Route path="/settings" element={<Settings />}></Route>
-            </Route>
-
-            
-            //Page not found not working as it should work
-            <Route path="/*" element={<PageNotFound />} />
-          </Routes>
-        </CommonLayout>
-      </Suspense>
-    </DialogProvider>
-  );
-  */
 }
 
 export default App;

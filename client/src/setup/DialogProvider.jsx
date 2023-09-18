@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, createContext} from 'react';
 
-const DialogContext = React.createContext({
+const DialogContext = createContext({
   type: null,
   message: null,
   success: () => {},

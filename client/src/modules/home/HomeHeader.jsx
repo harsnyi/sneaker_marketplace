@@ -21,7 +21,7 @@ const HomeHeader = () => {
       <section className="home-header-content">
         <h1>Footwr.</h1>
         <h4>
-          Magyarország első
+          Magyarország elsőszámú
           <br />
           hivatalos sneaker piactere.
         </h4>

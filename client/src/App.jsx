@@ -13,6 +13,7 @@ import Dialog from './common/Dialog';
 import Loader from './common/Loader';
 import Footer from './modules/footer/Footer';
 import RequireAuth from './modules/auth/RequireAuth';
+import Logout from './pages/Logout';
 
 const Home = lazy(() => import('./modules/home/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -152,6 +153,14 @@ function App() {
       element: (
         <CommonLayout>
             <Settings />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/logout',
+      element: (
+        <CommonLayout>
+            <Logout/>
         </CommonLayout>
       ),
     }

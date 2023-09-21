@@ -24,9 +24,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         return token
 
 class UserLoginSerializer(serializers.ModelSerializer):
-    email = serializers.EmailField()
-    password = serializers.CharField(write_only=True)
     
     class Meta:
         model = User
-        fields = ('email', 'password')
+        fields = ('username', 'password')

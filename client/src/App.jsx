@@ -42,8 +42,8 @@ function App() {
       <Footer />
     </>
   );
-
-  const routes = [
+  
+  const visible_routes = [
     {
       path: '/',
       element: (
@@ -69,88 +69,10 @@ function App() {
       ),
     },
     {
-      path: '/profile',
-      element: (
-        <CommonLayout>
-          <RequireAuth allowedRole={5001}>
-            <Profile />
-          </RequireAuth>
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/notifications',
-      element: (
-        <CommonLayout>
-          <RequireAuth allowedRole={5001}>
-            <Notifications />
-          </RequireAuth>
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/messages',
-      element: (
-        <CommonLayout>
-          <RequireAuth allowedRole={5001}>
-            <Messages />
-          </RequireAuth>
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/favourites',
-      element: (
-        <CommonLayout>
-          <RequireAuth allowedRole={5001}>
-            <Favourites />
-          </RequireAuth>
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/selling',
-      element: (
-        <CommonLayout>
-          <RequireAuth allowedRole={5001}>
-            <Selling />
-          </RequireAuth>
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/community',
-      element: (
-        <CommonLayout>
-          <RequireAuth allowedRole={5001}>
-            <Community />
-          </RequireAuth>
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/auction',
-      element: (
-        <CommonLayout>
-          <RequireAuth allowedRole={5001}>
-            <Auction />
-          </RequireAuth>
-        </CommonLayout>
-      ),
-    },
-    {
       path: '/news',
       element: (
         <CommonLayout>
           <News />
-        </CommonLayout>
-      ),
-    },
-    {
-      path: '/about',
-      element: (
-        <CommonLayout>
-          <About />
         </CommonLayout>
       ),
     },
@@ -163,19 +85,76 @@ function App() {
       ),
     },
     {
-      path: '/settings',
+      path: '/*',
+      element: <PageNotFound />,
+    },
+  ]
+
+  const protected_routes = [
+    {
+      path: '/profile',
       element: (
         <CommonLayout>
-          <RequireAuth allowedRole={5001}>
-            <Settings />
-          </RequireAuth>
+            <Profile />
         </CommonLayout>
       ),
     },
     {
-      path: '/*',
-      element: <PageNotFound />,
+      path: '/notifications',
+      element: (
+        <CommonLayout>
+            <Notifications />
+        </CommonLayout>
+      ),
     },
+    {
+      path: '/messages',
+      element: (
+        <CommonLayout>
+            <Messages />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/favourites',
+      element: (
+        <CommonLayout>
+            <Favourites />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/selling',
+      element: (
+        <CommonLayout>
+            <Selling />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/community',
+      element: (
+        <CommonLayout>
+            <Community />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/auction',
+      element: (
+        <CommonLayout>
+            <Auction />
+        </CommonLayout>
+      ),
+    },
+    {
+      path: '/settings',
+      element: (
+        <CommonLayout>
+            <Settings />
+        </CommonLayout>
+      ),
+    }
   ];
 
   return (
@@ -186,9 +165,19 @@ function App() {
         <Suspense fallback={<Loader />}>
           <BrowserRouter basename="/">
             <Routes>
-              {routes.map(({path, element}) => (
-                <Route key={path} path={path} element={element} />
-              ))}
+              
+              {/*Visible routes*/}
+                {visible_routes.map(({path, element}) => (
+                    <Route key={path} path={path} element={element} />
+                ))}              
+              
+              {/*Protected routes*/}
+                {protected_routes.map(({path, element}) => (
+                  <Route element={<RequireAuth allowedRole={5001}/>}>
+                    <Route key={path} path={path} element={element} />
+                  </Route>
+                ))}
+              
             </Routes>
           </BrowserRouter>
         </Suspense>

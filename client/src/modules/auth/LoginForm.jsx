@@ -10,7 +10,7 @@ import instagramLogo from '../../assets/icons/instagram.svg';
 import axios from '../../setup/Axios';
 
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-const LOGIN_URL = '/api/v1/token/';
+const LOGIN_URL = '/api/v1/token';
 
 const LoginForm = () => {
   const dialogCtx = useContext(DialogContext);

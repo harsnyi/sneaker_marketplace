@@ -5,10 +5,10 @@ from user.user_serializer import UserRegistrationSerializer
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.tokens import RefreshToken,AccessToken
 from rest_framework.views import APIView
 
- 
+
 #Registers a new user with the added serializer.
 #More logic needs to be done
 class Register_view(APIView):
@@ -54,3 +54,17 @@ class Update_access_token_view(APIView):
 #Simple JWT refresh and access token 
 class MyTokenObtainParView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
+
+#Blacklists the given refresh token extracted from the cookies
+class LogoutView(APIView):
+    def post(self, request, *args, **kwargs):
+        
+        refresh_token = request.COOKIES.get('refresh_token')
+        try:
+
+            refresh = RefreshToken(refresh_token)
+            refresh.blacklist()
+            return Response(status=status.HTTP_205_RESET_CONTENT)
+        
+        except Exception as e:
+            return Response({'error': 'Invalid refresh token'}, status=400)

@@ -10,7 +10,7 @@ import instagramLogo from '../../assets/icons/instagram.svg';
 import axios from '../../setup/Axios';
 
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-const LOGIN_URL = '/api/v1/token/';
+const LOGIN_URL = '/api/v1/token/authenticate';
 
 const LoginForm = () => {
   const dialogCtx = useContext(DialogContext);
@@ -63,18 +63,17 @@ const LoginForm = () => {
       */
       console.log(JSON.stringify(response?.data));
 
-      const accessToken = response?.data?.access;
+      const accessToken = response?.data?.access_token;
       const tokenParts = accessToken.split('.');
       const payload = JSON.parse(atob(tokenParts[1]));
 
       const role = payload.role;
       console.log(role);
-
       setAuth({email, role, accessToken});
 
       dialogCtx.success('Sikeresen bejelentkeztél!');
     } catch (error) {
-      console.log(error.response.status);
+      //console.log(error.response.status);
       dialogCtx.error('Hibás e-mail cím vagy jelszó!');
     }
   };

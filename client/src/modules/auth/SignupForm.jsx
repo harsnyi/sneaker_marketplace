@@ -16,7 +16,7 @@ const NAME_REGEX = /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+([ -][A-ZÁ�
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const USERNAME_REGEX = /^(?!.*\s{2})[a-z0-9_. ]+(?<!\s)$/i;
 const PHONE_REGEX = /(\()?(\+36|0036|06)?(\))?(-| )?(1|20|2[2-9]|3[0-7]|40|42|4[4-9]|5[2-7]|59|60|62|63|66|68|69|70|7[2-9]|80|8[2-5]|8[7-9]]|90|9[2-9])([\\/ ])?(\d{6,7}|\d{3}(-| )\d{3,4}|\d{3,4}(-| )\d{3})/;
-const REGISTER_URL = '/api/v1/register/';
+const REGISTER_URL = '/api/v1/registration';
 
 const SignupForm = () => {
   const [errors, setErrors] = useState({}); // Store input errors

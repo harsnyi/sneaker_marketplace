@@ -1,12 +1,14 @@
 from rest_framework.response import Response
 from .user_serializer import MyTokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
 from user.user_serializer import UserRegistrationSerializer
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken,AccessToken
+from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
+from .user_serializer import UserLoginSerializer
+from django.contrib.auth import authenticate
+from django.http import JsonResponse, HttpResponse
 
 
 #Registers a new user with the added serializer.
@@ -23,6 +25,41 @@ class Register_view(APIView):
             return Response(status=status.HTTP_201_CREATED)
         return Response(serializer.errors)
 
+
+# Authenticates the user, if the credentials are valid 
+# the user gets an access front and an 
+# http only refresh token in the cookies
+class Authentication_view(APIView):
+    def post(self, request, *args, **kwargs):
+        
+        #Check if the user credentials are valid
+        serializer = UserLoginSerializer(data=request.data)
+        
+        if serializer.is_valid():
+            username = serializer.validated_data['username']
+            password = serializer.validated_data['password']
+            user = authenticate(request, username=username, password=password)
+            
+            #Check if the user exists
+            if user is not None:
+                token = MyTokenObtainPairSerializer
+                refresh = token.get_token(user)
+
+                response = HttpResponse()
+                response.set_cookie('refresh_token', str(refresh), httponly=True)
+        
+                json_response = JsonResponse({'access_token': str(refresh.access_token)})
+                response.status_code = json_response.status_code
+                response.content = json_response.content
+                response['content-type'] = json_response['content-type']
+
+                return response
+                
+            return JsonResponse({'error': 'User does not exists'}, status=400)    
+        
+        return JsonResponse({'error': 'Invalid Credentials'}, status=400)
+
+
 #Validate the refresh token stored in the cookie, 
 #then givin out fresh access token
 class Update_access_token_view(APIView):
@@ -30,30 +67,24 @@ class Update_access_token_view(APIView):
 
         refresh_token = request.COOKIES.get('refresh_token')
 
+        #Check if there is no refresh token between the cookies
         if not refresh_token:
-            # Handle the case when there is no refresh token in cookies
             return Response({'error': 'No refresh token found in cookies'}, status=400)
         
         try:
             # Decode and validate the refresh token
             token = RefreshToken(refresh_token)        
         except Exception as e:
-            # Handle invalid or expired refresh token
             return Response({'error': 'Invalid or expired refresh token'}, status=400)
         
         # Generate a new access token
         access_token = token.access_token
 
-        # You can customize the response data as needed
         response_data = {
-            'access_token': str(access_token),
+           'access_token': str(access_token),
         }
-
         return Response(response_data)
 
-#Simple JWT refresh and access token 
-class MyTokenObtainParView(TokenObtainPairView):
-    serializer_class = MyTokenObtainPairSerializer
 
 #Blacklists the given refresh token extracted from the cookies
 class LogoutView(APIView):

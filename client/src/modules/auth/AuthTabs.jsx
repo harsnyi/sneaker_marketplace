@@ -1,3 +1,5 @@
+import '../../assets/css/auth.css';
+
 import {useState, useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import SignupForm from './SignupForm';

@@ -1,20 +1,24 @@
-import '../../assets/css/authentication_page.css';
+import '../assets/css/pop_up.css';
 
-import AuthTabs from './AuthTabs';
-import xMarkIcon from '../../assets/icons/xmark-solid.svg';
+import xMarkIcon from '../assets/icons/xmark-solid.svg';
 import {useEffect} from 'react';
 import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock';
 
-const AuthenticationPage = (props) => {
+const PopUp = (props) => {
   const handleDisable = () => {
-    props.setIsAuthOpen(false); // Call the function passed through props to set isAuthOpen to false
-    window.history.replaceState(null, null, window.location.pathname); // Remove the query string from the URL
+    if (props.isAuthOpen) {
+      props.setIsAuthOpen(false);
+    } else if (props.isLogoutOpen) {
+      props.setIsLogoutOpen(false);
+    }
+
+    window.history.replaceState(null, null, window.location.pathname);
   };
 
   useEffect(() => {
     // Disable body scroll when the form is active
     if (props.isAuthOpen) {
-      const targetElement = document.querySelector('.authentication-page');
+      const targetElement = document.querySelector('.pop-up-page');
       disableBodyScroll(targetElement);
     } else {
       // Enable body scroll when the form is not active
@@ -29,15 +33,16 @@ const AuthenticationPage = (props) => {
 
   return (
     <>
-      <div className="authentication-page">
-        <div className="form-container">
+      <div className="pop-up-page">
+        <div className="pop-up-container">
           <button onClick={handleDisable} className="btn-close-form">
             <img src={xMarkIcon} alt="Bezár" />
           </button>
-          <AuthTabs />
+          {props.children}
         </div>
       </div>
     </>
   );
 };
-export default AuthenticationPage;
+
+export default PopUp;

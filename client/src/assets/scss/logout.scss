@@ -1,0 +1,14 @@
+@import './variables';
+
+.logout {
+    margin: 2rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+
+    p {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+}

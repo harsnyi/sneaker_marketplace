@@ -1,0 +1,44 @@
+@import 'variables';
+
+.pop-up-page {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0, 0, 0, 0.5);
+  z-index: 99999;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .pop-up-container {
+    background-color: $clr-white;
+    position: relative;
+    padding: 2rem;
+
+    .btn-close-form {
+      all: unset;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0.5rem;
+      --webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      &:hover {
+        img {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}

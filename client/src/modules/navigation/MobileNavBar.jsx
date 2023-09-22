@@ -25,7 +25,9 @@ import {NavLink} from 'react-router-dom';
 import {useState} from 'react';
 
 import NavUserCard from './NavUserCard';
-import AuthenticationPage from '../auth/AuthenticationPage';
+import PopUp from '../../common/PopUp';
+import AuthTabs from '../auth/AuthTabs';
+import Logout from '../auth/Logout';
 
 const MobileNavBar = () => {
   const location = window.location.pathname;
@@ -38,6 +40,11 @@ const MobileNavBar = () => {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const toggleAuth = () => {
     setIsAuthOpen(true);
+  };
+
+  const [isLogoutOpen, setIsLogoutOpen] = useState(false);
+  const toggleLogout = () => {
+    setIsLogoutOpen(true);
   };
 
   function scrollToBottom() {
@@ -141,10 +148,10 @@ const MobileNavBar = () => {
             </li>
 
             <li className={mobileNavStyle['side-list-item']}>
-              <NavLink to="/logout" className={mobileNavStyle['side-link']}>
+              <a href="#logout" onClick={toggleLogout} className={mobileNavStyle['side-link']}>
                 <img className={mobileNavStyle['side-svg']} src={logOutIcon} alt="Kijelentkezés" />
                 <span className={mobileNavStyle['side-text']}>Kijelentkezés</span>
-              </NavLink>
+              </a>
             </li>
 
             <li className={mobileNavStyle['side-list-item']}>
@@ -196,7 +203,17 @@ const MobileNavBar = () => {
         </ul>
       </nav>
 
-      {isAuthOpen && <AuthenticationPage isAuthOpen={isAuthOpen} setIsAuthOpen={setIsAuthOpen} />}
+      {isAuthOpen && (
+        <PopUp isAuthOpen={isAuthOpen} setIsAuthOpen={setIsAuthOpen}>
+          <AuthTabs />
+        </PopUp>
+      )}
+
+      {isLogoutOpen && (
+        <PopUp isLogoutOpen={isLogoutOpen} setIsLogoutOpen={setIsLogoutOpen}>
+          <Logout />
+        </PopUp>
+      )}
     </>
   );
 };

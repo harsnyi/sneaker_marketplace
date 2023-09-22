@@ -13,7 +13,6 @@ import Dialog from './common/Dialog';
 import Loader from './common/Loader';
 import Footer from './modules/footer/Footer';
 import RequireAuth from './modules/auth/RequireAuth';
-import Logout from './pages/Logout';
 
 const Home = lazy(() => import('./modules/home/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -43,7 +42,7 @@ function App() {
       <Footer />
     </>
   );
-  
+
   const visible_routes = [
     {
       path: '/',
@@ -89,14 +88,14 @@ function App() {
       path: '/*',
       element: <PageNotFound />,
     },
-  ]
+  ];
 
   const protected_routes = [
     {
       path: '/profile',
       element: (
         <CommonLayout>
-            <Profile />
+          <Profile />
         </CommonLayout>
       ),
     },
@@ -104,7 +103,7 @@ function App() {
       path: '/notifications',
       element: (
         <CommonLayout>
-            <Notifications />
+          <Notifications />
         </CommonLayout>
       ),
     },
@@ -112,7 +111,7 @@ function App() {
       path: '/messages',
       element: (
         <CommonLayout>
-            <Messages />
+          <Messages />
         </CommonLayout>
       ),
     },
@@ -120,7 +119,7 @@ function App() {
       path: '/favourites',
       element: (
         <CommonLayout>
-            <Favourites />
+          <Favourites />
         </CommonLayout>
       ),
     },
@@ -128,7 +127,7 @@ function App() {
       path: '/selling',
       element: (
         <CommonLayout>
-            <Selling />
+          <Selling />
         </CommonLayout>
       ),
     },
@@ -136,7 +135,7 @@ function App() {
       path: '/community',
       element: (
         <CommonLayout>
-            <Community />
+          <Community />
         </CommonLayout>
       ),
     },
@@ -144,7 +143,7 @@ function App() {
       path: '/auction',
       element: (
         <CommonLayout>
-            <Auction />
+          <Auction />
         </CommonLayout>
       ),
     },
@@ -152,18 +151,10 @@ function App() {
       path: '/settings',
       element: (
         <CommonLayout>
-            <Settings />
+          <Settings />
         </CommonLayout>
       ),
     },
-    {
-      path: '/logout',
-      element: (
-        <CommonLayout>
-            <Logout/>
-        </CommonLayout>
-      ),
-    }
   ];
 
   return (
@@ -174,19 +165,17 @@ function App() {
         <Suspense fallback={<Loader />}>
           <BrowserRouter basename="/">
             <Routes>
-              
               {/*Visible routes*/}
-                {visible_routes.map(({path, element}) => (
-                    <Route key={path} path={path} element={element} />
-                ))}              
-              
+              {visible_routes.map(({path, element}) => (
+                <Route key={path} path={path} element={element} />
+              ))}
+
               {/*Protected routes*/}
-                {protected_routes.map(({path, element}) => (
-                  <Route element={<RequireAuth allowedRole={5001}/>}>
-                    <Route key={path} path={path} element={element} />
-                  </Route>
-                ))}
-              
+              {protected_routes.map(({path, element}) => (
+                <Route element={<RequireAuth allowedRole={5001} />}>
+                  <Route key={path} path={path} element={element} />
+                </Route>
+              ))}
             </Routes>
           </BrowserRouter>
         </Suspense>

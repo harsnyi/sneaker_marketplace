@@ -1,10 +1,11 @@
 import Button from '../../common/Button';
 import Avatar from './Avatar';
-import AuthenticationPage from '../auth/AuthenticationPage';
 
 import {useState} from 'react';
 
 import avatarPic from '../../assets/images/profile_pics/IMG_0205.jpeg';
+import PopUp from '../../common/PopUp';
+import AuthTabs from '../auth/AuthTabs';
 
 const HomeHeader = () => {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
@@ -17,7 +18,11 @@ const HomeHeader = () => {
 
   return (
     <>
-      {isAuthOpen && <AuthenticationPage isAuthOpen={isAuthOpen} setIsAuthOpen={setIsAuthOpen} />}
+      {isAuthOpen && (
+        <PopUp isAuthOpen={isAuthOpen} setIsAuthOpen={setIsAuthOpen}>
+          <AuthTabs />
+        </PopUp>
+      )}
       <section className="home-header-content">
         <h1>Footwr.</h1>
         <h4>

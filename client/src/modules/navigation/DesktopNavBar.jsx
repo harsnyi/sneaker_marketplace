@@ -26,7 +26,9 @@ import {NavLink} from 'react-router-dom';
 import React, {useEffect, useState} from 'react';
 import Search from '../search/Search';
 import NavUserCard from './NavUserCard';
-import AuthenticationPage from '../auth/AuthenticationPage';
+import PopUp from '../../common/PopUp';
+import AuthTabs from '../auth/AuthTabs';
+import Logout from '../auth/Logout';
 
 function delayNavbarText() {
   const navbarTextItems = document.querySelectorAll(`.${desktopNavStyle['navbar-text']}`);
@@ -59,6 +61,11 @@ const DesktopNavBar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const toggleSearch = () => {
     setIsSearchOpen(true);
+  };
+
+  const [isLogoutOpen, setIsLogoutOpen] = useState(false);
+  const toggleLogout = () => {
+    setIsLogoutOpen(true);
   };
 
   function scrollToBottom() {
@@ -202,10 +209,10 @@ const DesktopNavBar = () => {
           </li>
 
           <li className={desktopNavStyle['nav-list-item']} title="Kijelentkezés">
-            <NavLink to="/logout" className={desktopNavStyle['nav-link']}>
+            <a href="#logout" onClick={toggleLogout} className={desktopNavStyle['nav-link']}>
               <img className={desktopNavStyle['navbar-svg']} src={logOutIcon} alt="Kijelentkezés" />
               <span className={desktopNavStyle['navbar-text']}>Kijelentkezés</span>
-            </NavLink>
+            </a>
           </li>
 
           <li className={desktopNavStyle['nav-list-item']}>
@@ -217,7 +224,17 @@ const DesktopNavBar = () => {
       </nav>
 
       {isSearchOpen && <Search isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />}
-      {isAuthOpen && <AuthenticationPage isAuthOpen={isAuthOpen} setIsAuthOpen={setIsAuthOpen} />}
+      {isAuthOpen && (
+        <PopUp isAuthOpen={isAuthOpen} setIsAuthOpen={setIsAuthOpen}>
+          <AuthTabs />
+        </PopUp>
+      )}
+
+      {isLogoutOpen && (
+        <PopUp isLogoutOpen={isLogoutOpen} setIsLogoutOpen={setIsLogoutOpen}>
+          <Logout />
+        </PopUp>
+      )}
     </>
   );
 };

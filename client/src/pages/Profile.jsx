@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import useRefreshToken from '../hooks/useRefreshToken';
-import axios from '../setup/Axios';
+import useAxiosPrivate from '../hooks/useAxiosPrivate';
 
 function Profile() {
   const [users,setUsers] = useState([])
-  const refresh = useRefreshToken();
+  const axiosPrivate = useAxiosPrivate();
+
   useEffect(() => {
     document.title = 'Profil | Footwr.';
 
@@ -13,7 +13,7 @@ function Profile() {
 
     const getUsers = async () => {
       try {
-        const response = await axios.get('/users',{
+        const response = await axiosPrivate.get('/users',{
           signal:controller.signal
         });
         console.log(response.data);
@@ -46,7 +46,6 @@ function Profile() {
         ) : <p>No users to display</p>
         }
       </div>
-      <button onClick={() => refresh()}>refresh</button>
     </>
   );
 }

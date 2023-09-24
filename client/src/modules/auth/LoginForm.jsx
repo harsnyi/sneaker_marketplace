@@ -3,6 +3,7 @@ import useAuth from '../../hooks/useAuth';
 import Input from '../../common/Input';
 import Button from '../../common/Button';
 import {DialogContext} from '../../setup/DialogProvider.jsx';
+import {LoaderContext} from '../../setup/LoaderProvider.jsx';
 
 import facebookLogo from '../../assets/icons/facebook-f.svg';
 import googleLogo from '../../assets/icons/google-plus-g.svg';
@@ -14,6 +15,7 @@ const LOGIN_URL = '/api/v1/token/authenticate';
 
 const LoginForm = () => {
   const dialogCtx = useContext(DialogContext);
+  const loaderCtx = useContext(LoaderContext);
   const {setAuth} = useAuth();
 
   const [email, setEmail] = useState('');
@@ -37,30 +39,12 @@ const LoginForm = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    /*
-    if (email && password) {
-      // Simulating login logic
-      if (email === 'test@example.com' && password === 'password') {
-        dialogCtx.success('Sikeresen bejelentkeztél!');
-      } else {
-        dialogCtx.error('Hibás e-mail cím vagy jelszó!');
-      }
-    } else {
-      dialogCtx.error('A csillaggal jelölt mezők kitöltése kötelező!');
-      return;
-    }
-
-    */
+    loaderCtx.show();
     try {
       const response = await axios.post(LOGIN_URL, JSON.stringify({username: email, password}), {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
       });
-      /*
-      {
-      Must delete
-      }
-      */
       console.log(JSON.stringify(response?.data));
 
       const accessToken = response?.data?.access_token;
@@ -72,9 +56,15 @@ const LoginForm = () => {
       setAuth({email, role, accessToken});
 
       dialogCtx.success('Sikeresen bejelentkeztél!');
+      setTimeout(() => {
+        loaderCtx.hide();
+        window.location.href = '/home';
+      }, 1000);
     } catch (error) {
       //console.log(error.response.status);
+
       dialogCtx.error('Hibás e-mail cím vagy jelszó!');
+      loaderCtx.hide();
     }
   };
 

@@ -18,37 +18,11 @@ const Logout = () => {
   const handleLogOut = () => {
     loaderCtx.show();
 
-    try {
-      const response = axios.post(
-        LOGOUT_URL,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
-
-      console.log(response.data);
-    } catch (error) {
-      console.log(error.response.status);
-    } finally {
+    axios.post(LOGOUT_URL).then(() => {
       loaderCtx.hide();
-    }
-
-    try {
-      const response = axios.post(
-        LOGOUT_URL,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
-
-      console.log(response.data);
-    } catch (error) {
-      console.log(error.response.status);
-    } finally {
-      loaderCtx.hide();
-    }
+      dialogCtx.info('Kijelentkeztél!');
+      window.location.href = '/home';
+    });
   };
 
   return (

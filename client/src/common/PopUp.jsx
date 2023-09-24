@@ -17,7 +17,7 @@ const PopUp = (props) => {
 
   useEffect(() => {
     // Disable body scroll when the form is active
-    if (props.isAuthOpen) {
+    if (props.isAuthOpen || props.isLogoutOpen) {
       const targetElement = document.querySelector('.pop-up-page');
       disableBodyScroll(targetElement);
     } else {
@@ -29,7 +29,7 @@ const PopUp = (props) => {
     return () => {
       enableBodyScroll(document.body);
     };
-  }, [props.isAuthOpen]);
+  }, [props.isAuthOpen, props.isLogoutOpen]);
 
   return (
     <>

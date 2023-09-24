@@ -1,11 +1,13 @@
 import '../../assets/css/auth.css';
 
+import {useLocation} from 'react-router';
 import {useState, useEffect} from 'react';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 
 const AuthTabs = () => {
   const [activeTab, setActiveTab] = useState();
+  const location = useLocation();
 
   useEffect(() => {
     setActiveTab(location.hash === '#login' ? 1 : 2);

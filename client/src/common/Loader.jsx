@@ -1,7 +1,9 @@
-import React from 'react';
 import '../assets/css/loader.css';
 
-const Loader = ({loading}) => {
+import {useLoader} from '../hooks/useLoader';
+
+const Loader = () => {
+  const {loading} = useLoader();
   if (!loading) return null;
 
   return (

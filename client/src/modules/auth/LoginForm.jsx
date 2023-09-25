@@ -1,8 +1,9 @@
-import {useEffect, useState, useContext} from 'react';
-import useAuth from '../../hooks/useAuth';
+import {useEffect, useState} from 'react';
+import {useAuth} from '../../hooks/useAuth';
+import {useLoader} from '../../hooks/useLoader';
+import {useToast} from '../../hooks/useToast';
 import Input from '../../common/Input';
 import Button from '../../common/Button';
-import {DialogContext} from '../../setup/DialogProvider.jsx';
 
 import facebookLogo from '../../assets/icons/facebook-f.svg';
 import googleLogo from '../../assets/icons/google-plus-g.svg';
@@ -13,8 +14,9 @@ const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const LOGIN_URL = '/api/v1/token/authenticate';
 
 const LoginForm = () => {
-  const dialogCtx = useContext(DialogContext);
   const {setAuth} = useAuth();
+  const {showLoader, hideLoader} = useLoader();
+  const {addToast} = useToast();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -37,30 +39,14 @@ const LoginForm = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    /*
-    if (email && password) {
-      // Simulating login logic
-      if (email === 'test@example.com' && password === 'password') {
-        dialogCtx.success('Sikeresen bejelentkeztél!');
-      } else {
-        dialogCtx.error('Hibás e-mail cím vagy jelszó!');
-      }
-    } else {
-      dialogCtx.error('A csillaggal jelölt mezők kitöltése kötelező!');
-      return;
-    }
+    showLoader();
 
-    */
     try {
       const response = await axios.post(LOGIN_URL, JSON.stringify({username: email, password}), {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
       });
-      /*
-      {
-      Must delete
-      }
-      */
+
       console.log(JSON.stringify(response?.data));
 
       const accessToken = response?.data?.access_token;
@@ -70,11 +56,11 @@ const LoginForm = () => {
       const role = payload.role;
       console.log(role);
       setAuth({email, role, accessToken});
-
-      dialogCtx.success('Sikeresen bejelentkeztél!');
+      addToast('success', 'Sikeresen bejelentkeztél!');
     } catch (error) {
-      //console.log(error.response.status);
-      dialogCtx.error('Hibás e-mail cím vagy jelszó!');
+      addToast('error', error.message);
+    } finally {
+      hideLoader();
     }
   };
 

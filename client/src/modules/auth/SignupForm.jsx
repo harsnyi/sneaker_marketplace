@@ -1,16 +1,14 @@
-import {useState, useEffect, useContext} from 'react';
+import {useState, useEffect} from 'react';
 import axios from '../../setup/Axios';
 
 import Input from '../../common/Input';
 import Button from '../../common/Button';
 
-import {DialogContext} from '../../setup/DialogProvider';
-import {LoaderContext} from '../../setup/LoaderProvider';
-
 import angleDown from '../../assets/icons/angle-down-solid.svg';
 import facebookLogo from '../../assets/icons/facebook-f.svg';
 import googleLogo from '../../assets/icons/google-plus-g.svg';
 import instagramLogo from '../../assets/icons/instagram.svg';
+import {useLoader} from '../../hooks/useLoader';
 
 const NAME_REGEX = /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+([ -][A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+)*$/;
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -29,8 +27,7 @@ const SignupForm = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [gender, setGender] = useState('');
 
-  const dialogCtx = useContext(DialogContext);
-  const loaderCtx = useContext(LoaderContext);
+  const {showLoader, hideLoader} = useLoader();
 
   useEffect(() => {
     // Validate first name and last name
@@ -165,10 +162,9 @@ const SignupForm = () => {
   }, [phoneNumber]);
 
   const handleFormSubmit = async (e) => {
-    loaderCtx.show();
+    showLoader();
     setTimeout(() => {
-      loaderCtx.hide();
-      dialogCtx.success('Sikeres regisztráció!');
+      hideLoader();
     }, 4000);
 
     e.preventDefault();

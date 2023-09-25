@@ -4,15 +4,15 @@ import {useMediaQuery} from 'react-responsive';
 import './assets/css/globals.css';
 
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
-import {DialogProvider} from './setup/DialogProvider';
-import {LoaderProvider} from './setup/LoaderProvider';
+import ToastProvider from './setup/ToastProvider';
+import LoaderProvider from './setup/LoaderProvider';
 
 import MobileNavBar from './modules/navigation/MobileNavBar';
 import DesktopNavbar from './modules/navigation/DesktopNavBar';
-import Dialog from './common/Dialog';
 import Loader from './common/Loader';
 import Footer from './modules/footer/Footer';
 import RequireAuth from './modules/auth/RequireAuth';
+import ToastContainer from './common/ToastContainer';
 
 const Home = lazy(() => import('./modules/home/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -159,9 +159,7 @@ function App() {
 
   return (
     <LoaderProvider>
-      <DialogProvider>
-        <Dialog />
-
+      <ToastProvider>
         <Suspense fallback={<Loader />}>
           <BrowserRouter basename="/">
             <Routes>
@@ -177,9 +175,10 @@ function App() {
                 </Route>
               ))}
             </Routes>
+            <ToastContainer />
           </BrowserRouter>
         </Suspense>
-      </DialogProvider>
+      </ToastProvider>
     </LoaderProvider>
   );
 }

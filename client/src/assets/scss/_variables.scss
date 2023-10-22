@@ -1,16 +1,16 @@
-// color
+// COLORS
 $clr-black: #000000;
 $clr-white: #ffffff;
 
-$clr-grey-100: #F9FAFB;
-$clr-grey-200: #F4F6F8;
-$clr-grey-300: #DFE3E8;
-$clr-grey-400: #C4CDD5;
-$clr-grey-500: #919EAB;
-$clr-grey-600: #637381;
-$clr-grey-700: #454F5B;
-$clr-grey-800: #212B36;
-$clr-grey-900: #161C24;
+$clr-primary-100: #F9FAFB;
+$clr-primary-200: #F4F6F8;
+$clr-primary-300: #DFE3E8;
+$clr-primary-400: #C4CDD5;
+$clr-primary-500: #919EAB;
+$clr-primary-600: #637381;
+$clr-primary-700: #454F5B;
+$clr-primary-800: #212B36;
+$clr-primary-900: #161C24;
 
 $clr-green-lighter: #C8FAD6;
 $clr-green-light: #5BE49B;
@@ -42,21 +42,107 @@ $clr-twitter: #1da1f2;
 $clr-google: #db4437;
 $clr-instagram: #B71D18;
 
-//size
-$closed-nav-width: 5rem;
-$opened-nav-width: 16rem;
-
+// SIZES
+$panel-gap: .5rem;
 $mobile-nav-height: 3.5rem;
 $mobile-header-height: $mobile-nav-height;
 
-
-$footer-height: 90svh;
-
-//cubic-bezier
-$animation-speed: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-//fonts
-$font-display: 'Staatliches', cursive;
-//$font-display: 'Qanelas';
-//$font-display: 'Thunder', sans-serif;
+// FONTS
+$font-display: 'BiggerDisplay', sans-serif;
+//$font-display: 'JDKFuturix', sans-serif;
 $font-content: 'Oswald', sans-serif;
+
+//COUNTS
+$dekstop-navbar-text-count : 17;
+//$mobile-navbar-text-count: 8;
+
+// ANIMATIONS
+$animation-cubic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+@keyframes bg-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes loading {
+    50% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0;
+        right: 0;
+        left: unset;
+    }
+}
+
+@keyframes toast {
+    0% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes sliding-down {
+    0% {
+        transform: translateY(-3%);
+        opacity: 0;
+    }
+
+    10% {
+        transform: translateY(-2.0999999999999996%);
+        opacity: 1;
+    }
+
+    90% {
+        transform: translateY(2.0999999999999996%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(3%);
+        opacity: 0;
+    }
+}
+
+@keyframes sliding-up {
+    0% {
+        transform: translateY(3%);
+        opacity: 0;
+    }
+
+    15% {
+        transform: translateY(2.0999999999999996%);
+        opacity: 1;
+    }
+
+    85% {
+        transform: translateY(-2.0999999999999996%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-3%);
+        opacity: 0;
+    }
+}
+
+// MEDIA QUERIES
+$media-query-sm: 576px;
+$media-query-md: 768px;
+$media-query-lg: 1200px;
+$media-query-xl: 1600px;
+$media-query-2xl: 1920px;
+$media-query-3xl: 2560px;

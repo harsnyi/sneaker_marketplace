@@ -1,12 +1,6 @@
 import axios from 'axios';
-const BASE_URL = 'http://localhost:8000';
 
+//Development api (PORT 8000 [Django])
 export default axios.create({
-    baseURL: BASE_URL
-});
-
-export const axiosPrivate = axios.create({
-    baseURL: BASE_URL,
-    headers: { 'Content-Type': 'application/json' },
-    withCredentials: true
+    baseURL: 'http://localhost:8000'
 });

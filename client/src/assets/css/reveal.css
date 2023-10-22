@@ -1,0 +1,81 @@
+@keyframes bg-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes loading {
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}
+@keyframes toast {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+@keyframes sliding-down {
+  0% {
+    transform: translateY(-3%);
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(-2.1%);
+    opacity: 1;
+  }
+  90% {
+    transform: translateY(2.1%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(3%);
+    opacity: 0;
+  }
+}
+@keyframes sliding-up {
+  0% {
+    transform: translateY(3%);
+    opacity: 0;
+  }
+  15% {
+    transform: translateY(2.1%);
+    opacity: 1;
+  }
+  85% {
+    transform: translateY(-2.1%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-3%);
+    opacity: 0;
+  }
+}
+.reveal-div {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  /*
+  .slide-div {
+      position: absolute;
+      top: .25rem;
+      bottom: .25rem;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      background-color: $clr-yellow
+  }
+  */
+}/*# sourceMappingURL=reveal.css.map */

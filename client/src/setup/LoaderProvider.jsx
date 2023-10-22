@@ -1,20 +1,20 @@
-import React, {useState, createContext} from 'react';
+import React, {createContext, useState} from 'react';
 import Loader from '../common/Loader';
 
-const LoaderContext = createContext();
+export const LoaderContext = createContext();
 
-const LoaderProvider = (props) => {
+const LoaderProvider = ({children}) => {
   const [loading, setLoading] = useState(false);
 
-  const show = () => setLoading(true);
-  const hide = () => setLoading(false);
+  const showLoader = () => setLoading(true);
+  const hideLoader = () => setLoading(false);
 
   return (
-    <LoaderContext.Provider value={{show, hide}}>
-      {props.children}
-      <Loader loading={loading} />
+    <LoaderContext.Provider value={{loading, showLoader, hideLoader}}>
+      <Loader />
+      {children}
     </LoaderContext.Provider>
   );
 };
 
-export {LoaderProvider, LoaderContext};
+export default LoaderProvider;

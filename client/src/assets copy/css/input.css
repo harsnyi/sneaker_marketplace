@@ -1,0 +1,183 @@
+@keyframes bg-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes loading {
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}
+@keyframes toast {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+@keyframes sliding-down {
+  0% {
+    transform: translateY(-3%);
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(-2.1%);
+    opacity: 1;
+  }
+  90% {
+    transform: translateY(2.1%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(3%);
+    opacity: 0;
+  }
+}
+@keyframes sliding-up {
+  0% {
+    transform: translateY(3%);
+    opacity: 0;
+  }
+  15% {
+    transform: translateY(2.1%);
+    opacity: 1;
+  }
+  85% {
+    transform: translateY(-2.1%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-3%);
+    opacity: 0;
+  }
+}
+.input-wrapper {
+  margin: 0.5rem 0;
+}
+.input-wrapper .input-group {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin: 0.2rem 0;
+}
+.input-wrapper .input-group label {
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  font-size: 1.2rem;
+  transform: translateY(-50%);
+  color: #919EAB;
+  pointer-events: none;
+  transition: 0.2s;
+  padding: 0 0.2rem;
+}
+.input-wrapper .input-group .eye {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+  background-color: transparent;
+}
+.input-wrapper .input-group .input-field {
+  padding: 0.75rem;
+  padding-right: 2rem !important;
+  outline: none;
+  font-size: 0.9rem;
+  background-color: transparent;
+}
+.input-wrapper .input-group .input-field.light {
+  border: 2px solid #454F5B;
+  color: #161C24;
+  background-color: #F9FAFB;
+}
+.input-wrapper .input-group .input-field.light ~ .eye {
+  color: #454F5B;
+}
+.input-wrapper .input-group .input-field.light:not(:-moz-placeholder-shown) {
+  border: 2px solid #161C24;
+}
+.input-wrapper .input-group .input-field.light:focus, .input-wrapper .input-group .input-field.light:invalid, .input-wrapper .input-group .input-field.light:not(:placeholder-shown) {
+  border: 2px solid #161C24;
+}
+.input-wrapper .input-group .input-field.light:not(:-moz-placeholder-shown) ~ label {
+  top: 0;
+  color: #161C24;
+  font-size: 1.1rem;
+  background-color: #ffffff;
+}
+.input-wrapper .input-group .input-field.light:focus ~ label, .input-wrapper .input-group .input-field.light:invalid ~ label, .input-wrapper .input-group .input-field.light:not(:placeholder-shown) ~ label {
+  top: 0;
+  color: #161C24;
+  font-size: 1.1rem;
+  background-color: #ffffff;
+}
+.input-wrapper .input-group .input-field.light.input-error {
+  border: 2px solid #FF1F32;
+}
+.input-wrapper .input-group .input-field.light.input-error:focus {
+  outline: 2px solid #FF8389;
+}
+.input-wrapper .input-group .input-field.light.input-success {
+  border: 2px solid #00A76F;
+}
+.input-wrapper .input-group .input-field.dark {
+  border: 2px solid #919EAB;
+  color: #ffffff;
+}
+.input-wrapper .input-group .input-field.dark:not(:-moz-placeholder-shown) {
+  border: 2px solid #ffffff;
+}
+.input-wrapper .input-group .input-field.dark:focus, .input-wrapper .input-group .input-field.dark:invalid, .input-wrapper .input-group .input-field.dark:not(:placeholder-shown) {
+  border: 2px solid #ffffff;
+}
+.input-wrapper .input-group .input-field.dark:not(:-moz-placeholder-shown) ~ label {
+  top: 0;
+  color: #ffffff;
+  font-size: 1.1rem;
+  background-color: #161C24;
+}
+.input-wrapper .input-group .input-field.dark:focus ~ label, .input-wrapper .input-group .input-field.dark:invalid ~ label, .input-wrapper .input-group .input-field.dark:not(:placeholder-shown) ~ label {
+  top: 0;
+  color: #ffffff;
+  font-size: 1.1rem;
+  background-color: #161C24;
+}
+.input-wrapper .input-group .input-field.dark.input-error {
+  border: 2px solid #FF1F32;
+}
+.input-wrapper .input-group .input-field.dark.input-error:focus {
+  outline: 2px solid #FF8389;
+}
+.input-wrapper .input-group .input-field.dark.input-success {
+  border: 2px solid #00A76F;
+}
+.input-wrapper .error-msg {
+  color: #FF1F32;
+  font-size: 0.75rem;
+}
+
+/* Change Autocomplete styles*/
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff;
+  -webkit-box-shadow: 0 0 0px 1000px #161C24 inset;
+}/*# sourceMappingURL=input.css.map */

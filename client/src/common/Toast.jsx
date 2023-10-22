@@ -1,9 +1,7 @@
 import '../assets/css/toast.css';
 
-import successIcon from '../assets/icons/circle-check-regular.svg';
-import warningIcon from '../assets/icons/circle-exclamation-solid.svg';
-import errorIcon from '../assets/icons/circle-xmark-regular.svg';
-import questionIcon from '../assets/icons/circle-question-regular.svg';
+import {FaCircleCheck, FaCircleInfo, FaTriangleExclamation} from 'react-icons/fa6';
+import {BiSolidErrorAlt} from 'react-icons/bi';
 
 import React, {useEffect, useState} from 'react';
 
@@ -23,28 +21,12 @@ const Toast = ({id, type, message, onClose}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, onClose]);
 
-  var icon = null;
-
-  switch (type) {
-    case 'success':
-      icon = successIcon;
-      break;
-    case 'warning':
-      icon = warningIcon;
-      break;
-    case 'error':
-      icon = errorIcon;
-      break;
-    case 'info':
-      icon = questionIcon;
-      break;
-    default:
-      icon = null;
-  }
-
   return (
     <div className={`toast ${type}`}>
-      <img src={icon} alt={type} />
+      {type === 'success' && <FaCircleCheck className="toast-icon" />}
+      {type === 'error' && <BiSolidErrorAlt className="toast-icon" />}
+      {type === 'info' && <FaCircleInfo className="toast-icon" />}
+      {type === 'warning' && <FaTriangleExclamation className="toast-icon" />}
       <p>{message}</p>
       <button className="toast-close" onClick={() => onClose(id)}>
         &#x2716;

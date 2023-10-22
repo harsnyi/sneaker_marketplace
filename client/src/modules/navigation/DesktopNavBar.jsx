@@ -1,242 +1,217 @@
 import desktopNavStyle from '../../assets/css/desktop_navbar.module.css';
 
-import logo from '../../assets/brand/laced-logo.png';
-import hamburgerIcon from '../../assets/icons/bars-solid.svg';
-import xMarkIcon from '../../assets/icons/xmark-solid.svg';
-import houseIcon from '../../assets/icons/house-chimney-solid.svg';
-import magnifyingGlassIcon from '../../assets/icons/magnifying-glass-solid.svg';
-import userIcon from '../../assets/icons/user-solid.svg';
-import bellIcon from '../../assets/icons/bell-solid.svg';
-import envelopeIcon from '../../assets/icons/envelope-solid.svg';
-import heartIcon from '../../assets/icons/heart-solid.svg';
-import uploadIcon from '../../assets/icons/arrow-up-from-bracket-solid.svg';
-import userGroupIcon from '../../assets/icons/user-group-solid.svg';
-import auctionHammerIcon from '../../assets/icons/gavel-solid.svg';
-import newsPaperIcon from '../../assets/icons/newspaper-solid.svg';
-import infoIcon from '../../assets/icons/circle-info-solid.svg';
-import phoneIcon from '../../assets/icons/phone-solid.svg';
-import loginIcon from '../../assets/icons/right-to-bracket-solid.svg';
-import signupIcon from '../../assets/icons/user-plus-solid.svg';
-import settingsIcon from '../../assets/icons/gear-solid.svg';
-import moreIcon from '../../assets/icons/angles-right-solid.svg';
-import logOutIcon from '../../assets/icons/right-from-bracket-solid.svg';
-import profilePicture from '../../assets/images/profile_pics/225746166_2006567569490591_3501118953375513610_n.jpg';
-import {NavLink} from 'react-router-dom';
+import React, {useState} from 'react';
+import {NavLink, useLocation, useNavigate} from 'react-router-dom';
+import {useLoader} from '../../hooks/useLoader';
+import {useToast} from '../../hooks/useToast';
 
-import React, {useEffect, useState} from 'react';
-import Search from '../search/Search';
-import NavUserCard from './NavUserCard';
-import PopUp from '../../common/PopUp';
-import AuthTabs from '../auth/AuthTabs';
-import Logout from '../auth/Logout';
+import profileImage from '../../assets/images/profile_pictures/225746166_2006567569490591_3501118953375513610_n.jpg';
+import {CgMenuGridO, CgClose} from 'react-icons/cg';
+import {AiFillHome, AiOutlineHome} from 'react-icons/ai';
+import {BiSearchAlt, BiSolidSearchAlt2} from 'react-icons/bi';
+import {MdAccountBox, MdOutlineAccountBox} from 'react-icons/md';
+import {IoNotificationsSharp} from 'react-icons/io5';
+import {IoMdNotificationsOutline} from 'react-icons/io';
+import {BiSolidMessageSquareDetail, BiMessageSquareDetail} from 'react-icons/bi';
+import {MdFavorite, MdFavoriteBorder} from 'react-icons/md';
+import {MdSell, MdOutlineSell} from 'react-icons/md';
+import {BsPeopleFill, BsPeople} from 'react-icons/bs';
+import {RiAuctionFill, RiAuctionLine} from 'react-icons/ri';
+import {IoNewspaperSharp, IoNewspaperOutline} from 'react-icons/io5';
+import {BsInfoSquareFill, BsInfoSquare} from 'react-icons/bs';
+import {MdPhoneInTalk, MdOutlinePhoneInTalk} from 'react-icons/md';
+import {IoSettings, IoSettingsOutline} from 'react-icons/io5';
+import {TfiMore, TfiMoreAlt} from 'react-icons/tfi';
+import {RiLogoutBoxLine} from 'react-icons/ri';
 
-function delayNavbarText() {
-  const navbarTextItems = document.querySelectorAll(`.${desktopNavStyle['navbar-text']}`);
-  let delay = 0;
+const MIN_WIDTH = 5;
+const JUMP_AT = 15;
+const MAX_WIDTH = 30;
 
-  navbarTextItems.forEach((item) => {
-    item.style.transitionDelay = `${delay}s`;
-    delay += 0.04;
-  });
-}
-
-const DesktopNavBar = () => {
-  useEffect(() => {
-    delayNavbarText();
-  }, []);
-
+const DesktopNavbar = () => {
+  const [isResizing, setIsResizing] = useState(false);
+  const [navbarWidth, setNavbarWidth] = useState(MIN_WIDTH);
   const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const {showLoader, hideLoader} = useLoader();
+  const {addToast} = useToast();
+
+  const navigate = useNavigate();
+  const location = useLocation().pathname;
+
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
+    setNavbarWidth(isNavOpen ? MIN_WIDTH : JUMP_AT);
   };
 
-  const navbarClassNames = `${desktopNavStyle['nav-bar']} ${isNavOpen ? desktopNavStyle['opened'] : desktopNavStyle['closed']}`;
-  const location = window.location.pathname;
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    setIsResizing(true);
 
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
-  const toggleAuth = () => {
-    setIsAuthOpen(true);
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
   };
 
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const toggleSearch = () => {
-    setIsSearchOpen(true);
+  const handleMouseMove = (e) => {
+    e.preventDefault();
+
+    if (e.clientX / 16 > MIN_WIDTH && e.clientX / 16 <= MAX_WIDTH) {
+      if (e.clientX / 16 < JUMP_AT) {
+        setNavbarWidth(MIN_WIDTH);
+        setIsNavOpen(false);
+        //setNavbarWidth(e.clientX / 16);
+      } else {
+        setNavbarWidth(e.clientX / 16);
+        setIsNavOpen(true);
+      }
+    }
   };
 
-  const [isLogoutOpen, setIsLogoutOpen] = useState(false);
-  const toggleLogout = () => {
-    setIsLogoutOpen(true);
+  const handleMouseUp = (e) => {
+    e.preventDefault();
+    setIsResizing(false);
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
   };
 
-  function scrollToBottom() {
-    setIsNavOpen(false);
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    showLoader();
 
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth',
-    });
-  }
+    // logout logic
+
+    setTimeout(() => {
+      hideLoader();
+      addToast('success', 'Sikeres kijelentkezés!');
+      navigate('/auth');
+    }, 1000);
+  };
 
   return (
-    <>
-      <nav className={navbarClassNames}>
-        <div className={desktopNavStyle['open-close-sidebar']} onClick={toggleNav} title="Menü">
-          <img src={isNavOpen ? xMarkIcon : hamburgerIcon} alt="Menü" />
-        </div>
-        <ul className={desktopNavStyle['nav-list']}>
-          <li className={desktopNavStyle['logo']}>
-            <NavLink to="/home" className={desktopNavStyle['nav-link']}>
-              <img src={logo} alt="" />
-            </NavLink>
-          </li>
+    <aside className={`${desktopNavStyle['nav-bar']} ${isNavOpen ? desktopNavStyle['opened'] : ''}`} style={{width: `${navbarWidth}rem`}}>
+      <div className={`${desktopNavStyle['resize-handle']} ${isResizing ? desktopNavStyle['resizing'] : ''}`} onMouseDown={handleMouseDown}></div>
+      <div className={desktopNavStyle['open-close-sidebar']} onClick={toggleNav} title="Menü">
+        {isNavOpen ? <CgClose /> : <CgMenuGridO />}
+      </div>
 
-          <li className={desktopNavStyle['nav-list-item']} title="Kezdőlap">
-            <NavLink to="/home" className={`${desktopNavStyle['nav-link']} ${location === '/home' || location === '/' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
-              <img className={desktopNavStyle['navbar-svg']} src={houseIcon} alt="Kezdőlap" />
-              <span className={desktopNavStyle['navbar-text']}>Kezdőlap</span>
-            </NavLink>
-          </li>
+      <ul className={desktopNavStyle['nav-list']}>
+        <li className={desktopNavStyle['logo']}>
+          <NavLink to="/" className={desktopNavStyle['nav-link']}>
+            <h4>{isNavOpen ? 'Footwr.' : 'Fwr.'}</h4>
+          </NavLink>
+        </li>
 
-          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Keresés">
-            <a href="#search" onClick={toggleSearch} className={`${desktopNavStyle['nav-link']}`}>
-              <img className={desktopNavStyle['navbar-svg']} src={magnifyingGlassIcon} alt="Keresés" />
-              <span className={desktopNavStyle['navbar-text']}>Keresés</span>
-            </a>
-          </li>
+        <li className={desktopNavStyle['profile-link']}>
+          <NavLink to="/profile" className={desktopNavStyle['nav-link']}>
+            <img src={profileImage} alt="Fiók" className={desktopNavStyle['rounded']} />
+            {isNavOpen ? <p className={desktopNavStyle['username-text']}>bener</p> : ''}
+            {isNavOpen ? <p className={desktopNavStyle['username-link']}>@bener</p> : ''}
+          </NavLink>
+        </li>
 
-          <li className={desktopNavStyle['nav-list-item']} title="Fiók">
-            <NavLink to="/profile" className={`${desktopNavStyle['nav-link']} ${location === '/profile' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
-              <img className={desktopNavStyle['navbar-svg']} src={userIcon} alt="Fiók" />
-              <span className={desktopNavStyle['navbar-text']}>Fiók</span>
-            </NavLink>
-          </li>
+        <li className={desktopNavStyle['nav-list-item']} title="Kezdőlap">
+          <NavLink to="/" className={`${desktopNavStyle['nav-link']} ${location === '/' ? desktopNavStyle['active'] : ''}`}>
+            {location === '/' ? <AiFillHome className={desktopNavStyle['navbar-svg']} /> : <AiOutlineHome className={desktopNavStyle['navbar-svg']} />}
+            <span className={`${desktopNavStyle['navbar-text']}`}>Kezdőlap</span>
+          </NavLink>
+        </li>
+        <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Keresés">
+          <NavLink to="/search" className={`${desktopNavStyle['nav-link']}`}>
+            {location === '/search' ? <BiSolidSearchAlt2 className={desktopNavStyle['navbar-svg']} /> : <BiSearchAlt className={desktopNavStyle['navbar-svg']} />}
+            <span className={`${desktopNavStyle['navbar-text']}`}>Keresés</span>
+          </NavLink>
+        </li>
 
-          <li className={desktopNavStyle['nav-list-item']} title="Értesítések">
-            <NavLink to="/notifications" className={`${desktopNavStyle['nav-link']} ${location === '/notifications' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
-              <div className={desktopNavStyle['notification-icon']}>
-                <img className={desktopNavStyle['navbar-svg']} src={bellIcon} alt="Értesítések" />
-                <span className={desktopNavStyle['new-notification']}></span>
-              </div>
-              <span className={desktopNavStyle['navbar-text']}>Értesítések</span>
-            </NavLink>
-          </li>
+        <li className={desktopNavStyle['nav-list-item']} title="Fiók">
+          <NavLink to="/profile" className={`${desktopNavStyle['nav-link']} ${location === '/profile' ? desktopNavStyle['active'] : ''}`}>
+            {location === '/profile' ? <MdAccountBox className={desktopNavStyle['navbar-svg']} /> : <MdOutlineAccountBox className={desktopNavStyle['navbar-svg']} />}
+            <span className={`${desktopNavStyle['navbar-text']}`}>Fiók</span>
+          </NavLink>
+        </li>
+        <li className={desktopNavStyle['nav-list-item']} title="Értesítések">
+          <NavLink to="/notifications" className={`${desktopNavStyle['nav-link']} ${location === '/notifications' ? desktopNavStyle['active'] : ''}`}>
+            <div className={desktopNavStyle['notification-icon']}>
+              {location === '/notifications' ? <IoNotificationsSharp className={desktopNavStyle['navbar-svg']} /> : <IoMdNotificationsOutline className={desktopNavStyle['navbar-svg']} />}
+              <span className={desktopNavStyle['new-notification']}></span>
+            </div>
+            <span className={`${desktopNavStyle['navbar-text']}`}>Értesítések</span>
+          </NavLink>
+        </li>
+        <li className={desktopNavStyle['nav-list-item']} title="Üzenetek">
+          <NavLink to="/messages" className={`${desktopNavStyle['nav-link']} ${location === '/messages' ? desktopNavStyle['active'] : ''}`}>
+            <div className={desktopNavStyle['notification-icon']}>
+              {location === '/messages' ? <BiSolidMessageSquareDetail className={desktopNavStyle['navbar-svg']} /> : <BiMessageSquareDetail className={desktopNavStyle['navbar-svg']} />}
+              <span className={desktopNavStyle['new-notification']}></span>
+            </div>
+            <span className={`${desktopNavStyle['navbar-text']}`}>Üzenetek</span>
+          </NavLink>
+        </li>
+        <li className={desktopNavStyle['nav-list-item']} title="Kedvencek">
+          <NavLink to="/favourites" className={`${desktopNavStyle['nav-link']} ${location === '/favourites' ? desktopNavStyle['active'] : ''}`}>
+            {location === '/favourites' ? <MdFavorite className={desktopNavStyle['navbar-svg']} /> : <MdFavoriteBorder className={desktopNavStyle['navbar-svg']} />}
+            <span className={`${desktopNavStyle['navbar-text']}`}>Kedvencek</span>
+          </NavLink>
+        </li>
+        <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Eladás">
+          <NavLink to="/selling" className={`${desktopNavStyle['nav-link']} ${location === '/selling' ? desktopNavStyle['active'] : ''}`}>
+            {location === '/selling' ? <MdSell className={desktopNavStyle['navbar-svg']} /> : <MdOutlineSell className={desktopNavStyle['navbar-svg']} />}
+            <span className={`${desktopNavStyle['navbar-text']}`}>Eladás</span>
+          </NavLink>
+        </li>
 
-          <li className={desktopNavStyle['nav-list-item']} title="Üzenetek">
-            <NavLink to="/messages" className={`${desktopNavStyle['nav-link']} ${location === '/messages' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
-              <div className={desktopNavStyle['notification-icon']}>
-                <img className={desktopNavStyle['navbar-svg']} src={envelopeIcon} alt="Üzenetek" />
-                <span className={desktopNavStyle['new-notification']}></span>
-              </div>
-              <span className={desktopNavStyle['navbar-text']}>Üzenetek</span>
-            </NavLink>
-          </li>
+        <li className={desktopNavStyle['nav-list-item']} title="Közösség">
+          <NavLink to="/community" className={`${desktopNavStyle['nav-link']} ${location === '/community' ? desktopNavStyle['active'] : ''}`}>
+            {location === '/community' ? <BsPeopleFill className={desktopNavStyle['navbar-svg']} /> : <BsPeople className={desktopNavStyle['navbar-svg']} />}
+            <span className={`${desktopNavStyle['navbar-text']}`}>Közösség</span>
+          </NavLink>
+        </li>
+        <li className={desktopNavStyle['nav-list-item']} title="Licitek">
+          <NavLink to="/auction" className={`${desktopNavStyle['nav-link']} ${location === '/auction' ? desktopNavStyle['active'] : ''}`}>
+            {location === '/auction' ? <RiAuctionFill className={desktopNavStyle['navbar-svg']} /> : <RiAuctionLine className={desktopNavStyle['navbar-svg']} />}
+            <span className={`${desktopNavStyle['navbar-text']}`}>Licitek</span>
+          </NavLink>
+        </li>
+        <li className={desktopNavStyle['nav-list-item']} title="Hírek">
+          <NavLink to="/news" className={`${desktopNavStyle['nav-link']} ${location === '/news' ? desktopNavStyle['active'] : ''}`}>
+            {location === '/news' ? <IoNewspaperSharp className={`${desktopNavStyle['navbar-svg']} ${desktopNavStyle['scale-down']}`} /> : <IoNewspaperOutline className={`${desktopNavStyle['navbar-svg']} ${desktopNavStyle['scale-down']}`} />}
+            <span className={`${desktopNavStyle['navbar-text']}`}>Hírek</span>
+          </NavLink>
+        </li>
+        <li className={desktopNavStyle['nav-list-item']} title="Rólunk">
+          <NavLink to="/about" className={`${desktopNavStyle['nav-link']} ${location === '/about' ? desktopNavStyle['active'] : ''}`}>
+            {location === '/about' ? <BsInfoSquareFill className={`${desktopNavStyle['navbar-svg']} ${desktopNavStyle['scale-down']}`} /> : <BsInfoSquare className={`${desktopNavStyle['navbar-svg']} ${desktopNavStyle['scale-down']}`} />}
+            <span className={`${desktopNavStyle['navbar-text']}`}>Rólunk</span>
+          </NavLink>
+        </li>
+        <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Kapcsolat">
+          <NavLink to="/contact" className={`${desktopNavStyle['nav-link']} ${location === '/contact' ? desktopNavStyle['active'] : ''}`}>
+            {location === '/contact' ? <MdPhoneInTalk className={desktopNavStyle['navbar-svg']} /> : <MdOutlinePhoneInTalk className={desktopNavStyle['navbar-svg']} />}
+            <span className={`${desktopNavStyle['navbar-text']}`}>Kapcsolat</span>
+          </NavLink>
+        </li>
 
-          <li className={desktopNavStyle['nav-list-item']} title="Kedvencek">
-            <NavLink to="/favourites" className={`${desktopNavStyle['nav-link']} ${location === '/favourites' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
-              <img className={desktopNavStyle['navbar-svg']} src={heartIcon} alt="Kedvencek" />
-              <span className={desktopNavStyle['navbar-text']}>Kedvencek</span>
-            </NavLink>
-          </li>
+        <li className={desktopNavStyle['nav-list-item']} title="Beállítások">
+          <NavLink to="/settings" className={`${desktopNavStyle['nav-link']} ${location === '/settings' ? desktopNavStyle['active'] : ''}`}>
+            {location === '/settings' ? <IoSettings className={desktopNavStyle['navbar-svg']} /> : <IoSettingsOutline className={desktopNavStyle['navbar-svg']} />}
+            <span className={`${desktopNavStyle['navbar-text']}`}>Beállítások</span>
+          </NavLink>
+        </li>
+        <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Több">
+          <NavLink to="/more" className={desktopNavStyle['nav-link']}>
+            {location === '/more' ? <TfiMoreAlt className={desktopNavStyle['navbar-svg']} /> : <TfiMore className={desktopNavStyle['navbar-svg']} />}
+            <span className={`${desktopNavStyle['navbar-text']}`}>Több</span>
+          </NavLink>
+        </li>
 
-          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Eladás">
-            <NavLink to="/selling" className={`${desktopNavStyle['nav-link']} ${location === '/selling' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
-              <img className={desktopNavStyle['navbar-svg']} src={uploadIcon} alt="Eladás" />
-              <span className={desktopNavStyle['navbar-text']}>Eladás</span>
-            </NavLink>
-          </li>
-
-          <li className={desktopNavStyle['nav-list-item']} title="Közösség">
-            <NavLink to="/community" className={`${desktopNavStyle['nav-link']} ${location === '/community' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
-              <img className={desktopNavStyle['navbar-svg']} src={userGroupIcon} alt="Közösség" />
-              <span className={desktopNavStyle['navbar-text']}>Közösség</span>
-            </NavLink>
-          </li>
-
-          <li className={desktopNavStyle['nav-list-item']} title="Licitek">
-            <NavLink to="/auction" className={`${desktopNavStyle['nav-link']} ${location === '/auction' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
-              <img className={desktopNavStyle['navbar-svg']} src={auctionHammerIcon} alt="Licitek" />
-              <span className={desktopNavStyle['navbar-text']}>Licitek</span>
-            </NavLink>
-          </li>
-
-          <li className={desktopNavStyle['nav-list-item']} title="Hírek">
-            <NavLink to="/news" className={`${desktopNavStyle['nav-link']} ${location === '/news' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
-              <img className={desktopNavStyle['navbar-svg']} src={newsPaperIcon} alt="Hírek" />
-              <span className={desktopNavStyle['navbar-text']}>Hírek</span>
-            </NavLink>
-          </li>
-
-          <li className={desktopNavStyle['nav-list-item']} title="Rólunk">
-            <NavLink to="/about" className={`${desktopNavStyle['nav-link']} ${location === '/about' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
-              <img className={desktopNavStyle['navbar-svg']} src={infoIcon} alt="Rólunk" />
-              <span className={desktopNavStyle['navbar-text']}>Rólunk</span>
-            </NavLink>
-          </li>
-
-          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Kapcsolat">
-            <NavLink to="/contact" className={`${desktopNavStyle['nav-link']} ${location === '/contact' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
-              <img className={desktopNavStyle['navbar-svg']} src={phoneIcon} alt="Kapcsolat" />
-              <span className={desktopNavStyle['navbar-text']}>Kapcsolat</span>
-            </NavLink>
-          </li>
-
-          <li className={desktopNavStyle['nav-list-item']} title="Bejelentkezés">
-            <a href="#login" onClick={toggleAuth} className={desktopNavStyle['nav-link']}>
-              <img className={desktopNavStyle['navbar-svg']} src={loginIcon} alt="Bejelentkezés" />
-              <span className={desktopNavStyle['navbar-text']}>Bejelentkezés</span>
-            </a>
-          </li>
-
-          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Regisztráció">
-            <a href="#signup" onClick={toggleAuth} className={desktopNavStyle['nav-link']}>
-              <img className={desktopNavStyle['navbar-svg']} src={signupIcon} alt="Regisztráció" />
-              <span className={desktopNavStyle['navbar-text']}>Regisztráció</span>
-            </a>
-          </li>
-
-          <li className={desktopNavStyle['nav-list-item']} title="Beállítások">
-            <NavLink to="/settings" className={`${desktopNavStyle['nav-link']} ${location === '/settings' ? desktopNavStyle['active'] : desktopNavStyle['inactive']}`}>
-              <img className={desktopNavStyle['navbar-svg']} src={settingsIcon} alt="Beállítások" />
-              <span className={desktopNavStyle['navbar-text']}>Beállítások</span>
-            </NavLink>
-          </li>
-
-          <li className={`${desktopNavStyle['nav-list-item']} ${desktopNavStyle['last-in-group']}`} title="Több" onClick={scrollToBottom}>
-            <NavLink to="#more" className={desktopNavStyle['nav-link']}>
-              <img className={desktopNavStyle['navbar-svg']} src={moreIcon} alt="Több" />
-              <span className={desktopNavStyle['navbar-text']}>Több</span>
-            </NavLink>
-          </li>
-
-          <li className={desktopNavStyle['nav-list-item']} title="Kijelentkezés">
-            <a href="#logout" onClick={toggleLogout} className={desktopNavStyle['nav-link']}>
-              <img className={desktopNavStyle['navbar-svg']} src={logOutIcon} alt="Kijelentkezés" />
-              <span className={desktopNavStyle['navbar-text']}>Kijelentkezés</span>
-            </a>
-          </li>
-
-          <li className={desktopNavStyle['nav-list-item']}>
-            <NavLink to="/profile" className={desktopNavStyle['nav-link']}>
-              <NavUserCard profilePicture={profilePicture} username="Felhasználónév" divClassName={desktopNavStyle['profile-avatar']} spanClassName={desktopNavStyle['navbar-username']} />
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-
-      {isSearchOpen && <Search isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />}
-      {isAuthOpen && (
-        <PopUp isAuthOpen={isAuthOpen} setIsAuthOpen={setIsAuthOpen}>
-          <AuthTabs />
-        </PopUp>
-      )}
-
-      {isLogoutOpen && (
-        <PopUp isLogoutOpen={isLogoutOpen} setIsLogoutOpen={setIsLogoutOpen}>
-          <Logout />
-        </PopUp>
-      )}
-    </>
+        <li className={desktopNavStyle['nav-list-item']} title="Kijelentkezés">
+          <NavLink to="" className={desktopNavStyle['nav-link']} onClick={handleLogOut}>
+            <RiLogoutBoxLine className={desktopNavStyle['navbar-svg']} />
+            <span className={`${desktopNavStyle['navbar-text']}`}>Kijelentkezés</span>
+          </NavLink>
+        </li>
+      </ul>
+    </aside>
   );
 };
 
-export default DesktopNavBar;
+export default DesktopNavbar;

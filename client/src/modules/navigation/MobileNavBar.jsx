@@ -1,81 +1,74 @@
 import mobileNavStyle from '../../assets/css/mobile_navbar.module.css';
 
-import hamburgerIcon from '../../assets/icons/bars-solid.svg';
-import xMarkIcon from '../../assets/icons/xmark-solid.svg';
-import houseIcon from '../../assets/icons/house-chimney-solid.svg';
-import userIcon from '../../assets/icons/user-solid.svg';
-import bellIcon from '../../assets/icons/bell-solid.svg';
-import envelopeIcon from '../../assets/icons/envelope-solid.svg';
-import heartIcon from '../../assets/icons/heart-solid.svg';
-import uploadIcon from '../../assets/icons/arrow-up-from-bracket-solid.svg';
-import userGroupIcon from '../../assets/icons/user-group-solid.svg';
-import auctionHammerIcon from '../../assets/icons/gavel-solid.svg';
-import newsPaperIcon from '../../assets/icons/newspaper-solid.svg';
-import infoIcon from '../../assets/icons/circle-info-solid.svg';
-import phoneIcon from '../../assets/icons/phone-solid.svg';
-import loginIcon from '../../assets/icons/right-to-bracket-solid.svg';
-import signupIcon from '../../assets/icons/user-plus-solid.svg';
-import settingsIcon from '../../assets/icons/gear-solid.svg';
-import moreIcon from '../../assets/icons/angles-right-solid.svg';
-import logOutIcon from '../../assets/icons/right-from-bracket-solid.svg';
-import profilePicture from '../../assets/images/profile_pics/225746166_2006567569490591_3501118953375513610_n.jpg';
-import searchIcon from '../../assets/icons/magnifying-glass-solid.svg';
+import React, {useState} from 'react';
+import {NavLink, useLocation, useNavigate} from 'react-router-dom';
+import {useLoader} from '../../hooks/useLoader';
+import {useToast} from '../../hooks/useToast';
 
-import {NavLink} from 'react-router-dom';
-import {useState} from 'react';
+import {CgMenuGridO, CgClose} from 'react-icons/cg';
+import {AiFillHome, AiOutlineHome} from 'react-icons/ai';
+import {BiSearchAlt, BiSolidSearchAlt2} from 'react-icons/bi';
+import {MdAccountBox, MdOutlineAccountBox} from 'react-icons/md';
+import {IoNotificationsSharp} from 'react-icons/io5';
+import {IoMdNotificationsOutline} from 'react-icons/io';
+import {BiSolidMessageSquareDetail, BiMessageSquareDetail} from 'react-icons/bi';
+import {MdFavorite, MdFavoriteBorder} from 'react-icons/md';
+import {MdSell, MdOutlineSell} from 'react-icons/md';
+import {BsPeopleFill, BsPeople} from 'react-icons/bs';
+import {RiAuctionFill, RiAuctionLine} from 'react-icons/ri';
+import {IoNewspaperSharp, IoNewspaperOutline} from 'react-icons/io5';
+import {BsInfoSquareFill, BsInfoSquare} from 'react-icons/bs';
+import {MdPhoneInTalk, MdOutlinePhoneInTalk} from 'react-icons/md';
+import {IoSettings, IoSettingsOutline} from 'react-icons/io5';
+import {TfiMore, TfiMoreAlt} from 'react-icons/tfi';
+import {RiLogoutBoxLine} from 'react-icons/ri';
 
-import NavUserCard from './NavUserCard';
-import PopUp from '../../common/PopUp';
-import AuthTabs from '../auth/AuthTabs';
-import Logout from '../auth/Logout';
-
-const MobileNavBar = () => {
-  const location = window.location.pathname;
+const MobileNavbar = () => {
+  const location = useLocation().pathname;
+  const navigate = useNavigate();
+  const {showLoader, hideLoader} = useLoader();
+  const {addToast} = useToast();
 
   const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const navbarClassNames = `${mobileNavStyle['nav-aside-wrapper']} ${isNavOpen ? mobileNavStyle['opened'] : ''}`;
+
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
 
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
-  const toggleAuth = () => {
-    setIsAuthOpen(true);
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    showLoader();
+
+    // logout logic
+
+    setTimeout(() => {
+      hideLoader();
+      addToast('success', 'Sikeres kijelentkezés!');
+      navigate('/auth');
+    }, 1000);
   };
 
-  const [isLogoutOpen, setIsLogoutOpen] = useState(false);
-  const toggleLogout = () => {
-    setIsLogoutOpen(true);
-  };
-
-  function scrollToBottom() {
-    setIsNavOpen(false);
-
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth',
-    });
-  }
-
-  const navbarClassNames = `${mobileNavStyle['nav-aside-wrapper']} ${isNavOpen ? mobileNavStyle['opened'] : mobileNavStyle['closed']}`;
   return (
     <>
       <header className={mobileNavStyle['mobile-header-wrapper']}>
         <ul className={mobileNavStyle['header-list']}>
           <li className={mobileNavStyle['header-list-item']}>
             <span className={`${mobileNavStyle['header-link']} `} onClick={toggleNav}>
-              <img className={mobileNavStyle['header-svg']} src={isNavOpen ? xMarkIcon : hamburgerIcon} alt="Menü" />
+              {isNavOpen ? <CgClose className={mobileNavStyle['header-svg']} /> : <CgMenuGridO className={mobileNavStyle['header-svg']} />}
             </span>
             <span className={`${mobileNavStyle['header-link']} `}>
               <span className={mobileNavStyle['header-svg']}></span>
             </span>
-            <NavLink to="/home" className={`${mobileNavStyle['logo']} `}>
+            <NavLink to="/" className={`${mobileNavStyle['logo']} `}>
               <h2>Footwr.</h2>
             </NavLink>
-            <span className={`${mobileNavStyle['header-link']} `}>
-              <img className={mobileNavStyle['header-svg']} src={searchIcon} alt="Menü" />
-            </span>
+            <NavLink to="/search" className={`${mobileNavStyle['header-link']} `}>
+              {location === '/search' ? <BiSolidSearchAlt2 className={mobileNavStyle['header-svg']} /> : <BiSearchAlt className={mobileNavStyle['header-svg']} />}
+            </NavLink>
             <NavLink to="/profile" className={`${mobileNavStyle['header-link']} `}>
-              <img className={mobileNavStyle['header-svg']} src={userIcon} alt="Fiók" />
+              {location === '/profile' ? <MdAccountBox className={mobileNavStyle['header-svg']} /> : <MdOutlineAccountBox className={mobileNavStyle['header-svg']} />}
             </NavLink>
           </li>
         </ul>
@@ -86,77 +79,57 @@ const MobileNavBar = () => {
           <ul className={mobileNavStyle['side-list']}>
             <li className={mobileNavStyle['side-list-item']}>
               <NavLink to="/community" className={`${mobileNavStyle['side-link']} ${location === '/community' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
-                <img className={mobileNavStyle['side-svg']} src={userGroupIcon} alt="Közösség" />
+                {location === '/community' ? <BsPeopleFill className={mobileNavStyle['side-svg']} /> : <BsPeople className={mobileNavStyle['side-svg']} />}
                 <span className={mobileNavStyle['side-text']}>Közösség</span>
               </NavLink>
             </li>
 
             <li className={mobileNavStyle['side-list-item']}>
               <NavLink to="/auction" className={`${mobileNavStyle['side-link']} ${location === '/auction' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
-                <img className={mobileNavStyle['side-svg']} src={auctionHammerIcon} alt="Licitek" />
+                {location === '/auction' ? <RiAuctionFill className={mobileNavStyle['side-svg']} /> : <RiAuctionLine className={mobileNavStyle['side-svg']} />}
                 <span className={mobileNavStyle['side-text']}>Licitek</span>
               </NavLink>
             </li>
 
             <li className={mobileNavStyle['side-list-item']}>
               <NavLink to="/news" className={`${mobileNavStyle['side-link']} ${location === '/news' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
-                <img className={mobileNavStyle['side-svg']} src={newsPaperIcon} alt="Hírek" />
+                {location === '/news' ? <IoNewspaperSharp className={`${mobileNavStyle['side-svg']} ${mobileNavStyle['scale-down']}`} /> : <IoNewspaperOutline className={`${mobileNavStyle['side-svg']} ${mobileNavStyle['scale-down']}`} />}
                 <span className={mobileNavStyle['side-text']}>Hírek</span>
               </NavLink>
             </li>
 
             <li className={mobileNavStyle['side-list-item']}>
               <NavLink to="/about" className={`${mobileNavStyle['side-link']} ${location === '/about' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
-                <img className={mobileNavStyle['side-svg']} src={infoIcon} alt="Rólunk" />
+                {location === '/about' ? <BsInfoSquareFill className={`${mobileNavStyle['side-svg']} ${mobileNavStyle['scale-down']}`} /> : <BsInfoSquare className={`${mobileNavStyle['side-svg']} ${mobileNavStyle['scale-down']}`} />}
                 <span className={mobileNavStyle['side-text']}>Rólunk</span>
               </NavLink>
             </li>
 
             <li className={`${mobileNavStyle['side-list-item']} ${mobileNavStyle['last-in-group']}`}>
               <NavLink to="/contact" className={`${mobileNavStyle['side-link']} ${location === '/contact' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
-                <img className={mobileNavStyle['side-svg']} src={phoneIcon} alt="Kapcsolat" />
+                {location === '/contact' ? <MdPhoneInTalk className={mobileNavStyle['side-svg']} /> : <MdOutlinePhoneInTalk className={mobileNavStyle['side-svg']} />}
                 <span className={mobileNavStyle['side-text']}>Kapcsolat</span>
               </NavLink>
             </li>
 
             <li className={mobileNavStyle['side-list-item']}>
-              <a href="#login" onClick={toggleAuth} className={mobileNavStyle['side-link']}>
-                <img className={mobileNavStyle['side-svg']} src={loginIcon} alt="Bejelentkezés" />
-                <span className={mobileNavStyle['side-text']}>Bejelentkezés</span>
-              </a>
-            </li>
-
-            <li className={`${mobileNavStyle['side-list-item']} ${mobileNavStyle['last-in-group']}`}>
-              <a href="#signup" onClick={toggleAuth} className={mobileNavStyle['side-link']}>
-                <img className={mobileNavStyle['side-svg']} src={signupIcon} alt="Regisztráció" />
-                <span className={mobileNavStyle['side-text']}>Regisztráció</span>
-              </a>
-            </li>
-
-            <li className={mobileNavStyle['side-list-item']}>
               <NavLink to="/settings" className={`${mobileNavStyle['side-link']} ${location === '/settings' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
-                <img className={mobileNavStyle['side-svg']} src={settingsIcon} alt="Beállítások" />
+                {location === '/settings' ? <IoSettings className={mobileNavStyle['side-svg']} /> : <IoSettingsOutline className={mobileNavStyle['side-svg']} />}
                 <span className={mobileNavStyle['side-text']}>Beállítások</span>
               </NavLink>
             </li>
 
-            <li className={`${mobileNavStyle['side-list-item']} ${mobileNavStyle['last-in-group']}`} onClick={scrollToBottom}>
-              <NavLink to="#more" className={mobileNavStyle['side-link']}>
-                <img className={mobileNavStyle['side-svg']} src={moreIcon} alt="Több" />
+            <li className={`${mobileNavStyle['side-list-item']} ${mobileNavStyle['last-in-group']}`}>
+              <NavLink to="/more" className={mobileNavStyle['side-link']}>
+                {location === '/more' ? <TfiMoreAlt className={mobileNavStyle['side-svg']} /> : <TfiMore className={mobileNavStyle['side-svg']} />}
                 <span className={mobileNavStyle['side-text']}>Több</span>
               </NavLink>
             </li>
 
             <li className={mobileNavStyle['side-list-item']}>
-              <a href="#logout" onClick={toggleLogout} className={mobileNavStyle['side-link']}>
-                <img className={mobileNavStyle['side-svg']} src={logOutIcon} alt="Kijelentkezés" />
+              <NavLink to="" className={mobileNavStyle['side-link']} onClick={handleLogOut}>
+                <RiLogoutBoxLine className={mobileNavStyle['side-svg']} />
                 <span className={mobileNavStyle['side-text']}>Kijelentkezés</span>
-              </a>
-            </li>
-
-            <li className={mobileNavStyle['side-list-item']}>
-              <NavLink to="/profile" className={mobileNavStyle['side-link']}>
-                <NavUserCard profilePicture={profilePicture} username="Felhasználónév" divClassName={mobileNavStyle['profile-avatar']} spanClassName={mobileNavStyle['side-username']} />
               </NavLink>
             </li>
           </ul>
@@ -165,28 +138,28 @@ const MobileNavBar = () => {
 
       <nav className={mobileNavStyle['nav-bar']}>
         <ul className={mobileNavStyle['nav-list']}>
-          <li className={mobileNavStyle['nav-list-item']}>
-            <NavLink to="/home" className={`${mobileNavStyle['nav-link']} ${location === '/home' || location === '/' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
-              <img className={mobileNavStyle['navbar-svg']} src={houseIcon} alt="Kezdőlap" />
+          <li className={`${mobileNavStyle['nav-list-item']}`}>
+            <NavLink to="/selling" className={`${mobileNavStyle['nav-link']} ${location === '/selling' ? mobileNavStyle['active'] : mobileNavStyle['inactive']} `}>
+              {location === '/selling' ? <MdSell className={mobileNavStyle['navbar-svg']} /> : <MdOutlineSell className={mobileNavStyle['navbar-svg']} />}
             </NavLink>
           </li>
 
           <li className={mobileNavStyle['nav-list-item']}>
             <NavLink to="/favourites" className={`${mobileNavStyle['nav-link']} ${location === '/favourites' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
-              <img className={mobileNavStyle['navbar-svg']} src={heartIcon} alt="Kedvencek" />
+              {location === '/favourites' ? <MdFavorite className={mobileNavStyle['navbar-svg']} /> : <MdFavoriteBorder className={mobileNavStyle['navbar-svg']} />}
             </NavLink>
           </li>
 
-          <li className={`${mobileNavStyle['nav-list-item']}`}>
-            <NavLink to="/selling" className={`${mobileNavStyle['nav-link']} ${location === '/selling' ? mobileNavStyle['active'] : mobileNavStyle['inactive']} `}>
-              <img className={mobileNavStyle['navbar-svg']} src={uploadIcon} alt="Eladás" />
+          <li className={mobileNavStyle['nav-list-item']}>
+            <NavLink to="/" className={`${mobileNavStyle['nav-link']} ${location === '/' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
+              {location === '/' ? <AiFillHome className={mobileNavStyle['navbar-svg']} /> : <AiOutlineHome className={mobileNavStyle['navbar-svg']} />}
             </NavLink>
           </li>
 
           <li className={mobileNavStyle['nav-list-item']}>
             <NavLink to="/messages" className={`${mobileNavStyle['nav-link']} ${location === '/messages' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
               <div className={mobileNavStyle['notification-icon']}>
-                <img className={mobileNavStyle['navbar-svg']} src={envelopeIcon} alt="Üzenetek" />
+                {location === '/messages' ? <BiSolidMessageSquareDetail className={mobileNavStyle['navbar-svg']} /> : <BiMessageSquareDetail className={mobileNavStyle['navbar-svg']} />}
                 <span className={mobileNavStyle['new-notification']}></span>
               </div>
             </NavLink>
@@ -195,27 +168,15 @@ const MobileNavBar = () => {
           <li className={mobileNavStyle['nav-list-item']}>
             <NavLink to="/notifications" className={`${mobileNavStyle['nav-link']} ${location === '/notifications' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
               <div className={mobileNavStyle['notification-icon']}>
-                <img className={mobileNavStyle['navbar-svg']} src={bellIcon} alt="Értesítések" />
+                {location === '/notifications' ? <IoNotificationsSharp className={mobileNavStyle['navbar-svg']} /> : <IoMdNotificationsOutline className={mobileNavStyle['navbar-svg']} />}
                 <span className={mobileNavStyle['new-notification']}></span>
               </div>
             </NavLink>
           </li>
         </ul>
       </nav>
-
-      {isAuthOpen && (
-        <PopUp isAuthOpen={isAuthOpen} setIsAuthOpen={setIsAuthOpen}>
-          <AuthTabs />
-        </PopUp>
-      )}
-
-      {isLogoutOpen && (
-        <PopUp isLogoutOpen={isLogoutOpen} setIsLogoutOpen={setIsLogoutOpen}>
-          <Logout />
-        </PopUp>
-      )}
     </>
   );
 };
 
-export default MobileNavBar;
+export default MobileNavbar;

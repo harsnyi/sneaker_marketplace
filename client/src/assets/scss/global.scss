@@ -1,0 +1,69 @@
+@import 'variables';
+
+@font-face {
+    font-family: 'BiggerDisplay';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/BiggerDisplay.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'JDKFuturix';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/JDK_Futurix.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Oswald-Regular.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: $font-content;
+    line-height: 1.6;
+    font-size: 1rem; // 16px
+    letter-spacing: normal;
+    overflow-x: hidden;
+    color: $clr-primary-900
+}
+
+a {
+    text-decoration: none;
+    color: $clr-white;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+// Media Queries
+@media only screen and (max-width: 768px) {
+    html {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}
+
+// Media Queries - Mobile
+@media only screen and (max-width: 500px) {
+    html {
+        font-size: 0.75rem;
+        line-height: 1.2rem;
+    }
+}

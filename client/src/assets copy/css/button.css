@@ -1,0 +1,104 @@
+@keyframes bg-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes loading {
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}
+@keyframes toast {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+@keyframes sliding-down {
+  0% {
+    transform: translateY(-3%);
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(-2.1%);
+    opacity: 1;
+  }
+  90% {
+    transform: translateY(2.1%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(3%);
+    opacity: 0;
+  }
+}
+@keyframes sliding-up {
+  0% {
+    transform: translateY(3%);
+    opacity: 0;
+  }
+  15% {
+    transform: translateY(2.1%);
+    opacity: 1;
+  }
+  85% {
+    transform: translateY(-2.1%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-3%);
+    opacity: 0;
+  }
+}
+.btn-primary {
+  all: unset;
+  font-weight: bold;
+  box-shadow: 0;
+  transition: box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  text-transform: uppercase;
+  cursor: pointer;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.btn-primary:active {
+  opacity: 0.75;
+}
+.btn-primary.light {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+.btn-primary.light:hover, .btn-primary.light:focus .btn-primary.light:active {
+  box-shadow: 0.5rem 0.5rem #ffffff;
+  background-color: #ffffff;
+  border: 1px solid #161C24;
+  color: #161C24;
+}
+.btn-primary.dark {
+  color: #161C24;
+  border: 1px solid #161C24;
+}
+.btn-primary.dark:hover, .btn-primary.dark:focus .btn-primary.dark:active {
+  box-shadow: 0.5rem 0.5rem #161C24;
+  background-color: #161C24;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}/*# sourceMappingURL=button.css.map */

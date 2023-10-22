@@ -1,10 +1,12 @@
-import React from 'react';
+import '../assets/css/button.css';
 
-const Button = (props) => {
-  const className = props.className ? `btn-main ${props.className}` : 'btn-main';
+const Button = ({children, className, text, ...attributes}) => {
+  const classN = className ? `btn-primary ${className}` : 'btn-primary';
+
   return (
-    <button className={className} onClick={props.onClick} type={props.type}>
-      {props.text}
+    <button type="button" className={classN} {...attributes}>
+      {children}
+      {text && <span>{text}</span>}
     </button>
   );
 };

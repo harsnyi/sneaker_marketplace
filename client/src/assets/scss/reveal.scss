@@ -1,0 +1,19 @@
+@import 'variables';
+
+.reveal-div {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+    /*
+    .slide-div {
+        position: absolute;
+        top: .25rem;
+        bottom: .25rem;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        background-color: $clr-yellow
+    }
+    */
+}

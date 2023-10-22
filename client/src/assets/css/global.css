@@ -1,0 +1,125 @@
+@keyframes bg-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes loading {
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}
+@keyframes toast {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+@keyframes sliding-down {
+  0% {
+    transform: translateY(-3%);
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(-2.1%);
+    opacity: 1;
+  }
+  90% {
+    transform: translateY(2.1%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(3%);
+    opacity: 0;
+  }
+}
+@keyframes sliding-up {
+  0% {
+    transform: translateY(3%);
+    opacity: 0;
+  }
+  15% {
+    transform: translateY(2.1%);
+    opacity: 1;
+  }
+  85% {
+    transform: translateY(-2.1%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-3%);
+    opacity: 0;
+  }
+}
+@font-face {
+  font-family: "BiggerDisplay";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/BiggerDisplay.otf") format("truetype");
+}
+@font-face {
+  font-family: "JDKFuturix";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/JDK_Futurix.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Oswald-Regular.ttf") format("truetype");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Oswald", sans-serif;
+  line-height: 1.6;
+  font-size: 1rem;
+  letter-spacing: normal;
+  overflow-x: hidden;
+  color: #161C24;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+ul {
+  list-style-type: none;
+}
+
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+@media only screen and (max-width: 500px) {
+  html {
+    font-size: 0.75rem;
+    line-height: 1.2rem;
+  }
+}/*# sourceMappingURL=global.css.map */

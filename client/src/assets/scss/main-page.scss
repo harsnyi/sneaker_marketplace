@@ -1,0 +1,100 @@
+@import 'variables';
+
+.main-wrapper {
+    background-color: $clr-primary-400;
+    height: 100svh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    column-gap: .375rem;
+
+    .main-container {
+        flex: 1;
+
+        .main-header {
+            height: 4rem;
+            background-color: $clr-white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, .175);
+            z-index: 100;
+            padding: 0 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+
+            .header-list-container {
+                display: flex;
+                align-items: center;
+                height: 100%;
+
+                .header-list {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+
+                    .header-list-item {
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        gap: .25rem;
+
+                        .header-link {
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            padding: 0 1rem;
+                            display: flex;
+                            align-items: center;
+                            text-decoration: none;
+                            gap: .5rem;
+                            color: $clr-primary-800;
+                            opacity: .7;
+                            transition: opacity .2s $animation-cubic;
+                            position: relative;
+
+                            &:hover {
+                                opacity: 1;
+                                background-color: $clr-primary-200;
+                            }
+
+                            &.active {
+                                opacity: 1;
+
+                                &::after {
+                                    content: '';
+                                    position: absolute;
+                                    bottom: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 4px;
+                                    background-color: $clr-primary-900;
+                                    border-top-left-radius: 25px;
+                                    border-top-right-radius: 25px;
+                                }
+                            }
+
+                            .header-svg {
+                                font-size: 1.15rem;
+                            }
+
+                            .header-text {
+                                text-transform: uppercase;
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .main-content {
+            padding: .625rem 1.25rem;
+        }
+    }
+}
+
+@media only screen and (max-width: $media-query-md) {
+    .main-container {
+        margin: $mobile-header-height 0;
+    }
+}

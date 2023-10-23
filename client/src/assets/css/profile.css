@@ -73,8 +73,8 @@
 }
 .user-header .header-pre {
   position: relative;
-  min-height: 12rem;
-  aspect-ratio: 5/1;
+  min-height: 14rem;
+  aspect-ratio: 154/30;
   max-width: 1920px;
   margin: 0 auto;
 }

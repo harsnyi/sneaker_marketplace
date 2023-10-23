@@ -111,7 +111,7 @@ ul {
   list-style-type: none;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1200px) {
   html {
     font-size: 0.9rem;
     line-height: 1.4;

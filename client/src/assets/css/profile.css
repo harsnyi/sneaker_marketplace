@@ -69,13 +69,12 @@
   left: 0;
   background-color: #ffffff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.175);
+  width: 100%;
 }
 .user-header .header-pre {
   position: relative;
   min-height: 12.5rem;
   aspect-ratio: 154/30;
-  max-width: 1920px;
-  margin: 0 auto;
 }
 .user-header .header-pre .user-background {
   position: absolute;
@@ -87,18 +86,15 @@
      object-fit: cover;
   z-index: 1;
   background-color: #161C24;
-  border-radius: 0 0 12px 12px;
 }
 .user-header .user-profile-details {
   position: relative;
   bottom: 0;
   left: 0;
   z-index: 3;
-  max-width: 1920px;
-  margin: 0 auto;
   margin-top: -3.5rem;
   padding: 0 2rem;
-  padding-bottom: 0.25rem;
+  padding-bottom: 1rem !important;
 }
 .user-header .user-profile-details .user-profile-image {
   background-color: #ffffff;
@@ -114,4 +110,17 @@
      object-fit: cover;
   border-radius: 50%;
   border: 5px solid #ffffff;
+}
+
+@media only screen and (max-width: 1200px) {
+  .user-header .header-pre {
+    aspect-ratio: 0;
+  }
+  .user-header .user-profile-details {
+    padding: 0 1.5rem;
+    margin-top: -2.5rem;
+  }
+  .user-header .user-profile-details .user-profile-image {
+    margin: 0 auto;
+  }
 }/*# sourceMappingURL=profile.css.map */

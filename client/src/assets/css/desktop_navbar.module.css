@@ -130,7 +130,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 0.375rem;
+  width: 0.35rem;
   height: 100%;
   cursor: col-resize;
   background-color: #919EAB;
@@ -227,8 +227,6 @@
   -o-object-fit: cover;
      object-fit: cover;
   border: 2px solid #919EAB;
-}
-.nav-bar .nav-list .profile-link .nav-link img {
   margin-bottom: 0.25rem;
 }
 .nav-bar .nav-list .nav-list-item {

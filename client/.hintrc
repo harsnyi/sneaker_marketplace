@@ -10,7 +10,8 @@
           "scroll-behavior",
           "inset",
           "backdrop-filter",
-          "aspect-ratio"
+          "aspect-ratio",
+          "min-height: auto"
         ]
       }
     ]

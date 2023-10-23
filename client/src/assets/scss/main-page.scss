@@ -4,9 +4,8 @@
     background-color: $clr-primary-400;
     height: 100svh;
     width: 100vw;
-    overflow: hidden;
     display: flex;
-    column-gap: .375rem;
+    column-gap: .35rem;
 
     .main-container {
         flex: 1;
@@ -91,8 +90,12 @@
     }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: $media-query-lg) {
     .main-container {
         margin: $mobile-header-height 0;
+
+        .main-header {
+            display: none !important;
+        }
     }
 }

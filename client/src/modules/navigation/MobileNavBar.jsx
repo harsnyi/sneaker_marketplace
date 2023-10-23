@@ -5,6 +5,7 @@ import {NavLink, useLocation, useNavigate} from 'react-router-dom';
 import {useLoader} from '../../hooks/useLoader';
 import {useToast} from '../../hooks/useToast';
 
+import profileImage from '../../assets/images/profile_pictures/225746166_2006567569490591_3501118953375513610_n.jpg';
 import {CgMenuGridO, CgClose} from 'react-icons/cg';
 import {AiFillHome, AiOutlineHome} from 'react-icons/ai';
 import {BiSearchAlt, BiSolidSearchAlt2} from 'react-icons/bi';
@@ -77,6 +78,14 @@ const MobileNavbar = () => {
       <aside className={navbarClassNames}>
         <div className={mobileNavStyle['nav-aside']}>
           <ul className={mobileNavStyle['side-list']}>
+            <li className={mobileNavStyle['profile-link']}>
+              <NavLink to="/profile" className={mobileNavStyle['side-link']}>
+                <img src={profileImage} alt="Fiók" className={mobileNavStyle['rounded']} />
+                <span className={mobileNavStyle['username-text']}>bener</span>
+                <span className={mobileNavStyle['username-link']}>@bener</span>
+              </NavLink>
+            </li>
+
             <li className={mobileNavStyle['side-list-item']}>
               <NavLink to="/community" className={`${mobileNavStyle['side-link']} ${location === '/community' ? mobileNavStyle['active'] : mobileNavStyle['inactive']}`}>
                 {location === '/community' ? <BsPeopleFill className={mobileNavStyle['side-svg']} /> : <BsPeople className={mobileNavStyle['side-svg']} />}

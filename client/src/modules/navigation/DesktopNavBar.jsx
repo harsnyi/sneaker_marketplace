@@ -104,8 +104,8 @@ const DesktopNavbar = () => {
         <li className={desktopNavStyle['profile-link']}>
           <NavLink to="/profile" className={desktopNavStyle['nav-link']}>
             <img src={profileImage} alt="Fiók" className={desktopNavStyle['rounded']} />
-            {isNavOpen ? <p className={desktopNavStyle['username-text']}>bener</p> : ''}
-            {isNavOpen ? <p className={desktopNavStyle['username-link']}>@bener</p> : ''}
+            {isNavOpen ? <span className={desktopNavStyle['username-text']}>bener</span> : ''}
+            {isNavOpen ? <span className={desktopNavStyle['username-link']}>@bener</span> : ''}
           </NavLink>
         </li>
 

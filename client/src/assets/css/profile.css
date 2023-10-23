@@ -73,8 +73,10 @@
 }
 .user-header .header-pre {
   position: relative;
-  min-height: 12.5rem;
-  aspect-ratio: 154/30;
+  min-height: 12rem;
+  aspect-ratio: 5/1;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 .user-header .header-pre .user-background {
   position: absolute;
@@ -92,6 +94,8 @@
   bottom: 0;
   left: 0;
   z-index: 3;
+  max-width: 1920px;
+  margin: 0 auto;
   margin-top: -3.5rem;
   padding: 0 2rem;
   padding-bottom: 1rem !important;
@@ -114,11 +118,13 @@
 
 @media only screen and (max-width: 1200px) {
   .user-header .header-pre {
+    min-height: 15rem;
     aspect-ratio: 0;
   }
   .user-header .user-profile-details {
     padding: 0 1.5rem;
     margin-top: -2.5rem;
+    padding-bottom: 0.5rem !important;
   }
   .user-header .user-profile-details .user-profile-image {
     margin: 0 auto;

@@ -88,7 +88,7 @@ const DesktopNavbar = () => {
   };
 
   return (
-    <aside className={`${desktopNavStyle['nav-bar']} ${isNavOpen ? desktopNavStyle['opened'] : ''}`} style={{width: `${navbarWidth}rem`}}>
+    <aside className={`${desktopNavStyle['nav-bar']} ${isNavOpen ? desktopNavStyle['opened'] : ''} ${isResizing ? desktopNavStyle['resizing'] : ''}`} style={{width: `${navbarWidth}rem`}}>
       <div className={`${desktopNavStyle['resize-handle']} ${isResizing ? desktopNavStyle['resizing'] : ''}`} onMouseDown={handleMouseDown}></div>
       <div className={desktopNavStyle['open-close-sidebar']} onClick={toggleNav} title="Menü">
         {isNavOpen ? <CgClose /> : <CgMenuGridO />}

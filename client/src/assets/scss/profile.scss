@@ -1,1 +1,59 @@
 @import 'variables';
+
+.user-header {
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: $clr-white;
+    box-shadow: $panel-box-shadow;
+
+    .header-pre {
+        position: relative;
+        min-height: 12.5rem;
+        aspect-ratio: 154/30;
+        max-width: $media-query-2xl;
+        margin: 0 auto;
+
+        .user-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            background-color: $clr-primary-900;
+            border-radius: 0 0 12px 12px;
+        }
+    }
+
+    .user-profile-details {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        z-index: 3;
+        max-width: $media-query-2xl;
+        margin: 0 auto;
+        margin-top: -3.5rem;
+        padding: 0 2rem;
+        padding-bottom: .25rem;
+
+        .user-profile-image {
+            background-color: $clr-white;
+            border-radius: 50%;
+            // border-radius: 20px;
+            position: relative;
+            width: 10rem;
+            height: 10rem;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+                // border-radius: 20px;
+                border: 5px solid $clr-white;
+            }
+        }
+    }
+}

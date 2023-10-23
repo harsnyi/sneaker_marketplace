@@ -111,15 +111,15 @@ ul {
   list-style-type: none;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
   html {
     font-size: 0.9rem;
     line-height: 1.4;
   }
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 576px) {
   html {
     font-size: 0.75rem;
-    line-height: 1.2rem;
+    line-height: 1.2;
   }
 }/*# sourceMappingURL=global.css.map */

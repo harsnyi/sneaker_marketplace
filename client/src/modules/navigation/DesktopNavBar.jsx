@@ -47,7 +47,6 @@ const DesktopNavbar = () => {
   const handleMouseDown = (e) => {
     e.preventDefault();
     setIsResizing(true);
-
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
   };

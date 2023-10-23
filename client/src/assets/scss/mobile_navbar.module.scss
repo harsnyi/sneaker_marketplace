@@ -49,7 +49,7 @@
                     .navbar-svg {
                         margin: 0;
                         min-width: 2rem;
-                        height: 1.5rem;
+                        height: 1.75rem;
                         color: $clr-primary-100;
                     }
 
@@ -71,7 +71,7 @@
                 .navbar-svg {
                     margin: 0;
                     min-width: 2rem;
-                    height: 1.5rem;
+                    height: 1.75rem;
                     color: $clr-primary-100;
                 }
             }
@@ -107,7 +107,7 @@
 
                 h2 {
                     text-transform: uppercase;
-                    font-size: 1.4rem;
+                    font-size: 1.75rem;
                     font-family: $font-content;
                     color: $clr-yellow;
                     text-shadow: .15rem .15rem 0 $clr-red;
@@ -127,7 +127,7 @@
                 .header-svg {
                     margin: 0;
                     min-width: 2rem;
-                    height: 1.5rem;
+                    height: 1.75rem;
                     color: $clr-primary-100;
                 }
             }
@@ -162,7 +162,7 @@
         width: 100%;
 
         .nav-aside {
-            width: 70%;
+            width: 80%;
             border-right: 1px solid $clr-primary-700;
 
             .side-list {
@@ -195,22 +195,20 @@
 
                         .username-text {
                             font-weight: 400;
-                            font-size: 1.75rem;
+                            font-size: 1.5rem;
                             color: $clr-primary-100;
                         }
 
                         .username-link {
                             font-weight: 400;
-                            font-size: 1rem;
+                            font-size: .85rem;
                             color: $clr-primary-400;
                             font-style: italic;
                         }
 
                         .rounded {
-                            width: 6rem;
                             height: 6rem;
-                            min-height: 6rem;
-                            min-width: 6rem;
+                            width: 6rem;
                             border-radius: 50%;
                             object-fit: cover;
                             border: 2px solid $clr-primary-500;
@@ -231,8 +229,8 @@
                         opacity: 1;
 
                         .side-svg {
-                            height: 1.5rem;
-                            width: 1.5rem;
+                            min-height: 1.5rem;
+                            min-width: 1.5rem;
                             color: $clr-primary-100;
 
                             &.scale-down {
@@ -273,7 +271,17 @@
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: $media-query-xsm) {
+    .nav-aside-wrapper {
+        &.opened {
+            .nav-aside {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $media-query-sm) {
 
     .mobile-header-wrapper {
         .header-list {
@@ -291,7 +299,6 @@
                             left: 0;
                             color: $clr-yellow;
                             text-shadow: .15rem .15rem 0 $clr-red;
-                            font-size: 1.4rem;
                             font-family: $font-content;
                             padding: 0;
                             left: 50%;

@@ -130,7 +130,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 0.35rem;
+  width: 0.25rem;
   height: 100%;
   cursor: col-resize;
   background-color: #919EAB;
@@ -209,12 +209,12 @@
 }
 .nav-bar .nav-list .profile-link .nav-link .username-text {
   font-weight: 400;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   color: #F9FAFB;
 }
 .nav-bar .nav-list .profile-link .nav-link .username-link {
   font-weight: 400;
-  font-size: 0.675rem;
+  font-size: 0.75rem;
   color: #C4CDD5;
   font-style: italic;
 }

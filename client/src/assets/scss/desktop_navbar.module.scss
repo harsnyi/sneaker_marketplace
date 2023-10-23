@@ -29,7 +29,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        width: .35rem;
+        width: .25rem;
         height: 100%;
         cursor: col-resize;
         background-color: $clr-primary-500;
@@ -129,13 +129,13 @@
 
                 .username-text {
                     font-weight: 400;
-                    font-size: 1.25rem;
+                    font-size: 1.3rem;
                     color: $clr-primary-100;
                 }
 
                 .username-link {
                     font-weight: 400;
-                    font-size: .675rem;
+                    font-size: .75rem;
                     color: $clr-primary-400;
                     font-style: italic;
                 }

@@ -70,6 +70,10 @@
   background-color: #161C24;
   z-index: 100;
   color: #F9FAFB;
+  transition: width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.nav-bar.resizing {
+  transition: none;
 }
 .nav-bar .nav-list .nav-list-item:nth-child(1) .nav-link .navbar-text {
   transition-delay: 0.04s;

@@ -6,8 +6,12 @@
     left: 0;
     background-color: $clr-primary-900;
     z-index: 100;
-    //transition: width 0.2s $animation-cubic;
     color: $clr-primary-100;
+    transition: width 0.2s $animation-cubic;
+
+    &.resizing {
+        transition: none;
+    }
 
     @for $i from 1 through $dekstop-navbar-text-count {
         .nav-list {

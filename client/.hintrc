@@ -9,7 +9,8 @@
         "ignore": [
           "scroll-behavior",
           "inset",
-          "backdrop-filter"
+          "backdrop-filter",
+          "aspect-ratio"
         ]
       }
     ]

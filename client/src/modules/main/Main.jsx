@@ -8,7 +8,7 @@ import MainHeader from './MainHeader';
 import {Outlet} from 'react-router-dom';
 
 const Main = () => {
-  const isMobile = useMediaQuery({query: '(max-width: 768px)'});
+  const isMobile = useMediaQuery({query: '(max-width: 1024px)'});
 
   function renderSideBar() {
     return isMobile ? <MobileNavbar /> : <DesktopNavbar />;

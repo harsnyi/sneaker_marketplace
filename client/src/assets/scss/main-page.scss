@@ -14,7 +14,7 @@
         .main-header {
             height: 4rem;
             background-color: $clr-white;
-            box-shadow: 0 0 5px rgba(0, 0, 0, .175);
+            box-shadow: $panel-box-shadow;
             z-index: 100;
             padding: 0 1.25rem;
             display: flex;
@@ -87,13 +87,11 @@
             }
         }
 
-        .main-content {
-            padding: .625rem 1.25rem;
-        }
+
     }
 }
 
-@media only screen and (max-width: $media-query-md) {
+@media only screen and (max-width: 1024px) {
     .main-container {
         margin: $mobile-header-height 0;
     }

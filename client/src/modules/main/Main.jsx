@@ -2,8 +2,8 @@ import '../../assets/css/main-page.css';
 
 import React from 'react';
 import {useMediaQuery} from 'react-responsive';
-import DesktopNavbar from '../navigation/DesktopNavbar';
-import MobileNavbar from '../navigation/MobileNavbar';
+import DesktopNavbar from '../navigation/DesktopNavBar';
+import MobileNavbar from '../navigation/MobileNavBar';
 import MainHeader from './MainHeader';
 import {Outlet} from 'react-router-dom';
 

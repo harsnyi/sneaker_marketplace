@@ -138,8 +138,9 @@ const Login = () => {
           name="lgn-pass"
           error={errors.password}
         />
+
         <span className="forgot-pass">
-          Elfelejtetted a jelszavadat? Állítsd vissza <Link to="/">itt</Link>.
+          Elfelejtetted a jelszavadat? Állítsd vissza <Link to="">itt</Link>.
         </span>
         <Button type="submit" text="Bejelentkezés" className="light">
           <BiLogIn />

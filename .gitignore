@@ -33,8 +33,13 @@ build/
 ### VS Code ###
 .vscode/
 
-#python venv
+# python venv
 venv/
+
+# environment variables
+environmentals.txt
+env.py
+env.js
 
 # dependencies
 node_modules

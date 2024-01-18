@@ -1,7 +1,8 @@
 import Input from '../../common/Input';
 import Button from '../../common/Button';
 
-import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+import React, {useState} from 'react';
 import {useDebounce} from '../../hooks/useDebounce';
 import {useToast} from '../../hooks/useToast';
 import {useLoader} from '../../hooks/useLoader';
@@ -191,13 +192,9 @@ const Signup = () => {
     e.preventDefault();
 
     showLoader();
-    setTimeout(() => {
-      hideLoader();
-    }, 2000);
-    /*
     try {
       const response = await axios.post(
-        REGISTER_URL,
+        'http://localhost:8000' + REGISTER_URL,
         JSON.stringify({
           username: username,
           password: password,
@@ -217,13 +214,14 @@ const Signup = () => {
       if (error.response?.status === 409) {
         //Username taken
       }
+    } finally {
+      hideLoader();
     }
-        */
   };
 
   return (
     <>
-      <h1>Még nem vagy tag?</h1>
+      <h1>Vágjunk bele!</h1>
       <div className="social-signup">
         <h4>Regisztrálj meglévő fiókoddal,</h4>
         <Button text="via Facebook" className="light">

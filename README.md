@@ -18,6 +18,7 @@ home@user:~$ pip install -r ..\requirements.txt
 ```console
 home@user:~$ cd .\server\venv
 home@user:~$ . .\Scripts\activate
+home@user:~$ python .\sneaker_api\manage.py runserver
 ```
 
 ## Jogosultságok

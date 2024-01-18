@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 
 import {Link} from 'react-router-dom';
 
+import axios from 'axios';
 import {BiLogIn} from 'react-icons/bi';
 import {useState} from 'react';
 import {useDebounce} from '../../hooks/useDebounce';
@@ -55,48 +56,35 @@ const Login = () => {
       addToast('error', 'A csillaggal jelölt mezők kitöltése kötelező!');
       hideLoader();
       return;
-    } else if (Object.values(errors).some((error) => error)) {
+    }
+
+    if (Object.values(errors).some((error) => error)) {
       addToast('error', 'Kérem javítsa a hibás mezőket!');
       hideLoader();
       return;
-    } else {
-      showLoader();
+    }
 
-      /*
-        try {
-          const response = await axios.post(LOGIN_URL, JSON.stringify({username: email, password}), {
-            headers: {'Content-Type': 'application/json'},
-            withCredentials: true,
-          });
+    showLoader();
+    try {
+      const response = await axios.post('http://localhost:8000' + LOGIN_URL, JSON.stringify({username: email, password}), {
+        headers: {'Content-Type': 'application/json'},
+        withCredentials: true,
+      });
 
-          console.log(JSON.stringify(response?.data));
+      console.log(JSON.stringify(response?.data));
 
-          const accessToken = response?.data?.access_token;
-          const tokenParts = accessToken.split('.');
-          const payload = JSON.parse(atob(tokenParts[1]));
+      const accessToken = response?.data?.access_token;
+      const tokenParts = accessToken.split('.');
+      const payload = JSON.parse(atob(tokenParts[1]));
 
-          const role = payload.role;
-          console.log(role);
-          setAuth({email, role, accessToken});
-          addToast('success', 'Sikeresen bejelentkeztél!');
-        } catch (error) {
-          addToast('error', error.message);
-        } finally {
-          hideLoader();
-        }
-      */
-
-      setTimeout(() => {
-        if (email === 'test@example.com' && password === 'test') {
-          setEmail('');
-          setPassword('');
-          addToast('success', 'Sikeres bejelentkezés!');
-          navigate('/');
-        } else {
-          addToast('error', 'Hibás adatok!');
-        }
-        hideLoader();
-      }, 2000);
+      const role = payload.role;
+      console.log(role);
+      setAuth({email, role, accessToken});
+      addToast('success', 'Sikeresen bejelentkeztél!');
+    } catch (error) {
+      addToast('error', error.message);
+    } finally {
+      hideLoader();
     }
   };
 

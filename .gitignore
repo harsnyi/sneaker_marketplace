@@ -33,12 +33,11 @@ build/
 ### VS Code ###
 .vscode/
 
-
+#python venv
+venv/
 
 # dependencies
-
 node_modules
-
 
 /.pnp
 .pnp.js

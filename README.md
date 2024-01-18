@@ -1,35 +1,29 @@
 # sneaker_marketplace👟
 
-##  🛠Testing
+## Kliens
 
-### Server side
+## Szerver
 
- #### Running and testing with the api on localhost
+### Virtuális környezet létrehozása
 
-    Create the virtual envinroment for the server side:
-    (Use Conda or pip, as you prefer)
+```console
+home@user:~$ python3 -m venv .\server\venv
+home@user:~$ cd .\server\venv
+home@user:~$ . .\Scripts\activate
+home@user:~$ pip install -r ..\requirements.txt
+```
 
-    🐍Conda
+### Virtuális környezet indítása
 
-    1. Create the virtual env
-        
-        > conda create --name <env> --file requirements.txt
+```console
+home@user:~$ cd .\server\venv
+home@user:~$ . .\Scripts\activate
+```
 
-    2. Activate the venv
-        
-        > conda activate <env>
-
-    3. Locate the manage.py script      
-
-    4. Run the script
-        
-        > python manage.py runserver
-
-## Access Roles
+## Jogosultságok
 
 ```diff
 + User : 5001
 ! Contributor : 6002
 - Admin : 8004
 ```
-

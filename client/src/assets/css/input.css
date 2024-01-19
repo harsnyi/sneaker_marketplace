@@ -1,3 +1,14 @@
+/*
+$clr-primary-900: #121212;
+$clr-primary-800: #212121;
+$clr-primary-700: #424242;
+$clr-primary-600: #616161;
+$clr-primary-500: #757575;
+$clr-primary-400: #9e9e9e;
+$clr-primary-300: #bdbdbd;
+$clr-primary-200: #e0e0e0;
+$clr-primary-100: #eeeeee;
+*/
 @keyframes bg-animation {
   0% {
     background-position: 0% 50%;

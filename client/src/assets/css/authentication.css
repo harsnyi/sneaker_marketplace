@@ -1,3 +1,14 @@
+/*
+$clr-primary-900: #121212;
+$clr-primary-800: #212121;
+$clr-primary-700: #424242;
+$clr-primary-600: #616161;
+$clr-primary-500: #757575;
+$clr-primary-400: #9e9e9e;
+$clr-primary-300: #bdbdbd;
+$clr-primary-200: #e0e0e0;
+$clr-primary-100: #eeeeee;
+*/
 @keyframes bg-animation {
   0% {
     background-position: 0% 50%;
@@ -76,21 +87,41 @@
   flex: 1;
   bottom: 0;
   left: 0;
-  overflow: hidden;
   transform: scale(1.175);
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   gap: 3rem;
   isolation: isolate;
+  overflow: hidden;
 }
 .auth-page .hero .hero-content {
   position: absolute;
   inset: 0;
   transform: scale(0.8525);
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  color: #F9FAFB;
+}
+.auth-page .hero .hero-content .hero-title {
+  font-size: clamp(5rem, 5vw, 7rem);
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #FFAB00;
+  text-shadow: 0.25rem 0.25rem #FF1F32;
+  font-family: "BiggerDisplay", sans-serif;
+  font-style: italic;
+}
+.auth-page .hero .hero-content .hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
 }
 .auth-page .hero .hero-content .hero-footer {
-  position: fixed;
   width: 100%;
   bottom: 0;
   left: 0;
@@ -205,6 +236,7 @@
   text-shadow: 0.25rem 0.25rem #FF1F32;
   font-family: "BiggerDisplay", sans-serif;
   font-style: italic;
+  display: none;
 }
 .auth-page .auth-container.light {
   background-color: #F9FAFB;
@@ -340,7 +372,7 @@
   margin-bottom: 1rem;
 }
 .auth-page .auth-container .tabs-content .tabs-content-item.active-content form .forgot-pass a {
-  color: #C4CDD5;
+  color: #00B8D9;
   text-decoration: none;
   font-style: italic;
 }
@@ -475,6 +507,10 @@
   }
   .auth-page .hero .hero-content {
     transform: scale(1);
+    padding: 0;
+  }
+  .auth-page .hero .hero-content .hero-title {
+    visibility: hidden;
   }
   .auth-page .hero .hero-content .hero-footer {
     padding: 1rem;
@@ -497,6 +533,7 @@
     border: none;
   }
   .auth-page .auth-container .brand-title {
+    display: block;
     font-size: 4rem;
     margin: 2rem 0;
     line-height: normal;

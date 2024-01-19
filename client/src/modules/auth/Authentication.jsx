@@ -56,6 +56,8 @@ const Authentication = () => {
         <div className="hero">
           {createGallery(9)}
           <div className="hero-content">
+            <h1 className="hero-title">Footwr.</h1>
+            <p className="hero-subtitle">Egy helyen a legjobb ajánlatok</p>
             <footer className="hero-footer">
               <h4>&copy;{currentYear}&ensp;Magyarország</h4>
               <div className="hero-links">

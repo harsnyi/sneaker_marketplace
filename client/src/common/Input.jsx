@@ -2,7 +2,7 @@ import '../assets/css/input.css';
 import {useState} from 'react';
 import {FaEye, FaEyeSlash} from 'react-icons/fa';
 
-const Input = ({type, label, error, success, value, name, onChange, className}) => {
+const Input = ({type, label, error, success, value, name, onChange, className, autoFocus}) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
 
   const handleTogglePasswordVisibility = () => {
@@ -20,7 +20,7 @@ const Input = ({type, label, error, success, value, name, onChange, className}) 
     <>
       <div className="input-wrapper">
         <div className="input-group">
-          <input type={inputType} value={value} onChange={handleOnChange} name={name} className={inputClassName} placeholder=" " />
+          <input type={inputType} value={value} onChange={handleOnChange} name={name} className={inputClassName} placeholder=" " autoFocus={autoFocus} />
           <label>{label}</label>
           {type === 'password' && (isPasswordVisible ? <FaEye onClick={handleTogglePasswordVisibility} className="eye" /> : <FaEyeSlash onClick={handleTogglePasswordVisibility} className="eye" />)}
         </div>

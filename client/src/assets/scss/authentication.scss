@@ -20,6 +20,7 @@
         isolation: isolate;
         overflow: hidden;
 
+
         .hero-content {
             position: absolute;
             inset: 0;
@@ -136,10 +137,8 @@
         padding: 3rem;
         width: clamp(40rem, 50%, 55rem);
         //box-shadow: .75rem .75rem $clr-black;
-        display: flex;
-        flex-direction: column;
         overflow-y: auto;
-        border-left: 1px solid $clr-primary-700;
+        border-left: 1px solid $clr-primary-600;
 
         .brand-title {
             position: relative;
@@ -166,6 +165,8 @@
 
         .tabs-wrapper {
             position: relative;
+            margin: 0 auto;
+            max-width: 800px;
 
             .tabs-header {
                 position: relative;
@@ -187,7 +188,7 @@
                     &::after {
                         content: '';
                         height: 1px;
-                        background-color: $clr-primary-700;
+                        background-color: $clr-primary-600;
                         position: absolute;
                         bottom: 0;
                         left: 0;
@@ -197,7 +198,7 @@
 
                     &:hover {
                         h3 {
-                            color: $clr-white;
+                            color: $clr-primary-100;
                         }
                     }
 
@@ -205,7 +206,7 @@
                         text-transform: uppercase;
                         letter-spacing: 2px;
                         font-size: 1rem;
-                        color: $clr-primary-700;
+                        color: $clr-primary-600;
                         transition: color 0.1s $animation-cubic;
                         margin: 0 1rem;
                     }
@@ -276,7 +277,7 @@
                         width: 100%;
                         position: absolute;
                         height: 1px;
-                        background-color: $clr-primary-700;
+                        background-color: $clr-primary-600;
                     }
                 }
 
@@ -462,7 +463,8 @@
         overflow: auto;
 
         .hero {
-            margin: 2rem;
+            max-width: 800px;
+            margin: 2rem auto !important;
             transform: scale(1);
             gap: .5rem;
             max-height: 40svh;

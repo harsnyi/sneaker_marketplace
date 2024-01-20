@@ -7,12 +7,13 @@ import {useRef, useState} from 'react';
 import {useMultiStepForm} from '../../hooks/useMultiStepForm';
 
 import {useLoader} from '../../hooks/useLoader';
-import {useToast} from '../../hooks/useToast';
 
 import {IoMdArrowBack} from 'react-icons/io';
 import {IoMdArrowForward} from 'react-icons/io';
 import {BsCheckLg} from 'react-icons/bs';
 import {HiPencilSquare} from 'react-icons/hi2';
+import {MdAccountBox} from 'react-icons/md';
+import {FaIdCard} from 'react-icons/fa';
 
 import Button from '../../common/Button';
 import AccountForm from './AccountForm';
@@ -36,7 +37,6 @@ const MultiStepForm = () => {
   const personalRef = useRef();
 
   const {showLoader, hideLoader} = useLoader();
-  const {addToast} = useToast();
 
   const [data, setData] = useState(INITIAL_DATA);
   const updateData = (fields) => {
@@ -48,13 +48,15 @@ const MultiStepForm = () => {
     });
   };
 
-  const {steps, currentStepIndex, isFirstStep, isLastStep, prev, next, goTo} = useMultiStepForm([
+  const {steps, currentStepIndex, isFirstStep, isLastStep, prev, next} = useMultiStepForm([
     {
-      label: 'Fiók',
+      label: 'Fiók információ',
+      svg: <MdAccountBox />,
       component: <AccountForm ref={accountRef} {...data} updateData={updateData} />,
     },
     {
-      label: 'Adatok',
+      label: 'Személyes adatok',
+      svg: <FaIdCard />,
       component: <PersonalForm ref={personalRef} {...data} updateData={updateData} />,
     },
   ]);
@@ -103,7 +105,7 @@ const MultiStepForm = () => {
                 <BsCheckLg />
               </h3>
             ) : (
-              <h3>{index + 1}</h3>
+              <h3>{step.svg}</h3>
             )}
             <h4>{step.label}</h4>
           </div>
@@ -113,17 +115,17 @@ const MultiStepForm = () => {
         <div>{steps[currentStepIndex].component}</div>
         <div className="form-buttons">
           {!isFirstStep && (
-            <Button type="button" text="Vissza" className="light" onClick={prev}>
+            <Button type="button" text="Vissza" className="tertiary light" onClick={prev}>
               <IoMdArrowBack />
             </Button>
           )}
 
           {!isLastStep ? (
-            <Button type="button" text="Következő" className="light" onClick={(e) => next(e)}>
+            <Button type="button" text="Következő" className="tertiary light" onClick={(e) => next(e)}>
               <IoMdArrowForward />
             </Button>
           ) : (
-            <Button type="submit" text="Regisztráció" className="light">
+            <Button type="submit" text="Regisztráció" className="primary light">
               <HiPencilSquare />
             </Button>
           )}

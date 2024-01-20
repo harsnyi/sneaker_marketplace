@@ -2,7 +2,6 @@
 $clr-black: #000000;
 $clr-white: #ffffff;
 
-
 $clr-primary-100: #F9FAFB;
 $clr-primary-200: #F4F6F8;
 $clr-primary-300: #DFE3E8;
@@ -12,20 +11,17 @@ $clr-primary-600: #637381;
 $clr-primary-700: #454F5B;
 $clr-primary-800: #212B36;
 $clr-primary-900: #161C24;
-
-
 /*
-$clr-primary-900: #121212;
+$clr-primary-900: #141414;
 $clr-primary-800: #212121;
 $clr-primary-700: #424242;
 $clr-primary-600: #616161;
 $clr-primary-500: #757575;
-$clr-primary-400: #9e9e9e;
-$clr-primary-300: #bdbdbd;
-$clr-primary-200: #e0e0e0;
-$clr-primary-100: #eeeeee;
+$clr-primary-400: #9E9E9E;
+$clr-primary-300: #BDBDBD;
+$clr-primary-200: #E0E0E0;
+$clr-primary-100: #EEEEEE;
 */
-
 $clr-green-lighter: #C8FAD6;
 $clr-green-light: #5BE49B;
 $clr-green: #00A76F;
@@ -50,7 +46,6 @@ $clr-yellow: #FFAB00;
 $clr-yellow-dark: #B76E00;
 $clr-yellow-darker: #7A4100;
 
-
 $clr-facebook: #3b5998;
 $clr-twitter: #1da1f2;
 $clr-google: #db4437;
@@ -63,6 +58,12 @@ $mobile-header-height: $mobile-nav-height;
 
 // OTHER
 $panel-box-shadow: 0 0 5px rgba(0, 0, 0, .175);
+
+// BORDER RADIUS
+$border-radius-5: 5px;
+$border-radius-base: .5rem;
+$border-radius-half: 50rem;
+$border-radius-full: 50%;
 
 // FONTS
 $font-display: 'BiggerDisplay', sans-serif;

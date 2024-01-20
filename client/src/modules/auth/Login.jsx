@@ -8,7 +8,6 @@ import axios from 'axios';
 import {BiLogIn} from 'react-icons/bi';
 import {useState} from 'react';
 import {useDebounce} from '../../hooks/useDebounce';
-import {useNavigate} from 'react-router-dom';
 import {useLoader} from '../../hooks/useLoader';
 import {useToast} from '../../hooks/useToast';
 import {useAuth} from '../../hooks/useAuth';
@@ -20,8 +19,6 @@ const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const LOGIN_URL = '/api/v1/token/authenticate';
 
 const Login = () => {
-  const navigate = useNavigate();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
@@ -93,10 +90,10 @@ const Login = () => {
       <h1>Üdv Újra!</h1>
       <div className="social-signup">
         <h4>Lépj be meglévő fiókoddal,</h4>
-        <Button text="via Facebook" className="light">
+        <Button text="via Facebook" className="secondary light">
           <ImFacebook />
         </Button>
-        <Button text="via Google" className="light">
+        <Button text="via Google" className="secondary light">
           <FaGoogle />
         </Button>
       </div>
@@ -130,7 +127,7 @@ const Login = () => {
         <span className="forgot-pass">
           Elfelejtetted a jelszavadat? Állítsd vissza <Link to="">itt</Link>.
         </span>
-        <Button type="submit" text="Bejelentkezés" className="light">
+        <Button type="submit" text="Bejelentkezés" className="primary light">
           <BiLogIn />
         </Button>
       </form>

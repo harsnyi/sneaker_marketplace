@@ -1,5 +1,6 @@
 import '../assets/css/toast.css';
 
+import {motion} from 'framer-motion';
 import {FaCircleCheck, FaCircleInfo, FaTriangleExclamation} from 'react-icons/fa6';
 import {BiSolidErrorAlt} from 'react-icons/bi';
 
@@ -22,7 +23,7 @@ const Toast = ({id, type, message, onClose}) => {
   }, [id, onClose]);
 
   return (
-    <div className={`toast ${type}`}>
+    <motion.div initial={{opacity: 0, x: '100%'}} animate={{opacity: 1, x: 0}} exit={{opacity: 0, x: '100%'}} transition={{duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94]}} className={`toast ${type}`}>
       {type === 'success' && <FaCircleCheck className="toast-icon" />}
       {type === 'error' && <BiSolidErrorAlt className="toast-icon" />}
       {type === 'info' && <FaCircleInfo className="toast-icon" />}
@@ -31,7 +32,7 @@ const Toast = ({id, type, message, onClose}) => {
       <button className="toast-close" onClick={() => onClose(id)}>
         &#x2716;
       </button>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,6 +1,6 @@
 import '../assets/css/reveal.css';
 import {useEffect, useRef} from 'react';
-import {motion, useInView, useAnimation, easeIn} from 'framer-motion';
+import {motion, useInView, useAnimation} from 'framer-motion';
 
 const Reveal = ({children}) => {
   const ref = useRef(null);

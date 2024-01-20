@@ -47,6 +47,9 @@
                 font-size: 1.5rem;
                 font-weight: 400;
                 margin: 0;
+                text-align: center;
+                max-width: 800px;
+                padding: 0 1.5rem;
             }
 
             .hero-footer {
@@ -134,9 +137,13 @@
         position: relative;
         padding: 3rem;
         width: clamp(40rem, 50%, 55rem);
-        //box-shadow: .75rem .75rem $clr-black;
         overflow-y: auto;
         border-left: 1px solid $clr-primary-600;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
         .brand-title {
             position: relative;
@@ -163,6 +170,7 @@
         .tabs-wrapper {
             position: relative;
             margin: 0 auto;
+            width: 100%;
             max-width: 800px;
 
             .tabs-header {
@@ -202,7 +210,7 @@
                     h3 {
                         text-transform: uppercase;
                         letter-spacing: 2px;
-                        font-size: 1rem;
+                        font-size: 1.2rem;
                         color: $clr-primary-600;
                         transition: color 0.1s $animation-cubic;
                         margin: 0 1rem;
@@ -213,7 +221,7 @@
                             content: '';
                             width: 100%;
                             height: 4px;
-                            background-color: $clr-primary-200;
+                            background-color: $clr-primary-100;
                             position: absolute;
                             bottom: 0;
                             left: 0;
@@ -239,7 +247,7 @@
 
                     h4 {
                         margin: 1rem 0;
-                        font-size: 1.175rem;
+                        font-size: 1.2rem;
                         font-weight: 400;
                         text-align: center;
                     }
@@ -261,7 +269,7 @@
                         padding: 0 1rem;
                         z-index: 100;
                         font-weight: 400;
-                        font-size: 1.175rem;
+                        font-size: 1.2rem;
                     }
 
                     &::after {
@@ -282,6 +290,7 @@
 
                     h1 {
                         margin: 2rem 0 1rem 0;
+                        font-size: 2rem;
                     }
 
                     form {
@@ -301,9 +310,9 @@
                         }
 
                         .forgot-pass {
-                            font-size: .9rem;
+                            font-size: 1.2rem;
                             font-weight: 400;
-                            margin-bottom: 1rem;
+                            margin: 1rem 0;
 
                             a {
                                 color: $clr-blue;
@@ -324,11 +333,11 @@
 
                         label {
                             position: absolute;
-                            left: 0.5rem;
                             top: 50%;
-                            transform: translateY(-50%);
+                            left: 1rem;
                             font-size: 1.2rem;
-                            color: $clr-primary-500;
+                            transform: translateY(-50%);
+                            color: $clr-primary-600;
                             pointer-events: none;
                             transition: 0.2s;
                             padding: 0 0.2rem;
@@ -336,17 +345,20 @@
 
                         .select-icon {
                             position: absolute;
-                            right: 0.75rem;
                             top: 50%;
+                            right: 1rem;
                             transform: translateY(-50%);
-                            pointer-events: none;
                             width: 1rem;
                             height: 1rem;
+                            cursor: pointer;
+                            overflow: hidden;
+                            z-index: 1;
+                            background-color: transparent;
                         }
 
                         .select-menu {
                             width: 100%;
-                            padding: 0.75rem;
+                            padding: 1rem 2rem 1rem 1rem;
                             --webkit-appearance: none;
                             -moz-appearance: none;
                             appearance: none;
@@ -356,43 +368,77 @@
                             outline: none;
 
                             &.light {
-                                border: 2px solid $clr-primary-700;
+                                border: 1px solid $clr-primary-600;
                                 color: $clr-primary-900;
                                 background-color: $clr-primary-100;
 
-                                &~label {
-                                    background-color: $clr-primary-100;
+                                &~.eye {
+                                    color: $clr-primary-600;
                                 }
 
-                                &:focus,
-                                &:invalid,
-                                &:not(:placeholder-shown) {
-                                    border: 2px solid $clr-primary-900;
+                                &:focus {
+                                    border: 1px solid $clr-primary-900;
+                                    outline: 2px solid $clr-primary-600;
 
                                     &~label {
                                         top: 0;
                                         color: $clr-primary-900;
+                                        font-size: 1.1rem;
+                                        background-color: $clr-white;
                                     }
+                                }
+
+
+                                &:invalid,
+                                &:not(:placeholder-shown) {
+                                    border: 1px solid $clr-primary-900;
+
+                                    &~label {
+                                        top: 0;
+                                        color: $clr-primary-900;
+                                        font-size: 1.1rem;
+                                        background-color: $clr-white;
+                                    }
+                                }
+
+                                &.input-error {
+                                    border: 2px solid $clr-red;
+
+                                    &:focus {
+                                        outline: 2px solid $clr-red-light;
+                                    }
+                                }
+
+                                &.input-success {
+                                    border: 2px solid $clr-green;
                                 }
                             }
 
                             &.dark {
-                                border: 2px solid $clr-primary-900;
-                                color: $clr-primary-100;
-                                background-color: $clr-primary-900;
+                                border: 1px solid $clr-primary-600;
+                                color: $clr-white;
 
-                                &~label {
-                                    background-color: $clr-primary-900;
-                                }
-
-                                &:focus,
-                                &:invalid,
-                                &:not(:placeholder-shown) {
-                                    border: 2px solid $clr-primary-100;
+                                &:focus {
+                                    border: 1px solid $clr-white;
+                                    outline: 2px solid $clr-primary-600;
 
                                     &~label {
                                         top: 0;
-                                        color: $clr-primary-100;
+                                        color: $clr-white;
+                                        font-size: 1.1rem;
+                                        background-color: $clr-primary-900;
+                                    }
+                                }
+
+                                &:invalid,
+                                &:not(:placeholder-shown) {
+                                    border: 1px solid $clr-white;
+
+                                    &~label {
+                                        top: 0;
+                                        color: $clr-white;
+                                        font-size: 1.1rem;
+                                        background-color: $clr-primary-900;
                                     }
                                 }
                             }
@@ -473,12 +519,15 @@
                 .hero-footer {
                     padding: 1rem;
 
+                    h4,
+                    a {
+                        font-size: .8rem;
+                    }
+
                     .hero-links {
                         gap: 1rem;
 
-                        h4,
                         a {
-                            font-size: .8rem;
                             opacity: 1;
                         }
                     }
@@ -509,7 +558,7 @@
                         min-width: 10rem;
 
                         h3 {
-                            font-size: 0.9rem;
+                            font-size: 1.2rem;
                         }
                     }
                 }
@@ -518,7 +567,6 @@
                     .tabs-content-item {
                         &.active-content {
                             h1 {
-                                font-size: 1.5rem;
                                 line-height: normal;
                             }
 
@@ -545,6 +593,36 @@
 
         .auth-container {
             padding: 0rem 1rem;
+        }
+    }
+}
+
+@media only screen and (max-width: $media-query-xsm) {
+    .auth-page {
+        .hero {
+            .hero-content {
+                .hero-footer {
+                    h4 {
+                        span {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .auth-container {
+            .tabs-wrapper {
+                .tabs-header {
+                    .tabs-header-item {
+                        min-width: 10rem;
+
+                        h3 {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -125,12 +125,12 @@ ul {
 @media only screen and (max-width: 1200px) {
   html {
     font-size: 0.9rem;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 }
 @media only screen and (max-width: 576px) {
   html {
-    font-size: 0.75rem;
-    line-height: 1.2;
+    font-size: 0.8rem;
+    line-height: 1.4;
   }
 }/*# sourceMappingURL=global.css.map */

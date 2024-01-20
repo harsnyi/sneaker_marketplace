@@ -7,18 +7,18 @@
 ### Virtuális környezet létrehozása
 
 ```console
-home@user:~$ python3 -m venv .\server\venv
-home@user:~$ cd .\server\venv
-home@user:~$ . .\Scripts\activate
-home@user:~$ pip install -r ..\requirements.txt
+python3 -m venv .\server\venv
+cd .\server\venv
+. .\Scripts\activate
+pip install -r ..\requirements.txt
 ```
 
 ### Virtuális környezet indítása
 
 ```console
-home@user:~$ cd .\server\venv
-home@user:~$ . .\Scripts\activate
-home@user:~$ python .\sneaker_api\manage.py runserver
+cd .\server\venv
+. .\Scripts\activate
+python .\sneaker_api\manage.py runserver
 ```
 
 ## Jogosultságok

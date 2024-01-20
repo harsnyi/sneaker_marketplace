@@ -309,7 +309,7 @@ $clr-primary-100: #EEEEEE;
   margin-bottom: 1.25rem;
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 360px) {
   .nav-aside-wrapper.opened .nav-aside {
     width: 100%;
   }

@@ -2,9 +2,25 @@ import '../../assets/css/authentication.css';
 import AuthTabs from './AuthTabs';
 import {Link} from 'react-router-dom';
 
+const FOOTER_LINKS = [
+  {
+    label: 'Alkalmazás',
+    url: '',
+  },
+  {
+    label: 'Adatvédelem',
+    url: '',
+  },
+  {
+    label: 'Feltételek',
+    url: '',
+  },
+  {
+    label: 'Kapcsolat',
+    url: '',
+  },
+];
 const Authentication = () => {
-  //TODO: jobb megoldást jelenthet egy backend, ami visszaadja a háttérképeket, szerveren tárolva. Also lazy loading, placeholder, stb.
-
   var backgroundImagesContext = null;
   /*
   if (window.innerWidth <= 1200) {
@@ -57,14 +73,18 @@ const Authentication = () => {
           {createGallery(9)}
           <div className="hero-content">
             <h1 className="hero-title">Footwr.</h1>
-            <p className="hero-subtitle">Egy helyen a legjobb ajánlatok</p>
+            {/*Bump!, Under Retail*/}
+            <p className="hero-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam repellat quam dicta at necessitatibus ipsa enim, consequatur dignissimos veniam reiciendis?</p>
             <footer className="hero-footer">
-              <h4>&copy;{currentYear}&ensp;Magyarország</h4>
+              <h4>
+                &copy;{currentYear}&ensp;<span>Magyarország</span>
+              </h4>
               <div className="hero-links">
-                <Link to="">Alkalmazás</Link>
-                <Link to="">Adatvédelem</Link>
-                <Link to="">Feltételek</Link>
-                <Link to="">Kapcsolat</Link>
+                {FOOTER_LINKS.map((link, index) => (
+                  <Link key={index} to={link.url}>
+                    {link.label}
+                  </Link>
+                ))}
               </div>
             </footer>
           </div>

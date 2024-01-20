@@ -23,7 +23,14 @@ export const useMultiStepForm = (steps) => {
   };
 
   const goTo = (stepIndex) => {
-    setCurrentStepIndex(stepIndex);
+    if (stepIndex > currentStepIndex) {
+      const isValid = steps[currentStepIndex].component.ref.current.isValid();
+      if (isValid) {
+        setCurrentStepIndex(stepIndex);
+      }
+    } else {
+      setCurrentStepIndex(stepIndex);
+    }
   };
 
   return {

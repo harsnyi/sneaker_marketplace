@@ -90,7 +90,7 @@ $clr-primary-100: #EEEEEE;
   left: 1rem;
   font-size: 1.2rem;
   transform: translateY(-50%);
-  color: #919EAB;
+  color: #637381;
   pointer-events: none;
   transition: 0.2s;
   padding: 0 0.2rem;
@@ -123,7 +123,7 @@ $clr-primary-100: #EEEEEE;
 }
 .input-wrapper .input-group .input-field.light:focus {
   border: 1px solid #161C24;
-  outline: 2px solid #919EAB;
+  outline: 2px solid #637381;
 }
 .input-wrapper .input-group .input-field.light:focus ~ label {
   top: 0;
@@ -164,7 +164,7 @@ $clr-primary-100: #EEEEEE;
 }
 .input-wrapper .input-group .input-field.dark:focus {
   border: 1px solid #ffffff;
-  outline: 2px solid #919EAB;
+  outline: 2px solid #637381;
 }
 .input-wrapper .input-group .input-field.dark:focus ~ label {
   top: 0;

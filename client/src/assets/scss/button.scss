@@ -3,7 +3,6 @@
 .btn {
     all: unset;
     box-shadow: 0;
-    transition: all 0.2s $animation-cubic;
     font-size: 1rem;
     padding: 0.75rem 1.5rem;
     margin: 0.5rem 0;
@@ -13,14 +12,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: .75rem;
 
     &.primary {
+        transition: background-color 0.2s $animation-cubic;
+
         &.light {
             background-color: $clr-white;
             color: $clr-primary-900;
 
-            &:hover {
+            &:hover,
+            &:active {
                 background-color: darken($color: $clr-white, $amount: 30);
             }
         }
@@ -29,7 +31,8 @@
             background-color: $clr-primary-900;
             color: $clr-white;
 
-            &:hover {
+            &:hover,
+            &:active {
                 background-color: lighten($color: $clr-primary-900, $amount: 30)
             }
         }
@@ -38,11 +41,13 @@
 
     &.secondary {
         border: 1px solid;
+        transition: background-color 0.2s $animation-cubic , color 0.2s $animation-cubic;
 
         &.light {
-            border-color: $clr-white;
+            border-color: $clr-primary-600;
 
-            &:hover {
+            &:hover,
+            &:active {
                 background-color: $clr-white;
                 color: $clr-primary-900;
             }
@@ -51,7 +56,8 @@
         &.dark {
             border-color: $clr-primary-900;
 
-            &:hover {
+            &:hover,
+            &:active {
                 background-color: $clr-primary-900;
                 color: $clr-white;
             }
@@ -64,6 +70,8 @@
         position: relative;
         padding: 0 !important;
         margin: .5rem 0;
+        gap: .75rem;
+        font-size: 1.2rem;
 
         &::before {
             content: '';
@@ -84,7 +92,8 @@
                 background-color: $clr-white;
             }
 
-            &:hover {
+            &:hover,
+            &:active {
                 &::before {
                     transform-origin: left;
                     transform: scaleX(1);
@@ -99,7 +108,8 @@
                 background-color: $clr-primary-900;
             }
 
-            &:hover {
+            &:hover,
+            &:active {
                 &::before {
                     transform-origin: left;
                     transform: scaleX(1);

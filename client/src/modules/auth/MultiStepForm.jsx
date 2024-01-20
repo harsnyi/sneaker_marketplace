@@ -48,7 +48,7 @@ const MultiStepForm = () => {
     });
   };
 
-  const {steps, currentStepIndex, isFirstStep, isLastStep, prev, next} = useMultiStepForm([
+  const {steps, currentStepIndex, isFirstStep, isLastStep, prev, next, goTo} = useMultiStepForm([
     {
       label: 'Fiók információ',
       svg: <MdAccountBox />,
@@ -99,16 +99,19 @@ const MultiStepForm = () => {
     <form className="multi-step-form" onSubmit={(e) => onSubmit(e)}>
       <div className="form-header">
         {steps.map((step, index) => (
-          <div key={index} className={index < currentStepIndex ? 'form-step valid' : index === currentStepIndex ? 'form-step active' : 'form-step'}>
-            {index < currentStepIndex ? (
-              <h3>
-                <BsCheckLg />
-              </h3>
-            ) : (
-              <h3>{step.svg}</h3>
-            )}
-            <h4>{step.label}</h4>
-          </div>
+          <>
+            <div key={index} className={index < currentStepIndex ? 'form-step valid' : index === currentStepIndex ? 'form-step active' : 'form-step'} onClick={() => goTo(index)}>
+              {index < currentStepIndex ? (
+                <h3>
+                  <BsCheckLg />
+                </h3>
+              ) : (
+                <h3>{step.svg}</h3>
+              )}
+              <h4>{step.label}</h4>
+            </div>
+            <span className={index < steps.length - 1 ? 'form-divider' : ''}></span>
+          </>
         ))}
       </div>
       <div className="form-body">

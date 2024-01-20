@@ -55,14 +55,14 @@ ul {
 @media only screen and (max-width: $media-query-lg) {
     html {
         font-size: 0.9rem;
-        line-height: 1.4;
+        line-height: 1.5;
     }
 }
 
 // Media Queries - Mobile
 @media only screen and (max-width: $media-query-sm) {
     html {
-        font-size: 0.75rem;
-        line-height: 1.2;
+        font-size: 0.8rem;
+        line-height: 1.4;
     }
 }

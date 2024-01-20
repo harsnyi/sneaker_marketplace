@@ -13,7 +13,7 @@
         label {
             position: absolute;
             top: 50%;
-            left: 0.5rem;
+            left: 1rem;
             font-size: 1.2rem;
             transform: translateY(-50%);
             color: $clr-primary-500;
@@ -25,7 +25,7 @@
         .eye {
             position: absolute;
             top: 50%;
-            right: 0.75rem;
+            right: 1rem;
             transform: translateY(-50%);
             width: 1rem;
             height: 1rem;
@@ -36,25 +36,37 @@
         }
 
         .input-field {
-            padding: 0.75rem;
-            padding-right: 2rem !important;
+            padding: 1rem 2rem 1rem 1rem;
             outline: none;
             font-size: 0.9rem;
             background-color: transparent;
+            //border-radius: $border-radius-half;
 
             &.light {
-                border: 2px solid $clr-primary-700;
+                border: 1px solid $clr-primary-600;
                 color: $clr-primary-900;
                 background-color: $clr-primary-100;
 
                 &~.eye {
-                    color: $clr-primary-700;
+                    color: $clr-primary-600;
                 }
 
-                &:focus,
+                &:focus {
+                    border: 1px solid $clr-primary-900;
+                    outline: 2px solid $clr-primary-500;
+
+                    &~label {
+                        top: 0;
+                        color: $clr-primary-900;
+                        font-size: 1.1rem;
+                        background-color: $clr-white;
+                    }
+                }
+
+
                 &:invalid,
                 &:not(:placeholder-shown) {
-                    border: 2px solid $clr-primary-900;
+                    border: 1px solid $clr-primary-900;
 
                     &~label {
                         top: 0;
@@ -78,13 +90,24 @@
             }
 
             &.dark {
-                border: 2px solid $clr-primary-500;
+                border: 1px solid $clr-primary-600;
                 color: $clr-white;
 
-                &:focus,
+                &:focus {
+                    border: 1px solid $clr-white;
+                    outline: 2px solid $clr-primary-500;
+
+                    &~label {
+                        top: 0;
+                        color: $clr-white;
+                        font-size: 1.1rem;
+                        background-color: $clr-primary-900;
+                    }
+                }
+
                 &:invalid,
                 &:not(:placeholder-shown) {
-                    border: 2px solid $clr-white;
+                    border: 1px solid $clr-white;
 
                     &~label {
                         top: 0;

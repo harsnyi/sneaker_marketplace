@@ -1,6 +1,6 @@
 import {useQueryParam, StringParam} from 'use-query-params';
 import Login from './Login';
-import Signup2 from './Signup2';
+import Signup from './Signup';
 import {useTitle} from '../../hooks/useTitle';
 
 const AuthTabs = () => {
@@ -23,7 +23,7 @@ const AuthTabs = () => {
             <Login />
           </div>
           <div className={tab === 'reg' ? 'tabs-content-item active-content' : 'tabs-content-item'}>
-            <Signup2 />
+            <Signup />
           </div>
         </div>
       </div>

@@ -135,8 +135,9 @@
     }
 
     .error-msg {
+        //color: lighten($color: $clr-red, $amount: 10);
         color: $clr-red;
-        font-size: .9rem;
+        font-size: 1rem;
     }
 }
 

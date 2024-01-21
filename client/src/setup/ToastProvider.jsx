@@ -33,7 +33,7 @@ const ToastProvider = ({children}) => {
     // Set a timer for this toast and store it in timers state
     const timer = setTimeout(() => {
       removeToast(id);
-    }, 4000);
+    }, 5000);
     setTimers((prevTimers) => ({...prevTimers, [id]: timer}));
   };
 

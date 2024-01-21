@@ -36,7 +36,7 @@ $clr-blue-darker: #003768;
 
 $clr-red-lighter: #FFD6D9;
 $clr-red-light: #FF8389;
-$clr-red: #FF1F32;
+$clr-red: #FF2437;
 $clr-red-dark: #B80D24;
 $clr-red-darker: #8C001A;
 
@@ -66,9 +66,13 @@ $border-radius-half: 50rem;
 $border-radius-full: 50%;
 
 // FONTS
-$font-display: 'BiggerDisplay', sans-serif;
-//$font-display: 'JDKFuturix', sans-serif;
-$font-content: 'Oswald', sans-serif;
+$font-display: 'BiggerDisplay';
+//$font-primary: 'Oswald', sans-serif;
+$font-primary: 'Roboto Condensed', sans-serif;
+//$font-primary: 'DM Sans', sans-serif;
+//$font-primary: Helvetica, sans-serif;
+//$font-primary: 'Inter';
+//$font-primary: 'Inter Tight';
 
 //COUNTS
 $dekstop-navbar-text-count : 17;

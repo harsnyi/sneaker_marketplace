@@ -72,7 +72,7 @@ const Authentication = () => {
         <div className="hero">
           {createGallery(9)}
           <div className="hero-content">
-            <h1 className="hero-title">Footwr.</h1>
+            <h1 className="hero-title">Under Retail</h1>
             {/*Bump!, Under Retail*/}
             <p className="hero-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam repellat quam dicta at necessitatibus ipsa enim, consequatur dignissimos veniam reiciendis?</p>
             <footer className="hero-footer">

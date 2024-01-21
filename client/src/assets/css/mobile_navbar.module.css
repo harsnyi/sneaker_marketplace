@@ -126,7 +126,7 @@ $clr-primary-100: #EEEEEE;
   position: absolute;
   height: 0.6rem;
   width: 0.6rem;
-  background-color: #FF1F32;
+  background-color: #FF2437;
   top: 0;
   right: 0;
   border-radius: 50%;
@@ -171,9 +171,9 @@ $clr-primary-100: #EEEEEE;
 .mobile-header-wrapper .header-list .header-list-item .logo h2 {
   text-transform: uppercase;
   font-size: 1.75rem;
-  font-family: "Oswald", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   color: #FFAB00;
-  text-shadow: 0.15rem 0.15rem 0 #FF1F32;
+  text-shadow: 0.15rem 0.15rem 0 #FF2437;
   padding: 0;
 }
 .mobile-header-wrapper .header-list .header-list-item .header-link {
@@ -326,8 +326,8 @@ $clr-primary-100: #EEEEEE;
     top: 0;
     left: 0;
     color: #FFAB00;
-    text-shadow: 0.15rem 0.15rem 0 #FF1F32;
-    font-family: "Oswald", sans-serif;
+    text-shadow: 0.15rem 0.15rem 0 #FF2437;
+    font-family: "Roboto Condensed", sans-serif;
     padding: 0;
     left: 50%;
     transform: translateX(-50%);

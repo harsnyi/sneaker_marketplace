@@ -35,7 +35,7 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
         }));
       });
 
-      addToast('error', 'Kérjük, töltse ki az összes mezőt!');
+      addToast('error', 'Kérjük, töltse ki a csillaggal jelölt mezőket!');
       return false;
     }
 

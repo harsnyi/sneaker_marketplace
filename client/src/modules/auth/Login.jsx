@@ -14,6 +14,7 @@ import {useAuth} from '../../hooks/useAuth';
 
 import {ImFacebook} from 'react-icons/im';
 import {FaGoogle} from 'react-icons/fa';
+import {MdLockReset} from 'react-icons/md';
 
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const LOGIN_URL = '/api/v1/token/authenticate';

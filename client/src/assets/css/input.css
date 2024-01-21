@@ -150,7 +150,7 @@ $clr-primary-100: #EEEEEE;
   background-color: #ffffff;
 }
 .input-wrapper .input-group .input-field.light.input-error {
-  border: 2px solid #FF1F32;
+  border: 2px solid #FF2437;
 }
 .input-wrapper .input-group .input-field.light.input-error:focus {
   outline: 2px solid #FF8389;
@@ -191,7 +191,7 @@ $clr-primary-100: #EEEEEE;
   background-color: #161C24;
 }
 .input-wrapper .input-group .input-field.dark.input-error {
-  border: 2px solid #FF1F32;
+  border: 2px solid #FF2437;
 }
 .input-wrapper .input-group .input-field.dark.input-error:focus {
   outline: 2px solid #FF8389;
@@ -200,8 +200,8 @@ $clr-primary-100: #EEEEEE;
   border: 2px solid #00A76F;
 }
 .input-wrapper .error-msg {
-  color: #FF1F32;
-  font-size: 0.9rem;
+  color: #FF2437;
+  font-size: 1rem;
 }
 
 /* Change Autocomplete styles*/

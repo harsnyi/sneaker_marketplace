@@ -196,9 +196,9 @@ $clr-primary-100: #EEEEEE;
 .nav-bar .nav-list .logo .nav-link h4 {
   text-transform: uppercase;
   font-size: 1.5rem;
-  font-family: "Oswald", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   color: #FFAB00;
-  text-shadow: 0.15rem 0.15rem 0 #FF1F32;
+  text-shadow: 0.15rem 0.15rem 0 #FF2437;
 }
 .nav-bar .nav-list .profile-link {
   width: 100%;
@@ -265,7 +265,7 @@ $clr-primary-100: #EEEEEE;
   position: absolute;
   height: 0.6rem;
   width: 0.6rem;
-  background-color: #FF1F32;
+  background-color: #FF2437;
   top: 0;
   right: 0;
   border-radius: 50%;

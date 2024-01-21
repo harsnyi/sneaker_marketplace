@@ -63,7 +63,7 @@ const MobileNavbar = () => {
               <span className={mobileNavStyle['header-svg']}></span>
             </span>
             <NavLink to="/" className={`${mobileNavStyle['logo']} `}>
-              <h2>Footwr.</h2>
+              <h2>Under Retail</h2>
             </NavLink>
             <NavLink to="/search" className={`${mobileNavStyle['header-link']} `}>
               {location === '/search' ? <BiSolidSearchAlt2 className={mobileNavStyle['header-svg']} /> : <BiSearchAlt className={mobileNavStyle['header-svg']} />}

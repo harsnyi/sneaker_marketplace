@@ -3,17 +3,6 @@
     "development"
   ],
   "hints": {
-    "compat-api/css": [
-      "default",
-      {
-        "ignore": [
-          "scroll-behavior",
-          "inset",
-          "backdrop-filter",
-          "aspect-ratio",
-          "min-height: auto"
-        ]
-      }
-    ]
+    "compat-api/css": "off"
   }
 }

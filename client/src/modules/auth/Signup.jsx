@@ -1,22 +1,11 @@
-import Button from '../../common/Button';
-
 import MultiStepForm from './MultiStepForm';
-import {ImFacebook} from 'react-icons/im';
-import {FaGoogle} from 'react-icons/fa';
+import SocialSignup from './SocialSignup';
 
 const Signup = () => {
   return (
     <>
       <h1>Vágjunk bele!</h1>
-      <div className="social-signup">
-        <h4>Regisztrálj meglévő fiókoddal,</h4>
-        <Button text="via Facebook" className="secondary light">
-          <ImFacebook />
-        </Button>
-        <Button text="via Google" className="secondary light">
-          <FaGoogle />
-        </Button>
-      </div>
+      <SocialSignup />
       <div className="bg-line">
         <h4>vagy</h4>
       </div>

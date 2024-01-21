@@ -108,7 +108,7 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
           onChange={(value) => {
             updateData({lastName: value});
           }}
-          className="input-field dark"
+          className="input-field light"
           error={errors.lastName}
           autoFocus
         />
@@ -119,7 +119,7 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
           onChange={(value) => {
             updateData({firstName: value});
           }}
-          className="input-field dark"
+          className="input-field light"
           error={errors.firstName}
         />
       </div>
@@ -130,7 +130,7 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
         onChange={(value) => {
           updateData({phoneNumber: value});
         }}
-        className="input-field dark"
+        className="input-field light"
         error={errors.phoneNumber}
       />
       <div className="select-wrapper">
@@ -139,7 +139,7 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
             updateData({gender: e.target.value});
           }}
           defaultValue={gender}
-          className="select-menu dark">
+          className="select-menu light">
           <option value="" disabled></option>
           <option value="1">Férfi</option>
           <option value="2">Nő</option>

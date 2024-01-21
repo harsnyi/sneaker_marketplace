@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from '../../common/Input';
 import Button from '../../common/Button';
+import SocialSignup from './SocialSignup';
 
 import {Link} from 'react-router-dom';
 
@@ -11,10 +12,6 @@ import {useDebounce} from '../../hooks/useDebounce';
 import {useLoader} from '../../hooks/useLoader';
 import {useToast} from '../../hooks/useToast';
 import {useAuth} from '../../hooks/useAuth';
-
-import {ImFacebook} from 'react-icons/im';
-import {FaGoogle} from 'react-icons/fa';
-import {MdLockReset} from 'react-icons/md';
 
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const LOGIN_URL = '/api/v1/token/authenticate';
@@ -50,14 +47,31 @@ const Login = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
+    const inputFields = {
+      email,
+      password,
+    };
+
+    // Check for empty inputs
+    const emptyInputs = Object.keys(inputFields).filter((key) => inputFields[key] === '');
+
+    if (emptyInputs.length > 0) {
+      emptyInputs.forEach((input) => {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          [input]: 'A mező kitöltése kötelező.',
+        }));
+      });
+    }
+
     if (!email || !password) {
-      addToast('error', 'A csillaggal jelölt mezők kitöltése kötelező!');
+      addToast('error', 'Kérjük, töltse ki a csillaggal jelölt mezőket!');
       hideLoader();
       return;
     }
 
     if (Object.values(errors).some((error) => error)) {
-      addToast('error', 'Kérem javítsa a hibás mezőket!');
+      addToast('error', 'Kérjük, javítsa a hibás mezőket!');
       hideLoader();
       return;
     }
@@ -88,16 +102,8 @@ const Login = () => {
 
   return (
     <>
-      <h1>Üdv Újra!</h1>
-      <div className="social-signup">
-        <h4>Lépj be meglévő fiókoddal,</h4>
-        <Button text="via Facebook" className="secondary light">
-          <ImFacebook />
-        </Button>
-        <Button text="via Google" className="secondary light">
-          <FaGoogle />
-        </Button>
-      </div>
+      <h1>Üdv újra!</h1>
+      <SocialSignup />
       <div className="bg-line">
         <h4>vagy</h4>
       </div>
@@ -109,7 +115,7 @@ const Login = () => {
           onChange={(value) => {
             setEmail(value);
           }}
-          className="input-field dark"
+          className="input-field light"
           name="lgn-email"
           error={errors.email}
         />
@@ -120,7 +126,7 @@ const Login = () => {
           onChange={(value) => {
             setPassword(value);
           }}
-          className="input-field dark"
+          className="input-field light"
           name="lgn-pass"
           error={errors.password}
         />

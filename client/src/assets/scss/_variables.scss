@@ -1,55 +1,71 @@
-// COLORS
-$clr-black: #000000;
-$clr-white: #ffffff;
+// PALETTE
 
-$clr-primary-100: #F9FAFB;
-$clr-primary-200: #F4F6F8;
-$clr-primary-300: #DFE3E8;
-$clr-primary-400: #C4CDD5;
-$clr-primary-500: #919EAB;
-$clr-primary-600: #637381;
-$clr-primary-700: #454F5B;
-$clr-primary-800: #212B36;
-$clr-primary-900: #161C24;
 /*
-$clr-primary-900: #141414;
-$clr-primary-800: #212121;
-$clr-primary-700: #424242;
-$clr-primary-600: #616161;
-$clr-primary-500: #757575;
-$clr-primary-400: #9E9E9E;
-$clr-primary-300: #BDBDBD;
-$clr-primary-200: #E0E0E0;
-$clr-primary-100: #EEEEEE;
+color(primary, 900): #131811;
+color(primary, 800): #263022;
+color(primary, 700): #394833;
+color(primary, 600): #4C5F44;
+color(primary, 500): #5E7755;
+color(primary, 400): #718F66;
+color(primary, 300): #86A27C;
+color(primary, 200): #9CB394;
+color(primary, 100): #B2C4AB;
 */
-$clr-green-lighter: #C8FAD6;
-$clr-green-light: #5BE49B;
-$clr-green: #00A76F;
-$clr-green-dark: #007867;
-$clr-green-darker: #004B50;
 
-$clr-blue-lighter: #CAFDF5;
-$clr-blue-light: #61F3F3;
-$clr-blue: #00B8D9;
-$clr-blue-dark: #006C9C;
-$clr-blue-darker: #003768;
+$clr-white: #fff;
+$clr-black: #000;
 
-$clr-red-lighter: #FFD6D9;
-$clr-red-light: #FF8389;
-$clr-red: #FF2437;
-$clr-red-dark: #B80D24;
-$clr-red-darker: #8C001A;
+$palettes : (primary: (900: #161C24,
+        800: #212B36,
+        700: #454F5B,
+        600: #637381,
+        500: #919EAB,
+        400: #C4CDD5,
+        300: #DFE3E8,
+        200: #F4F6F8,
+        100: #F9FAFB,
+    ),
+    secondary: (900: #212529,
+        800: #343a40,
+        700: #495057,
+        600: #6c757d,
+        500: #adb5bd,
+        400: #ced4da,
+        300: #dee2e6,
+        200: #e9ecef,
+        100: #f8f9fa,
 
-$clr-yellow-lighter: #FFF5CC;
-$clr-yellow-light: #FFD666;
-$clr-yellow: #FFAB00;
-$clr-yellow-dark: #B76E00;
-$clr-yellow-darker: #7A4100;
+    ),
+    red: (lighter: #FFD6D9,
+        light: #FF8389,
+        base: #FF2437,
+        dark: #B80D24,
+        darker: #8C001A,
+    ),
+    green: (lighter: #C8FAD6,
+        light: #5BE49B,
+        base: #00A76F,
+        dark: #007867,
+        darker: #004B50,
 
-$clr-facebook: #3b5998;
-$clr-twitter: #1da1f2;
-$clr-google: #db4437;
-$clr-instagram: #B71D18;
+    ),
+    blue: (lighter: #CAFDF5,
+        light: #61F3F3,
+        base: #00B8D9,
+        dark: #006C9C,
+        darker: #003768,
+    ),
+    yellow: (lighter: #FFF5CC,
+        light: #FFD666,
+        base: #FFAB00,
+        dark: #B76E00,
+        darker: #7A4100,
+    ),
+    other : (facebook: #3b5998,
+        twitter: #1da1f2,
+        google: #db4437,
+        instagram: #B71D18,
+    ));
 
 // SIZES
 $panel-gap: .5rem;
@@ -77,6 +93,24 @@ $font-primary: 'Roboto Condensed', sans-serif;
 //COUNTS
 $dekstop-navbar-text-count : 17;
 //$mobile-navbar-text-count: 8;
+
+// FUNCTIONS
+@function color($color, $tone) {
+    @if map-has-key($palettes, $color) {
+        $color: map-get($palettes, $color);
+
+        @if map-has-key($color, $tone) {
+            $tone: map-get($color, $tone);
+            @return $tone;
+        }
+
+        @warn "unknown tone `#{$tone}` in color";
+        @return null;
+    }
+
+    @warn "unknown color `#{$color}` in palette";
+    @return null;
+}
 
 // ANIMATIONS
 $animation-cubic: cubic-bezier(0.25, 0.46, 0.45, 0.94);

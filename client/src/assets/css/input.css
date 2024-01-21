@@ -1,13 +1,13 @@
 /*
-$clr-primary-900: #141414;
-$clr-primary-800: #212121;
-$clr-primary-700: #424242;
-$clr-primary-600: #616161;
-$clr-primary-500: #757575;
-$clr-primary-400: #9E9E9E;
-$clr-primary-300: #BDBDBD;
-$clr-primary-200: #E0E0E0;
-$clr-primary-100: #EEEEEE;
+color(primary, 900): #131811;
+color(primary, 800): #263022;
+color(primary, 700): #394833;
+color(primary, 600): #4C5F44;
+color(primary, 500): #5E7755;
+color(primary, 400): #718F66;
+color(primary, 300): #86A27C;
+color(primary, 200): #9CB394;
+color(primary, 100): #B2C4AB;
 */
 @keyframes bg-animation {
   0% {
@@ -113,90 +113,98 @@ $clr-primary-100: #EEEEEE;
   font-size: 0.9rem;
   background-color: transparent;
 }
-.input-wrapper .input-group .input-field.light {
-  border: 1px solid #637381;
-  color: #161C24;
-  background-color: #F9FAFB;
-}
-.input-wrapper .input-group .input-field.light ~ .eye {
-  color: #637381;
-}
-.input-wrapper .input-group .input-field.light:focus {
-  border: 1px solid #161C24;
-  outline: 2px solid #637381;
-}
-.input-wrapper .input-group .input-field.light:focus ~ label {
-  top: 0;
-  color: #161C24;
-  font-size: 1.1rem;
-  background-color: #ffffff;
-}
-.input-wrapper .input-group .input-field.light:not(:-moz-placeholder-shown) {
-  border: 1px solid #161C24;
-}
-.input-wrapper .input-group .input-field.light:invalid, .input-wrapper .input-group .input-field.light:not(:placeholder-shown) {
-  border: 1px solid #161C24;
-}
-.input-wrapper .input-group .input-field.light:not(:-moz-placeholder-shown) ~ label {
-  top: 0;
-  color: #161C24;
-  font-size: 1.1rem;
-  background-color: #ffffff;
-}
-.input-wrapper .input-group .input-field.light:invalid ~ label, .input-wrapper .input-group .input-field.light:not(:placeholder-shown) ~ label {
-  top: 0;
-  color: #161C24;
-  font-size: 1.1rem;
-  background-color: #ffffff;
-}
-.input-wrapper .input-group .input-field.light.input-error {
-  border: 2px solid #FF2437;
-}
-.input-wrapper .input-group .input-field.light.input-error:focus {
-  outline: 2px solid #FF8389;
-}
-.input-wrapper .input-group .input-field.light.input-success {
-  border: 2px solid #00A76F;
-}
 .input-wrapper .input-group .input-field.dark {
   border: 1px solid #637381;
-  color: #ffffff;
+  color: #161C24;
+  background-color: #fff;
+}
+.input-wrapper .input-group .input-field.dark:-webkit-autofill, .input-wrapper .input-group .input-field.dark:-webkit-autofill:hover, .input-wrapper .input-group .input-field.dark:-webkit-autofill:focus {
+  -webkit-text-fill-color: #161C24;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+.input-wrapper .input-group .input-field.dark ~ .eye {
+  color: #637381;
 }
 .input-wrapper .input-group .input-field.dark:focus {
-  border: 1px solid #ffffff;
+  border: 1px solid #161C24;
   outline: 2px solid #637381;
 }
 .input-wrapper .input-group .input-field.dark:focus ~ label {
   top: 0;
-  color: #ffffff;
+  color: #161C24;
   font-size: 1.1rem;
-  background-color: #161C24;
+  background-color: #fff;
 }
 .input-wrapper .input-group .input-field.dark:not(:-moz-placeholder-shown) {
-  border: 1px solid #ffffff;
+  border: 1px solid #161C24;
 }
 .input-wrapper .input-group .input-field.dark:invalid, .input-wrapper .input-group .input-field.dark:not(:placeholder-shown) {
-  border: 1px solid #ffffff;
+  border: 1px solid #161C24;
 }
 .input-wrapper .input-group .input-field.dark:not(:-moz-placeholder-shown) ~ label {
   top: 0;
-  color: #ffffff;
+  color: #161C24;
   font-size: 1.1rem;
-  background-color: #161C24;
+  background-color: #fff;
 }
 .input-wrapper .input-group .input-field.dark:invalid ~ label, .input-wrapper .input-group .input-field.dark:not(:placeholder-shown) ~ label {
   top: 0;
-  color: #ffffff;
+  color: #161C24;
   font-size: 1.1rem;
-  background-color: #161C24;
+  background-color: #fff;
 }
 .input-wrapper .input-group .input-field.dark.input-error {
   border: 2px solid #FF2437;
 }
 .input-wrapper .input-group .input-field.dark.input-error:focus {
-  outline: 2px solid #FF8389;
+  outline: 2px solid #FFD6D9;
 }
 .input-wrapper .input-group .input-field.dark.input-success {
+  border: 2px solid #00A76F;
+}
+.input-wrapper .input-group .input-field.light {
+  border: 1px solid #637381;
+  color: #fff;
+}
+.input-wrapper .input-group .input-field.light:-webkit-autofill, .input-wrapper .input-group .input-field.light:-webkit-autofill:hover, .input-wrapper .input-group .input-field.light:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0px 1000px #161C24 inset;
+}
+.input-wrapper .input-group .input-field.light:focus {
+  border: 1px solid #fff;
+  outline: 2px solid #637381;
+}
+.input-wrapper .input-group .input-field.light:focus ~ label {
+  top: 0;
+  color: #fff;
+  font-size: 1.1rem;
+  background-color: #161C24;
+}
+.input-wrapper .input-group .input-field.light:not(:-moz-placeholder-shown) {
+  border: 1px solid #fff;
+}
+.input-wrapper .input-group .input-field.light:invalid, .input-wrapper .input-group .input-field.light:not(:placeholder-shown) {
+  border: 1px solid #fff;
+}
+.input-wrapper .input-group .input-field.light:not(:-moz-placeholder-shown) ~ label {
+  top: 0;
+  color: #fff;
+  font-size: 1.1rem;
+  background-color: #161C24;
+}
+.input-wrapper .input-group .input-field.light:invalid ~ label, .input-wrapper .input-group .input-field.light:not(:placeholder-shown) ~ label {
+  top: 0;
+  color: #fff;
+  font-size: 1.1rem;
+  background-color: #161C24;
+}
+.input-wrapper .input-group .input-field.light.input-error {
+  border: 2px solid #FF2437;
+}
+.input-wrapper .input-group .input-field.light.input-error:focus {
+  outline: 2px solid #FFD6D9;
+}
+.input-wrapper .input-group .input-field.light.input-success {
   border: 2px solid #00A76F;
 }
 .input-wrapper .error-msg {
@@ -204,10 +212,106 @@ $clr-primary-100: #EEEEEE;
   font-size: 1rem;
 }
 
-/* Change Autocomplete styles*/
-:-webkit-autofill,
-:-webkit-autofill:hover,
-:-webkit-autofill:focus {
-  -webkit-text-fill-color: #ffffff;
-  -webkit-box-shadow: 0 0 0px 1000px #161C24 inset;
+.select-wrapper {
+  width: 100%;
+  margin: 0.7rem 0;
+  position: relative;
+}
+.select-wrapper label {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  font-size: 1.2rem;
+  transform: translateY(-50%);
+  color: #637381;
+  pointer-events: none;
+  transition: 0.2s;
+  padding: 0 0.2rem;
+}
+.select-wrapper .select-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  width: 1rem;
+  height: 1rem;
+}
+.select-wrapper .select-menu {
+  width: 100%;
+  --webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: border 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  outline: none;
+  padding: 1rem 2rem 1rem 1rem;
+}
+.select-wrapper .select-menu.dark {
+  border: 1px solid #637381;
+  color: #161C24;
+  background-color: #fff;
+}
+.select-wrapper .select-menu.dark:focus {
+  border: 1px solid #161C24;
+  outline: 2px solid #637381;
+}
+.select-wrapper .select-menu.dark:focus ~ label {
+  top: 0;
+  color: #161C24;
+  font-size: 1.1rem;
+  background-color: #fff;
+}
+.select-wrapper .select-menu.dark:not(:-moz-placeholder-shown) {
+  border: 1px solid #161C24;
+}
+.select-wrapper .select-menu.dark:invalid, .select-wrapper .select-menu.dark:not(:placeholder-shown) {
+  border: 1px solid #161C24;
+}
+.select-wrapper .select-menu.dark:not(:-moz-placeholder-shown) ~ label {
+  top: 0;
+  color: #161C24;
+  font-size: 1.1rem;
+  background-color: #fff;
+}
+.select-wrapper .select-menu.dark:invalid ~ label, .select-wrapper .select-menu.dark:not(:placeholder-shown) ~ label {
+  top: 0;
+  color: #161C24;
+  font-size: 1.1rem;
+  background-color: #fff;
+}
+.select-wrapper .select-menu.light {
+  border: 1px solid #637381;
+  color: #fff;
+  background-color: #161C24;
+}
+.select-wrapper .select-menu.light:focus {
+  border: 1px solid #fff;
+  outline: 2px solid #637381;
+}
+.select-wrapper .select-menu.light:focus ~ label {
+  top: 0;
+  color: #fff;
+  font-size: 1.1rem;
+  background-color: #161C24;
+}
+.select-wrapper .select-menu.light:not(:-moz-placeholder-shown) {
+  border: 1px solid #fff;
+}
+.select-wrapper .select-menu.light:invalid, .select-wrapper .select-menu.light:not(:placeholder-shown) {
+  border: 1px solid #fff;
+}
+.select-wrapper .select-menu.light:not(:-moz-placeholder-shown) ~ label {
+  top: 0;
+  color: #fff;
+  font-size: 1.1rem;
+  background-color: #161C24;
+}
+.select-wrapper .select-menu.light:invalid ~ label, .select-wrapper .select-menu.light:not(:placeholder-shown) ~ label {
+  top: 0;
+  color: #fff;
+  font-size: 1.1rem;
+  background-color: #161C24;
 }/*# sourceMappingURL=input.css.map */

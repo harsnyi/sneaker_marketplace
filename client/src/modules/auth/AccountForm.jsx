@@ -162,7 +162,7 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
         onChange={(value) => {
           updateData({email: value});
         }}
-        className="input-field dark"
+        className="input-field light"
         error={errors.email}
         autoFocus
       />
@@ -173,7 +173,7 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
         onChange={(value) => {
           updateData({username: value});
         }}
-        className="input-field dark"
+        className="input-field light"
         error={errors.username}
       />
       <div className="field-wrapper">
@@ -184,7 +184,7 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
           onChange={(value) => {
             updateData({password: value});
           }}
-          className="input-field dark"
+          className="input-field light"
           error={errors.password}
         />
         <Input
@@ -194,7 +194,7 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
           onChange={(value) => {
             updateData({passwordConfirmation: value});
           }}
-          className="input-field dark"
+          className="input-field light"
           error={errors.passwordConfirmation}
         />
       </div>

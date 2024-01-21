@@ -68,24 +68,24 @@
     }
 
     &.success {
-        background-color: $clr-green;
-        border: 1px solid $clr-green-darker;
+        background-color: color(green, base);
+        border: 1px solid color(green, darker);
     }
 
     &.error {
-        background-color: $clr-red;
-        border: 1px solid $clr-red-darker;
+        background-color: color(red, base);
+        border: 1px solid color(red, darker);
     }
 
     &.warning {
-        background-color: $clr-yellow;
-        border: 1px solid $clr-yellow-darker;
+        background-color: color(yellow, base);
+        border: 1px solid color(yellow, darker);
 
     }
 
     &.info {
-        background-color: $clr-blue;
-        border: 1px solid $clr-blue-darker;
+        background-color: color(blue, base);
+        border: 1px solid color(blue, darker);
     }
 }
 

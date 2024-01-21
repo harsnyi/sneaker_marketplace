@@ -23,7 +23,7 @@
 
         &.light {
             background-color: $clr-white;
-            color: $clr-primary-900;
+            color: color(primary, 900);
 
             &:hover,
             &:active {
@@ -32,12 +32,12 @@
         }
 
         &.dark {
-            background-color: $clr-primary-900;
+            background-color: color(primary, 900);
             color: $clr-white;
 
             &:hover,
             &:active {
-                background-color: lighten($color: $clr-primary-900, $amount: 20)
+                background-color: lighten($color: color(primary, 900), $amount: 20)
             }
         }
 
@@ -49,29 +49,30 @@
         transition: background-color 0.2s $animation-cubic , color 0.2s $animation-cubic;
 
         &.light {
-            border-color: $clr-primary-600;
+            border-color: color(primary, 600);
 
             &:hover {
                 background-color: $clr-white;
-                color: $clr-primary-900;
+                color: color(primary, 900);
             }
 
             &:active {
                 background-color: darken($color: $clr-white, $amount: 20);
-                color: $clr-primary-900;
+                color: color(primary, 900);
             }
         }
 
         &.dark {
-            border-color: $clr-primary-900;
+            border-color: color(primary, 900);
+            color: color(primary, 900);
 
             &:hover {
-                background-color: $clr-primary-900;
+                background-color: color(primary, 900);
                 color: $clr-white;
             }
 
             &:active {
-                background-color: lighten($color: $clr-primary-900, $amount: 20);
+                background-color: lighten($color: color(primary, 900), $amount: 20);
                 color: $clr-white;
             }
         }
@@ -125,10 +126,10 @@
         }
 
         &.dark {
-            color: $clr-primary-900;
+            color: color(primary, 900);
 
             &::before {
-                background-color: $clr-primary-900;
+                background-color: color(primary, 900);
             }
 
             &:hover {
@@ -139,10 +140,10 @@
             }
 
             &:active {
-                color: darken($color: $clr-primary-900, $amount: 20);
+                color: darken($color: color(primary, 900), $amount: 20);
 
                 &::before {
-                    background-color: darken($color: $clr-primary-900, $amount: 20);
+                    background-color: darken($color: color(primary, 900), $amount: 20);
                     transform-origin: left;
                     transform: scaleX(1);
                 }

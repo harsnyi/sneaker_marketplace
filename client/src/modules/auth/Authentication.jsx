@@ -20,6 +20,7 @@ const FOOTER_LINKS = [
     url: '',
   },
 ];
+
 const Authentication = () => {
   var backgroundImagesContext = null;
   /*
@@ -90,7 +91,7 @@ const Authentication = () => {
           </div>
         </div>
         <div className="auth-container dark">
-          <h1 className="brand-title">Footwr.</h1>
+          <h1 className="brand-title">Under Retail</h1>
           <AuthTabs />
         </div>
       </section>

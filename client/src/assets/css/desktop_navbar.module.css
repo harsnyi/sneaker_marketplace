@@ -1,13 +1,13 @@
 /*
-$clr-primary-900: #141414;
-$clr-primary-800: #212121;
-$clr-primary-700: #424242;
-$clr-primary-600: #616161;
-$clr-primary-500: #757575;
-$clr-primary-400: #9E9E9E;
-$clr-primary-300: #BDBDBD;
-$clr-primary-200: #E0E0E0;
-$clr-primary-100: #EEEEEE;
+color(primary, 900): #131811;
+color(primary, 800): #263022;
+color(primary, 700): #394833;
+color(primary, 600): #4C5F44;
+color(primary, 500): #5E7755;
+color(primary, 400): #718F66;
+color(primary, 300): #86A27C;
+color(primary, 200): #9CB394;
+color(primary, 100): #B2C4AB;
 */
 @keyframes bg-animation {
   0% {
@@ -300,7 +300,7 @@ $clr-primary-100: #EEEEEE;
   position: absolute;
   width: 3px;
   height: 100%;
-  background-color: #ffffff;
+  background-color: #fff;
   left: 0;
   top: 0;
   border-top-right-radius: 25px;

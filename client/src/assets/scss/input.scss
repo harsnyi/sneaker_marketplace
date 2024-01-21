@@ -16,7 +16,7 @@
             left: 1rem;
             font-size: 1.2rem;
             transform: translateY(-50%);
-            color: $clr-primary-600;
+            color: color(primary, 600);
             pointer-events: none;
             transition: 0.2s;
             padding: 0 0.2rem;
@@ -42,22 +42,29 @@
             background-color: transparent;
             //border-radius: $border-radius-half;
 
-            &.light {
-                border: 1px solid $clr-primary-600;
-                color: $clr-primary-900;
-                background-color: $clr-primary-100;
+            &.dark {
+                border: 1px solid color(primary, 600);
+                color: color(primary, 900);
+                background-color: $clr-white;
+
+                &:-webkit-autofill,
+                &:-webkit-autofill:hover,
+                &:-webkit-autofill:focus {
+                    -webkit-text-fill-color: color(primary, 900);
+                    -webkit-box-shadow: 0 0 0px 1000px $clr-white inset;
+                }
 
                 &~.eye {
-                    color: $clr-primary-600;
+                    color: color(primary, 600);
                 }
 
                 &:focus {
-                    border: 1px solid $clr-primary-900;
-                    outline: 2px solid $clr-primary-600;
+                    border: 1px solid color(primary, 900);
+                    outline: 2px solid color(primary, 600);
 
                     &~label {
                         top: 0;
-                        color: $clr-primary-900;
+                        color: color(primary, 900);
                         font-size: 1.1rem;
                         background-color: $clr-white;
                     }
@@ -66,42 +73,49 @@
 
                 &:invalid,
                 &:not(:placeholder-shown) {
-                    border: 1px solid $clr-primary-900;
+                    border: 1px solid color(primary, 900);
 
                     &~label {
                         top: 0;
-                        color: $clr-primary-900;
+                        color: color(primary, 900);
                         font-size: 1.1rem;
                         background-color: $clr-white;
                     }
                 }
 
                 &.input-error {
-                    border: 2px solid $clr-red;
+                    border: 2px solid color(red, base);
 
                     &:focus {
-                        outline: 2px solid $clr-red-light;
+                        outline: 2px solid color(red, lighter);
                     }
                 }
 
                 &.input-success {
-                    border: 2px solid $clr-green;
+                    border: 2px solid color(green, base);
                 }
             }
 
-            &.dark {
-                border: 1px solid $clr-primary-600;
+            &.light {
+                border: 1px solid color(primary, 600);
                 color: $clr-white;
 
+                &:-webkit-autofill,
+                &:-webkit-autofill:hover,
+                &:-webkit-autofill:focus {
+                    -webkit-text-fill-color: $clr-white;
+                    -webkit-box-shadow: 0 0 0px 1000px color(primary, 900) inset;
+                }
+
                 &:focus {
                     border: 1px solid $clr-white;
-                    outline: 2px solid $clr-primary-600;
+                    outline: 2px solid color(primary, 600);
 
                     &~label {
                         top: 0;
                         color: $clr-white;
                         font-size: 1.1rem;
-                        background-color: $clr-primary-900;
+                        background-color: color(primary, 900);
                     }
                 }
 
@@ -113,38 +127,128 @@
                         top: 0;
                         color: $clr-white;
                         font-size: 1.1rem;
-                        background-color: $clr-primary-900;
+                        background-color: color(primary, 900);
                     }
                 }
 
                 &.input-error {
-                    border: 2px solid $clr-red;
+                    border: 2px solid color(red, base);
 
                     &:focus {
-                        outline: 2px solid $clr-red-light;
+                        outline: 2px solid color(red, lighter);
                     }
                 }
 
                 &.input-success {
-                    border: 2px solid $clr-green;
+                    border: 2px solid color(green, base)
                 }
             }
-
-
         }
     }
 
     .error-msg {
-        //color: lighten($color: $clr-red, $amount: 10);
-        color: $clr-red;
+        //color: lighten($color: color(red, base), $amount: 10);
+        color: color(red, base);
         font-size: 1rem;
     }
 }
 
-/* Change Autocomplete styles*/
-:-webkit-autofill,
-:-webkit-autofill:hover,
-:-webkit-autofill:focus {
-    -webkit-text-fill-color: $clr-white;
-    -webkit-box-shadow: 0 0 0px 1000px $clr-primary-900 inset;
+.select-wrapper {
+    width: 100%;
+    margin: 0.7rem 0;
+    position: relative;
+
+    label {
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        font-size: 1.2rem;
+        transform: translateY(-50%);
+        color: color(primary, 600);
+        pointer-events: none;
+        transition: 0.2s;
+        padding: 0 0.2rem;
+    }
+
+    .select-icon {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .select-menu {
+        width: 100%;
+        --webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: border 0.2s $animation-cubic;
+        outline: none;
+        padding: 1rem 2rem 1rem 1rem;
+
+        &.dark {
+            border: 1px solid color(primary, 600);
+            color: color(primary, 900);
+            background-color: $clr-white;
+
+            &:focus {
+                border: 1px solid color(primary, 900);
+                outline: 2px solid color(primary, 600);
+
+                &~label {
+                    top: 0;
+                    color: color(primary, 900);
+                    font-size: 1.1rem;
+                    background-color: $clr-white;
+                }
+            }
+
+            &:invalid,
+            &:not(:placeholder-shown) {
+                border: 1px solid color(primary, 900);
+
+                &~label {
+                    top: 0;
+                    color: color(primary, 900);
+                    font-size: 1.1rem;
+                    background-color: $clr-white;
+                }
+            }
+        }
+
+        &.light {
+            border: 1px solid color(primary, 600);
+            color: $clr-white;
+            background-color: color(primary, 900);
+
+            &:focus {
+                border: 1px solid $clr-white;
+                outline: 2px solid color(primary, 600);
+
+                &~label {
+                    top: 0;
+                    color: $clr-white;
+                    font-size: 1.1rem;
+                    background-color: color(primary, 900);
+                }
+            }
+
+            &:invalid,
+            &:not(:placeholder-shown) {
+                border: 1px solid $clr-white;
+
+                &~label {
+                    top: 0;
+                    color: $clr-white;
+                    font-size: 1.1rem;
+                    background-color: color(primary, 900);
+                }
+            }
+        }
+    }
 }

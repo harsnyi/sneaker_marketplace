@@ -3,11 +3,11 @@
 .nav-bar {
     position: fixed;
     bottom: 0;
-    background-color: $clr-primary-900;
+    background-color: color(primary, 900);
     height: $mobile-nav-height;
     width: 100vw;
     z-index: 100;
-    border-top: 1px solid $clr-primary-700;
+    border-top: 1px solid color(primary, 700);
 
     .nav-list {
         list-style-type: none;
@@ -50,18 +50,18 @@
                         margin: 0;
                         min-width: 2rem;
                         height: 1.75rem;
-                        color: $clr-primary-100;
+                        color: color(primary, 100);
                     }
 
                     .new-notification {
                         position: absolute;
                         height: 0.6rem;
                         width: 0.6rem;
-                        background-color: $clr-red;
+                        background-color: color(red, base);
                         top: 0;
                         right: 0;
                         border-radius: 50%;
-                        border: 1px solid $clr-primary-900;
+                        border: 1px solid color(primary, 900);
                         z-index: 100;
                         transform: translate(0, -25%);
                         filter: grayscale(0%) opacity(1);
@@ -72,7 +72,7 @@
                     margin: 0;
                     min-width: 2rem;
                     height: 1.75rem;
-                    color: $clr-primary-100;
+                    color: color(primary, 100);
                 }
             }
         }
@@ -83,9 +83,9 @@
     position: fixed;
     width: 100%;
     height: $mobile-header-height;
-    background-color: $clr-primary-900;
+    background-color: color(primary, 900);
     z-index: 100;
-    border-bottom: 1px solid $clr-primary-700;
+    border-bottom: 1px solid color(primary, 700);
 
     .header-list {
         list-style-type: none;
@@ -108,9 +108,9 @@
                 h2 {
                     text-transform: uppercase;
                     font-size: 1.75rem;
-                    font-family: $font-content;
-                    color: $clr-yellow;
-                    text-shadow: .15rem .15rem 0 $clr-red;
+                    font-family: $font-primary;
+                    color: color(yellow, base);
+                    text-shadow: .15rem .15rem 0 color(red, base);
                     padding: 0;
                 }
             }
@@ -128,7 +128,7 @@
                     margin: 0;
                     min-width: 2rem;
                     height: 1.75rem;
-                    color: $clr-primary-100;
+                    color: color(primary, 100);
                 }
             }
         }
@@ -148,7 +148,7 @@
         top: $mobile-nav-height;
         left: 0;
         position: fixed;
-        background-color: $clr-primary-900;
+        background-color: color(primary, 900);
         z-index: 100;
         transition: width 0.2s $animation-cubic;
 
@@ -163,7 +163,7 @@
 
         .nav-aside {
             width: 80%;
-            border-right: 1px solid $clr-primary-700;
+            border-right: 1px solid color(primary, 700);
 
             .side-list {
                 list-style-type: none;
@@ -189,20 +189,20 @@
                         &:hover {
                             cursor: pointer;
                             opacity: 1;
-                            background-color: darken($color: $clr-primary-900, $amount: 3%);
+                            background-color: darken($color: color(primary, 900), $amount: 3%);
                             position: relative;
                         }
 
                         .username-text {
                             font-weight: 400;
                             font-size: 1.5rem;
-                            color: $clr-primary-100;
+                            color: color(primary, 100);
                         }
 
                         .username-link {
                             font-weight: 400;
                             font-size: .85rem;
-                            color: $clr-primary-400;
+                            color: color(primary, 400);
                             font-style: italic;
                         }
 
@@ -211,7 +211,7 @@
                             width: 6rem;
                             border-radius: 50%;
                             object-fit: cover;
-                            border: 2px solid $clr-primary-500;
+                            border: 2px solid color(primary, 500);
                             margin-bottom: 0.25rem;
                         }
                     }
@@ -231,7 +231,7 @@
                         .side-svg {
                             min-height: 1.5rem;
                             min-width: 1.5rem;
-                            color: $clr-primary-100;
+                            color: color(primary, 100);
 
                             &.scale-down {
                                 transform: scale(.9);
@@ -245,7 +245,7 @@
 
                         &.active,
                         &:hover {
-                            background-color: darken($color: $clr-primary-900, $amount: 3%);
+                            background-color: darken($color: color(primary, 900), $amount: 3%);
                             position: relative;
                         }
 
@@ -297,9 +297,9 @@
                             position: absolute;
                             top: 0;
                             left: 0;
-                            color: $clr-yellow;
-                            text-shadow: .15rem .15rem 0 $clr-red;
-                            font-family: $font-content;
+                            color: color(yellow, base);
+                            text-shadow: .15rem .15rem 0 color(red, base);
+                            font-family: $font-primary;
                             padding: 0;
                             left: 50%;
                             transform: translateX(-50%);

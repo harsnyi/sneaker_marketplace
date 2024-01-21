@@ -2,23 +2,32 @@
 
 @font-face {
     font-family: 'BiggerDisplay';
-    font-style: normal;
-    font-weight: 400;
     src: url('../fonts/BiggerDisplay.otf') format('truetype');
 }
 
 @font-face {
-    font-family: 'JDKFuturix';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/JDK_Futurix.ttf') format('truetype');
+    font-family: 'Oswald';
+    src: url('../fonts/oswald/Oswald-Regular.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Oswald';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/Oswald-Regular.ttf') format('truetype');
+    font-family: 'Inter';
+    src: url('../fonts/inter/Inter-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Inter Tight';
+    src: url('../fonts/inter-tight/InterTight-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto Condensed';
+    src: url('../fonts/roboto-condensed/RobotoCondensed-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url('../fonts/dm-sans/DMSans-Regular.ttf') format('truetype');
 }
 
 * {
@@ -34,12 +43,11 @@
 
 html {
     scroll-behavior: smooth;
-    font-family: $font-content;
+    font-family: $font-primary;
     line-height: 1.6;
     font-size: 1rem; // 16px
     letter-spacing: normal;
     overflow-x: hidden;
-    color: $clr-primary-900
 }
 
 a {

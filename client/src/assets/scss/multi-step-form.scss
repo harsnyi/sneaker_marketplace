@@ -172,7 +172,7 @@
                     top: 50%;
                     transform: translateY(-50%);
                     font-size: 1.2rem;
-                    color: $clr-primary-500;
+                    color: $clr-primary-600;
                     pointer-events: none;
                     transition: 0.2s;
                     padding: 0 0.2rem;
@@ -196,7 +196,7 @@
                     appearance: none;
                     cursor: pointer;
                     font-size: 0.9rem;
-                    transition: border 0.1s $animation-cubic;
+                    transition: border 0.2s $animation-cubic;
                     outline: none;
 
                     &.light {

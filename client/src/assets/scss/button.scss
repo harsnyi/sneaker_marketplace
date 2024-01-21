@@ -13,8 +13,12 @@
     align-items: center;
     justify-content: center;
     gap: .75rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 
     &.primary {
+        font-weight: 500;
         transition: background-color 0.2s $animation-cubic;
 
         &.light {
@@ -23,7 +27,7 @@
 
             &:hover,
             &:active {
-                background-color: darken($color: $clr-white, $amount: 30);
+                background-color: darken($color: $clr-white, $amount: 20);
             }
         }
 
@@ -33,22 +37,27 @@
 
             &:hover,
             &:active {
-                background-color: lighten($color: $clr-primary-900, $amount: 30)
+                background-color: lighten($color: $clr-primary-900, $amount: 20)
             }
         }
 
     }
 
     &.secondary {
+        font-weight: 500;
         border: 1px solid;
         transition: background-color 0.2s $animation-cubic , color 0.2s $animation-cubic;
 
         &.light {
             border-color: $clr-primary-600;
 
-            &:hover,
-            &:active {
+            &:hover {
                 background-color: $clr-white;
+                color: $clr-primary-900;
+            }
+
+            &:active {
+                background-color: darken($color: $clr-white, $amount: 20);
                 color: $clr-primary-900;
             }
         }
@@ -56,9 +65,13 @@
         &.dark {
             border-color: $clr-primary-900;
 
-            &:hover,
-            &:active {
+            &:hover {
                 background-color: $clr-primary-900;
+                color: $clr-white;
+            }
+
+            &:active {
+                background-color: lighten($color: $clr-primary-900, $amount: 20);
                 color: $clr-white;
             }
         }
@@ -72,6 +85,7 @@
         margin: .5rem 0;
         gap: .75rem;
         font-size: 1.2rem;
+        transition: color 0.2s $animation-cubic;
 
         &::before {
             content: '';
@@ -92,9 +106,18 @@
                 background-color: $clr-white;
             }
 
-            &:hover,
-            &:active {
+            &:hover {
                 &::before {
+                    transform-origin: left;
+                    transform: scaleX(1);
+                }
+            }
+
+            &:active {
+                color: darken($color: $clr-white, $amount: 20);
+
+                &::before {
+                    background-color: darken($color: $clr-white, $amount: 20);
                     transform-origin: left;
                     transform: scaleX(1);
                 }
@@ -108,9 +131,18 @@
                 background-color: $clr-primary-900;
             }
 
-            &:hover,
-            &:active {
+            &:hover {
                 &::before {
+                    transform-origin: left;
+                    transform: scaleX(1);
+                }
+            }
+
+            &:active {
+                color: darken($color: $clr-primary-900, $amount: 20);
+
+                &::before {
+                    background-color: darken($color: $clr-primary-900, $amount: 20);
                     transform-origin: left;
                     transform: scaleX(1);
                 }

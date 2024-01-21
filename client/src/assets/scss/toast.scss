@@ -22,13 +22,14 @@
     min-width: 10rem;
     display: flex;
     padding: 0 1rem;
-    z-index: 999999999999;
     line-height: 1.5rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     column-gap: 1rem;
-
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 
     &::after {
         content: '';
@@ -37,7 +38,7 @@
         left: 0;
         height: 2px;
         background-color: $clr-white;
-        animation: toast 4s linear;
+        animation: toast 5s linear;
     }
 
     p {

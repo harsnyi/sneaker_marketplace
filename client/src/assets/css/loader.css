@@ -96,7 +96,7 @@ $clr-primary-100: #EEEEEE;
 .loader-container .loader::before {
   content: "";
   position: absolute;
-  background-color: #FF1F32;
+  background-color: #FF2437;
   top: 0;
   left: 0;
   width: 0%;

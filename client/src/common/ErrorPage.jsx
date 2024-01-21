@@ -13,7 +13,7 @@ const ErrorPage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (secondsLeft > 1) {
-        setSecondsLeft(secondsLeft - 1);
+        setSecondsLeft((prev) => prev - 1);
       } else {
         clearInterval(interval);
         navigate('/');
@@ -31,7 +31,7 @@ const ErrorPage = () => {
       <h2>Hibás URL cím.</h2>
       <p>Automatikus átírányítás {secondsLeft} másodpercen belül.</p>
       <NavLink to="/" id="navLinkButton">
-        <Button className="light" text="Vissza a főoldalra">
+        <Button className="primary light" text="Vissza a főoldalra">
           <FiCornerDownLeft />
         </Button>
       </NavLink>

@@ -96,7 +96,7 @@ const DesktopNavbar = () => {
       <ul className={desktopNavStyle['nav-list']}>
         <li className={desktopNavStyle['logo']}>
           <NavLink to="/" className={desktopNavStyle['nav-link']}>
-            <h4>{isNavOpen ? 'Footwr.' : 'Fwr.'}</h4>
+            <h4>{isNavOpen ? 'Under Retail' : 'UR'}</h4>
           </NavLink>
         </li>
 

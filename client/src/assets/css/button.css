@@ -87,8 +87,12 @@ $clr-primary-100: #EEEEEE;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 .btn.primary {
+  font-weight: 500;
   transition: background-color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .btn.primary.light {
@@ -96,31 +100,40 @@ $clr-primary-100: #EEEEEE;
   color: #161C24;
 }
 .btn.primary.light:hover, .btn.primary.light:active {
-  background-color: #b3b3b3;
+  background-color: #cccccc;
 }
 .btn.primary.dark {
   background-color: #161C24;
   color: #ffffff;
 }
 .btn.primary.dark:hover, .btn.primary.dark:active {
-  background-color: #506683;
+  background-color: #3d4d63;
 }
 .btn.secondary {
+  font-weight: 500;
   border: 1px solid;
   transition: background-color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .btn.secondary.light {
   border-color: #637381;
 }
-.btn.secondary.light:hover, .btn.secondary.light:active {
+.btn.secondary.light:hover {
   background-color: #ffffff;
+  color: #161C24;
+}
+.btn.secondary.light:active {
+  background-color: #cccccc;
   color: #161C24;
 }
 .btn.secondary.dark {
   border-color: #161C24;
 }
-.btn.secondary.dark:hover, .btn.secondary.dark:active {
+.btn.secondary.dark:hover {
   background-color: #161C24;
+  color: #ffffff;
+}
+.btn.secondary.dark:active {
+  background-color: #3d4d63;
   color: #ffffff;
 }
 .btn.tertiary {
@@ -131,6 +144,7 @@ $clr-primary-100: #EEEEEE;
   margin: 0.5rem 0;
   gap: 0.75rem;
   font-size: 1.2rem;
+  transition: color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .btn.tertiary::before {
   content: "";
@@ -149,7 +163,15 @@ $clr-primary-100: #EEEEEE;
 .btn.tertiary.light::before {
   background-color: #ffffff;
 }
-.btn.tertiary.light:hover::before, .btn.tertiary.light:active::before {
+.btn.tertiary.light:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+.btn.tertiary.light:active {
+  color: #cccccc;
+}
+.btn.tertiary.light:active::before {
+  background-color: #cccccc;
   transform-origin: left;
   transform: scaleX(1);
 }
@@ -159,7 +181,15 @@ $clr-primary-100: #EEEEEE;
 .btn.tertiary.dark::before {
   background-color: #161C24;
 }
-.btn.tertiary.dark:hover::before, .btn.tertiary.dark:active::before {
+.btn.tertiary.dark:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+.btn.tertiary.dark:active {
+  color: black;
+}
+.btn.tertiary.dark:active::before {
+  background-color: black;
   transform-origin: left;
   transform: scaleX(1);
 }

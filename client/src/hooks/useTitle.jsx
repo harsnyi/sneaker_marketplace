@@ -2,6 +2,6 @@ import {useEffect} from 'react';
 
 export const useTitle = (title) => {
   useEffect(() => {
-    document.title = `${title} | Footwr.`;
+    document.title = `${title} | Under Retail`;
   }, [title]);
 };

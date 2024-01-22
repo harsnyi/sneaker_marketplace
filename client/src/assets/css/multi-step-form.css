@@ -83,7 +83,7 @@ color(primary, 100): #B2C4AB;
 }
 .multi-step-form .form-header {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   gap: 1.5rem;
 }

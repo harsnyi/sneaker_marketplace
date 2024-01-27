@@ -118,17 +118,17 @@ const MultiStepForm = () => {
         <div>{steps[currentStepIndex].component}</div>
         <div className="form-buttons">
           {!isFirstStep && (
-            <Button type="button" text="Vissza" className="tertiary light" onClick={prev}>
+            <Button type="button" text="Vissza" className="tertiary" onClick={prev}>
               <IoMdArrowBack />
             </Button>
           )}
 
           {!isLastStep ? (
-            <Button type="button" text="Következő" className="tertiary light" onClick={(e) => next(e)}>
+            <Button type="button" text="Következő" className="tertiary" onClick={(e) => next(e)}>
               <IoMdArrowForward />
             </Button>
           ) : (
-            <Button type="submit" text="Regisztráció" className="primary light">
+            <Button type="submit" text="Regisztráció" className="primary">
               <HiPencilSquare />
             </Button>
           )}

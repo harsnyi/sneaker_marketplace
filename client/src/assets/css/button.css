@@ -9,6 +9,58 @@ color(primary, 300): #86A27C;
 color(primary, 200): #9CB394;
 color(primary, 100): #B2C4AB;
 */
+/*
+$palettes : (primary: (900: #161C24,
+        800: #212B36,
+        700: #454F5B,
+        600: #637381,
+        500: #919EAB,
+        400: #C4CDD5,
+        300: #DFE3E8,
+        200: #F4F6F8,
+        100: #F9FAFB,
+    ),
+    secondary: (900: #212529,
+        800: #343a40,
+        700: #495057,
+        600: #6c757d,
+        500: #adb5bd,
+        400: #ced4da,
+        300: #dee2e6,
+        200: #e9ecef,
+        100: #f8f9fa,
+    ),
+    red: (lighter: #FFD6D9,
+        light: #FF8389,
+        base: #FF2437,
+        dark: #B80D24,
+        darker: #8C001A,
+    ),
+    green: (lighter: #C8FAD6,
+        light: #5BE49B,
+        base: #00A76F,
+        dark: #007867,
+        darker: #004B50,
+
+    ),
+    blue: (lighter: #CAFDF5,
+        light: #61F3F3,
+        base: #00B8D9,
+        dark: #006C9C,
+        darker: #003768,
+    ),
+    yellow: (lighter: #FFF5CC,
+        light: #FFD666,
+        base: #FFAB00,
+        dark: #B76E00,
+        darker: #7A4100,
+    ),
+    other : (facebook: #3b5998,
+        twitter: #1da1f2,
+        google: #db4437,
+        instagram: #B71D18,
+    ));
+*/
 @keyframes bg-animation {
   0% {
     background-position: 0% 50%;
@@ -94,48 +146,27 @@ color(primary, 100): #B2C4AB;
 .btn.primary {
   font-weight: 500;
   transition: background-color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.btn.primary.light {
-  background-color: #fff;
-  color: #161C24;
-}
-.btn.primary.light:hover, .btn.primary.light:active {
-  background-color: #cccccc;
-}
-.btn.primary.dark {
-  background-color: #161C24;
   color: #fff;
+  background-color: #0C6DE9;
+  border: 1px solid #0B65D4;
 }
-.btn.primary.dark:hover, .btn.primary.dark:active {
-  background-color: #3d4d63;
+.btn.primary:hover {
+  background-color: #0B65D4;
+}
+.btn.primary:active {
+  background-color: #094FA5;
 }
 .btn.secondary {
   font-weight: 500;
-  border: 1px solid;
-  transition: background-color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid #989FAD;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.btn.secondary.light {
-  border-color: #637381;
+.btn.secondary:hover {
+  border-color: #657084;
 }
-.btn.secondary.light:hover {
-  background-color: #fff;
-  color: #161C24;
-}
-.btn.secondary.light:active {
-  background-color: #cccccc;
-  color: #161C24;
-}
-.btn.secondary.dark {
-  border-color: #161C24;
-  color: #161C24;
-}
-.btn.secondary.dark:hover {
-  background-color: #161C24;
-  color: #fff;
-}
-.btn.secondary.dark:active {
-  background-color: #3d4d63;
-  color: #fff;
+.btn.secondary:active {
+  border-color: #657084;
+  background-color: #f7f7f7;
 }
 .btn.tertiary {
   text-transform: capitalize;
@@ -145,6 +176,7 @@ color(primary, 100): #B2C4AB;
   margin: 0.5rem 0;
   gap: 0.75rem;
   font-size: 1.2rem;
+  color: #000;
   transition: color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .btn.tertiary::before {
@@ -158,41 +190,21 @@ color(primary, 100): #B2C4AB;
   transform: scaleX(0);
   transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.btn.tertiary.light {
-  color: #fff;
+.btn.tertiary::before {
+  background-color: #0C6DE9;
 }
-.btn.tertiary.light::before {
-  background-color: #fff;
+.btn.tertiary:hover {
+  color: #0C6DE9;
 }
-.btn.tertiary.light:hover::before {
+.btn.tertiary:hover::before {
   transform-origin: left;
   transform: scaleX(1);
 }
-.btn.tertiary.light:active {
-  color: #cccccc;
+.btn.tertiary:active {
+  color: #0B65D4;
 }
-.btn.tertiary.light:active::before {
-  background-color: #cccccc;
-  transform-origin: left;
-  transform: scaleX(1);
-}
-.btn.tertiary.dark {
-  color: #161C24;
-}
-.btn.tertiary.dark::before {
-  background-color: #161C24;
-}
-.btn.tertiary.dark:hover::before {
-  transform-origin: left;
-  transform: scaleX(1);
-}
-.btn.tertiary.dark:active {
-  color: black;
-}
-.btn.tertiary.dark:active::before {
-  background-color: black;
-  transform-origin: left;
-  transform: scaleX(1);
+.btn.tertiary:active::before {
+  background-color: #0B65D4;
 }
 .btn.bold {
   font-weight: 700;

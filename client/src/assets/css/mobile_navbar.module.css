@@ -9,6 +9,58 @@ color(primary, 300): #86A27C;
 color(primary, 200): #9CB394;
 color(primary, 100): #B2C4AB;
 */
+/*
+$palettes : (primary: (900: #161C24,
+        800: #212B36,
+        700: #454F5B,
+        600: #637381,
+        500: #919EAB,
+        400: #C4CDD5,
+        300: #DFE3E8,
+        200: #F4F6F8,
+        100: #F9FAFB,
+    ),
+    secondary: (900: #212529,
+        800: #343a40,
+        700: #495057,
+        600: #6c757d,
+        500: #adb5bd,
+        400: #ced4da,
+        300: #dee2e6,
+        200: #e9ecef,
+        100: #f8f9fa,
+    ),
+    red: (lighter: #FFD6D9,
+        light: #FF8389,
+        base: #FF2437,
+        dark: #B80D24,
+        darker: #8C001A,
+    ),
+    green: (lighter: #C8FAD6,
+        light: #5BE49B,
+        base: #00A76F,
+        dark: #007867,
+        darker: #004B50,
+
+    ),
+    blue: (lighter: #CAFDF5,
+        light: #61F3F3,
+        base: #00B8D9,
+        dark: #006C9C,
+        darker: #003768,
+    ),
+    yellow: (lighter: #FFF5CC,
+        light: #FFD666,
+        base: #FFAB00,
+        dark: #B76E00,
+        darker: #7A4100,
+    ),
+    other : (facebook: #3b5998,
+        twitter: #1da1f2,
+        google: #db4437,
+        instagram: #B71D18,
+    ));
+*/
 @keyframes bg-animation {
   0% {
     background-position: 0% 50%;
@@ -77,11 +129,11 @@ color(primary, 100): #B2C4AB;
 .nav-bar {
   position: fixed;
   bottom: 0;
-  background-color: #161C24;
+  background-color: #052F62;
   height: 4rem;
   width: 100vw;
   z-index: 100;
-  border-top: 1px solid #454F5B;
+  border-top: 1px solid #094FA5;
 }
 .nav-bar .nav-list {
   list-style-type: none;
@@ -120,17 +172,16 @@ color(primary, 100): #B2C4AB;
   margin: 0;
   min-width: 2rem;
   height: 1.75rem;
-  color: #F9FAFB;
+  color: #B4D2F8;
 }
 .nav-bar .nav-list .nav-list-item .nav-link .notification-icon .new-notification {
   position: absolute;
   height: 0.6rem;
   width: 0.6rem;
-  background-color: #FF2437;
   top: 0;
   right: 0;
   border-radius: 50%;
-  border: 1px solid #161C24;
+  border: 1px solid #052F62;
   z-index: 100;
   transform: translate(0, -25%);
   filter: grayscale(0%) opacity(1);
@@ -139,16 +190,16 @@ color(primary, 100): #B2C4AB;
   margin: 0;
   min-width: 2rem;
   height: 1.75rem;
-  color: #F9FAFB;
+  color: #B4D2F8;
 }
 
 .mobile-header-wrapper {
   position: fixed;
   width: 100%;
   height: 4rem;
-  background-color: #161C24;
+  background-color: #052F62;
   z-index: 100;
-  border-bottom: 1px solid #454F5B;
+  border-bottom: 1px solid #094FA5;
 }
 .mobile-header-wrapper .header-list {
   list-style-type: none;
@@ -172,8 +223,7 @@ color(primary, 100): #B2C4AB;
   text-transform: uppercase;
   font-size: 1.75rem;
   font-family: "Roboto Condensed", sans-serif;
-  color: #FFAB00;
-  text-shadow: 0.15rem 0.15rem 0 #FF2437;
+  text-shadow: 0.15rem 0.15rem 0;
   padding: 0;
 }
 .mobile-header-wrapper .header-list .header-list-item .header-link {
@@ -189,7 +239,7 @@ color(primary, 100): #B2C4AB;
   margin: 0;
   min-width: 2rem;
   height: 1.75rem;
-  color: #F9FAFB;
+  color: #B4D2F8;
 }
 
 .nav-aside-wrapper {
@@ -205,7 +255,7 @@ color(primary, 100): #B2C4AB;
   top: 4rem;
   left: 0;
   position: fixed;
-  background-color: #161C24;
+  background-color: #052F62;
   z-index: 100;
   transition: width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -218,7 +268,7 @@ color(primary, 100): #B2C4AB;
 }
 .nav-aside-wrapper.opened .nav-aside {
   width: 80%;
-  border-right: 1px solid #454F5B;
+  border-right: 1px solid #094FA5;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list {
   list-style-type: none;
@@ -244,18 +294,18 @@ color(primary, 100): #B2C4AB;
 .nav-aside-wrapper.opened .nav-aside .side-list .profile-link .side-link:hover {
   cursor: pointer;
   opacity: 1;
-  background-color: #10151b;
+  background-color: #042853;
   position: relative;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list .profile-link .side-link .username-text {
   font-weight: 400;
   font-size: 1.5rem;
-  color: #F9FAFB;
+  color: #B4D2F8;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list .profile-link .side-link .username-link {
   font-weight: 400;
   font-size: 0.85rem;
-  color: #C4CDD5;
+  color: #3D8CED;
   font-style: italic;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list .profile-link .side-link .rounded {
@@ -264,7 +314,7 @@ color(primary, 100): #B2C4AB;
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
-  border: 2px solid #919EAB;
+  border: 2px solid #0C6DE9;
   margin-bottom: 0.25rem;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list .side-list-item {
@@ -281,7 +331,7 @@ color(primary, 100): #B2C4AB;
 .nav-aside-wrapper.opened .nav-aside .side-list .side-list-item .side-link .side-svg {
   min-height: 1.5rem;
   min-width: 1.5rem;
-  color: #F9FAFB;
+  color: #B4D2F8;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list .side-list-item .side-link .side-svg.scale-down {
   transform: scale(0.9);
@@ -291,7 +341,7 @@ color(primary, 100): #B2C4AB;
   margin-left: 2.5rem;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list .side-list-item .side-link.active, .nav-aside-wrapper.opened .nav-aside .side-list .side-list-item .side-link:hover {
-  background-color: #10151b;
+  background-color: #042853;
   position: relative;
 }
 .nav-aside-wrapper.opened .nav-aside .side-list .side-list-item .side-link.active::after {
@@ -325,8 +375,7 @@ color(primary, 100): #B2C4AB;
     position: absolute;
     top: 0;
     left: 0;
-    color: #FFAB00;
-    text-shadow: 0.15rem 0.15rem 0 #FF2437;
+    text-shadow: 0.15rem 0.15rem 0;
     font-family: "Roboto Condensed", sans-serif;
     padding: 0;
     left: 50%;

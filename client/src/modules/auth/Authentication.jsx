@@ -90,7 +90,7 @@ const Authentication = () => {
             </footer>
           </div>
         </div>
-        <div className="auth-container dark">
+        <div className="auth-container">
           <h1 className="brand-title">Under Retail</h1>
           <AuthTabs />
         </div>

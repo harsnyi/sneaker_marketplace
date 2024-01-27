@@ -68,24 +68,53 @@
     }
 
     &.success {
-        background-color: color(green, base);
-        border: 1px solid color(green, darker);
+        background-color: color(green, 500);
+        border: 1px solid color(green, 700);
+
+        p,
+        .toast-icon,
+        .toast-close {
+            color: $clr-black;
+        }
+
+        &::after {
+            background-color: $clr-black;
+        }
     }
 
     &.error {
-        background-color: color(red, base);
-        border: 1px solid color(red, darker);
+        background-color: color(red, 500);
+        border: 1px solid color(red, 700);
     }
 
     &.warning {
-        background-color: color(yellow, base);
-        border: 1px solid color(yellow, darker);
+        background-color: color(yellow, 500);
+        border: 1px solid color(yellow, 700);
 
+        p,
+        .toast-icon,
+        .toast-close {
+            color: $clr-black;
+        }
+
+        &::after {
+            background-color: $clr-black;
+        }
     }
 
     &.info {
-        background-color: color(blue, base);
-        border: 1px solid color(blue, darker);
+        background-color: color(blue, 500);
+        border: 1px solid color(blue, 700);
+
+        p,
+        .toast-icon,
+        .toast-close {
+            color: $clr-black;
+        }
+
+        &::after {
+            background-color: $clr-black;
+        }
     }
 }
 

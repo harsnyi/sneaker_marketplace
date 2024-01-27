@@ -48,11 +48,12 @@ html {
     font-size: 1rem; // 16px
     letter-spacing: normal;
     overflow-x: hidden;
+    color: $clr-black;
 }
 
 a {
     text-decoration: none;
-    color: $clr-white;
+    color: $clr-black;
 }
 
 ul {

@@ -9,6 +9,58 @@ color(primary, 300): #86A27C;
 color(primary, 200): #9CB394;
 color(primary, 100): #B2C4AB;
 */
+/*
+$palettes : (primary: (900: #161C24,
+        800: #212B36,
+        700: #454F5B,
+        600: #637381,
+        500: #919EAB,
+        400: #C4CDD5,
+        300: #DFE3E8,
+        200: #F4F6F8,
+        100: #F9FAFB,
+    ),
+    secondary: (900: #212529,
+        800: #343a40,
+        700: #495057,
+        600: #6c757d,
+        500: #adb5bd,
+        400: #ced4da,
+        300: #dee2e6,
+        200: #e9ecef,
+        100: #f8f9fa,
+    ),
+    red: (lighter: #FFD6D9,
+        light: #FF8389,
+        base: #FF2437,
+        dark: #B80D24,
+        darker: #8C001A,
+    ),
+    green: (lighter: #C8FAD6,
+        light: #5BE49B,
+        base: #00A76F,
+        dark: #007867,
+        darker: #004B50,
+
+    ),
+    blue: (lighter: #CAFDF5,
+        light: #61F3F3,
+        base: #00B8D9,
+        dark: #006C9C,
+        darker: #003768,
+    ),
+    yellow: (lighter: #FFF5CC,
+        light: #FFD666,
+        base: #FFAB00,
+        dark: #B76E00,
+        darker: #7A4100,
+    ),
+    other : (facebook: #3b5998,
+        twitter: #1da1f2,
+        google: #db4437,
+        instagram: #B71D18,
+    ));
+*/
 @keyframes bg-animation {
   0% {
     background-position: 0% 50%;
@@ -78,9 +130,9 @@ color(primary, 100): #B2C4AB;
   position: relative;
   top: 0;
   left: 0;
-  background-color: #161C24;
+  background-color: #052F62;
   z-index: 100;
-  color: #F9FAFB;
+  color: #B4D2F8;
   transition: width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .nav-bar.resizing {
@@ -144,12 +196,12 @@ color(primary, 100): #B2C4AB;
   width: 0.25rem;
   height: 100%;
   cursor: col-resize;
-  background-color: #919EAB;
+  background-color: #0C6DE9;
   z-index: 100;
   transform: translateX(100%);
 }
 .nav-bar .resize-handle.resizing {
-  border-right: 2px dotted #161C24;
+  border-right: 2px dotted #052F62;
 }
 .nav-bar.opened .nav-list .nav-list-item .nav-link .navbar-text {
   opacity: 1;
@@ -158,8 +210,8 @@ color(primary, 100): #B2C4AB;
 .nav-bar .open-close-sidebar {
   width: 2rem;
   height: 2rem;
-  background-color: #161C24;
-  border: 2px solid #919EAB;
+  background-color: #052F62;
+  border: 2px solid #0C6DE9;
   border-radius: 50%;
   position: absolute;
   display: flex;
@@ -197,8 +249,7 @@ color(primary, 100): #B2C4AB;
   text-transform: uppercase;
   font-size: 1.5rem;
   font-family: "Roboto Condensed", sans-serif;
-  color: #FFAB00;
-  text-shadow: 0.15rem 0.15rem 0 #FF2437;
+  text-shadow: 0.15rem 0.15rem 0;
 }
 .nav-bar .nav-list .profile-link {
   width: 100%;
@@ -215,18 +266,18 @@ color(primary, 100): #B2C4AB;
 .nav-bar .nav-list .profile-link .nav-link:hover {
   cursor: pointer;
   opacity: 1;
-  background-color: #10151b;
+  background-color: #042853;
   position: relative;
 }
 .nav-bar .nav-list .profile-link .nav-link .username-text {
   font-weight: 400;
   font-size: 1.3rem;
-  color: #F9FAFB;
+  color: #B4D2F8;
 }
 .nav-bar .nav-list .profile-link .nav-link .username-link {
   font-weight: 400;
   font-size: 0.75rem;
-  color: #C4CDD5;
+  color: #3D8CED;
   font-style: italic;
 }
 .nav-bar .nav-list .profile-link .nav-link .rounded {
@@ -237,7 +288,7 @@ color(primary, 100): #B2C4AB;
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
-  border: 2px solid #919EAB;
+  border: 2px solid #0C6DE9;
   margin-bottom: 0.25rem;
 }
 .nav-bar .nav-list .nav-list-item {
@@ -265,11 +316,10 @@ color(primary, 100): #B2C4AB;
   position: absolute;
   height: 0.6rem;
   width: 0.6rem;
-  background-color: #FF2437;
   top: 0;
   right: 0;
   border-radius: 50%;
-  border: 1px solid #161C24;
+  border: 1px solid #052F62;
   z-index: 99;
   transform: translate(-10%, -25%);
 }
@@ -277,7 +327,7 @@ color(primary, 100): #B2C4AB;
   min-width: 2.5rem;
   height: 1.5rem;
   margin: 0 1.25rem;
-  color: #F9FAFB;
+  color: #B4D2F8;
 }
 .nav-bar .nav-list .nav-list-item .nav-link .navbar-svg.scale-down {
   transform: scale(0.85);
@@ -291,7 +341,7 @@ color(primary, 100): #B2C4AB;
 }
 .nav-bar .nav-list .nav-list-item .nav-link:hover, .nav-bar .nav-list .nav-list-item .nav-link.active {
   opacity: 1;
-  background-color: #10151b;
+  background-color: #042853;
   cursor: pointer;
   position: relative;
 }

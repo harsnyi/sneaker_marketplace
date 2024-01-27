@@ -115,7 +115,7 @@ const Login = () => {
           onChange={(value) => {
             setEmail(value);
           }}
-          className="input-field light"
+          className="input-field"
           name="lgn-email"
           error={errors.email}
         />
@@ -126,7 +126,7 @@ const Login = () => {
           onChange={(value) => {
             setPassword(value);
           }}
-          className="input-field light"
+          className="input-field"
           name="lgn-pass"
           error={errors.password}
         />
@@ -134,7 +134,7 @@ const Login = () => {
         <span className="forgot-pass">
           Elfelejtetted a jelszavadat? Állítsd vissza <Link to="">itt</Link>.
         </span>
-        <Button type="submit" text="Bejelentkezés" className="primary light">
+        <Button type="submit" text="Bejelentkezés" className="primary">
           <BiLogIn />
         </Button>
       </form>

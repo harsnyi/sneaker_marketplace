@@ -1,5 +1,6 @@
 import {ImFacebook} from 'react-icons/im';
 import {FaGoogle} from 'react-icons/fa';
+import {FcGoogle} from 'react-icons/fc';
 
 import Button from '../../common/Button';
 
@@ -7,11 +8,11 @@ const SocialSignup = () => {
   return (
     <div className="social-signup">
       <h4>Lépj be meglévő fiókoddal,</h4>
-      <Button text="via Facebook" className="secondary light">
-        <ImFacebook />
+      <Button text="via Facebook" className="secondary">
+        <ImFacebook style={{color: '#3b5998'}} />
       </Button>
-      <Button text="via Google" className="secondary light">
-        <FaGoogle />
+      <Button text="via Google" className="secondary">
+        <FcGoogle />
       </Button>
     </div>
   );

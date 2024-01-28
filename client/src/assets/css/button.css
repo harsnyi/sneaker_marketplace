@@ -90,6 +90,14 @@ $palettes : (primary: (900: #161C24,
     width: 0;
   }
 }
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @keyframes sliding-down {
   0% {
     transform: translateY(-3%);
@@ -143,6 +151,14 @@ $palettes : (primary: (900: #161C24,
   -moz-user-select: none;
   user-select: none;
 }
+.btn .spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 0.75s linear infinite;
+  width: 1.6rem;
+  height: 1.6rem;
+}
 .btn.primary {
   font-weight: 500;
   transition: background-color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -156,9 +172,18 @@ $palettes : (primary: (900: #161C24,
 .btn.primary:active {
   background-color: #094FA5;
 }
+.btn.primary:disabled {
+  cursor: not-allowed;
+}
+.btn.primary:disabled:hover {
+  background-color: #0C6DE9;
+}
+.btn.primary:disabled:active {
+  background-color: #0C6DE9;
+}
 .btn.secondary {
   font-weight: 500;
-  border: 1px solid #989FAD;
+  border: 1px solid #B8BDC6;
   transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .btn.secondary:hover {
@@ -167,6 +192,11 @@ $palettes : (primary: (900: #161C24,
 .btn.secondary:active {
   border-color: #657084;
   background-color: #f7f7f7;
+}
+.btn.secondary:disabled {
+  cursor: not-allowed;
+  background-color: #F0F1F3;
+  border-color: #CFD3D9;
 }
 .btn.tertiary {
   text-transform: capitalize;
@@ -205,6 +235,9 @@ $palettes : (primary: (900: #161C24,
 }
 .btn.tertiary:active::before {
   background-color: #0B65D4;
+}
+.btn.tertiary:disabled {
+  cursor: not-allowed;
 }
 .btn.bold {
   font-weight: 700;

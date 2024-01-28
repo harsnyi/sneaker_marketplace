@@ -58,8 +58,7 @@
             &.valid {
                 h3 {
                     border: 1px solid $clr-black;
-                    color: $clr-black;
-
+                    color: color(green, 600);
                 }
 
                 h4 {
@@ -69,6 +68,12 @@
                 +.form-divider {
                     &::before {
                         transform: scaleX(1);
+                    }
+                }
+
+                &:hover {
+                    h3 {
+                        color: color(green, 300);
                     }
                 }
 

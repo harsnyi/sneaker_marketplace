@@ -90,6 +90,14 @@ $palettes : (primary: (900: #161C24,
     width: 0;
   }
 }
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @keyframes sliding-down {
   0% {
     transform: translateY(-3%);
@@ -209,7 +217,7 @@ $palettes : (primary: (900: #161C24,
   transition: color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .auth-page .hero .hero-content .hero-footer .hero-links a:hover {
-  color: #B8BDC6;
+  color: #CFD3D9;
 }
 .auth-page .hero .image-column {
   position: relative;

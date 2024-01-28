@@ -10,7 +10,7 @@ import {useLoader} from '../../hooks/useLoader';
 
 import {IoMdArrowBack} from 'react-icons/io';
 import {IoMdArrowForward} from 'react-icons/io';
-import {BsCheckLg} from 'react-icons/bs';
+import {FaCheck} from 'react-icons/fa6';
 import {HiPencilSquare} from 'react-icons/hi2';
 import {MdAccountBox} from 'react-icons/md';
 import {FaIdCard} from 'react-icons/fa';
@@ -103,7 +103,7 @@ const MultiStepForm = () => {
             <div key={index} className={index < currentStepIndex ? 'form-step valid' : index === currentStepIndex ? 'form-step active' : 'form-step'} onClick={() => goTo(index)}>
               {index < currentStepIndex ? (
                 <h3>
-                  <BsCheckLg />
+                  <FaCheck />
                 </h3>
               ) : (
                 <h3>{step.svg}</h3>

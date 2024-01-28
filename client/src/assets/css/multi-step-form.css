@@ -90,6 +90,14 @@ $palettes : (primary: (900: #161C24,
     width: 0;
   }
 }
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @keyframes sliding-down {
   0% {
     transform: translateY(-3%);
@@ -175,13 +183,16 @@ $palettes : (primary: (900: #161C24,
 }
 .multi-step-form .form-header .form-step.valid h3 {
   border: 1px solid #000;
-  color: #000;
+  color: #7EB700;
 }
 .multi-step-form .form-header .form-step.valid h4 {
   color: #000;
 }
 .multi-step-form .form-header .form-step.valid + .form-divider::before {
   transform: scaleX(1);
+}
+.multi-step-form .form-header .form-step.valid:hover h3 {
+  color: #B1DB54;
 }
 .multi-step-form .form-header .form-step h3 {
   font-size: 1.2rem;

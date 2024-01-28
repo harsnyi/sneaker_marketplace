@@ -90,14 +90,6 @@ $palettes : (primary: (900: #161C24,
     width: 0;
   }
 }
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 @keyframes sliding-down {
   0% {
     transform: translateY(-3%);
@@ -133,20 +125,4 @@ $palettes : (primary: (900: #161C24,
     transform: translateY(-3%);
     opacity: 0;
   }
-}
-.reveal-div {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  /*
-  .slide-div {
-      position: absolute;
-      top: .25rem;
-      bottom: .25rem;
-      left: 0;
-      right: 0;
-      z-index: 20;
-      background-color: color(yellow, base)
-  }
-  */
-}/*# sourceMappingURL=reveal.css.map */
+}/*# sourceMappingURL=spinner.css.map */

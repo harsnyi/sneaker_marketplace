@@ -17,6 +17,15 @@
     -moz-user-select: none;
     user-select: none;
 
+    .spinner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: spin .75s linear infinite;
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+
     &.primary {
         font-weight: 500;
         transition: background-color 0.2s $animation-cubic;
@@ -31,11 +40,25 @@
         &:active {
             background-color: color(primary, 700);
         }
+
+        &:disabled {
+            cursor: not-allowed;
+            //background-color: color(primary, 50);
+            //border-color: color(primary, 100);
+
+            &:hover {
+                background-color: color(primary, 500);
+            }
+
+            &:active {
+                background-color: color(primary, 500);
+            }
+        }
     }
 
     &.secondary {
         font-weight: 500;
-        border: 1px solid color(secondary, 300);
+        border: 1px solid color(secondary, 200);
         transition: all 0.2s $animation-cubic;
 
         &:hover {
@@ -45,6 +68,12 @@
         &:active {
             border-color: color(secondary, 500);
             background-color: darken($color: $clr-white, $amount: 3);
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            background-color: color(secondary, 50);
+            border-color: color(secondary, 100);
         }
 
     }
@@ -91,6 +120,10 @@
             &::before {
                 background-color: color(primary, 600);
             }
+        }
+
+        &:disabled {
+            cursor: not-allowed;
         }
     }
 

@@ -90,6 +90,14 @@ $palettes : (primary: (900: #161C24,
     width: 0;
   }
 }
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @keyframes sliding-down {
   0% {
     transform: translateY(-3%);
@@ -148,6 +156,7 @@ $palettes : (primary: (900: #161C24,
 .loader-container .loader::before {
   content: "";
   position: absolute;
+  background-color: #0C6DE9;
   top: 0;
   left: 0;
   width: 0%;

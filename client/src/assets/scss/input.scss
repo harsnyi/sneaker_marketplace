@@ -41,7 +41,7 @@
             outline: none;
             font-size: 0.9rem;
             background-color: transparent;
-            border: 1px solid color(secondary, 300);
+            border: 1px solid color(secondary, 200);
 
             &:-webkit-autofill,
             &:-webkit-autofill:hover,
@@ -78,6 +78,10 @@
 
                 &~.eye {
                     color: $clr-black;
+                }
+
+                &:focus {
+                    outline: 2px solid color(secondary, 50);
                 }
             }
 
@@ -153,6 +157,7 @@
 
         &:focus {
             border: 1px solid color(secondary, 500);
+            outline: 2px solid color(secondary, 50);
 
             &~label {
                 top: 0;

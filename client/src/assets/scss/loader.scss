@@ -22,7 +22,7 @@
         &::before {
             content: "";
             position: absolute;
-            background-color: color(red, base);
+            background-color: color(primary, 500);
             //background-image: linear-gradient(to right, $clr-primary, $clr-primary-dark);
             top: 0;
             left: 0;

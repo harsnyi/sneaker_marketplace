@@ -10,6 +10,7 @@ import {BiLogIn} from 'react-icons/bi';
 import {useState} from 'react';
 import {useDebounce} from '../../hooks/useDebounce';
 import {useLoader} from '../../hooks/useLoader';
+import {useLoading} from '../../hooks/useLoading';
 import {useToast} from '../../hooks/useToast';
 import {useAuth} from '../../hooks/useAuth';
 
@@ -22,8 +23,9 @@ const Login = () => {
   const [errors, setErrors] = useState({});
 
   const {setAuth} = useAuth();
-  const {showLoader, hideLoader} = useLoader();
   const {addToast} = useToast();
+  const {showLoader, hideLoader} = useLoader();
+  const {setLoading} = useLoading();
 
   useDebounce(
     () => {
@@ -76,28 +78,30 @@ const Login = () => {
       return;
     }
 
-    showLoader();
-    try {
-      const response = await axios.post('http://localhost:8000' + LOGIN_URL, JSON.stringify({username: email, password}), {
+    setLoading(true);
+    await axios
+      .post('http://localhost:8000' + LOGIN_URL, JSON.stringify({username: email, password}), {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
+      })
+      .then((response) => {
+        console.log(JSON.stringify(response?.data));
+
+        const accessToken = response?.data?.access_token;
+        const tokenParts = accessToken.split('.');
+        const payload = JSON.parse(atob(tokenParts[1]));
+
+        const role = payload.role;
+        console.log(role);
+        setAuth({email, role, accessToken});
+        addToast('success', 'Sikeresen bejelentkeztél!');
+      })
+      .catch((error) => {
+        addToast('error', error.message);
+      })
+      .finally(() => {
+        setLoading(false);
       });
-
-      console.log(JSON.stringify(response?.data));
-
-      const accessToken = response?.data?.access_token;
-      const tokenParts = accessToken.split('.');
-      const payload = JSON.parse(atob(tokenParts[1]));
-
-      const role = payload.role;
-      console.log(role);
-      setAuth({email, role, accessToken});
-      addToast('success', 'Sikeresen bejelentkeztél!');
-    } catch (error) {
-      addToast('error', error.message);
-    } finally {
-      hideLoader();
-    }
   };
 
   return (

@@ -1,7 +1,7 @@
 import {ImFacebook} from 'react-icons/im';
-import {FaGoogle} from 'react-icons/fa';
 import {FcGoogle} from 'react-icons/fc';
 
+import {useLoading} from '../../hooks/useLoading';
 import Button from '../../common/Button';
 
 const SocialSignup = () => {

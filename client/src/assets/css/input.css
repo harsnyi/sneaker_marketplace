@@ -216,10 +216,10 @@ $palettes : (primary: (900: #161C24,
   color: #000;
 }
 .input-wrapper .input-group .input-field:not(:-moz-placeholder-shown):focus {
-  outline: 2px solid #F0F1F3;
+  outline: 2px solid #CFD3D9;
 }
 .input-wrapper .input-group .input-field:invalid:focus, .input-wrapper .input-group .input-field:not(:placeholder-shown):focus {
-  outline: 2px solid #F0F1F3;
+  outline: 2px solid #CFD3D9;
 }
 .input-wrapper .input-group .input-field.input-error {
   border: 2px solid #E81A1A;

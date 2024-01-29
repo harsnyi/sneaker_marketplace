@@ -74,11 +74,11 @@
         p,
         .toast-icon,
         .toast-close {
-            color: $clr-black;
+            color: darken(color(green, 900), 8%)
         }
 
         &::after {
-            background-color: $clr-black;
+            background-color: darken(color(green, 900), 8%)
         }
     }
 
@@ -94,11 +94,11 @@
         p,
         .toast-icon,
         .toast-close {
-            color: $clr-black;
+            color: darken(color(yellow, 900), 8%)
         }
 
         &::after {
-            background-color: $clr-black;
+            background-color: darken(color(yellow, 900), 8%)
         }
     }
 
@@ -109,11 +109,11 @@
         p,
         .toast-icon,
         .toast-close {
-            color: $clr-black;
+            color: darken(color(blue, 900), 8%)
         }
 
         &::after {
-            background-color: $clr-black;
+            background-color: darken(color(blue, 900), 8%);
         }
     }
 }

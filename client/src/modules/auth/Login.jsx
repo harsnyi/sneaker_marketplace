@@ -10,7 +10,7 @@ import {BiLogIn} from 'react-icons/bi';
 import {useState} from 'react';
 import {useDebounce} from '../../hooks/useDebounce';
 import {useLoader} from '../../hooks/useLoader';
-import {useLoading} from '../../hooks/useLoading';
+// import {useLoading} from '../../hooks/useLoading';
 import {useToast} from '../../hooks/useToast';
 import {useAuth} from '../../hooks/useAuth';
 
@@ -25,7 +25,7 @@ const Login = () => {
   const {setAuth} = useAuth();
   const {addToast} = useToast();
   const {showLoader, hideLoader} = useLoader();
-  const {setLoading} = useLoading();
+  //const {loading, setLoading} = useLoading();
 
   useDebounce(
     () => {
@@ -68,17 +68,16 @@ const Login = () => {
 
     if (!email || !password) {
       addToast('error', 'Kérjük, töltse ki a csillaggal jelölt mezőket!');
-      hideLoader();
       return;
     }
 
     if (Object.values(errors).some((error) => error)) {
       addToast('error', 'Kérjük, javítsa a hibás mezőket!');
-      hideLoader();
       return;
     }
 
-    setLoading(true);
+    showLoader();
+    //setLoading(true);
     await axios
       .post('http://localhost:8000' + LOGIN_URL, JSON.stringify({username: email, password}), {
         headers: {'Content-Type': 'application/json'},
@@ -100,7 +99,8 @@ const Login = () => {
         addToast('error', error.message);
       })
       .finally(() => {
-        setLoading(false);
+        hideLoader();
+        //setLoading(false);
       });
   };
 

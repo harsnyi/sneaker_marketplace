@@ -205,10 +205,10 @@ $palettes : (primary: (900: #161C24,
 .toast.success p,
 .toast.success .toast-icon,
 .toast.success .toast-close {
-  color: #000;
+  color: #1e2b00;
 }
 .toast.success::after {
-  background-color: #000;
+  background-color: #1e2b00;
 }
 .toast.error {
   background-color: #E81A1A;
@@ -221,10 +221,10 @@ $palettes : (primary: (900: #161C24,
 .toast.warning p,
 .toast.warning .toast-icon,
 .toast.warning .toast-close {
-  color: #000;
+  color: #402c05;
 }
 .toast.warning::after {
-  background-color: #000;
+  background-color: #402c05;
 }
 .toast.info {
   background-color: #07BFF2;
@@ -233,10 +233,10 @@ $palettes : (primary: (900: #161C24,
 .toast.info p,
 .toast.info .toast-icon,
 .toast.info .toast-close {
-  color: #000;
+  color: #02313e;
 }
 .toast.info::after {
-  background-color: #000;
+  background-color: #02313e;
 }
 
 @media only screen and (max-width: 576px) {

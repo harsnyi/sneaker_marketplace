@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../assets/css/button.css';
 import {ImSpinner8} from 'react-icons/im';
-import {useLoading} from '../hooks/useLoading';
+//import {useLoading} from '../hooks/useLoading';
 
 const Spinner = () => (
   <span className="spinner">
@@ -9,9 +9,9 @@ const Spinner = () => (
   </span>
 );
 
-const Button = ({children, className, text, ...attributes}) => {
+const Button = ({children, className, loading, text, ...attributes}) => {
   const classN = className ? `btn ${className}` : 'btn';
-  const {loading} = useLoading();
+  //const {loading} = useLoading();
   const isTertiaryButton = className && className.includes('tertiary');
 
   return (

@@ -7,6 +7,8 @@ import {useRef, useState} from 'react';
 import {useMultiStepForm} from '../../hooks/useMultiStepForm';
 
 import {useLoader} from '../../hooks/useLoader';
+import {useLoading} from '../../hooks/useLoading';
+import {useToast} from '../../hooks/useToast';
 
 import {IoMdArrowBack} from 'react-icons/io';
 import {IoMdArrowForward} from 'react-icons/io';
@@ -36,7 +38,9 @@ const MultiStepForm = () => {
   const accountRef = useRef();
   const personalRef = useRef();
 
-  const {showLoader, hideLoader} = useLoader();
+  //const {showLoader, hideLoader} = useLoader();
+  const {loading, setLoading} = useLoading();
+  const {addToast} = useToast();
 
   const [data, setData] = useState(INITIAL_DATA);
   const updateData = (fields) => {
@@ -64,11 +68,14 @@ const MultiStepForm = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
+    if (loading) return;
+
     const isValid = personalRef.current.isValid();
     if (isValid) {
-      showLoader();
-      try {
-        const response = await axios.post(
+      //showLoader();
+      setLoading(true);
+      await axios
+        .post(
           'http://localhost:8000' + REGISTER_URL,
           JSON.stringify({
             username: data.username,
@@ -83,15 +90,17 @@ const MultiStepForm = () => {
             headers: {'Content-type': 'application/json'},
             withCredentials: true,
           }
-        );
-        console.log(response.data);
-      } catch (error) {
-        if (error.response?.status === 409) {
-          //Username taken
-        }
-      } finally {
-        hideLoader();
-      }
+        )
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          addToast('error', error.message);
+        })
+        .finally(() => {
+          //hideLoader();
+          setLoading(false);
+        });
     }
   };
 
@@ -128,7 +137,7 @@ const MultiStepForm = () => {
               <IoMdArrowForward />
             </Button>
           ) : (
-            <Button type="submit" text="Regisztráció" className="primary">
+            <Button type="submit" text="Regisztráció" className="primary" loading={loading}>
               <HiPencilSquare />
             </Button>
           )}

@@ -2,8 +2,7 @@ import {NavLink} from 'react-router-dom';
 
 import {HiOutlineNewspaper} from 'react-icons/hi2';
 import {IoSettingsOutline} from 'react-icons/io5';
-import {MdInfoOutline, MdOutlineNewReleases, MdOutlinePhoneInTalk} from 'react-icons/md';
-import {PiGlobeLight} from 'react-icons/pi';
+import {MdInfoOutline, MdOutlineNewReleases, MdOutlinePhoneInTalk, MdOutlineExplore} from 'react-icons/md';
 import {RiAuctionLine, RiLogoutBoxLine} from 'react-icons/ri';
 import {TfiMore} from 'react-icons/tfi';
 
@@ -15,7 +14,7 @@ const subMenus = [
   {
     title: 'Közösség',
     items: [
-      {icon: <PiGlobeLight />, text: 'Fedezd Fel', link: '/discover'},
+      {icon: <MdOutlineExplore />, text: 'Fedezd Fel', link: '/discover'},
       {icon: <RiAuctionLine />, text: 'Licit', link: '/auction'},
       {icon: <HiOutlineNewspaper />, text: 'Hírek', link: '/news'},
     ],

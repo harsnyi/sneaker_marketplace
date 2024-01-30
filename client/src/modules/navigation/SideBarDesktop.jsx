@@ -9,8 +9,8 @@ import {CgProfile} from 'react-icons/cg';
 import {GoDotFill} from 'react-icons/go';
 import {HiOutlineNewspaper} from 'react-icons/hi2';
 import {IoNotificationsOutline, IoSettingsOutline} from 'react-icons/io5';
-import {MdFavoriteBorder, MdInfoOutline, MdOutlineNewReleases, MdOutlinePhoneInTalk, MdOutlineSell} from 'react-icons/md';
-import {PiArrowLineLeftBold, PiGlobeLight} from 'react-icons/pi';
+import {MdFavoriteBorder, MdInfoOutline, MdOutlineNewReleases, MdOutlinePhoneInTalk, MdOutlineSell, MdOutlineExplore} from 'react-icons/md';
+import {PiArrowLineLeftBold} from 'react-icons/pi';
 import {RiAuctionLine, RiLogoutBoxLine} from 'react-icons/ri';
 import {RxDashboard} from 'react-icons/rx';
 import {TfiMore} from 'react-icons/tfi';
@@ -37,7 +37,7 @@ const subMenus = [
   {
     title: 'Közösség',
     items: [
-      {icon: <PiGlobeLight />, text: 'Fedezd Fel', link: '/discover'},
+      {icon: <MdOutlineExplore />, text: 'Fedezd Fel', link: '/discover'},
       {icon: <RiAuctionLine />, text: 'Licit', link: '/auction'},
       {icon: <HiOutlineNewspaper />, text: 'Hírek', link: '/news'},
     ],

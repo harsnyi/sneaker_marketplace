@@ -1,0 +1,398 @@
+@import 'variables';
+
+.navbar {
+    position: fixed;
+    top: 0;
+    background-color: $clr-white;
+    height: $mobile-header-height;
+    width: 100vw;
+    z-index: 100;
+    border-bottom: 1px solid color(secondary, 100);
+
+    .navbar-list {
+        width: 100%;
+        height: 100%;
+        max-width: $media-query-sm;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        padding: 0 2rem;
+
+        .navbar-list-item {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            h1 {
+                font-size: 1.5rem;
+                font-weight: 500;
+                cursor: default;
+                text-align: center;
+                line-height: 1.2;
+                width: 100%;
+                text-align: center;
+            }
+
+            .navbar-list-item-link {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0.25rem;
+                cursor: pointer;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 60%;
+                    height: 0;
+                    background-color: color(primary, 500);
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    border-top-left-radius: 25px;
+                    border-top-right-radius: 25px;
+                    transition: height 0.2s $animation-cubic;
+                }
+
+                &.nolink {
+                    cursor: default;
+
+                    &::after {
+                        display: none;
+                    }
+                }
+
+                svg {
+                    font-size: 1.75rem;
+                    transition: color 0.2s $animation-cubic;
+                }
+
+                &:hover {
+
+                    svg {
+                        color: color(primary, 500);
+                    }
+                }
+
+                &:global(.active) {
+
+                    svg {
+                        color: color(primary, 500);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sidebar-container {
+    position: fixed;
+    width: 0;
+    background-color: rgb(0, 0, 0, 0.4);
+    z-index: 1000;
+    height: calc(100vh - 2 * $mobile-header-height);
+    top: $mobile-header-height;
+    right: 0;
+
+    .sidebar {
+        width: 0;
+        height: calc(100vh - 2 * $mobile-header-height);
+        right: 0;
+        position: fixed;
+        background-color: $clr-white;
+        z-index: 100;
+        transition: width 0.2s $animation-cubic;
+        border-left: 1px solid color(secondary, 100);
+
+        .sidebar-list {
+            display: none;
+        }
+    }
+
+    &.open {
+        width: 100vw;
+
+        .sidebar {
+            width: 80%;
+
+            .sidebar-list {
+                height: 100%;
+                list-style: none;
+                margin: 0;
+                padding-top: 0.5rem;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+
+                .sidebar-list-item {
+                    margin-bottom: 0.5rem;
+                    padding: 0.5rem 0;
+                    display: flex;
+                    flex-direction: column;
+
+                    h4 {
+                        text-transform: uppercase;
+                        color: color(secondary, 300);
+                        font-weight: 500;
+                        font-size: 1rem;
+                        padding: 0 1.5rem;
+                    }
+
+                    .list-item-submenu {
+                        padding: 0.5rem 0;
+                        font-size: 1.5rem;
+
+                        .submenu-item {
+                            height: 2rem;
+                            padding-left: 2.5rem;
+                            margin-bottom: 0.5rem;
+
+
+                            .submenu-item-link {
+                                position: relative;
+                                display: flex;
+                                align-items: center;
+                                width: 100%;
+                                height: 100%;
+                                gap: 1.25rem;
+
+                                svg {
+                                    min-width: 1.5rem;
+                                }
+
+                                svg,
+                                span {
+                                    transition: color 0.2s $animation-cubic;
+                                }
+
+                                &::before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                    bottom: 0;
+                                    width: 0;
+                                    background-color: color(primary, 500);
+                                    border-radius: 25px 0 0 25px;
+                                    transition: width 0.2s $animation-cubic;
+                                }
+
+                                &:hover {
+
+                                    svg,
+                                    span {
+                                        color: color(primary, 500);
+                                    }
+
+                                    &::before {
+                                        width: 3px;
+                                    }
+                                }
+
+                                &:global(.active) {
+
+                                    svg,
+                                    span {
+                                        color: color(primary, 500);
+                                    }
+
+                                    &::before {
+                                        width: 3px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &:last-child {
+                        margin-top: auto;
+                        margin-bottom: 0;
+
+                        .submenu-item:last-of-type {
+                            .submenu-item-link {
+                                cursor: pointer;
+
+                                svg,
+                                span {
+                                    color: color(red, 500)
+                                }
+
+                                &:hover {
+
+                                    svg,
+                                    span {
+                                        color: color(red, 500)
+                                    }
+
+                                    &::before {
+                                        content: '';
+                                        position: absolute;
+                                        top: 0;
+                                        right: 0;
+                                        bottom: 0;
+                                        width: 3px;
+                                        background-color: color(red, 500);
+                                        border-radius: 5px 0 0 5px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.menubar {
+    position: fixed;
+    bottom: 0;
+    background-color: $clr-white;
+    height: $mobile-nav-height;
+    width: 100vw;
+    z-index: 100;
+    border-top: 1px solid color(secondary, 100);
+
+    .menu-list {
+        width: 100%;
+        height: 100%;
+        max-width: $media-query-sm;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        padding: 0 2rem;
+
+        .menu-list-item {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .menu-list-item-link {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0.25rem;
+
+                svg {
+                    font-size: 1.75rem;
+                }
+
+                svg,
+                span {
+                    transition: color 0.2s $animation-cubic;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 60%;
+                    height: 0;
+                    background-color: color(primary, 500);
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    border-top-left-radius: 25px;
+                    border-top-right-radius: 25px;
+                    transition: height 0.2s $animation-cubic;
+                }
+
+                &:hover {
+
+                    svg,
+                    span {
+                        color: color(primary, 500);
+                    }
+
+                    &::after {
+                        height: 3px;
+                    }
+                }
+
+                &:global(.active) {
+
+                    svg,
+                    span {
+                        color: color(primary, 500);
+                    }
+
+                    &::after {
+                        height: 3px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $media-query-sm) {
+    .navbar {
+        .navbar-list {
+            padding: 0;
+            justify-content: space-around;
+        }
+    }
+
+
+    .menubar {
+        .menu-list {
+            padding: 0;
+            justify-content: space-around;
+        }
+    }
+
+}
+
+@media only screen and (max-width: $media-query-xsm) {
+    .navbar {
+        .navbar-list {
+            .navbar-list-item {
+                h1 {
+                    font-size: 1.25rem;
+                }
+
+                .navbar-list-item-link {
+                    svg {
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .sidebar-container {
+        &.open {
+            .sidebar {
+                width: 100%;
+            }
+        }
+    }
+
+    .menubar {
+        .menu-list {
+            .menu-list-item {
+                .menu-list-item-link {
+                    svg {
+                        font-size: 1.5rem;
+                    }
+
+                    span {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,17 +1,4 @@
 // PALETTE
-
-/*
-color(primary, 900): #131811;
-color(primary, 800): #263022;
-color(primary, 700): #394833;
-color(primary, 600): #4C5F44;
-color(primary, 500): #5E7755;
-color(primary, 400): #718F66;
-color(primary, 300): #86A27C;
-color(primary, 200): #9CB394;
-color(primary, 100): #B2C4AB;
-*/
-
 $clr-white: #fff;
 $clr-black: #000;
 
@@ -83,64 +70,10 @@ $palettes : (primary: (50: #E7F1FD,
     ),
 );
 
-/*
-$palettes : (primary: (900: #161C24,
-        800: #212B36,
-        700: #454F5B,
-        600: #637381,
-        500: #919EAB,
-        400: #C4CDD5,
-        300: #DFE3E8,
-        200: #F4F6F8,
-        100: #F9FAFB,
-    ),
-    secondary: (900: #212529,
-        800: #343a40,
-        700: #495057,
-        600: #6c757d,
-        500: #adb5bd,
-        400: #ced4da,
-        300: #dee2e6,
-        200: #e9ecef,
-        100: #f8f9fa,
-    ),
-    red: (lighter: #FFD6D9,
-        light: #FF8389,
-        base: #FF2437,
-        dark: #B80D24,
-        darker: #8C001A,
-    ),
-    green: (lighter: #C8FAD6,
-        light: #5BE49B,
-        base: #00A76F,
-        dark: #007867,
-        darker: #004B50,
-
-    ),
-    blue: (lighter: #CAFDF5,
-        light: #61F3F3,
-        base: #00B8D9,
-        dark: #006C9C,
-        darker: #003768,
-    ),
-    yellow: (lighter: #FFF5CC,
-        light: #FFD666,
-        base: #FFAB00,
-        dark: #B76E00,
-        darker: #7A4100,
-    ),
-    other : (facebook: #3b5998,
-        twitter: #1da1f2,
-        google: #db4437,
-        instagram: #B71D18,
-    ));
-*/
-
 // SIZES
 $panel-gap: .5rem;
-$mobile-nav-height: 4rem;
+$mobile-nav-height: 5rem;
 $mobile-header-height: $mobile-nav-height;
-$resize-handle-width : 2px;
 
 // OTHER
 $panel-box-shadow: 0 0 5px rgba(0, 0, 0, .175);
@@ -155,14 +88,7 @@ $border-radius-full: 50%;
 $font-display: 'BiggerDisplay';
 //$font-primary: 'Oswald', sans-serif;
 $font-primary: 'Roboto Condensed', sans-serif;
-//$font-primary: 'DM Sans', sans-serif;
-//$font-primary: Helvetica, sans-serif;
-//$font-primary: 'Inter';
-//$font-primary: 'Inter Tight';
 
-//COUNTS
-$dekstop-navbar-text-count : 17;
-//$mobile-navbar-text-count: 8;
 
 // FUNCTIONS
 @function color($color, $tone) {

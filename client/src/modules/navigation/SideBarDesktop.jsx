@@ -3,18 +3,17 @@ import desktopSideStyle from '../../assets/css/desktop-sidebar.module.css';
 import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 
-import {BiSearchAlt, BiMessageSquareDetail} from 'react-icons/bi';
-import {MdFavoriteBorder, MdOutlineNewReleases, MdOutlinePhoneInTalk, MdOutlineSell, MdInfoOutline} from 'react-icons/md';
-import {FaGrip, FaGripVertical} from 'react-icons/fa6';
-import {RiLogoutBoxLine} from 'react-icons/ri';
-import {IoSettingsOutline, IoNotificationsOutline} from 'react-icons/io5';
-import {TfiMore} from 'react-icons/tfi';
+import {BiMessageSquareDetail, BiSearchAlt} from 'react-icons/bi';
+import {BsFillGrid3X3GapFill} from 'react-icons/bs';
 import {CgProfile} from 'react-icons/cg';
-import {PiGlobeLight} from 'react-icons/pi';
-import {HiOutlineNewspaper} from 'react-icons/hi2';
-import {RxDashboard} from 'react-icons/rx';
-import {RiAuctionLine} from 'react-icons/ri';
 import {GoDotFill} from 'react-icons/go';
+import {HiOutlineNewspaper} from 'react-icons/hi2';
+import {IoNotificationsOutline, IoSettingsOutline} from 'react-icons/io5';
+import {MdFavoriteBorder, MdInfoOutline, MdOutlineNewReleases, MdOutlinePhoneInTalk, MdOutlineSell} from 'react-icons/md';
+import {PiArrowLineLeftBold, PiGlobeLight} from 'react-icons/pi';
+import {RiAuctionLine, RiLogoutBoxLine} from 'react-icons/ri';
+import {RxDashboard} from 'react-icons/rx';
+import {TfiMore} from 'react-icons/tfi';
 
 const subMenus = [
   {
@@ -73,10 +72,10 @@ const SideBarDesktop = () => {
         {isSideOpen ? (
           <>
             <h1>Under Retail</h1>
-            <FaGrip onClick={toggleSideBar} />
+            <PiArrowLineLeftBold onClick={toggleSideBar} />
           </>
         ) : (
-          <FaGripVertical onClick={toggleSideBar} />
+          <BsFillGrid3X3GapFill onClick={toggleSideBar} />
         )}
       </div>
       <ul className={desktopSideStyle['sidebar-list']}>

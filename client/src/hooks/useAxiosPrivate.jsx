@@ -1,4 +1,4 @@
-import {axiosPrivate} from '../setup/Axios';
+import axiosPrivate from '../setup/Axios';
 import {useEffect} from 'react';
 import useRefreshToken from './useRefreshToken';
 import useAuth from './useAuth';

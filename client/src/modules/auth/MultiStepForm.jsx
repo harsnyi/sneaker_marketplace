@@ -2,7 +2,7 @@ import '../../assets/css/multi-step-form.css';
 
 import React from 'react';
 
-import axios from 'axios';
+import axios from '../../setup/Axios';
 import {useRef, useState} from 'react';
 import {useMultiStepForm} from '../../hooks/useMultiStepForm';
 
@@ -76,7 +76,7 @@ const MultiStepForm = () => {
       setLoading(true);
       await axios
         .post(
-          'http://localhost:8000' + REGISTER_URL,
+          REGISTER_URL,
           JSON.stringify({
             username: data.username,
             password: data.password,

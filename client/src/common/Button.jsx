@@ -1,13 +1,7 @@
-import React, {useState} from 'react';
 import '../assets/css/button.css';
-import {ImSpinner8} from 'react-icons/im';
-//import {useLoading} from '../hooks/useLoading';
 
-const Spinner = () => (
-  <span className="spinner">
-    <ImSpinner8 />
-  </span>
-);
+//import {useLoading} from '../hooks/useLoading';
+import Spinner from './Spinner';
 
 const Button = ({children, className, loading, text, ...attributes}) => {
   const classN = className ? `btn ${className}` : 'btn';

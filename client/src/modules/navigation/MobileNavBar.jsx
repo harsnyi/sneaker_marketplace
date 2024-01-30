@@ -1,4 +1,4 @@
-import mobileNavStyle from '../../assets/css/mobile_navbar.module.css';
+import mobileNavStyle from '../../assets/css/mobile-navbar.module.css';
 
 import React, {useState} from 'react';
 import {NavLink, useLocation, useNavigate} from 'react-router-dom';

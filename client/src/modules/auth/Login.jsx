@@ -5,12 +5,12 @@ import SocialSignup from './SocialSignup';
 
 import {Link} from 'react-router-dom';
 
-import axios from 'axios';
+import axios from '../../setup/Axios';
 import {BiLogIn} from 'react-icons/bi';
 import {useState} from 'react';
 import {useDebounce} from '../../hooks/useDebounce';
-import {useLoader} from '../../hooks/useLoader';
-// import {useLoading} from '../../hooks/useLoading';
+//import {useLoader} from '../../hooks/useLoader';
+//import {useLoading} from '../../hooks/useLoading';
 import {useToast} from '../../hooks/useToast';
 import {useAuth} from '../../hooks/useAuth';
 
@@ -20,11 +20,13 @@ const LOGIN_URL = '/api/v1/token/authenticate';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
   const {setAuth} = useAuth();
   const {addToast} = useToast();
-  const {showLoader, hideLoader} = useLoader();
+  //const {showLoader, hideLoader} = useLoader();
   //const {loading, setLoading} = useLoading();
 
   useDebounce(
@@ -76,10 +78,10 @@ const Login = () => {
       return;
     }
 
-    showLoader();
-    //setLoading(true);
+    //showLoader();
+    setLoading(true);
     await axios
-      .post('http://localhost:8000' + LOGIN_URL, JSON.stringify({username: email, password}), {
+      .post(LOGIN_URL, JSON.stringify({username: email, password}), {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
       })
@@ -99,8 +101,8 @@ const Login = () => {
         addToast('error', error.message);
       })
       .finally(() => {
-        hideLoader();
-        //setLoading(false);
+        //hideLoader();
+        setLoading(false);
       });
   };
 
@@ -138,7 +140,7 @@ const Login = () => {
         <span className="forgot-pass">
           Elfelejtetted a jelszavadat? Állítsd vissza <Link to="">itt</Link>.
         </span>
-        <Button type="submit" text="Bejelentkezés" className="primary">
+        <Button type="submit" text="Bejelentkezés" className="primary" loading={loading}>
           <BiLogIn />
         </Button>
       </form>

@@ -135,12 +135,10 @@ $palettes : (primary: (900: #161C24,
   }
 }
 .main-wrapper {
-  background-color: #3D8CED;
+  background-color: #F0F1F3;
   height: 100svh;
   width: 100vw;
   display: flex;
-  -moz-column-gap: 0.25rem;
-       column-gap: 0.25rem;
 }
 .main-wrapper .main-container {
   flex: 1;
@@ -155,61 +153,6 @@ $palettes : (primary: (900: #161C24,
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-}
-.main-wrapper .main-container .main-header .header-list-container {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-.main-wrapper .main-container .main-header .header-list-container .header-list {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-.main-wrapper .main-container .main-header .header-list-container .header-list .header-list-item {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-.main-wrapper .main-container .main-header .header-list-container .header-list .header-list-item .header-link {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding: 0 1rem;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  gap: 0.5rem;
-  color: #073D80;
-  opacity: 0.7;
-  transition: opacity 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-}
-.main-wrapper .main-container .main-header .header-list-container .header-list .header-list-item .header-link:hover {
-  opacity: 1;
-  background-color: #8FBDF5;
-}
-.main-wrapper .main-container .main-header .header-list-container .header-list .header-list-item .header-link.active {
-  opacity: 1;
-}
-.main-wrapper .main-container .main-header .header-list-container .header-list .header-list-item .header-link.active::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-color: #052F62;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-}
-.main-wrapper .main-container .main-header .header-list-container .header-list .header-list-item .header-link .header-svg {
-  font-size: 1.15rem;
-}
-.main-wrapper .main-container .main-header .header-list-container .header-list .header-list-item .header-link .header-text {
-  text-transform: uppercase;
-  font-size: 1rem;
 }
 
 @media only screen and (max-width: 1200px) {

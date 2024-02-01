@@ -18,102 +18,121 @@
     position: relative;
     right: 0;
     bottom: 1rem;
-    height: 3.5rem;
+    height: 4rem;
     min-width: 10rem;
     display: flex;
-    padding: 0 1rem;
+    padding: 0 2rem;
     line-height: 1.5rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    column-gap: 1rem;
+    column-gap: 2rem;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
+    background-color: $clr-white;
+    box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;
+
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 6px;
+        z-index: 100;
+    }
 
     &::after {
         content: '';
         position: absolute;
         bottom: 0;
         left: 0;
-        height: 2px;
-        background-color: $clr-white;
+        height: 3px;
+        background-color: $clr-black;
         animation: toast 5s linear;
     }
 
     p {
-        font-size: 1.1rem;
-        color: $clr-white;
-        letter-spacing: 1px;
+        font-size: 1.25rem;
+        color: $clr-black;
         display: flex;
         align-items: center;
     }
 
     .toast-icon {
-        width: auto;
+        width: 1.5rem;
         height: 1.5rem;
-        color: $clr-white
+        font-size: 1.25rem;
+        color: $clr-black
     }
 
     .toast-close {
         all: unset;
-        color: $clr-white;
+        color: color(secondary, 300);
         cursor: pointer;
-        height: 1.7rem;
-        width: 1.7rem;
+        width: 1.5rem;
+        height: 1.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 1.2rem;
+        font-size: 1.25rem;
     }
 
     &.success {
-        background-color: color(green, 500);
-        border: 1px solid color(green, 700);
-
-        p,
-        .toast-icon,
-        .toast-close {
-            color: darken(color(green, 900), 8%)
+        &::before {
+            background-color: color(green, 500);
         }
 
         &::after {
-            background-color: darken(color(green, 900), 8%)
+            background-color: color(green, 200);
+        }
+
+        .toast-icon {
+            color: color(green, 500);
         }
     }
 
     &.error {
-        background-color: color(red, 500);
-        border: 1px solid color(red, 700);
-    }
-
-    &.warning {
-        background-color: color(yellow, 500);
-        border: 1px solid color(yellow, 700);
-
-        p,
-        .toast-icon,
-        .toast-close {
-            color: darken(color(yellow, 900), 8%)
+        &::before {
+            background-color: color(red, 500);
         }
 
         &::after {
-            background-color: darken(color(yellow, 900), 8%)
+            background-color: color(red, 200);
+        }
+
+        .toast-icon {
+            color: color(red, 500);
+        }
+    }
+
+    &.warning {
+        &::before {
+            background-color: color(yellow, 500);
+        }
+
+        &::after {
+            background-color: color(yellow, 200);
+        }
+
+        .toast-icon {
+            color: color(yellow, 500);
         }
     }
 
     &.info {
-        background-color: color(blue, 500);
-        border: 1px solid color(blue, 700);
-
-        p,
-        .toast-icon,
-        .toast-close {
-            color: darken(color(blue, 900), 8%)
+        &::before {
+            background-color: color(blue, 500);
         }
 
         &::after {
-            background-color: darken(color(blue, 900), 8%);
+            background-color: color(blue, 200);
+        }
+
+        .toast-icon {
+            color: color(blue, 500);
         }
     }
 }

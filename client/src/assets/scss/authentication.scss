@@ -137,7 +137,7 @@
     .auth-container {
         position: relative;
         padding: 3rem;
-        width: clamp(40rem, 50%, 55rem);
+        width: clamp(40rem, 50%, 70rem);
         overflow-y: auto;
         //border-left: 1px solid color(secondary, 300);
         display: flex;
@@ -439,9 +439,9 @@
 
             .brand-title {
                 display: block;
-                font-size: 4rem;
                 margin: 2rem 0;
                 line-height: normal;
+                color: color(primary, 500)
             }
 
             .tabs-wrapper {
@@ -524,7 +524,7 @@
                         min-width: 10rem;
 
                         h3 {
-                            font-size: 1rem;
+                            font-size: 1.1rem;
                         }
                     }
                 }

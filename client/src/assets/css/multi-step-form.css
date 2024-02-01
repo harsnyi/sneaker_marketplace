@@ -143,6 +143,7 @@
   align-items: center;
   transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   border: 1px solid #989FAD;
+  border-radius: 6px;
 }
 .multi-step-form .form-header .form-step h4 {
   font-size: 1.2rem;
@@ -179,7 +180,8 @@
 .multi-step-form .form-body .form-inputs .field-wrapper {
   display: flex;
   flex-direction: row;
-  column-gap: 0.5rem;
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
 }
 .multi-step-form .form-body .form-inputs .field-wrapper .input-wrapper {
   width: 100%;

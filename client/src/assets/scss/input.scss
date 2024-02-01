@@ -42,7 +42,7 @@
             font-size: 0.9rem;
             background-color: transparent;
             border: 1px solid color(secondary, 200);
-            // border-radius: 5px;
+            border-radius: $border-radius;
 
             &:-webkit-autofill,
             &:-webkit-autofill:hover,

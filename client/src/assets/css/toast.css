@@ -97,12 +97,15 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  column-gap: 2rem;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
   background-color: #fff;
   box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;
+  border-radius: 6px;
+  overflow: hidden;
 }
 .toast::before {
   content: "";
@@ -196,11 +199,13 @@
     min-width: 100%;
     justify-content: space-between;
     padding: 0 1rem;
-    column-gap: 0;
+    -moz-column-gap: 0;
+         column-gap: 0;
     align-items: center;
     height: auto;
     min-height: 3.5rem;
     padding: 1rem;
+    border-radius: 6px;
     margin-bottom: 0.125rem;
   }
   .toast p {

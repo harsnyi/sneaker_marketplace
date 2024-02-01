@@ -16,7 +16,7 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    // border-radius: 5px;
+    border-radius: $border-radius;
 
     .spinner {
         display: flex;
@@ -28,7 +28,7 @@
     }
 
     &.primary {
-        font-weight: 500;
+        //font-weight: bold;
         transition: background-color 0.2s $animation-cubic;
         color: $clr-white;
         background-color: color(primary, 500);

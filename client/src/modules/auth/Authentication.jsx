@@ -22,22 +22,15 @@ const FOOTER_LINKS = [
 ];
 
 const Authentication = () => {
-  var backgroundImagesContext = null;
+  var backgroundImagesContext = require.context('../../assets/images/background/small', false, /.*\.jpg$/);
+
   /*
   if (window.innerWidth <= 1200) {
     backgroundImagesContext = require.context('../../assets/images/background/small', false, /.*\.jpg$/);
-  } else if (window.innerWidth > 1200 && window.innerWidth <= 1920) {
-    backgroundImagesContext = require.context('../../assets/images/background/medium', false, /.*\.jpg$/);
   } else {
-    backgroundImagesContext = require.context('../../assets/images/background/large', false, /.*\.jpg$/);
+    backgroundImagesContext = require.context('../../assets/images/background/medium', false, /.*\.jpg$/);
   }
   */
-
-  if (window.innerWidth <= 1200) {
-    backgroundImagesContext = require.context('../../assets/images/background/small', false, /.*\.jpg$/);
-  } else {
-    backgroundImagesContext = require.context('../../assets/images/background/medium', false, /.*\.jpg$/);
-  }
 
   const backgroundImages = backgroundImagesContext.keys().map((key) => backgroundImagesContext(key));
   const currentYear = new Date().getFullYear();

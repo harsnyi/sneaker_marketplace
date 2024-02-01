@@ -32,6 +32,8 @@
     user-select: none;
     background-color: $clr-white;
     box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;
+    border-radius: $border-radius;
+    overflow: hidden;
 
 
     &::before {
@@ -157,7 +159,7 @@
         height: auto;
         min-height: 3.5rem;
         padding: 1rem;
-        //border-radius: 5px;
+        border-radius: $border-radius;
         margin-bottom: .125rem;
 
         p {

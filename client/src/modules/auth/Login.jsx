@@ -95,7 +95,6 @@ const Login = () => {
         const role = payload.role;
         console.log(role);
         setAuth({email, role, accessToken});
-        addToast('success', 'Sikeresen bejelentkeztél!');
       })
       .catch((error) => {
         addToast('error', error.message);

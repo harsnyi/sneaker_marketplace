@@ -238,7 +238,7 @@
                                         bottom: 0;
                                         width: 3px;
                                         background-color: color(red, 500);
-                                        border-radius: 5px 0 0 5px;
+                                        border-radius: $border-radius 0 0 $border-radius;
                                     }
                                 }
                             }

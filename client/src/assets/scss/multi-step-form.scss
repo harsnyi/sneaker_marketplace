@@ -91,6 +91,7 @@
                 align-items: center;
                 transition: all .2s $animation-cubic;
                 border: 1px solid color(secondary, 300);
+                border-radius: $border-radius;
             }
 
             h4 {

@@ -303,16 +303,14 @@
                         }
 
                         .forgot-pass {
+                            margin: 1rem 0;
                             font-size: 1.2rem;
                             font-weight: 400;
-                            margin: 1rem 0;
                             text-align: right;
-                            color: color(secondary, 300);
 
                             a {
                                 color: color(primary, 500);
                                 text-decoration: none;
-                                font-style: italic;
                                 position: relative;
 
                                 &::before {

@@ -145,6 +145,7 @@
         align-items: center;
         justify-content: center;
         background-color: $clr-white;
+        overflow-x: hidden;
 
         .brand-title {
             position: relative;
@@ -226,116 +227,163 @@
                     }
                 }
             }
-        }
 
-        .tabs-content {
-            .tabs-content-item {
-                display: none;
+            .tabs-content {
+                .tabs-content-item {
+                    display: none;
 
-                .social-signup {
-                    width: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    position: relative;
-
-                    h4 {
-                        margin: 1rem 0;
-                        font-size: 1.2rem;
-                        font-weight: 400;
-                        text-align: center;
-                    }
-                }
-
-                .bg-line {
-                    width: 100%;
-                    margin: 2rem 0 2.5rem 0;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    position: relative;
-
-                    h4 {
-                        color: $clr-black;
-                        //text-transform: uppercase;
-                        text-align: center;
-                        background-color: $clr-white;
-                        padding: 0 1rem;
-                        z-index: 100;
-                        font-weight: 400;
-                        font-size: 1.2rem;
-                    }
-
-                    &::after {
-                        content: '';
+                    .social-signup {
                         width: 100%;
-                        position: absolute;
-                        height: 1px;
-                        background-color: $clr-black;
-                    }
-                }
-
-                &.active-content {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    color: $clr-black;
-
-                    h1 {
-                        margin: 2rem 0 1rem 0;
-                        font-size: 2rem;
-                    }
-
-                    form {
                         display: flex;
                         flex-direction: column;
-                        justify-content: center;
-                        width: 100%;
+                        position: relative;
 
-                        .field-wrapper {
-                            display: flex;
-                            flex-direction: row;
-                            column-gap: 0.5rem;
-
-                            .input-wrapper {
-                                width: 100%;
-                            }
-                        }
-
-                        .forgot-pass {
+                        h4 {
                             margin: 1rem 0;
                             font-size: 1.2rem;
                             font-weight: 400;
-                            text-align: right;
+                            text-align: center;
+                        }
+                    }
 
-                            a {
-                                color: color(primary, 500);
-                                text-decoration: none;
-                                position: relative;
+                    .bg-line {
+                        width: 100%;
+                        margin: 2rem 0 2.5rem 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: relative;
 
-                                &::before {
-                                    content: '';
-                                    position: absolute;
-                                    bottom: -2px;
-                                    left: 0;
+                        h4 {
+                            color: $clr-black;
+                            //text-transform: uppercase;
+                            text-align: center;
+                            background-color: $clr-white;
+                            padding: 0 1rem;
+                            z-index: 100;
+                            font-weight: 400;
+                            font-size: 1.2rem;
+                        }
+
+                        &::after {
+                            content: '';
+                            width: 100%;
+                            position: absolute;
+                            height: 1px;
+                            background-color: $clr-black;
+                        }
+                    }
+
+                    &.active-content {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        color: $clr-black;
+
+                        h1 {
+                            margin: 2rem 0 1rem 0;
+                            font-size: 2rem;
+                        }
+
+                        form {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            width: 100%;
+
+                            .field-wrapper {
+                                display: flex;
+                                flex-direction: row;
+                                column-gap: 0.5rem;
+
+                                .input-wrapper {
                                     width: 100%;
-                                    height: 1px;
-                                    background-color: color(primary, 500);
-                                    transform: scaleX(0);
-                                    transform-origin: right;
-                                    transition: transform 0.2s $animation-cubic;
                                 }
+                            }
 
-                                &:hover {
+                            .forgot-pass {
+                                margin: 1rem 0;
+                                font-size: 1.2rem;
+                                font-weight: 400;
+
+                                p {
+                                    width: fit-content;
+                                    color: color(primary, 500);
+                                    position: relative;
+                                    margin-left: auto;
+                                    cursor: pointer;
 
                                     &::before {
-                                        transform-origin: left;
-                                        transform: scaleX(1);
+                                        content: '';
+                                        position: absolute;
+                                        bottom: -2px;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 1px;
+                                        background-color: color(primary, 500);
+                                        transform: scaleX(0);
+                                        transform-origin: right;
+                                        transition: transform 0.2s $animation-cubic;
+                                    }
+
+                                    &:hover {
+
+                                        &::before {
+                                            transform-origin: left;
+                                            transform: scaleX(1);
+                                        }
                                     }
                                 }
                             }
                         }
                     }
+                }
+            }
+        }
+
+        .reset-password-wrapper {
+            position: relative;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 800px;
+
+            p {
+                width: fit-content;
+                color: color(primary, 500);
+                position: relative;
+                cursor: pointer;
+
+                font-size: 1.2rem;
+                font-weight: 400;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: -2px;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: color(primary, 500);
+                    transform: scaleX(0);
+                    transform-origin: right;
+                    transition: transform 0.2s $animation-cubic;
+                }
+
+                &:hover {
+
+                    &::before {
+                        transform-origin: left;
+                        transform: scaleX(1);
+                    }
+                }
+            }
+
+            .reset-password-body {
+                h1 {
+                    position: relative;
+                    margin: 1rem 0 2rem 0;
+                    font-size: 2rem;
                 }
             }
         }
@@ -393,6 +441,7 @@
         overflow: auto;
 
         .hero {
+            border-radius: $border-radius;
             max-width: 800px;
             margin: 2rem auto !important;
             transform: scale(1);
@@ -472,6 +521,15 @@
                     }
                 }
             }
+        }
+    }
+}
+
+@media only screen and (max-width: $media-query-md) {
+    .auth-page {
+        .hero {
+            margin: 2rem !important;
+            margin-bottom: 0 !important;
         }
     }
 }

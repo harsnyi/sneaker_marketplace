@@ -3,10 +3,7 @@ import Input from '../../common/Input';
 import Button from '../../common/Button';
 import SocialSignup from './SocialSignup';
 
-import {Link} from 'react-router-dom';
-
 import axios from '../../setup/Axios';
-import {BiLogIn} from 'react-icons/bi';
 import {useState} from 'react';
 import {useDebounce} from '../../hooks/useDebounce';
 //import {useLoader} from '../../hooks/useLoader';
@@ -14,10 +11,12 @@ import {useDebounce} from '../../hooks/useDebounce';
 import {useToast} from '../../hooks/useToast';
 import {useAuth} from '../../hooks/useAuth';
 
+import {BiLogIn} from 'react-icons/bi';
+
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const LOGIN_URL = '/api/v1/token/authenticate';
 
-const Login = () => {
+const Login = ({setShowResetPass}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -137,7 +136,7 @@ const Login = () => {
         />
 
         <span className="forgot-pass">
-          <Link to="/ ">Elfelejtetted a jelszavadat?</Link>
+          <p onClick={() => setShowResetPass(true)}>Elfelejtetted a jelszavadat?</p>
         </span>
         <Button type="submit" text="Bejelentkezés" className="primary" loading={loading}>
           <BiLogIn />

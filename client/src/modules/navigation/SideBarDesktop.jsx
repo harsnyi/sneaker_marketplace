@@ -29,8 +29,8 @@ const subMenus = [
     items: [
       {icon: <CgProfile />, text: 'Profil', link: '/profile'},
       {icon: <MdFavoriteBorder />, text: 'Kedvencek', link: '/favorites'},
-      {icon: <BiMessageSquareDetail />, text: 'Üzenetek', link: '/messages'},
-      {icon: <IoNotificationsOutline />, text: 'Értesítések', link: '/notifications'},
+      {icon: <BiMessageSquareDetail />, text: 'Üzenetek', link: '/messages', class: 'notification-badge'},
+      {icon: <IoNotificationsOutline />, text: 'Értesítések', link: '/notifications', class: 'notification-badge'},
       {icon: <MdOutlineSell />, text: 'Eladás', link: '/sell'},
     ],
   },
@@ -86,12 +86,12 @@ const SideBarDesktop = () => {
               {subMenu.items.map((item, index) => (
                 <li key={index} className={desktopSideStyle['submenu-item']}>
                   {item.link === null ? (
-                    <div className={desktopSideStyle['submenu-item-link']} title={!isSideOpen ? item.text : null}>
+                    <div className={`${desktopSideStyle['submenu-item-link']} ${item.class ? desktopSideStyle[item.class] : ''}`} title={!isSideOpen ? item.text : null}>
                       {item.icon}
                       <span>{item.text}</span>
                     </div>
                   ) : (
-                    <NavLink to={item.link} className={desktopSideStyle['submenu-item-link']} title={!isSideOpen ? item.text : null}>
+                    <NavLink to={item.link} className={`${desktopSideStyle['submenu-item-link']} ${item.class ? desktopSideStyle[item.class] : ''}`} title={!isSideOpen ? item.text : null}>
                       {item.icon}
                       <span>{item.text}</span>
                     </NavLink>

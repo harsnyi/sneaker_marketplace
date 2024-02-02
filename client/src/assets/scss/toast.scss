@@ -18,32 +18,29 @@
     position: relative;
     right: 0;
     bottom: 1rem;
-    height: 4rem;
     min-width: 10rem;
     display: flex;
-    padding: 0 2rem;
-    line-height: 1.5rem;
+    padding: 1rem 1.25rem;
+    gap: 1.25rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    column-gap: 2rem;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
     background-color: $clr-white;
     box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;
-    border-radius: $border-radius;
-    overflow: hidden;
-
+    border-radius: 0 $border-radius $border-radius 0;
 
     &::before {
         content: '';
         position: absolute;
         top: 0;
-        left: 0;
+        left: -6px;
         height: 100%;
         width: 6px;
         z-index: 100;
+        border-radius: $border-radius 0 0 $border-radius;
     }
 
     &::after {
@@ -56,30 +53,35 @@
         animation: toast 5s linear;
     }
 
-    p {
+    h3 {
         font-size: 1.25rem;
-        color: $clr-black;
-        display: flex;
-        align-items: center;
+        font-weight: 500;
     }
 
     .toast-icon {
         width: 1.5rem;
         height: 1.5rem;
-        font-size: 1.25rem;
-        color: $clr-black
+        font-size: 1.75rem;
+        color: $clr-black;
     }
 
     .toast-close {
         all: unset;
-        color: color(secondary, 300);
+        color: color(secondary, 200);
         cursor: pointer;
         width: 1.5rem;
         height: 1.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 1.25rem;
+        font-size: 1.175rem;
+        border-radius: 50%;
+        transition: all .2s $animation-cubic;
+
+        &:hover {
+            background-color: color(secondary, 50);
+            color: color(secondary, 400);
+        }
     }
 
     &.success {
@@ -162,7 +164,7 @@
         border-radius: $border-radius;
         margin-bottom: .125rem;
 
-        p {
+        h3 {
             font-size: 1rem;
             text-align: center;
         }

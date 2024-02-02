@@ -28,7 +28,7 @@ const Toast = ({id, type, message, onClose}) => {
       {type === 'error' && <BiSolidErrorAlt className="toast-icon" />}
       {type === 'info' && <FaCircleInfo className="toast-icon" />}
       {type === 'warning' && <FaTriangleExclamation className="toast-icon" />}
-      <p>{message}</p>
+      <h3>{message}</h3>
       <button className="toast-close" onClick={() => onClose(id)}>
         &#x2716;
       </button>

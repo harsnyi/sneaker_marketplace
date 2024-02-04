@@ -34,7 +34,7 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
         }));
       });
 
-      addToast('error', 'Kérjük, töltse ki a csillaggal jelölt mezőket!');
+      addToast('error', 'Kérjük, töltsd ki a csillaggal jelölt mezőket!');
       return false;
     }
 

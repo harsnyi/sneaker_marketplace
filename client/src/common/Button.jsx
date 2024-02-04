@@ -4,11 +4,10 @@ import Spinner from './Spinner';
 
 const Button = ({children, className, loading, text, ...attributes}) => {
   const classN = className ? `btn ${className}` : 'btn';
-  const isTertiaryButton = className && className.includes('tertiary');
 
   return (
-    <button type="button" className={classN} disabled={!isTertiaryButton && loading} {...attributes}>
-      {loading && !isTertiaryButton ? (
+    <button type="button" className={classN} disabled={loading} {...attributes}>
+      {loading ? (
         <Spinner />
       ) : (
         <>

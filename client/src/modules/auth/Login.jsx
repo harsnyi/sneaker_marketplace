@@ -68,7 +68,7 @@ const Login = ({setShowResetPass}) => {
     }
 
     if (!email || !password) {
-      addToast('error', 'Kérjük, töltse ki a csillaggal jelölt mezőket!');
+      addToast('error', 'Kérjük, töltsd ki a csillaggal jelölt mezőket!');
       return;
     }
 
@@ -135,9 +135,9 @@ const Login = ({setShowResetPass}) => {
           error={errors.password}
         />
 
-        <span className="forgot-pass">
-          <p onClick={() => setShowResetPass(true)}>Elfelejtetted a jelszavadat?</p>
-        </span>
+        <p onClick={() => setShowResetPass(true)} className="link">
+          Elfelejtetted a jelszavadat?
+        </p>
         <Button type="submit" text="Bejelentkezés" className="primary" loading={loading}>
           <BiLogIn />
         </Button>

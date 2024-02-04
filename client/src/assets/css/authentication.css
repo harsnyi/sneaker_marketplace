@@ -117,7 +117,7 @@
   font-weight: 400;
   margin: 0;
   text-align: center;
-  max-width: 800px;
+  max-width: 700px;
   padding: 0 1.5rem;
 }
 .auth-page .hero .hero-content .hero-footer {
@@ -217,7 +217,7 @@
 .auth-page .auth-container {
   position: relative;
   padding: 3rem;
-  width: clamp(40rem, 50%, 70rem);
+  width: clamp(40rem, 50%, 60rem);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -242,7 +242,7 @@
   position: relative;
   margin: 0 auto;
   width: 100%;
-  max-width: 800px;
+  max-width: 700px;
 }
 .auth-page .auth-container .tabs-wrapper .tabs-header {
   position: relative;
@@ -360,70 +360,32 @@
 .auth-page .auth-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .field-wrapper .input-wrapper {
   width: 100%;
 }
-.auth-page .auth-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .forgot-pass {
+.auth-page .auth-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .link {
   margin: 1rem 0;
-  font-size: 1.2rem;
-  font-weight: 400;
-}
-.auth-page .auth-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .forgot-pass p {
-  width: -moz-fit-content;
-  width: fit-content;
-  color: #0C6DE9;
-  position: relative;
   margin-left: auto;
-  cursor: pointer;
-}
-.auth-page .auth-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .forgot-pass p::before {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #0C6DE9;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.auth-page .auth-container .tabs-wrapper .tabs-content .tabs-content-item.active-content form .forgot-pass p:hover::before {
-  transform-origin: left;
-  transform: scaleX(1);
 }
 .auth-page .auth-container .reset-password-wrapper {
   position: relative;
   margin: 0 auto;
   width: 100%;
-  max-width: 800px;
+  max-width: 700px;
 }
-.auth-page .auth-container .reset-password-wrapper p {
-  width: -moz-fit-content;
-  width: fit-content;
-  color: #0C6DE9;
+.auth-page .auth-container .reset-password-wrapper .reset-password-body {
   position: relative;
-  cursor: pointer;
-  font-size: 1.2rem;
-  font-weight: 400;
-}
-.auth-page .auth-container .reset-password-wrapper p::before {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #0C6DE9;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.auth-page .auth-container .reset-password-wrapper p:hover::before {
-  transform-origin: left;
-  transform: scaleX(1);
 }
 .auth-page .auth-container .reset-password-wrapper .reset-password-body h1 {
-  position: relative;
-  margin: 1rem 0 2rem 0;
+  margin: 2rem 0 1rem 0;
   font-size: 2rem;
+}
+.auth-page .auth-container .reset-password-wrapper .reset-password-body p {
+  color: #657084;
+  margin-bottom: 1rem;
+}
+.auth-page .auth-container .reset-password-wrapper .reset-password-body form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 
 @media only screen and (max-width: 2560px) {
@@ -462,11 +424,14 @@
     height: auto;
     flex-direction: column-reverse;
     overflow: auto;
+    padding: 0 2rem;
+    justify-content: space-between;
+    align-items: center;
   }
   .auth-page .hero {
     border-radius: 6px;
-    max-width: 800px;
-    margin: 2rem auto !important;
+    max-width: 700px;
+    margin: 2rem auto;
     transform: scale(1);
     gap: 0.5rem;
     max-height: 40svh;
@@ -478,6 +443,13 @@
   }
   .auth-page .hero .hero-content .hero-title {
     visibility: hidden;
+    font-size: 0rem;
+    margin: 0;
+  }
+  .auth-page .hero .hero-content .hero-subtitle {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0 5rem;
   }
   .auth-page .hero .hero-content .hero-footer {
     padding: 1rem;
@@ -498,7 +470,7 @@
   .auth-page .auth-container {
     width: 100%;
     box-shadow: none;
-    padding: 0rem 2rem;
+    padding: 0rem;
     border: none;
   }
   .auth-page .auth-container .brand-title {
@@ -521,15 +493,12 @@
     row-gap: 0.25rem;
   }
 }
-@media only screen and (max-width: 768px) {
-  .auth-page .hero {
-    margin: 2rem !important;
-    margin-bottom: 0 !important;
-  }
-}
 @media only screen and (max-width: 576px) {
+  .auth-page {
+    padding: 0;
+  }
   .auth-page .hero {
-    margin: 1rem;
+    margin: 1rem !important;
     grid-template-columns: repeat(3, 1fr);
   }
   .auth-page .hero .hero-content .hero-footer h4 span {

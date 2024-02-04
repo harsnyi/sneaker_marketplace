@@ -38,8 +38,6 @@
                 text-align: center;
                 text-transform: uppercase;
                 letter-spacing: 2px;
-                //color: color(yellow, base);
-                //text-shadow: .25rem .25rem color(red, base);
                 font-family: $font-display;
                 font-style: italic;
             }
@@ -49,7 +47,7 @@
                 font-weight: 400;
                 margin: 0;
                 text-align: center;
-                max-width: 800px;
+                max-width: 700px;
                 padding: 0 1.5rem;
             }
 
@@ -137,9 +135,8 @@
     .auth-container {
         position: relative;
         padding: 3rem;
-        width: clamp(40rem, 50%, 70rem);
+        width: clamp(40rem, 50%, 60rem);
         overflow-y: auto;
-        //border-left: 1px solid color(secondary, 300);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -164,7 +161,7 @@
             position: relative;
             margin: 0 auto;
             width: 100%;
-            max-width: 800px;
+            max-width: 700px;
 
             .tabs-header {
                 position: relative;
@@ -302,39 +299,9 @@
                                 }
                             }
 
-                            .forgot-pass {
+                            .link {
                                 margin: 1rem 0;
-                                font-size: 1.2rem;
-                                font-weight: 400;
-
-                                p {
-                                    width: fit-content;
-                                    color: color(primary, 500);
-                                    position: relative;
-                                    margin-left: auto;
-                                    cursor: pointer;
-
-                                    &::before {
-                                        content: '';
-                                        position: absolute;
-                                        bottom: -2px;
-                                        left: 0;
-                                        width: 100%;
-                                        height: 1px;
-                                        background-color: color(primary, 500);
-                                        transform: scaleX(0);
-                                        transform-origin: right;
-                                        transition: transform 0.2s $animation-cubic;
-                                    }
-
-                                    &:hover {
-
-                                        &::before {
-                                            transform-origin: left;
-                                            transform: scaleX(1);
-                                        }
-                                    }
-                                }
+                                margin-left: auto;
                             }
                         }
                     }
@@ -346,44 +313,26 @@
             position: relative;
             margin: 0 auto;
             width: 100%;
-            max-width: 800px;
-
-            p {
-                width: fit-content;
-                color: color(primary, 500);
-                position: relative;
-                cursor: pointer;
-
-                font-size: 1.2rem;
-                font-weight: 400;
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    bottom: -2px;
-                    left: 0;
-                    width: 100%;
-                    height: 1px;
-                    background-color: color(primary, 500);
-                    transform: scaleX(0);
-                    transform-origin: right;
-                    transition: transform 0.2s $animation-cubic;
-                }
-
-                &:hover {
-
-                    &::before {
-                        transform-origin: left;
-                        transform: scaleX(1);
-                    }
-                }
-            }
+            max-width: 700px;
 
             .reset-password-body {
+                position: relative;
+
                 h1 {
-                    position: relative;
-                    margin: 1rem 0 2rem 0;
+                    margin: 2rem 0 1rem 0;
                     font-size: 2rem;
+                }
+
+                p {
+                    color: color(secondary, 500);
+                    margin-bottom: 1rem;
+                }
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 100%;
                 }
             }
         }
@@ -439,11 +388,14 @@
         height: auto;
         flex-direction: column-reverse;
         overflow: auto;
+        padding: 0 2rem;
+        justify-content: space-between;
+        align-items: center;
 
         .hero {
             border-radius: $border-radius;
-            max-width: 800px;
-            margin: 2rem auto !important;
+            max-width: 700px;
+            margin: 2rem auto;
             transform: scale(1);
             gap: .5rem;
             max-height: 40svh;
@@ -455,6 +407,14 @@
 
                 .hero-title {
                     visibility: hidden;
+                    font-size: 0rem;
+                    margin: 0;
+                }
+
+                .hero-subtitle {
+                    font-size: 1rem;
+                    margin: 0;
+                    padding: 0 5rem;
                 }
 
                 .hero-footer {
@@ -483,7 +443,7 @@
         .auth-container {
             width: 100%;
             box-shadow: none;
-            padding: 0rem 2rem;
+            padding: 0rem;
             border: none;
 
             .brand-title {
@@ -525,19 +485,12 @@
     }
 }
 
-@media only screen and (max-width: $media-query-md) {
-    .auth-page {
-        .hero {
-            margin: 2rem !important;
-            margin-bottom: 0 !important;
-        }
-    }
-}
-
 @media only screen and (max-width: $media-query-sm) {
     .auth-page {
+        padding: 0;
+
         .hero {
-            margin: 1rem;
+            margin: 1rem !important;
             grid-template-columns: repeat(3, 1fr);
 
             .hero-content {
@@ -559,7 +512,6 @@
 
 @media only screen and (max-width: $media-query-xsm) {
     .auth-page {
-
         .hero {
             margin: 1rem;
             grid-template-columns: repeat(3, 1fr);

@@ -1,5 +1,5 @@
 import {useContext} from 'react';
-import {LoadingContext} from '../setup/LoadingProvider';
+import {LoadingContext} from '../context/LoadingProvider';
 
 export const useLoading = () => {
   return useContext(LoadingContext);

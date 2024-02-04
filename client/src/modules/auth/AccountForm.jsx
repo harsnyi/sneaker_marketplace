@@ -42,7 +42,7 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
     if (Object.values(errors).every((x) => x === '')) {
       return true;
     } else {
-      addToast('error', 'Kérjük, javítsa a hibás mezőket!');
+      addToast('error', 'Kérjük, javítsd a hibás mezőket!');
       return false;
     }
   };

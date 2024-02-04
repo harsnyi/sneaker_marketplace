@@ -43,7 +43,7 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
     if (Object.values(errors).every((x) => x === '')) {
       return true;
     } else {
-      addToast('error', 'Kérjük, javítsa a hibás mezőket!');
+      addToast('error', 'Kérjük, javítsd a hibás mezőket!');
       return false;
     }
   };

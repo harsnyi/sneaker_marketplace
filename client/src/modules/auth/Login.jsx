@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import SocialSignup from './SocialSignup';
 
 import axios from '../../setup/Axios';
+import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 import {useDebounce} from '../../hooks/useDebounce';
 //import {useLoader} from '../../hooks/useLoader';
@@ -17,6 +18,8 @@ const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const LOGIN_URL = '/api/v1/token/authenticate';
 
 const Login = ({setShowResetPass}) => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -43,7 +46,7 @@ const Login = ({setShowResetPass}) => {
         }));
       }
     },
-    0,
+    500,
     [email]
   );
 
@@ -73,35 +76,31 @@ const Login = ({setShowResetPass}) => {
     }
 
     if (Object.values(errors).some((error) => error)) {
-      addToast('error', 'Kérjük, javítsa a hibás mezőket!');
+      addToast('error', 'Kérjük, javítsd a hibás mezőket!');
       return;
     }
 
     //showLoader();
     setLoading(true);
-    await axios
-      .post(LOGIN_URL, JSON.stringify({username: email, password}), {
+    try {
+      const response = await axios.post(LOGIN_URL, JSON.stringify({username: email, password}), {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
-      })
-      .then((response) => {
-        console.log(JSON.stringify(response?.data));
-
-        const accessToken = response?.data?.access_token;
-        const tokenParts = accessToken.split('.');
-        const payload = JSON.parse(atob(tokenParts[1]));
-
-        const role = payload.role;
-        console.log(role);
-        setAuth({email, role, accessToken});
-      })
-      .catch((error) => {
-        addToast('error', error.message);
-      })
-      .finally(() => {
-        //hideLoader();
-        setLoading(false);
       });
+
+      const accessToken = response?.data?.accessToken;
+      const roles = response?.data?.roles;
+
+      setAuth({username: email, password, roles, accessToken});
+
+      navigate('/');
+      //addToast('success', 'Sikeresen bejelentkeztél!');
+    } catch (error) {
+      addToast('error', error.message);
+    } finally {
+      //hideLoader();
+      setLoading(false);
+    }
   };
 
   return (

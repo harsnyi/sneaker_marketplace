@@ -6,23 +6,26 @@ import {QueryParamProvider} from 'use-query-params';
 import {ReactRouter6Adapter} from 'use-query-params/adapters/react-router-6';
 import {BrowserRouter as Router} from 'react-router-dom';
 
-import LoaderProvider from './setup/LoaderProvider';
-import LoadingProvider from './setup/LoadingProvider';
+import AuthProvider from './context/AuthProvider';
+import LoaderProvider from './context/LoaderProvider';
+import LoadingProvider from './context/LoadingProvider';
 import ToastContainer from './common/ToastContainer';
-import ToastProvider from './setup/ToastProvider';
+import ToastProvider from './context/ToastProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
     <QueryParamProvider adapter={ReactRouter6Adapter}>
-      <LoaderProvider>
-        <LoadingProvider>
-          <ToastProvider>
-            <ToastContainer />
-            <App />
-          </ToastProvider>
-        </LoadingProvider>
-      </LoaderProvider>
+      <AuthProvider>
+        <LoaderProvider>
+          <LoadingProvider>
+            <ToastProvider>
+              <ToastContainer />
+              <App />
+            </ToastProvider>
+          </LoadingProvider>
+        </LoaderProvider>
+      </AuthProvider>
     </QueryParamProvider>
   </Router>
 );

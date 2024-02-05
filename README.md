@@ -24,7 +24,8 @@ python .\sneaker_api\manage.py runserver
 ## Jogosultságok
 
 ```diff
-+ User : 5001
-! Contributor : 6002
-- Admin : 8004
+* Guest : 4001
+! User : 5002
+- Contributor : 6003
++ Admin : 7004
 ```

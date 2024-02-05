@@ -129,17 +129,8 @@
 .input-wrapper .input-group .input-field:focus ~ .eye {
   color: #657084;
 }
-.input-wrapper .input-group .input-field:not(:-moz-placeholder-shown) {
-  border: 1px solid #000;
-}
 .input-wrapper .input-group .input-field:invalid, .input-wrapper .input-group .input-field:not(:placeholder-shown) {
   border: 1px solid #000;
-}
-.input-wrapper .input-group .input-field:not(:-moz-placeholder-shown) ~ label {
-  top: 0;
-  color: #000;
-  font-size: 1.1rem;
-  background-color: #fff;
 }
 .input-wrapper .input-group .input-field:invalid ~ label, .input-wrapper .input-group .input-field:not(:placeholder-shown) ~ label {
   top: 0;
@@ -147,14 +138,8 @@
   font-size: 1.1rem;
   background-color: #fff;
 }
-.input-wrapper .input-group .input-field:not(:-moz-placeholder-shown) ~ .eye {
-  color: #000;
-}
 .input-wrapper .input-group .input-field:invalid ~ .eye, .input-wrapper .input-group .input-field:not(:placeholder-shown) ~ .eye {
   color: #000;
-}
-.input-wrapper .input-group .input-field:not(:-moz-placeholder-shown):focus {
-  outline: 2px solid #CFD3D9;
 }
 .input-wrapper .input-group .input-field:invalid:focus, .input-wrapper .input-group .input-field:not(:placeholder-shown):focus {
   outline: 2px solid #CFD3D9;
@@ -183,6 +168,7 @@
   width: 100%;
   margin: 0.7rem 0;
   position: relative;
+  border-radius: 6px;
 }
 .select-wrapper label {
   position: absolute;
@@ -204,11 +190,11 @@
   height: 1rem;
 }
 .select-wrapper .select-menu {
+  border-radius: 6px;
   width: 100%;
   --webkit-appearance: none;
   -moz-appearance: none;
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   cursor: pointer;
   font-size: 0.9rem;
   transition: border 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -228,17 +214,8 @@
   font-size: 1.1rem;
   background-color: #fff;
 }
-.select-wrapper .select-menu:not(:-moz-placeholder-shown) {
-  border: 1px solid #000;
-}
 .select-wrapper .select-menu:invalid, .select-wrapper .select-menu:not(:placeholder-shown) {
   border: 1px solid #000;
-}
-.select-wrapper .select-menu:not(:-moz-placeholder-shown) ~ label {
-  top: 0;
-  color: #000;
-  font-size: 1.1rem;
-  background-color: #fff;
 }
 .select-wrapper .select-menu:invalid ~ label, .select-wrapper .select-menu:not(:placeholder-shown) ~ label {
   top: 0;

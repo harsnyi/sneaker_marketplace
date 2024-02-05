@@ -4,7 +4,7 @@ import App from './App';
 
 import {QueryParamProvider} from 'use-query-params';
 import {ReactRouter6Adapter} from 'use-query-params/adapters/react-router-6';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import AuthProvider from './context/AuthProvider';
 import LoaderProvider from './context/LoaderProvider';
@@ -21,7 +21,9 @@ root.render(
           <LoadingProvider>
             <ToastProvider>
               <ToastContainer />
-              <App />
+              <Routes>
+                <Route path="/*" element={<App />} />
+              </Routes>
             </ToastProvider>
           </LoadingProvider>
         </LoaderProvider>

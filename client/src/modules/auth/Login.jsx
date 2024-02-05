@@ -3,8 +3,10 @@ import Input from '../../common/Input';
 import Button from '../../common/Button';
 import SocialSignup from './SocialSignup';
 
+import {jwtDecode} from 'jwt-decode';
+
 import axios from '../../setup/Axios';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 import {useState} from 'react';
 import {useDebounce} from '../../hooks/useDebounce';
 //import {useLoader} from '../../hooks/useLoader';
@@ -19,6 +21,8 @@ const LOGIN_URL = '/api/v1/token/authenticate';
 
 const Login = ({setShowResetPass}) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || '/';
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +30,7 @@ const Login = ({setShowResetPass}) => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const {setAuth} = useAuth();
+  const {auth, setAuth} = useAuth();
   const {addToast} = useToast();
   //const {showLoader, hideLoader} = useLoader();
   //const {loading, setLoading} = useLoading();
@@ -48,6 +52,18 @@ const Login = ({setShowResetPass}) => {
     },
     500,
     [email]
+  );
+
+  useDebounce(
+    () => {
+      // clear password errors
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: '',
+      }));
+    },
+    0,
+    [password]
   );
 
   const handleFormSubmit = async (e) => {
@@ -88,13 +104,14 @@ const Login = ({setShowResetPass}) => {
         withCredentials: true,
       });
 
-      const accessToken = response?.data?.accessToken;
-      const roles = response?.data?.roles;
+      const accessToken = response?.data?.access_token;
+      const roles = jwtDecode(accessToken).roles;
 
-      setAuth({username: email, password, roles, accessToken});
+      setAuth({user: {username: email, email: email}, roles, accessToken});
+      setEmail('');
+      setPassword('');
 
-      navigate('/');
-      //addToast('success', 'Sikeresen bejelentkeztél!');
+      navigate(from, {replace: true});
     } catch (error) {
       addToast('error', error.message);
     } finally {

@@ -10,6 +10,7 @@ from .user_serializer import UserLoginSerializer
 from django.contrib.auth import authenticate
 from django.http import JsonResponse, HttpResponse
 from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken
+from .models import Role
 
 class CheckAccessToken(APIView):
     def get(self, request):
@@ -34,15 +35,15 @@ class CheckAccessToken(APIView):
 #Registers a new user with the added serializer.
 #More logic needs to be done
 class Register_view(APIView):
-    def post(self,request, *args, **kwargs):
-    
+    def post(self, request, *args, **kwargs):
         serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid():
-            
-            #Send email here etc...
             user = serializer.save()
-            
+            role = Role.objects.create(role=5002, user=user)
+            # Send email here, etc.
+
             return Response(status=status.HTTP_201_CREATED)
+
         return Response(serializer.errors)
 
 

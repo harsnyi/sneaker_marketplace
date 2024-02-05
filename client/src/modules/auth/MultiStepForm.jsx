@@ -74,8 +74,8 @@ const MultiStepForm = () => {
     if (isValid) {
       //showLoader();
       setLoading(true);
-      await axios
-        .post(
+      try {
+        await axios.post(
           REGISTER_URL,
           JSON.stringify({
             username: data.username,
@@ -90,17 +90,17 @@ const MultiStepForm = () => {
             headers: {'Content-type': 'application/json'},
             withCredentials: true,
           }
-        )
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          addToast('error', error.message);
-        })
-        .finally(() => {
-          //hideLoader();
-          setLoading(false);
-        });
+        );
+
+        addToast('success', 'Sikeres regisztráció! Kérjük, jelentkezz be!');
+        setData(INITIAL_DATA);
+        goTo(0);
+      } catch (error) {
+        addToast('error', error.message);
+      } finally {
+        //hideLoader();
+        setLoading(false);
+      }
     }
   };
 

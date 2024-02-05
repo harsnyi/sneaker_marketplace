@@ -11,13 +11,9 @@ export const useLogout = () => {
   const logout = async () => {
     setAuth(null);
     try {
-      await axios.post(
-        LOGOUT_URL,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
+      await axios.post(LOGOUT_URL, {
+        withCredentials: true,
+      });
     } catch (error) {
       addToast('error', error.message);
     }

@@ -18,7 +18,7 @@ const Main = () => {
     <div className="main-wrapper">
       {renderSideBar()}
       <div className="main-container">
-        {/* <Header/> */}
+        <Header />
         <main className="main-content">
           <Outlet />
         </main>

@@ -10,9 +10,12 @@ from .user_serializer import UserLoginSerializer
 from django.contrib.auth import authenticate
 from django.http import JsonResponse, HttpResponse
 from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken
-from .models import Role
+from .models import Role, User
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated
 
-class CheckAccessToken(APIView):
+
+class Check_access_token(APIView):
     def get(self, request):
         authorization_header = request.headers.get('Authorization', '')
 
@@ -32,9 +35,17 @@ class CheckAccessToken(APIView):
         else:
             return Response({"detail": "Access token is missing expiration time"}, status=status.HTTP_401_UNAUTHORIZED)
 
-#Registers a new user with the added serializer.
-#More logic needs to be done
+class List_users(APIView):
+    permission_classes = [IsAuthenticated]
+    def get(self, request):
+        user_list = [user.username for user in User.objects.all()]
+        return Response(user_list, status=status.HTTP_200_OK)
+        
+
 class Register_view(APIView):
+    """Registers a new user with the added serializer.
+    More logic needs to be done"""
+    
     def post(self, request, *args, **kwargs):
         serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid():
@@ -47,10 +58,11 @@ class Register_view(APIView):
         return Response(serializer.errors)
 
 
-# Authenticates the user, if the credentials are valid 
-# the user gets an access front and an 
-# http only refresh token in the cookies
+
 class Authentication_view(APIView):
+    """Authenticates the user, if the credentials are valid 
+    the user gets an access front and an http only refresh token in the cookies"""
+    
     def post(self, request, *args, **kwargs):
         
         #Check if the user credentials are valid
@@ -81,9 +93,10 @@ class Authentication_view(APIView):
         return JsonResponse({'error': 'Invalid Credentials'}, status=400)
 
 
-#Validate the refresh token stored in the cookie, 
-#then givin out fresh access token
 class Update_access_token_view(APIView):
+    """Validate the refresh token stored in the cookie,
+    then givin out fresh access token """
+    
     def post(self, request, *args, **kwargs):
 
         refresh_token = request.COOKIES.get('refresh_token')
@@ -106,9 +119,9 @@ class Update_access_token_view(APIView):
         }
         return Response(response_data)
 
-
-#Blacklists the given refresh token extracted from the cookies
 class LogoutView(APIView):
+    """Blacklists the given refresh token extracted from the cookies"""
+    
     def post(self, request, *args, **kwargs):
         
         refresh_token = request.COOKIES.get('refresh_token')

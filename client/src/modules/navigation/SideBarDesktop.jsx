@@ -1,7 +1,7 @@
 import desktopSideStyle from '../../assets/css/desktop-sidebar.module.css';
 
 import React, {useState} from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 
 import {BiMessageSquareDetail, BiSearchAlt} from 'react-icons/bi';
 import {BsFillGrid3X3GapFill} from 'react-icons/bs';
@@ -14,6 +14,7 @@ import {PiArrowLineLeftBold} from 'react-icons/pi';
 import {RiAuctionLine, RiLogoutBoxLine} from 'react-icons/ri';
 import {RxDashboard} from 'react-icons/rx';
 import {TfiMore} from 'react-icons/tfi';
+import {useLogout} from '../../hooks/useLogout';
 
 const subMenus = [
   {
@@ -54,7 +55,7 @@ const subMenus = [
     items: [
       {icon: <IoSettingsOutline />, text: 'Beállítások', link: '/settings'},
       {icon: <TfiMore />, text: 'Több', link: '/more'},
-      {icon: <RiLogoutBoxLine />, text: 'Kijelentkezés', link: null},
+      {icon: <RiLogoutBoxLine />, text: 'Kijelentkezés', link: null, action: 'signOut'},
     ],
   },
 ];
@@ -62,8 +63,27 @@ const subMenus = [
 const SideBarDesktop = () => {
   const [isSideOpen, setIsSideOpen] = useState(true);
 
+  const navigate = useNavigate();
+  const logout = useLogout();
+
   const toggleSideBar = () => {
     setIsSideOpen(!isSideOpen);
+  };
+
+  const handleOnClick = (e, action) => {
+    e.preventDefault();
+    switch (action) {
+      case 'signOut':
+        signOut();
+        break;
+      default:
+        break;
+    }
+  };
+
+  const signOut = async () => {
+    await logout();
+    navigate('/auth');
   };
 
   return (
@@ -86,7 +106,7 @@ const SideBarDesktop = () => {
               {subMenu.items.map((item, index) => (
                 <li key={index} className={desktopSideStyle['submenu-item']}>
                   {item.link === null ? (
-                    <div className={`${desktopSideStyle['submenu-item-link']} ${item.class ? desktopSideStyle[item.class] : ''}`} title={!isSideOpen ? item.text : null}>
+                    <div className={`${desktopSideStyle['submenu-item-link']} ${item.class ? desktopSideStyle[item.class] : ''}`} title={!isSideOpen ? item.text : null} onClick={(e) => handleOnClick(e, item.action)}>
                       {item.icon}
                       <span>{item.text}</span>
                     </div>

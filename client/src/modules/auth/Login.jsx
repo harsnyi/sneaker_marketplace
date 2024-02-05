@@ -30,7 +30,7 @@ const Login = ({setShowResetPass}) => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const {auth, setAuth} = useAuth();
+  const {setAuth} = useAuth();
   const {addToast} = useToast();
   //const {showLoader, hideLoader} = useLoader();
   //const {loading, setLoading} = useLoading();

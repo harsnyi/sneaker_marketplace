@@ -56,6 +56,19 @@ a {
     color: $clr-black;
 }
 
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: spin .75s linear infinite;
+    font-size: 2rem;
+    color: color(secondary, 200);
+}
+
 .link {
     position: relative;
     width: fit-content;

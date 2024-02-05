@@ -1,6 +1,6 @@
 import '../../assets/css/dashboard.css';
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useTitle} from '../../hooks/useTitle';
 
 const Dashboard = () => {

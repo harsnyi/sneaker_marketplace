@@ -108,8 +108,8 @@ const MultiStepForm = () => {
     <form className="multi-step-form" onSubmit={(e) => onSubmit(e)}>
       <div className="form-header">
         {steps.map((step, index) => (
-          <>
-            <div key={index} className={index < currentStepIndex ? 'form-step valid' : index === currentStepIndex ? 'form-step active' : 'form-step'} onClick={() => goTo(index)}>
+          <React.Fragment key={index}>
+            <div className={index < currentStepIndex ? 'form-step valid' : index === currentStepIndex ? 'form-step active' : 'form-step'} onClick={() => goTo(index)}>
               {index < currentStepIndex ? (
                 <h3>
                   <FaCheck />
@@ -120,7 +120,7 @@ const MultiStepForm = () => {
               <h4>{step.label}</h4>
             </div>
             <span className={index < steps.length - 1 ? 'form-divider' : ''}></span>
-          </>
+          </React.Fragment>
         ))}
       </div>
       <div className="form-body">

@@ -1,8 +1,8 @@
-import '../assets/css/error-page.css';
+import '../../assets/css/error-page.css';
 
 import {NavLink, useNavigate} from 'react-router-dom';
 import {useEffect, useState} from 'react';
-import Button from './Button';
+import Button from '../../common/Button';
 
 import {FiCornerDownLeft} from 'react-icons/fi';
 
@@ -31,7 +31,7 @@ const ErrorPage = () => {
       <h2>Hibás URL cím.</h2>
       <p>Automatikus átírányítás {secondsLeft} másodpercen belül.</p>
       <NavLink to="/" id="navLinkButton">
-        <Button className="primary light" text="Vissza a főoldalra">
+        <Button className="primary" text="Vissza a főoldalra">
           <FiCornerDownLeft />
         </Button>
       </NavLink>

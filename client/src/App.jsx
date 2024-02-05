@@ -3,35 +3,46 @@ import './assets/css/global.css';
 import React, {lazy, Suspense} from 'react';
 import {Routes, Route} from 'react-router-dom';
 
+import RequireAuth from './modules/auth/RequireAuth';
+
 import Loader from './common/Loader';
 const Authentication = lazy(() => import('./modules/auth/Authentication'));
 const Main = lazy(() => import('./modules/main/Main'));
 const Dashboard = lazy(() => import('./modules/main/Dashboard'));
-const ErrorPage = lazy(() => import('./common/ErrorPage'));
+
+const Admin = lazy(() => import('./modules/admin/Admin'));
+
+const Unauthorized = lazy(() => import('./modules/error/Unauthorized'));
+const ErrorPage = lazy(() => import('./modules/error/ErrorPage'));
+
+const ROLES = {
+  Guest: 4001,
+  User: 5002,
+  Contributor: 6003,
+  Admin: 7004,
+};
 
 function App() {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        {/* (PUBLIC) Amennyiben a user nincs bejelentkezve, az auth jelenik meg, a weboldal többi részét nem képes elérni. */}
+        {/* public routes */}
         <Route path="/auth" element={<Authentication />} />
-        {/* (PROTECTED) Bejelentkezés után továbbírányítunk, az app alapja a Main komponens, ide kerülnek betöltésre az adott oldalak. */}
-        <Route path="/" element={<Main />}>
-          <Route index element={<Dashboard />} />
-        </Route>
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
 
-        {/*
-        {visible_routes.map(({path, element}) => (
-          <Route key={path} path={path} element={element} />
-        ))}
+        {/* private routes */}
+        <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Contributor, ROLES.Admin]} />}>
+          <Route path="/" element={<Main />}>
+            <Route index element={<Dashboard />} />
 
-        {protected_routes.map(({path, element}) => (
-          <Route element={<RequireAuth allowedRole={5001} />}>
-            <Route key={path} path={path} element={element} />
+            <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+              <Route path="/profile" element={<Admin />} />
+            </Route>
           </Route>
-        ))}
-        */}
+        </Route>
+
+        {/* catch all */}
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Suspense>
   );

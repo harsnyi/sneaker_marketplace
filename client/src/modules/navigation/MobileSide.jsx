@@ -1,4 +1,5 @@
-import {NavLink} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
+import {useLogout} from '../../hooks/useLogout';
 
 import {HiOutlineNewspaper} from 'react-icons/hi2';
 import {IoSettingsOutline} from 'react-icons/io5';
@@ -31,12 +32,31 @@ const subMenus = [
     items: [
       {icon: <IoSettingsOutline />, text: 'Beállítások', link: '/settings'},
       {icon: <TfiMore />, text: 'Több', link: '/more'},
-      {icon: <RiLogoutBoxLine />, text: 'Kijelentkezés', link: null},
+      {icon: <RiLogoutBoxLine />, text: 'Kijelentkezés', link: null, action: 'signOut'},
     ],
   },
 ];
 
 const MobileSide = ({mobileNavStyle, sideBarOpen}) => {
+  const navigate = useNavigate();
+  const logout = useLogout();
+
+  const handleOnClick = (e, action) => {
+    e.preventDefault();
+    switch (action) {
+      case 'signOut':
+        signOut();
+        break;
+      default:
+        break;
+    }
+  };
+
+  const signOut = async () => {
+    await logout();
+    navigate('/auth');
+  };
+
   return (
     <div className={`${mobileNavStyle['sidebar-container']} ${!sideBarOpen ? '' : mobileNavStyle['open']}`}>
       <aside className={`${mobileNavStyle['sidebar']} `}>
@@ -48,7 +68,7 @@ const MobileSide = ({mobileNavStyle, sideBarOpen}) => {
                 {subMenu.items.map((item, index) => (
                   <li key={index} className={mobileNavStyle['submenu-item']}>
                     {item.link === null ? (
-                      <div className={mobileNavStyle['submenu-item-link']} title={item.text}>
+                      <div className={mobileNavStyle['submenu-item-link']} title={item.text} onClick={(e) => handleOnClick(e, item.action)}>
                         {item.icon}
                         <span>{item.text}</span>
                       </div>

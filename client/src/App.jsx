@@ -4,6 +4,7 @@ import React, {lazy, Suspense} from 'react';
 import {Routes, Route} from 'react-router-dom';
 
 import RequireAuth from './modules/auth/RequireAuth';
+import PersistLogin from './modules/auth/PersistLogin';
 
 import Loader from './common/Loader';
 const Authentication = lazy(() => import('./modules/auth/Authentication'));
@@ -31,12 +32,14 @@ function App() {
         <Route path="/unauthorized" element={<Unauthorized />} />
 
         {/* private routes */}
-        <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Contributor, ROLES.Admin]} />}>
-          <Route path="/" element={<Main />}>
-            <Route index element={<Dashboard />} />
+        <Route element={<PersistLogin />}>
+          <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Contributor, ROLES.Admin]} />}>
+            <Route path="/" element={<Main />}>
+              <Route index element={<Dashboard />} />
 
-            <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-              <Route path="/profile" element={<Admin />} />
+              <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+                <Route path="/profile" element={<Admin />} />
+              </Route>
             </Route>
           </Route>
         </Route>

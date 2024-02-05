@@ -4,25 +4,46 @@ from user.user_serializer import UserRegistrationSerializer
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from rest_framework.views import APIView
 from .user_serializer import UserLoginSerializer
 from django.contrib.auth import authenticate
 from django.http import JsonResponse, HttpResponse
+from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken
+from .models import Role
 
+class CheckAccessToken(APIView):
+    def get(self, request):
+        authorization_header = request.headers.get('Authorization', '')
+
+        if not authorization_header.startswith('Bearer '):
+            return Response({"detail": "Invalid Authorization header format"}, status=status.HTTP_401_UNAUTHORIZED)
+
+        access_token_string = authorization_header.split(' ')[-1]
+
+        try:
+            token = AccessToken(access_token_string)
+            token_payload = token.payload
+        except Exception as e:
+            return Response({"detail": "Invalid access token", "error": str(e)}, status=status.HTTP_401_UNAUTHORIZED)
+
+        if token_payload.get('exp') is not None:
+            return Response({"detail": "Access token is valid"}, status=status.HTTP_200_OK)
+        else:
+            return Response({"detail": "Access token is missing expiration time"}, status=status.HTTP_401_UNAUTHORIZED)
 
 #Registers a new user with the added serializer.
 #More logic needs to be done
 class Register_view(APIView):
-    def post(self,request, *args, **kwargs):
-    
+    def post(self, request, *args, **kwargs):
         serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid():
-            
-            #Send email here etc...
             user = serializer.save()
-            
+            role = Role.objects.create(role=5002, user=user)
+            # Send email here, etc.
+
             return Response(status=status.HTTP_201_CREATED)
+
         return Response(serializer.errors)
 
 

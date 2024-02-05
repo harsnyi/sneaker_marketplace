@@ -1,6 +1,7 @@
 from user.models import User
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from .models import Role
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -18,9 +19,10 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
+        
         token['username'] = user.username
-        token['role'] = user.role
-
+        role_list = [role.role for role in Role.objects.filter(user=user)]
+        token['roles'] = role_list
         return token
 
 class UserLoginSerializer(serializers.ModelSerializer):

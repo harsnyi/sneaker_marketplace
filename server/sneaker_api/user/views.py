@@ -20,7 +20,7 @@ class Check_access_token(APIView):
         authorization_header = request.headers.get('Authorization', '')
 
         if not authorization_header.startswith('Bearer '):
-            return Response({"detail": "Invalid Authorization header format"}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({"message": "Invalid Authorization header format"}, status=status.HTTP_401_UNAUTHORIZED)
 
         access_token_string = authorization_header.split(' ')[-1]
 
@@ -28,12 +28,12 @@ class Check_access_token(APIView):
             token = AccessToken(access_token_string)
             token_payload = token.payload
         except Exception as e:
-            return Response({"detail": "Invalid access token", "error": str(e)}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({"message": "Invalid access token", "error": str(e)}, status=status.HTTP_401_UNAUTHORIZED)
 
         if token_payload.get('exp') is not None:
-            return Response({"detail": "Access token is valid"}, status=status.HTTP_200_OK)
+            return Response({"message": "Access token is valid"}, status=status.HTTP_200_OK)
         else:
-            return Response({"detail": "Access token is missing expiration time"}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({"message": "Access token is missing expiration time"}, status=status.HTTP_401_UNAUTHORIZED)
 
 class List_users(APIView):
     permission_classes = [IsAuthenticated]
@@ -53,7 +53,7 @@ class Register_view(APIView):
             role = Role.objects.create(role=5002, user=user)
             # Send email here, etc.
 
-            return Response(status=status.HTTP_201_CREATED)
+            return Response({"message": "Felhasználó sikeresen regisztrálva"},status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors)
 
@@ -97,7 +97,7 @@ class Update_access_token_view(APIView):
     """Validate the refresh token stored in the cookie,
     then givin out fresh access token """
     
-    def post(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
 
         refresh_token = request.COOKIES.get('refresh_token')
 

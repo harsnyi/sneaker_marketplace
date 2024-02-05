@@ -97,7 +97,7 @@ class Update_access_token_view(APIView):
     """Validate the refresh token stored in the cookie,
     then givin out fresh access token """
     
-    def post(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
 
         refresh_token = request.COOKIES.get('refresh_token')
 

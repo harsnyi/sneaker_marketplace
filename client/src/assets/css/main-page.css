@@ -79,6 +79,7 @@
 }
 .main-wrapper .main-container {
   flex: 1;
+  position: relative;
 }
 .main-wrapper .main-container .main-header {
   height: 4rem;

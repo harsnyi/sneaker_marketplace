@@ -8,15 +8,12 @@ export const useRefreshToken = () => {
   const {setAuth} = useAuth();
 
   const refresh = async () => {
-    const response = await axios.post(
-      REFRESH_URL,
-      {},
-      {
-        withCredentials: true,
-      }
-    );
+    const response = await axios.get(REFRESH_URL, {
+      withCredentials: true,
+    });
     setAuth((prev) => {
-      // console.log(response.data.access_token);
+      console.log(JSON.stringify(prev));
+      console.log(response.data.access_token);
       return {
         ...prev,
         roles: jwtDecode(response.data.access_token).roles,

@@ -50,6 +50,7 @@ class Register_view(APIView):
         serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
+            print(user.password)
             role = Role.objects.create(role=5002, user=user)
             # Send email here, etc.
 
@@ -67,11 +68,13 @@ class Authentication_view(APIView):
         
         #Check if the user credentials are valid
         serializer = UserLoginSerializer(data=request.data)
+        print("asdasdas")
         
         if serializer.is_valid():
-            username = serializer.validated_data['username']
+            
+            email = serializer.validated_data['email']
             password = serializer.validated_data['password']
-            user = authenticate(request, username=username, password=password)
+            user = authenticate(request, username=email, password=password)
             
             #Check if the user exists
             if user is not None:
@@ -90,7 +93,7 @@ class Authentication_view(APIView):
                 
             return JsonResponse({'error': 'User does not exists'}, status=400)    
         
-        return JsonResponse({'error': 'Invalid Credentials'}, status=400)
+        return JsonResponse(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class Update_access_token_view(APIView):

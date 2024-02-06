@@ -4,9 +4,26 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .models import Role
 import re
 
+EMAIL_REGEX = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+USERNAME_REGEX = r'^[a-zA-Z0-9_]+$'
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
+    
+    def validate_email(self, email): 
+        if not re.match(EMAIL_REGEX, email):
+            raise serializers.ValidationError(f"{email} nem helyes email cím.")
+        if User.objects.get(email=email) is not None:
+            raise serializers.ValidationError(f"Az email cím már foglalt.")
+            
+        return email
+
+    def validate_username(self, username):
+        if not re.match(USERNAME_REGEX, username):
+            raise serializers.ValidationError("Nem megfelelő formátum. A felhasználónév csak betűket, számokat és aláhúzást tartalmazhat.")
+        if len(username) > 16:
+            raise serializers.ValidationError("A felhasználónév legfeljebb 16 karakter hosszú lehet.")
+        
+        return username
 
     def validate_password(self, value):
         if len(value) < 8:
@@ -30,6 +47,8 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         return user
     
     def validate(self, data):
+        self.validate_email(data['email'])
+        self.validate_username(data['username'])
         self.validate_password(data['password'])
         return data
 
@@ -48,4 +67,4 @@ class UserLoginSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = User
-        fields = ('username', 'password')
+        fields = ('email', 'password')

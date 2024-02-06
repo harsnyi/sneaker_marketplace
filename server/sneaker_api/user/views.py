@@ -55,7 +55,7 @@ class Register_view(APIView):
 
             return Response({"message": "Felhasználó sikeresen regisztrálva"},status=status.HTTP_201_CREATED)
 
-        return Response(serializer.errors)
+        return Response(serializer.errors,status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 

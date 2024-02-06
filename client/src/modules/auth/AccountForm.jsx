@@ -4,7 +4,7 @@ import {forwardRef, useImperativeHandle, useState} from 'react';
 import {useDebounce} from '../../hooks/useDebounce';
 import {useToast} from '../../hooks/useToast';
 
-const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]{1,253}+\.[A-Z]{2,4}$/i;
 const USERNAME_REGEX = /^(?!.*\s{2})[a-z0-9_. ]+(?<!\s)$/i;
 
 const AccountForm = forwardRef(({email, username, password, passwordConfirmation, updateData}, ref) => {

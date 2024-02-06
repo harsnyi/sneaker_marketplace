@@ -15,7 +15,7 @@ SECRET_KEY = API_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 
 # Application definition
@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "user.apps.UserConfig",
     "home.apps.HomeConfig",
+    "product.apps.ProductConfig",
     "rest_framework_simplejwt.token_blacklist",
     "corsheaders",
 ]
@@ -130,6 +131,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {

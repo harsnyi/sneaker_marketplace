@@ -1,24 +1,33 @@
 from django.db import models
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-import re
 from django.core.exceptions import ValidationError
 
-
-def validate_email(email): 
-    email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-    if not re.match(email_regex, email):
-        raise ValidationError(f"{email} nem helyes email cím.")
-
-
 class User(AbstractUser):
+    
+    username = models.CharField(
+        max_length=140,
+        unique=True,
+        error_messages={
+            'unique': "Már létezik felhasználó a megadott felhasználónévvel.",
+            'required': "Ez a mező kötelező.",
+        },
+    )
+    email = models.EmailField(
+        max_length=50,
+        blank=True,
+        null=True,
+        error_messages={
+            'required': "Ez a mező kötelező.",
+        },
+    )
+    gender = models.IntegerField(blank=True,null=True)
     bio = models.TextField(max_length=500, blank=True,null=True)
     location = models.CharField(max_length=30, blank=True,null=True)
     birth_date = models.DateField(blank=True,null=True)
-    email = models.EmailField(validators=[validate_email],max_length=50,blank=True,null=True)
     phone_number = models.CharField(max_length=25,blank=True,null=True)
-    gender = models.CharField(max_length=10,blank=True,null=True)
-
+    profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True)
+    
 def validate_allowed_roles(value):
     allowed_roles = [4001, 5002, 6003, 7004]
     if value not in allowed_roles:

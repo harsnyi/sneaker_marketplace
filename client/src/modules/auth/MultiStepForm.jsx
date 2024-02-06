@@ -96,7 +96,7 @@ const MultiStepForm = () => {
         setData(INITIAL_DATA);
         goTo(0);
       } catch (error) {
-        console.log(error)
+        console.log(error);
         addToast('error', error.message);
       } finally {
         //hideLoader();
@@ -106,11 +106,11 @@ const MultiStepForm = () => {
   };
 
   return (
-    <form className="multi-step-form" onSubmit={(e) => onSubmit(e)}>
-      <div className="form-header">
+    <form className="multi_step_form" onSubmit={(e) => onSubmit(e)}>
+      <div className="form_header">
         {steps.map((step, index) => (
           <React.Fragment key={index}>
-            <div className={index < currentStepIndex ? 'form-step valid' : index === currentStepIndex ? 'form-step active' : 'form-step'} onClick={() => goTo(index)}>
+            <div className={index < currentStepIndex ? 'from_step valid' : index === currentStepIndex ? 'from_step active' : 'from_step'} onClick={() => goTo(index)}>
               {index < currentStepIndex ? (
                 <h3>
                   <FaCheck />
@@ -120,13 +120,13 @@ const MultiStepForm = () => {
               )}
               <h4>{step.label}</h4>
             </div>
-            <span className={index < steps.length - 1 ? 'form-divider' : ''}></span>
+            <span className={index < steps.length - 1 ? 'form_divider' : ''}></span>
           </React.Fragment>
         ))}
       </div>
-      <div className="form-body">
+      <div className="from_body">
         <div>{steps[currentStepIndex].component}</div>
-        <div className="form-buttons">
+        <div className="from_buttons">
           {!isFirstStep && (
             <Button type="button" text="Vissza" className="tertiary" onClick={prev}>
               <IoMdArrowBack />

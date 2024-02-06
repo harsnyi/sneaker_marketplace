@@ -154,7 +154,7 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
   );
 
   return (
-    <div className="form-inputs">
+    <div className="form_inputs">
       <Input
         type="email"
         value={email}
@@ -162,7 +162,7 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
         onChange={(value) => {
           updateData({email: value});
         }}
-        className="input-field"
+        className="input_field"
         error={errors.email}
         autoFocus
       />
@@ -173,10 +173,10 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
         onChange={(value) => {
           updateData({username: value});
         }}
-        className="input-field"
+        className="input_field"
         error={errors.username}
       />
-      <div className="field-wrapper">
+      <div className="field_wrapper">
         <Input
           type="password"
           value={password}
@@ -184,7 +184,7 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
           onChange={(value) => {
             updateData({password: value});
           }}
-          className="input-field"
+          className="input_field"
           error={errors.password}
         />
         <Input
@@ -194,7 +194,7 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
           onChange={(value) => {
             updateData({passwordConfirmation: value});
           }}
-          className="input-field"
+          className="input_field"
           error={errors.passwordConfirmation}
         />
       </div>

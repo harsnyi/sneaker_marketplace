@@ -99,8 +99,8 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
   );
 
   return (
-    <div className="form-inputs">
-      <div className="field-wrapper">
+    <div className="form_inputs">
+      <div className="field_wrapper">
         <Input
           type="text"
           value={lastName}
@@ -108,7 +108,7 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
           onChange={(value) => {
             updateData({lastName: value});
           }}
-          className="input-field"
+          className="input_field"
           error={errors.lastName}
           autoFocus
         />
@@ -119,7 +119,7 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
           onChange={(value) => {
             updateData({firstName: value});
           }}
-          className="input-field"
+          className="input_field"
           error={errors.firstName}
         />
       </div>
@@ -130,16 +130,16 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
         onChange={(value) => {
           updateData({phoneNumber: value});
         }}
-        className="input-field"
+        className="input_field"
         error={errors.phoneNumber}
       />
-      <div className="select-wrapper">
+      <div className="select_wrapper">
         <select
           onChange={(e) => {
             updateData({gender: e.target.value});
           }}
           defaultValue={gender}
-          className="select-menu">
+          className="select_menu">
           <option value="" disabled></option>
           <option value="1">Férfi</option>
           <option value="2">Nő</option>
@@ -147,7 +147,7 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
           <option value="4">Most nem</option>
         </select>
         <label>Nem</label>
-        <FaAngleDown className="select-icon" />
+        <FaAngleDown className="select_icon" />
       </div>
     </div>
   );

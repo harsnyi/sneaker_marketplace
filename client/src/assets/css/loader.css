@@ -71,7 +71,7 @@
     opacity: 0;
   }
 }
-.loader-container {
+.loader_container {
   position: fixed;
   top: 0;
   left: 0;
@@ -81,7 +81,7 @@
   display: flex;
   z-index: 99999999;
 }
-.loader-container .loader {
+.loader_container .loader {
   position: absolute;
   top: 0;
   left: 0;
@@ -90,10 +90,10 @@
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 999999999;
 }
-.loader-container .loader::before {
+.loader_container .loader::before {
   content: "";
   position: absolute;
-  background-color: #0C6DE9;
+  background-color: #FF3300;
   top: 0;
   left: 0;
   width: 0%;

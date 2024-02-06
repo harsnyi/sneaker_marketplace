@@ -37,15 +37,15 @@ const Hero = () => {
   return (
     <div className="hero">
       <Gallery images={backgroundImages} columns={9} />
-      <div className="hero-content">
-        <h1 className="hero-title">Under Retail</h1>
+      <div className="hero_content">
+        <h1 className="hero_title">Bump</h1>
         {/*Bump!, Under Retail*/}
-        <p className="hero-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam repellat quam dicta at necessitatibus ipsa enim, consequatur dignissimos veniam reiciendis?</p>
-        <footer className="hero-footer">
+        <p className="hero_subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam repellat quam dicta at necessitatibus ipsa enim, consequatur dignissimos veniam reiciendis?</p>
+        <footer className="hero_footer">
           <h4>
             &copy;{currentYear}&ensp;<span>Magyarország</span>
           </h4>
-          <div className="hero-links">
+          <div className="hero_links">
             {FOOTER_LINKS.map((link, index) => (
               <Link key={index} to={link.url}>
                 {link.label}

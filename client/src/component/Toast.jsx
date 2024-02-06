@@ -24,12 +24,12 @@ const Toast = ({id, type, message, onClose}) => {
 
   return (
     <motion.div initial={{opacity: 0, x: '100%'}} animate={{opacity: 1, x: 0}} exit={{opacity: 0, x: '100%'}} transition={{duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94]}} className={`toast ${type}`}>
-      {type === 'success' && <FaCircleCheck className="toast-icon" />}
-      {type === 'error' && <BiSolidErrorAlt className="toast-icon" />}
-      {type === 'info' && <FaCircleInfo className="toast-icon" />}
-      {type === 'warning' && <FaTriangleExclamation className="toast-icon" />}
+      {type === 'success' && <FaCircleCheck className="toast_icon" />}
+      {type === 'error' && <BiSolidErrorAlt className="toast_icon" />}
+      {type === 'info' && <FaCircleInfo className="toast_icon" />}
+      {type === 'warning' && <FaTriangleExclamation className="toast_icon" />}
       <h3>{message}</h3>
-      <button className="toast-close" onClick={() => onClose(id)}>
+      <button className="toast_close" onClick={() => onClose(id)}>
         &#x2716;
       </button>
     </motion.div>

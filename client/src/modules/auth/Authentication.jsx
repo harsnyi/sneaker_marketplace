@@ -5,10 +5,10 @@ import Hero from './Hero';
 const Authentication = () => {
   return (
     <>
-      <section className="auth-page">
+      <section className="auth_page">
         <Hero />
-        <div className="auth-container">
-          <h1 className="brand-title">Under Retail</h1>
+        <div className="auth_container">
+          <h1 className="brand_title">Bump</h1>
           <AuthTabs />
         </div>
       </section>

@@ -7,7 +7,7 @@ const Loader = () => {
   if (!loading) return null;
 
   return (
-    <div className="loader-container">
+    <div className="loader_container">
       <div className="loader"></div>
     </div>
   );

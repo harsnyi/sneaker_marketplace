@@ -71,16 +71,16 @@
     opacity: 0;
   }
 }
-.main-wrapper {
+.main_wrapper {
   background-color: #F0F1F3;
   height: 100svh;
   width: 100vw;
   display: flex;
 }
-.main-wrapper .main-container {
+.main_wrapper .main_container {
   flex: 1;
 }
-.main-wrapper .main-container .main-header {
+.main_wrapper .main_container .main_header {
   height: 4rem;
   background-color: #fff;
   box-shadow: 0 0 5px rgba(48, 54, 65, 0.15);
@@ -92,10 +92,10 @@
 }
 
 @media only screen and (max-width: 1200px) {
-  .main-container {
+  .main_container {
     margin: 5rem 0;
   }
-  .main-container .main-header {
+  .main_container .main_header {
     display: none !important;
   }
 }/*# sourceMappingURL=main-page.css.map */

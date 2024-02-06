@@ -23,7 +23,7 @@ const ErrorPage = ({code}) => {
   };
 
   return error ? (
-    <section className="err-wrapper">
+    <section className="error_wrapper">
       <article>
         <h3>{error.code}</h3>
         <h1>{error.title}</h1>
@@ -34,7 +34,7 @@ const ErrorPage = ({code}) => {
       </article>
     </section>
   ) : (
-    <section className="err-wrapper">
+    <section className="error_wrapper">
       <article>
         <h3>500</h3>
         <h1>Hoppá! Valami hiba történt.</h1>

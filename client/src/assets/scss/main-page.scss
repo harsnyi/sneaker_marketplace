@@ -1,16 +1,16 @@
 @import 'variables';
 
-.main-wrapper {
+.main_wrapper {
     background-color: color(secondary, 50);
     height: 100svh;
     width: 100vw;
     display: flex;
 
-    .main-container {
+    .main_container {
         flex: 1;
 
 
-        .main-header {
+        .main_header {
             height: 4rem;
             background-color: $clr-white;
             box-shadow: $panel-box-shadow;
@@ -20,16 +20,16 @@
             align-items: center;
             justify-content: space-between;
             //margin: 0 auto;
-            //border-radius: $border-radius;
+            //border-radius: $border-radius-1;
         }
     }
 }
 
 @media only screen and (max-width: $media-query-lg) {
-    .main-container {
+    .main_container {
         margin: $mobile-header-height 0;
 
-        .main-header {
+        .main_header {
             display: none !important;
         }
     }

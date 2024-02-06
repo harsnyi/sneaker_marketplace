@@ -1,9 +1,9 @@
 @import 'variables';
 
-.input-wrapper {
+.input_wrapper {
     margin: 0.5rem 0;
 
-    .input-group {
+    .input_group {
         position: relative;
         display: flex;
         width: 100%;
@@ -36,13 +36,14 @@
             color: color(secondary, 300);
         }
 
-        .input-field {
+        .input_field {
             padding: 1rem 2rem 1rem 1rem;
             outline: none;
             font-size: 0.9rem;
             background-color: transparent;
             border: 1px solid color(secondary, 200);
-            border-radius: $border-radius;
+
+            border-radius: $border-radius-1;
 
             &:-webkit-autofill,
             &:-webkit-autofill:hover,
@@ -86,7 +87,7 @@
                 }
             }
 
-            &.input-error {
+            &.error {
                 border: 2px solid color(red, 500);
 
                 &~label {
@@ -97,30 +98,22 @@
                     outline: 2px solid color(red, 100);
                 }
             }
-
-            &.input-success {
-                border: 2px solid color(green, 500);
-
-                &:focus {
-                    outline: 2px solid color(green, 100);
-                }
-            }
-
         }
     }
 
-    .error-msg {
+    .error_msg {
         //color: lighten($color: color(red, base), $amount: 10);
         color: color(red, 500);
         font-size: 1rem;
     }
 }
 
-.select-wrapper {
+.select_wrapper {
     width: 100%;
     margin: 0.7rem 0;
     position: relative;
-    border-radius: $border-radius;
+
+    border-radius: $border-radius-1;
 
     label {
         position: absolute;
@@ -133,7 +126,7 @@
         padding: 0 0.2rem;
     }
 
-    .select-icon {
+    .select_icon {
         position: absolute;
         right: 1rem;
         top: 50%;
@@ -143,8 +136,8 @@
         height: 1rem;
     }
 
-    .select-menu {
-        border-radius: $border-radius;
+    .select_menu {
+        border-radius: $border-radius-1;
         width: 100%;
         --webkit-appearance: none;
         -moz-appearance: none;
@@ -181,6 +174,5 @@
                 background-color: $clr-white;
             }
         }
-
     }
 }

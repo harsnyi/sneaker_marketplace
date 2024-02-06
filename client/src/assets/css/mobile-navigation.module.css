@@ -121,7 +121,7 @@
   position: absolute;
   width: 60%;
   height: 0;
-  background-color: #0C6DE9;
+  background-color: #FF3300;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -140,10 +140,10 @@
   transition: color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .navbar .navbar-list .navbar-list-item .navbar-list-item-link:hover svg {
-  color: #0C6DE9;
+  color: #FF3300;
 }
 .navbar .navbar-list .navbar-list-item .navbar-list-item-link:global(.active) svg {
-  color: #0C6DE9;
+  color: #FF3300;
 }
 
 .sidebar-container {
@@ -227,20 +227,20 @@
   right: 0;
   bottom: 0;
   width: 0;
-  background-color: #0C6DE9;
+  background-color: #FF3300;
   border-radius: 25px 0 0 25px;
   transition: width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .sidebar-container.open .sidebar .sidebar-list .sidebar-list-item .list-item-submenu .submenu-item .submenu-item-link:hover svg,
 .sidebar-container.open .sidebar .sidebar-list .sidebar-list-item .list-item-submenu .submenu-item .submenu-item-link:hover span {
-  color: #0C6DE9;
+  color: #FF3300;
 }
 .sidebar-container.open .sidebar .sidebar-list .sidebar-list-item .list-item-submenu .submenu-item .submenu-item-link:hover::before {
   width: 3px;
 }
 .sidebar-container.open .sidebar .sidebar-list .sidebar-list-item .list-item-submenu .submenu-item .submenu-item-link:global(.active) svg,
 .sidebar-container.open .sidebar .sidebar-list .sidebar-list-item .list-item-submenu .submenu-item .submenu-item-link:global(.active) span {
-  color: #0C6DE9;
+  color: #FF3300;
 }
 .sidebar-container.open .sidebar .sidebar-list .sidebar-list-item .list-item-submenu .submenu-item .submenu-item-link:global(.active)::before {
   width: 3px;
@@ -254,11 +254,11 @@
 }
 .sidebar-container.open .sidebar .sidebar-list .sidebar-list-item:last-child .submenu-item:last-of-type .submenu-item-link svg,
 .sidebar-container.open .sidebar .sidebar-list .sidebar-list-item:last-child .submenu-item:last-of-type .submenu-item-link span {
-  color: #E81A1A;
+  color: #F02522;
 }
 .sidebar-container.open .sidebar .sidebar-list .sidebar-list-item:last-child .submenu-item:last-of-type .submenu-item-link:hover svg,
 .sidebar-container.open .sidebar .sidebar-list .sidebar-list-item:last-child .submenu-item:last-of-type .submenu-item-link:hover span {
-  color: #E81A1A;
+  color: #F02522;
 }
 .sidebar-container.open .sidebar .sidebar-list .sidebar-list-item:last-child .submenu-item:last-of-type .submenu-item-link:hover::before {
   content: "";
@@ -267,8 +267,8 @@
   right: 0;
   bottom: 0;
   width: 3px;
-  background-color: #E81A1A;
-  border-radius: 6px 0 0 6px;
+  background-color: #F02522;
+  border-radius: 0.5rem 0 0 1rem;
 }
 
 .menubar {
@@ -318,7 +318,7 @@
   position: absolute;
   width: 60%;
   height: 0;
-  background-color: #0C6DE9;
+  background-color: #FF3300;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -328,14 +328,14 @@
 }
 .menubar .menu-list .menu-list-item .menu-list-item-link:hover svg,
 .menubar .menu-list .menu-list-item .menu-list-item-link:hover span {
-  color: #0C6DE9;
+  color: #FF3300;
 }
 .menubar .menu-list .menu-list-item .menu-list-item-link:hover::after {
   height: 3px;
 }
 .menubar .menu-list .menu-list-item .menu-list-item-link:global(.active) svg,
 .menubar .menu-list .menu-list-item .menu-list-item-link:global(.active) span {
-  color: #0C6DE9;
+  color: #FF3300;
 }
 .menubar .menu-list .menu-list-item .menu-list-item-link:global(.active)::after {
   height: 3px;

@@ -3,6 +3,7 @@ from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .models import Role
 import re
+from django.core.exceptions import ObjectDoesNotExist
 
 EMAIL_REGEX = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 USERNAME_REGEX = r'^[a-zA-Z0-9_]+$'
@@ -10,11 +11,15 @@ USERNAME_REGEX = r'^[a-zA-Z0-9_]+$'
 class UserRegistrationSerializer(serializers.ModelSerializer):
     
     def validate_email(self, email): 
+        try:            
+            User.objects.get(email=email)
+            raise serializers.ValidationError("Már létezik felhasználó a megadott email címmel.")
+        except ObjectDoesNotExist:
+            pass
+        
         if not re.match(EMAIL_REGEX, email):
             raise serializers.ValidationError(f"{email} nem helyes email cím.")
-        if User.objects.get(email=email) is not None:
-            raise serializers.ValidationError(f"Az email cím már foglalt.")
-            
+        
         return email
 
     def validate_username(self, username):
@@ -24,7 +29,13 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("A felhasználónév legfeljebb 16 karakter hosszú lehet.")
         
         return username
+    
+    def validate_gender(self, gender):
+        if gender not in [1,2,3,4]:
+            raise serializers.ValidationError("Nem megfelelő nem.")
 
+        return gender
+    
     def validate_password(self, value):
         if len(value) < 8:
             raise serializers.ValidationError('A jelszónak legalább 8 karakter hosszúnak kell lennie.')
@@ -50,6 +61,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         self.validate_email(data['email'])
         self.validate_username(data['username'])
         self.validate_password(data['password'])
+        self.validate_gender(data['gender'])
         return data
 
 

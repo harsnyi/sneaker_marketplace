@@ -1,10 +1,7 @@
 from django.db import models
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-import re
 from django.core.exceptions import ValidationError
-
-
 
 class User(AbstractUser):
     
@@ -24,14 +21,12 @@ class User(AbstractUser):
             'required': "Ez a mező kötelező.",
         },
     )
-    
+    gender = models.IntegerField(blank=True,null=True)
     bio = models.TextField(max_length=500, blank=True,null=True)
     location = models.CharField(max_length=30, blank=True,null=True)
     birth_date = models.DateField(blank=True,null=True)
-    
     phone_number = models.CharField(max_length=25,blank=True,null=True)
-    gender = models.CharField(max_length=10,blank=True,null=True)
-
+    
 def validate_allowed_roles(value):
     allowed_roles = [4001, 5002, 6003, 7004]
     if value not in allowed_roles:

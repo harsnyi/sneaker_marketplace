@@ -9,9 +9,7 @@ from rest_framework.views import APIView
 from .user_serializer import UserLoginSerializer
 from django.contrib.auth import authenticate
 from django.http import JsonResponse, HttpResponse
-from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken
 from .models import Role, User
-from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 
@@ -39,7 +37,7 @@ class List_users(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
         user_list = [user.username for user in User.objects.all()]
-        return Response(user_list, status=status.HTTP_200_OK)
+        return JsonResponse(user_list, status=status.HTTP_200_OK)
         
 
 class Register_view(APIView):
@@ -50,14 +48,12 @@ class Register_view(APIView):
         serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
-            print(user.password)
             role = Role.objects.create(role=5002, user=user)
+            
             # Send email here, etc.
+            return JsonResponse({"message": "Felhasználó sikeresen regisztrálva"},status=status.HTTP_201_CREATED)
 
-            return Response({"message": "Felhasználó sikeresen regisztrálva"},status=status.HTTP_201_CREATED)
-
-        return Response(serializer.errors,status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+        return JsonResponse(serializer.errors,status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class Authentication_view(APIView):
@@ -68,7 +64,6 @@ class Authentication_view(APIView):
         
         #Check if the user credentials are valid
         serializer = UserLoginSerializer(data=request.data)
-        print("asdasdas")
         
         if serializer.is_valid():
             
@@ -91,7 +86,7 @@ class Authentication_view(APIView):
 
                 return response
                 
-            return JsonResponse({'error': 'User does not exists'}, status=400)    
+            return JsonResponse({'error': 'Nem létezik a felhasználó.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
         
         return JsonResponse(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
@@ -106,21 +101,21 @@ class Update_access_token_view(APIView):
 
         #Check if there is no refresh token between the cookies
         if not refresh_token:
-            return Response({'error': 'No refresh token found in cookies'}, status=400)
+            return JsonResponse({'error': 'No refresh token found in cookies'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
         try:
             # Decode and validate the refresh token
             token = RefreshToken(refresh_token)        
-        except Exception as e:
-            return Response({'error': 'Invalid or expired refresh token'}, status=400)
+        except Exception:
+            return Response({'error': 'Invalid or expired refresh token'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
         # Generate a new access token
         access_token = token.access_token
 
         response_data = {
-           'access_token': str(access_token),
+            'access_token': str(access_token),
         }
-        return Response(response_data)
+        return JsonResponse(response_data, status=status.HTTP_200_OK)
 
 class LogoutView(APIView):
     """Blacklists the given refresh token extracted from the cookies"""
@@ -128,11 +123,13 @@ class LogoutView(APIView):
     def post(self, request, *args, **kwargs):
         
         refresh_token = request.COOKIES.get('refresh_token')
+        if not refresh_token:
+            return JsonResponse({'error': 'No refresh token found in cookies'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
         try:
-
             refresh = RefreshToken(refresh_token)
             refresh.blacklist()
-            return Response(status=status.HTTP_205_RESET_CONTENT)
+            return JsonResponse({"message": "Sikeres kijelentkezés."},status=status.HTTP_205_RESET_CONTENT)
         
-        except Exception as e:
-            return Response({'error': 'Invalid refresh token'}, status=400)
+        except Exception:
+            return JsonResponse({'error': 'Invalid refresh token'}, status=400)

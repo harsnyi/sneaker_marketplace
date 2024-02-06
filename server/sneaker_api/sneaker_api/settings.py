@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "user.apps.UserConfig",
     "home.apps.HomeConfig",
+    "product.apps.ProductConfig",
     "rest_framework_simplejwt.token_blacklist",
     "corsheaders",
 ]

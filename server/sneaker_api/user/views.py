@@ -1,19 +1,21 @@
 from rest_framework.response import Response
-from .user_serializer import MyTokenObtainPairSerializer
-from user.user_serializer import UserRegistrationSerializer
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from rest_framework.views import APIView
-from .user_serializer import UserLoginSerializer
 from django.contrib.auth import authenticate
 from django.http import JsonResponse, HttpResponse
 from .models import Role, User
 from rest_framework.permissions import IsAuthenticated
 
+from .serializer import (
+    MyTokenObtainPairSerializer,
+    UserLoginSerializer,
+    UserRegistrationSerializer
+)
 
-class Check_access_token(APIView):
+class CheckAccessToken(APIView):
     def get(self, request):
         authorization_header = request.headers.get('Authorization', '')
 
@@ -33,14 +35,14 @@ class Check_access_token(APIView):
         else:
             return Response({"message": "Access token is missing expiration time"}, status=status.HTTP_401_UNAUTHORIZED)
 
-class List_users(APIView):
+class ListUsers(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
         user_list = [user.username for user in User.objects.all()]
         return JsonResponse(user_list, status=status.HTTP_200_OK)
         
 
-class Register_view(APIView):
+class RegisterView(APIView):
     """Registers a new user with the added serializer.
     More logic needs to be done"""
     
@@ -56,7 +58,7 @@ class Register_view(APIView):
         return JsonResponse(serializer.errors,status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-class Authentication_view(APIView):
+class AuthenticationView(APIView):
     """Authenticates the user, if the credentials are valid 
     the user gets an access front and an http only refresh token in the cookies"""
     
@@ -91,7 +93,7 @@ class Authentication_view(APIView):
         return JsonResponse(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-class Update_access_token_view(APIView):
+class UpdateAccessTokenView(APIView):
     """Validate the refresh token stored in the cookie,
     then givin out fresh access token """
     

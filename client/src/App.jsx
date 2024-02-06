@@ -1,19 +1,19 @@
 import './assets/css/global.css';
 
-import React, {lazy, Suspense} from 'react';
+import React, {Suspense, lazy} from 'react';
 import {Routes, Route} from 'react-router-dom';
 
 import RequireAuth from './modules/auth/RequireAuth';
 import PersistLogin from './modules/auth/PersistLogin';
 
-import Loader from './common/Loader';
+import Spinner from './component/Spinner';
+
 const Authentication = lazy(() => import('./modules/auth/Authentication'));
 const Main = lazy(() => import('./modules/main/Main'));
 const Dashboard = lazy(() => import('./modules/main/Dashboard'));
 
 const Admin = lazy(() => import('./modules/admin/Admin'));
 
-const Unauthorized = lazy(() => import('./modules/error/Unauthorized'));
 const ErrorPage = lazy(() => import('./modules/error/ErrorPage'));
 
 const ROLES = {
@@ -25,11 +25,10 @@ const ROLES = {
 
 function App() {
   return (
-    <Suspense fallback={<Loader />}>
+    <Suspense fallback={<Spinner />}>
       <Routes>
         {/* public routes */}
         <Route path="/auth" element={<Authentication />} />
-        <Route path="/unauthorized" element={<Unauthorized />} />
 
         {/* private routes */}
         <Route element={<PersistLogin />}>
@@ -37,7 +36,7 @@ function App() {
             <Route path="/" element={<Main />}>
               <Route index element={<Dashboard />} />
 
-              <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+              <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
                 <Route path="/profile" element={<Admin />} />
               </Route>
             </Route>
@@ -45,7 +44,8 @@ function App() {
         </Route>
 
         {/* catch all */}
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="/unauthorized" element={<ErrorPage code={403} />} />
+        <Route path="*" element={<ErrorPage code={404} />} />
       </Routes>
     </Suspense>
   );

@@ -79,16 +79,14 @@
 }
 .main-wrapper .main-container {
   flex: 1;
-  position: relative;
 }
 .main-wrapper .main-container .main-header {
   height: 4rem;
   background-color: #fff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 0 5px rgba(48, 54, 65, 0.15);
   z-index: 100;
   padding: 0 1.25rem;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }

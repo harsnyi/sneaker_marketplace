@@ -1,6 +1,6 @@
 import React from 'react';
-import Input from '../../common/Input';
-import Button from '../../common/Button';
+import Input from '../../component/Input';
+import Button from '../../component/Button';
 import SocialSignup from './SocialSignup';
 
 import {jwtDecode} from 'jwt-decode';

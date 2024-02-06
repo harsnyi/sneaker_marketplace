@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import {useTitle} from '../../hooks/useTitle';
 import {useAxiosPrivate} from '../../hooks/useAxiosPrivate';
 
-import Spinner from '../../common/Spinner';
+import Spinner from '../../component/Spinner';
 
 const Dashboard = () => {
   useTitle('Kezdőlap');

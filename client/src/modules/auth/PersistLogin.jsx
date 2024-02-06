@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import {useRefreshToken} from '../../hooks/useRefreshToken';
 import {useAuth} from '../../hooks/useAuth';
 import {useToast} from '../../hooks/useToast';
-import Spinner from '../../common/Spinner';
+import Spinner from '../../component/Spinner';
 
 const PersistLogin = () => {
   const [loading, setLoading] = useState(true);

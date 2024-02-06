@@ -80,20 +80,12 @@
   src: url("../fonts/oswald/Oswald-Regular.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Inter";
-  src: url("../fonts/inter/Inter-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Inter Tight";
-  src: url("../fonts/inter-tight/InterTight-Regular.ttf") format("truetype");
-}
-@font-face {
   font-family: "Roboto Condensed";
   src: url("../fonts/roboto-condensed/RobotoCondensed-Regular.ttf") format("truetype");
 }
 @font-face {
-  font-family: "DM Sans";
-  src: url("../fonts/dm-sans/DMSans-Regular.ttf") format("truetype");
+  font-family: "Roboto Condensed Bold";
+  src: url("../fonts/roboto-condensed/RobotoCondensed-Bold.ttf") format("truetype");
 }
 * {
   margin: 0;
@@ -136,6 +128,7 @@ a {
 
 .link {
   position: relative;
+  width: -moz-fit-content;
   width: fit-content;
   color: #0C6DE9;
   cursor: pointer;
@@ -157,6 +150,26 @@ a {
 .link:hover::before {
   transform-origin: left;
   transform: scaleX(1);
+}
+
+.slide-in {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #0f0f0f;
+  transform-origin: bottom;
+}
+
+.slide-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #0f0f0f;
+  transform-origin: top;
 }
 
 ul {

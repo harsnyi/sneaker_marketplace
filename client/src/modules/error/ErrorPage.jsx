@@ -1,41 +1,49 @@
 import '../../assets/css/error-page.css';
 
-import {NavLink, useNavigate} from 'react-router-dom';
-import {useEffect, useState} from 'react';
-import Button from '../../common/Button';
+import React from 'react';
+import {useNavigate} from 'react-router-dom';
+import {useTitle} from '../../hooks/useTitle';
+import Button from '../../component/Button';
 
-import {FiCornerDownLeft} from 'react-icons/fi';
+import {IoMdArrowBack} from 'react-icons/io';
 
-const ErrorPage = () => {
-  const [secondsLeft, setSecondsLeft] = useState(10);
+const errors = [
+  {code: 404, title: 'Hoppá! Valami hiba történt.', message: 'Sajnáljuk, a keresett oldal nem található, vagy megszűnt.'},
+  {code: 403, title: 'Hoppá! Hiányzó jogosultság.', message: 'Sajnáljuk, de nincs jogosultságod a keresett oldal megtekintéséhez.'},
+];
+
+const ErrorPage = ({code}) => {
+  useTitle(`Hiba`);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (secondsLeft > 1) {
-        setSecondsLeft((prev) => prev - 1);
-      } else {
-        clearInterval(interval);
-        navigate('/');
-      }
-    }, 1000);
+  const error = errors.find((error) => error.code === code);
 
-    return () => clearInterval(interval);
-  }, [secondsLeft]);
+  const handleOnClick = () => {
+    navigate('/');
+  };
 
-  return (
-    <div className="not-found-wrapper">
-      <h1>
-        <span className="error-code">404 ...</span> <br /> A keresett oldal nem található!
-      </h1>
-      <h2>Hibás URL cím.</h2>
-      <p>Automatikus átírányítás {secondsLeft} másodpercen belül.</p>
-      <NavLink to="/" id="navLinkButton">
-        <Button className="primary" text="Vissza a főoldalra">
-          <FiCornerDownLeft />
+  return error ? (
+    <section className="err-wrapper">
+      <article>
+        <h3>{error.code}</h3>
+        <h1>{error.title}</h1>
+        <p>{error.message}</p>
+        <Button onClick={handleOnClick} className="secondary light" text="Vissza a kezdőlapra">
+          <IoMdArrowBack />
         </Button>
-      </NavLink>
-    </div>
+      </article>
+    </section>
+  ) : (
+    <section className="err-wrapper">
+      <article>
+        <h3>500</h3>
+        <h1>Hoppá! Valami hiba történt.</h1>
+        <p>Sajnáljuk, váratlan hiba történt.</p>
+        <Button onClick={handleOnClick} className="secondary light" text="Vissza a kezdőlapra">
+          <IoMdArrowBack />
+        </Button>
+      </article>
+    </section>
   );
 };
 

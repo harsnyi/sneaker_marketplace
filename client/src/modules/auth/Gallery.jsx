@@ -17,7 +17,7 @@ const Gallery = ({images, columns}) => {
     const gallery = [];
     for (let i = 0; i < columns; i++) {
       gallery.push(
-        <div key={i} className={i % 2 === 0 ? 'image-column sliding-down' : 'image-column sliding-up'}>
+        <div key={i} className={i % 2 === 0 ? 'image_column sliding-down' : 'image_column sliding-up'}>
           {createColumn(i * imagePerColumn)}
         </div>
       );

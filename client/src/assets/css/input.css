@@ -71,17 +71,17 @@
     opacity: 0;
   }
 }
-.input-wrapper {
+.input_wrapper {
   margin: 0.5rem 0;
 }
-.input-wrapper .input-group {
+.input_wrapper .input_group {
   position: relative;
   display: flex;
   width: 100%;
   flex-direction: column;
   margin: 0.2rem 0;
 }
-.input-wrapper .input-group label {
+.input_wrapper .input_group label {
   position: absolute;
   top: 50%;
   left: 1rem;
@@ -92,7 +92,7 @@
   transition: 0.2s;
   padding: 0 0.2rem;
 }
-.input-wrapper .input-group .eye {
+.input_wrapper .input_group .eye {
   position: absolute;
   top: 50%;
   right: 1rem;
@@ -105,87 +105,66 @@
   background-color: transparent;
   color: #989FAD;
 }
-.input-wrapper .input-group .input-field {
+.input_wrapper .input_group .input_field {
   padding: 1rem 2rem 1rem 1rem;
   outline: none;
   font-size: 0.9rem;
   background-color: transparent;
   border: 1px solid #B8BDC6;
-  border-radius: 6px;
+  border-radius: 1rem;
 }
-.input-wrapper .input-group .input-field:-webkit-autofill, .input-wrapper .input-group .input-field:-webkit-autofill:hover, .input-wrapper .input-group .input-field:-webkit-autofill:focus {
+.input_wrapper .input_group .input_field:-webkit-autofill, .input_wrapper .input_group .input_field:-webkit-autofill:hover, .input_wrapper .input_group .input_field:-webkit-autofill:focus {
   -webkit-text-fill-color: #000;
   -webkit-box-shadow: 0 0 0px 1000px #fff inset;
 }
-.input-wrapper .input-group .input-field:focus {
+.input_wrapper .input_group .input_field:focus {
   border: 1px solid #657084;
 }
-.input-wrapper .input-group .input-field:focus ~ label {
+.input_wrapper .input_group .input_field:focus ~ label {
   top: 0;
   color: #657084;
   font-size: 1.1rem;
   background-color: #fff;
 }
-.input-wrapper .input-group .input-field:focus ~ .eye {
+.input_wrapper .input_group .input_field:focus ~ .eye {
   color: #657084;
 }
-.input-wrapper .input-group .input-field:not(:-moz-placeholder-shown) {
+.input_wrapper .input_group .input_field:invalid, .input_wrapper .input_group .input_field:not(:placeholder-shown) {
   border: 1px solid #000;
 }
-.input-wrapper .input-group .input-field:invalid, .input-wrapper .input-group .input-field:not(:placeholder-shown) {
-  border: 1px solid #000;
-}
-.input-wrapper .input-group .input-field:not(:-moz-placeholder-shown) ~ label {
+.input_wrapper .input_group .input_field:invalid ~ label, .input_wrapper .input_group .input_field:not(:placeholder-shown) ~ label {
   top: 0;
   color: #000;
   font-size: 1.1rem;
   background-color: #fff;
 }
-.input-wrapper .input-group .input-field:invalid ~ label, .input-wrapper .input-group .input-field:not(:placeholder-shown) ~ label {
-  top: 0;
-  color: #000;
-  font-size: 1.1rem;
-  background-color: #fff;
-}
-.input-wrapper .input-group .input-field:not(:-moz-placeholder-shown) ~ .eye {
+.input_wrapper .input_group .input_field:invalid ~ .eye, .input_wrapper .input_group .input_field:not(:placeholder-shown) ~ .eye {
   color: #000;
 }
-.input-wrapper .input-group .input-field:invalid ~ .eye, .input-wrapper .input-group .input-field:not(:placeholder-shown) ~ .eye {
-  color: #000;
-}
-.input-wrapper .input-group .input-field:not(:-moz-placeholder-shown):focus {
+.input_wrapper .input_group .input_field:invalid:focus, .input_wrapper .input_group .input_field:not(:placeholder-shown):focus {
   outline: 2px solid #CFD3D9;
 }
-.input-wrapper .input-group .input-field:invalid:focus, .input-wrapper .input-group .input-field:not(:placeholder-shown):focus {
-  outline: 2px solid #CFD3D9;
+.input_wrapper .input_group .input_field.error {
+  border: 2px solid #F02522;
 }
-.input-wrapper .input-group .input-field.input-error {
-  border: 2px solid #E81A1A;
+.input_wrapper .input_group .input_field.error ~ label {
+  color: #F02522;
 }
-.input-wrapper .input-group .input-field.input-error ~ label {
-  color: #E81A1A;
+.input_wrapper .input_group .input_field.error:focus {
+  outline: 2px solid #FABBBA;
 }
-.input-wrapper .input-group .input-field.input-error:focus {
-  outline: 2px solid #F8B8B8;
-}
-.input-wrapper .input-group .input-field.input-success {
-  border: 2px solid #8AC900;
-}
-.input-wrapper .input-group .input-field.input-success:focus {
-  outline: 2px solid #DBEEB0;
-}
-.input-wrapper .error-msg {
-  color: #E81A1A;
+.input_wrapper .error_msg {
+  color: #F02522;
   font-size: 1rem;
 }
 
-.select-wrapper {
+.select_wrapper {
   width: 100%;
   margin: 0.7rem 0;
   position: relative;
-  border-radius: 6px;
+  border-radius: 1rem;
 }
-.select-wrapper label {
+.select_wrapper label {
   position: absolute;
   top: 50%;
   left: 1rem;
@@ -195,7 +174,7 @@
   transition: 0.2s;
   padding: 0 0.2rem;
 }
-.select-wrapper .select-icon {
+.select_wrapper .select_icon {
   position: absolute;
   right: 1rem;
   top: 50%;
@@ -204,13 +183,12 @@
   width: 1rem;
   height: 1rem;
 }
-.select-wrapper .select-menu {
-  border-radius: 6px;
+.select_wrapper .select_menu {
+  border-radius: 1rem;
   width: 100%;
   --webkit-appearance: none;
   -moz-appearance: none;
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   cursor: pointer;
   font-size: 0.9rem;
   transition: border 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -220,29 +198,20 @@
   color: #000;
   background-color: transparent;
 }
-.select-wrapper .select-menu:focus {
+.select_wrapper .select_menu:focus {
   border: 1px solid #657084;
   outline: 2px solid #F0F1F3;
 }
-.select-wrapper .select-menu:focus ~ label {
+.select_wrapper .select_menu:focus ~ label {
   top: 0;
   color: #657084;
   font-size: 1.1rem;
   background-color: #fff;
 }
-.select-wrapper .select-menu:not(:-moz-placeholder-shown) {
+.select_wrapper .select_menu:invalid, .select_wrapper .select_menu:not(:placeholder-shown) {
   border: 1px solid #000;
 }
-.select-wrapper .select-menu:invalid, .select-wrapper .select-menu:not(:placeholder-shown) {
-  border: 1px solid #000;
-}
-.select-wrapper .select-menu:not(:-moz-placeholder-shown) ~ label {
-  top: 0;
-  color: #000;
-  font-size: 1.1rem;
-  background-color: #fff;
-}
-.select-wrapper .select-menu:invalid ~ label, .select-wrapper .select-menu:not(:placeholder-shown) ~ label {
+.select_wrapper .select_menu:invalid ~ label, .select_wrapper .select_menu:not(:placeholder-shown) ~ label {
   top: 0;
   color: #000;
   font-size: 1.1rem;

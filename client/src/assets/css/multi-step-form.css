@@ -71,26 +71,26 @@
     opacity: 0;
   }
 }
-.multi-step-form {
+.multi_step_form {
   position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.multi-step-form .form-header {
+.multi_step_form .form_header {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 1.5rem;
 }
-.multi-step-form .form-header .form-divider {
+.multi_step_form .form_header .form_divider {
   position: relative;
   width: 4rem;
   height: 1px;
   background-color: #989FAD;
 }
-.multi-step-form .form-header .form-divider::before {
+.multi_step_form .form_header .form_divider::before {
   content: "";
   position: absolute;
   left: 0;
@@ -102,7 +102,7 @@
   transform: scaleX(0);
   transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.multi-step-form .form-header .form-step {
+.multi_step_form .form_header .from_step {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -111,27 +111,27 @@
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.multi-step-form .form-header .form-step.active h3 {
+.multi_step_form .form_header .from_step.active h3 {
   border: 1px solid #000;
   color: #000;
 }
-.multi-step-form .form-header .form-step.active h4 {
+.multi_step_form .form_header .from_step.active h4 {
   color: #000;
 }
-.multi-step-form .form-header .form-step.valid h3 {
+.multi_step_form .form_header .from_step.valid h3 {
   border: 1px solid #000;
-  color: #7EB700;
+  color: #38DB00;
 }
-.multi-step-form .form-header .form-step.valid h4 {
+.multi_step_form .form_header .from_step.valid h4 {
   color: #000;
 }
-.multi-step-form .form-header .form-step.valid + .form-divider::before {
+.multi_step_form .form_header .from_step.valid + .form_divider::before {
   transform: scaleX(1);
 }
-.multi-step-form .form-header .form-step.valid:hover h3 {
-  color: #B1DB54;
+.multi_step_form .form_header .from_step.valid:hover h3 {
+  color: #7DF654;
 }
-.multi-step-form .form-header .form-step h3 {
+.multi_step_form .form_header .from_step h3 {
   font-size: 1.2rem;
   font-weight: 400;
   color: #989FAD;
@@ -143,50 +143,49 @@
   align-items: center;
   transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   border: 1px solid #989FAD;
-  border-radius: 6px;
+  border-radius: 1rem;
 }
-.multi-step-form .form-header .form-step h4 {
+.multi_step_form .form_header .from_step h4 {
   font-size: 1.2rem;
   font-weight: 400;
   color: #989FAD;
   transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
 }
-.multi-step-form .form-header .form-step h4::before {
+.multi_step_form .form_header .from_step h4::before {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 1px;
-  background-color: #B4D2F8;
+  background-color: #FFC0B0;
   transform-origin: right;
   transform: scaleX(0);
   transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.multi-step-form .form-header .form-step:hover h3 {
+.multi_step_form .form_header .from_step:hover h3 {
   border: 1px solid #657084;
   color: #657084;
 }
-.multi-step-form .form-header .form-step:hover h4 {
+.multi_step_form .form_header .from_step:hover h4 {
   color: #657084;
 }
-.multi-step-form .form-body .form-inputs {
+.multi_step_form .from_body .form_inputs {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
 }
-.multi-step-form .form-body .form-inputs .field-wrapper {
+.multi_step_form .from_body .form_inputs .field_wrapper {
   display: flex;
   flex-direction: row;
-  -moz-column-gap: 0.5rem;
-       column-gap: 0.5rem;
+  column-gap: 0.5rem;
 }
-.multi-step-form .form-body .form-inputs .field-wrapper .input-wrapper {
+.multi_step_form .from_body .form_inputs .field_wrapper .input_wrapper {
   width: 100%;
 }
-.multi-step-form .form-body .form-buttons {
+.multi_step_form .from_body .from_buttons {
   display: flex;
   gap: 1.5rem;
   justify-content: flex-end;
@@ -195,13 +194,13 @@
 
 /*
 @media only screen and (max-width: $media-query-sm) {
-    .multi-step-form {
-        .form-header {
+    .multi_step_form {
+        .form_header {
             flex-direction: column;
             gap: 1rem;
             align-items: flex-start;
 
-            .form-step {
+            .from_step {
                 h4 {
                     font-size: 1rem;
                 }

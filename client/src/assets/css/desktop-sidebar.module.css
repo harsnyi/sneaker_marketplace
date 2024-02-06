@@ -135,7 +135,7 @@
   transition: color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .sidebar .sidebar-header svg:hover {
-  color: #0C6DE9;
+  color: #FF3300;
 }
 .sidebar .sidebar-list {
   list-style: none;
@@ -211,20 +211,20 @@
   right: 0;
   bottom: 0;
   width: 0;
-  background-color: #0C6DE9;
+  background-color: #FF3300;
   border-radius: 25px 0 0 25px;
   transition: width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .sidebar .sidebar-list .sidebar-list-item .list-item-submenu .submenu-item .submenu-item-link:hover svg,
 .sidebar .sidebar-list .sidebar-list-item .list-item-submenu .submenu-item .submenu-item-link:hover span {
-  color: #0C6DE9;
+  color: #FF3300;
 }
 .sidebar .sidebar-list .sidebar-list-item .list-item-submenu .submenu-item .submenu-item-link:hover::before {
   width: 3px;
 }
 .sidebar .sidebar-list .sidebar-list-item .list-item-submenu .submenu-item .submenu-item-link:global(.active) svg,
 .sidebar .sidebar-list .sidebar-list-item .list-item-submenu .submenu-item .submenu-item-link:global(.active) span {
-  color: #0C6DE9;
+  color: #FF3300;
 }
 .sidebar .sidebar-list .sidebar-list-item .list-item-submenu .submenu-item .submenu-item-link:global(.active)::before {
   width: 3px;
@@ -241,11 +241,11 @@
 }
 .sidebar .sidebar-list .sidebar-list-item:last-child .submenu-item:last-of-type .submenu-item-link svg,
 .sidebar .sidebar-list .sidebar-list-item:last-child .submenu-item:last-of-type .submenu-item-link span {
-  color: #E81A1A;
+  color: #F02522;
 }
 .sidebar .sidebar-list .sidebar-list-item:last-child .submenu-item:last-of-type .submenu-item-link:hover svg,
 .sidebar .sidebar-list .sidebar-list-item:last-child .submenu-item:last-of-type .submenu-item-link:hover span {
-  color: #E81A1A;
+  color: #F02522;
 }
 .sidebar .sidebar-list .sidebar-list-item:last-child .submenu-item:last-of-type .submenu-item-link:hover::before {
   content: "";
@@ -254,6 +254,6 @@
   right: 0;
   bottom: 0;
   width: 3px;
-  background-color: #E81A1A;
-  border-radius: 6px 0 0 6px;
+  background-color: #F02522;
+  border-radius: 0.5rem 0 0 1rem;
 }/*# sourceMappingURL=desktop-sidebar.module.css.map */

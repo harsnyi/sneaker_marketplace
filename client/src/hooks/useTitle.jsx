@@ -7,7 +7,7 @@ export const useTitle = (title) => {
   useEffect(() => {
     if (!documentDefined) return;
 
-    if (document.title !== title) document.title = title + ' | Under Retail';
+    if (document.title !== title) document.title = title + ' | Bump';
 
     return () => {
       document.title = originalTitle.current;

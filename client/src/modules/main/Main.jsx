@@ -15,10 +15,10 @@ const Main = () => {
   }
 
   return (
-    <div className="main-wrapper">
+    <div className="main_wrapper">
       {renderSideBar()}
-      <div className="main-container">
-        <Header />
+      <div className="main_container">
+        {/* <Header /> */}
         <main className="main-content">
           <Outlet />
         </main>

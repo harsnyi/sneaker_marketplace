@@ -135,7 +135,7 @@ const Login = ({setShowResetPass}) => {
           onChange={(value) => {
             setEmail(value);
           }}
-          className="input-field"
+          className="input_field"
           name="lgn-email"
           error={errors.email}
         />
@@ -146,7 +146,7 @@ const Login = ({setShowResetPass}) => {
           onChange={(value) => {
             setPassword(value);
           }}
-          className="input-field"
+          className="input_field"
           name="lgn-pass"
           error={errors.password}
         />

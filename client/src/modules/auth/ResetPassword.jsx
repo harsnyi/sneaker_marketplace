@@ -51,11 +51,11 @@ const ResetPassword = ({setShowResetPass}) => {
   };
 
   return (
-    <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94]}} className="reset-password-wrapper">
+    <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94]}} className="reset-password_wrapper">
       <p onClick={() => setShowResetPass(false)} className="link">
         Vissza a bejelentkezéshez
       </p>
-      <div className="reset-password-body">
+      <div className="reset-password_body">
         <h1>Elfelejtett jelszó</h1>
         <p>Add meg a regisztáció során használt e-mail címed, majd a levélben kapott linkre kattintva kövesd a további instrukciókat új jelszavad beállításához.</p>
         <form onSubmit={handleFormSubmit}>
@@ -66,7 +66,7 @@ const ResetPassword = ({setShowResetPass}) => {
             onChange={(value) => {
               setEmail(value);
             }}
-            className="input-field"
+            className="input_field"
             name="lgn-email"
             error={errors.email}
           />

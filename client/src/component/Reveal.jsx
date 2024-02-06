@@ -16,7 +16,7 @@ const Reveal = ({children}) => {
   }, [isInView]);
 
   return (
-    <div ref={ref} className="reveal-div">
+    <div ref={ref} className="reveal_div">
       <motion.div
         variants={{
           hidden: {
@@ -35,7 +35,7 @@ const Reveal = ({children}) => {
       </motion.div>
       {/* 
       <motion.div
-        className="slide-div"
+        className="slide_div"
         variants={{
           hidden: {
             left: 0,

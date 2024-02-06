@@ -91,7 +91,7 @@ const SideBarDesktop = () => {
       <div className={desktopSideStyle['sidebar-header']}>
         {isSideOpen ? (
           <>
-            <h1>Under Retail</h1>
+            <h1>Bump</h1>
             <PiArrowLineLeftBold onClick={toggleSideBar} />
           </>
         ) : (

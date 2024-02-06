@@ -17,7 +17,7 @@ import {HiPencilSquare} from 'react-icons/hi2';
 import {MdAccountBox} from 'react-icons/md';
 import {FaIdCard} from 'react-icons/fa';
 
-import Button from '../../common/Button';
+import Button from '../../component/Button';
 import AccountForm from './AccountForm';
 import PersonalForm from './PersonalForm';
 

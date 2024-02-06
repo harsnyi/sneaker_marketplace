@@ -1,4 +1,4 @@
-import Input from '../../common/Input';
+import Input from '../../component/Input';
 
 import {forwardRef, useImperativeHandle, useState} from 'react';
 import {useDebounce} from '../../hooks/useDebounce';

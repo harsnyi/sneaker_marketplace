@@ -9,7 +9,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import AuthProvider from './context/AuthProvider';
 import LoaderProvider from './context/LoaderProvider';
 import LoadingProvider from './context/LoadingProvider';
-import ToastContainer from './common/ToastContainer';
+import ToastContainer from './component/ToastContainer';
 import ToastProvider from './context/ToastProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

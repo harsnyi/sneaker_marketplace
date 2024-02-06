@@ -3,7 +3,7 @@ import React from 'react';
 import {ImFacebook} from 'react-icons/im';
 import {FcGoogle} from 'react-icons/fc';
 
-import Button from '../../common/Button';
+import Button from '../../component/Button';
 
 const SocialSignup = () => {
   return (

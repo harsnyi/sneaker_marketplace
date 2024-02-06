@@ -4,8 +4,8 @@ import {useState} from 'react';
 // import {useLoader} from '../../hooks/useLoader';
 import {useDebounce} from '../../hooks/useDebounce';
 
-import Input from '../../common/Input';
-import Button from '../../common/Button';
+import Input from '../../component/Input';
+import Button from '../../component/Button';
 import {motion} from 'framer-motion';
 
 import {HiArrowPath} from 'react-icons/hi2';

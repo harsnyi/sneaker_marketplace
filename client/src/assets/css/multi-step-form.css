@@ -180,7 +180,8 @@
 .multi-step-form .form-body .form-inputs .field-wrapper {
   display: flex;
   flex-direction: row;
-  column-gap: 0.5rem;
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
 }
 .multi-step-form .form-body .form-inputs .field-wrapper .input-wrapper {
   width: 100%;

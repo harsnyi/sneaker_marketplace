@@ -1,6 +1,6 @@
 import React from 'react';
 import {useToast} from '../hooks/useToast';
-import Toast from '../common/Toast';
+import Toast from './Toast';
 
 const ToastContainer = () => {
   const {toasts, removeToast} = useToast();

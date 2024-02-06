@@ -1,6 +1,5 @@
 import {useQueryParam, StringParam} from 'use-query-params';
 import {useState, useEffect} from 'react';
-import {useTitle} from '../../hooks/useTitle';
 import {motion} from 'framer-motion';
 
 import Login from './Login';
@@ -9,7 +8,6 @@ import ResetPassword from './ResetPassword';
 
 const AuthTabs = () => {
   const [tab = 'log', setTab] = useQueryParam('tab', StringParam);
-  useTitle(tab === 'log' ? 'Bejelentkezés' : 'Regisztráció');
 
   const [showResetPass, setShowResetPass] = useState(false);
 

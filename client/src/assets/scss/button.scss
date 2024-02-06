@@ -4,7 +4,7 @@
     all: unset;
     box-shadow: 0;
     font-size: 1rem;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 2rem;
     margin: 0.5rem 0;
     text-transform: uppercase;
     cursor: pointer;
@@ -17,6 +17,9 @@
     -moz-user-select: none;
     user-select: none;
     border-radius: $border-radius;
+    // disable text jumping to second line;
+    user-select: none;
+    white-space: nowrap;
 
     .spinner {
         position: relative;
@@ -25,6 +28,7 @@
         font-size: 1rem;
         width: 1.6rem;
         height: 1.6rem;
+        color: $clr-white;
     }
 
     &.primary {
@@ -68,13 +72,22 @@
 
         &:active {
             border-color: color(secondary, 500);
-            background-color: darken($color: $clr-white, $amount: 3);
+            background-color: rgba(0, 0, 0, 0.025);
         }
 
         &:disabled {
             cursor: not-allowed;
             background-color: color(secondary, 50);
             border-color: color(secondary, 100);
+        }
+
+        &.light {
+
+            &:hover,
+            &:active {
+                border-color: color(secondary, 50);
+            }
+
         }
 
     }

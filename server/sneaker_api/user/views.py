@@ -10,6 +10,7 @@ from .models import Role, User
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
 import logging
+import blurhash
 
 from .serializer import (
     MyTokenObtainPairSerializer,
@@ -112,7 +113,14 @@ class UploadProfilePicture(APIView):
         serializer = UploadProfilePictureSerializer(user,data=request.data)
         
         if serializer.is_valid():
-            serializer.save()
+            profile_picture = serializer.validated_data['profile_picture']
+            with profile_picture.open() as image_file:
+                hash = blurhash.encode(image_file, x_components=4, y_components=3)
+                user.profile_picture_hash = hash
+                user.save()
+                serializer.save()
+        
+            
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

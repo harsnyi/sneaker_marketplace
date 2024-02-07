@@ -19,7 +19,7 @@ from .serializer import (
 )
 
 logging.basicConfig(
-    format='%(levelname)s - %(message)s',
+    format='%(levelname)s - %(asctime)s - %(message)s',
     level=logging.INFO
 )
 
@@ -61,6 +61,7 @@ class RegisterView(APIView):
             role = Role.objects.create(role=5002, user=user)
             
             # Send email here, etc.
+            logging.info("Sikeres regisztrálás.")
             return JsonResponse({"message": "Felhasználó sikeresen regisztrálva"},status=status.HTTP_201_CREATED)
 
         return JsonResponse(serializer.errors,status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -93,7 +94,8 @@ class AuthenticationView(APIView):
                 response.status_code = json_response.status_code
                 response.content = json_response.content
                 response['content-type'] = json_response['content-type']
-
+                logging.info("Sikeres bejelentkezés.")
+                
                 return response
                 
             return JsonResponse({'error': 'Nem létezik a felhasználó.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
@@ -106,7 +108,8 @@ class UploadProfilePicture(APIView):
     permission_classes = [IsAuthenticated]
 
     def put(self, request, *args, **kwargs):
-        serializer = UploadProfilePictureSerializer(data=request.data)
+        user = request.user
+        serializer = UploadProfilePictureSerializer(user,data=request.data)
         
         if serializer.is_valid():
             serializer.save()
@@ -147,13 +150,13 @@ class LogoutView(APIView):
     def get(self, request, *args, **kwargs):
         
         refresh_token = request.COOKIES.get('refresh_token')
-        logging.info(f"Refresh token: {refresh_token}")
         if not refresh_token:
             return JsonResponse({'error': 'No refresh token found in cookies'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
         try:
             refresh = RefreshToken(refresh_token)
             refresh.blacklist()
+            logging.info("Sikeres kijelentkezés.")
             return JsonResponse({"message": "Sikeres kijelentkezés."},status=status.HTTP_205_RESET_CONTENT)
         
         except Exception:

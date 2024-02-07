@@ -27,7 +27,7 @@ class User(AbstractUser):
     profile_picture = models.ImageField(upload_to=f'profile_pictures/', null=True, blank=True)
     
     def __str__(self):
-        return self.user
+        return self.username
     
 def validate_allowed_roles(value):
     allowed_roles = [4001, 5002, 6003, 7004]

@@ -5,7 +5,8 @@ from .views import(
     LogoutView,
     AuthenticationView,
     CheckAccessToken,
-    ListUsers
+    ListUsers,
+    UploadProfilePicture
 )
 
 urlpatterns = [
@@ -15,5 +16,6 @@ urlpatterns = [
     path('token/logout',LogoutView.as_view(),name='logout'),
     path('token/authenticate',AuthenticationView.as_view(),name='authenticate'),
     path('token/check_access_token',CheckAccessToken.as_view(),name='check_access_token'),
-    path('list_users',ListUsers.as_view(),name='list_users')
+    path('list_users',ListUsers.as_view(),name='list_users'),
+    path('upload_profile_picture',UploadProfilePicture.as_view(),name='upload_profile_picture')
 ]

@@ -8,11 +8,20 @@ from django.contrib.auth import authenticate
 from django.http import JsonResponse, HttpResponse
 from .models import Role, User
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.parsers import MultiPartParser, FormParser
+import logging
+import blurhash
 
 from .serializer import (
     MyTokenObtainPairSerializer,
-    UserLoginSerializer,
-    UserRegistrationSerializer
+    LoginSerializer,
+    RegistrationSerializer,
+    UploadProfilePictureSerializer
+)
+
+logging.basicConfig(
+    format='%(levelname)s - %(asctime)s - %(message)s',
+    level=logging.INFO
 )
 
 class CheckAccessToken(APIView):
@@ -39,7 +48,7 @@ class ListUsers(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
         user_list = [user.username for user in User.objects.all()]
-        return JsonResponse(user_list, status=status.HTTP_200_OK)
+        return JsonResponse(user_list, safe=False, status=status.HTTP_200_OK)
         
 
 class RegisterView(APIView):
@@ -47,12 +56,13 @@ class RegisterView(APIView):
     More logic needs to be done"""
     
     def post(self, request, *args, **kwargs):
-        serializer = UserRegistrationSerializer(data=request.data)
+        serializer = RegistrationSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
             role = Role.objects.create(role=5002, user=user)
             
             # Send email here, etc.
+            logging.info("Sikeres regisztrálás.")
             return JsonResponse({"message": "Felhasználó sikeresen regisztrálva"},status=status.HTTP_201_CREATED)
 
         return JsonResponse(serializer.errors,status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -65,7 +75,7 @@ class AuthenticationView(APIView):
     def post(self, request, *args, **kwargs):
         
         #Check if the user credentials are valid
-        serializer = UserLoginSerializer(data=request.data)
+        serializer = LoginSerializer(data=request.data)
         
         if serializer.is_valid():
             
@@ -85,12 +95,35 @@ class AuthenticationView(APIView):
                 response.status_code = json_response.status_code
                 response.content = json_response.content
                 response['content-type'] = json_response['content-type']
-
+                logging.info("Sikeres bejelentkezés.")
+                
                 return response
                 
             return JsonResponse({'error': 'Nem létezik a felhasználó.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
         
         return JsonResponse(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    
+class UploadProfilePicture(APIView):
+    parser_classes = [MultiPartParser, FormParser]
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, *args, **kwargs):
+        user = request.user
+        serializer = UploadProfilePictureSerializer(user,data=request.data)
+        
+        if serializer.is_valid():
+            profile_picture = serializer.validated_data['profile_picture']
+            with profile_picture.open() as image_file:
+                hash = blurhash.encode(image_file, x_components=4, y_components=3)
+                user.profile_picture_hash = hash
+                user.save()
+                serializer.save()
+        
+            
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class UpdateAccessTokenView(APIView):
@@ -109,7 +142,7 @@ class UpdateAccessTokenView(APIView):
             # Decode and validate the refresh token
             token = RefreshToken(refresh_token)        
         except Exception:
-            return Response({'error': 'Invalid or expired refresh token'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'error': 'Invalid or expired refresh token'}, status=status.HTTP_401_UNAUTHORIZED)
         
         # Generate a new access token
         access_token = token.access_token
@@ -122,7 +155,7 @@ class UpdateAccessTokenView(APIView):
 class LogoutView(APIView):
     """Blacklists the given refresh token extracted from the cookies"""
     
-    def post(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         
         refresh_token = request.COOKIES.get('refresh_token')
         if not refresh_token:
@@ -131,7 +164,8 @@ class LogoutView(APIView):
         try:
             refresh = RefreshToken(refresh_token)
             refresh.blacklist()
+            logging.info("Sikeres kijelentkezés.")
             return JsonResponse({"message": "Sikeres kijelentkezés."},status=status.HTTP_205_RESET_CONTENT)
         
         except Exception:
-            return JsonResponse({'error': 'Invalid refresh token'}, status=400)
+            return JsonResponse({'error': 'Invalid refresh token'}, status=status.HTTP_401_UNAUTHORIZED)

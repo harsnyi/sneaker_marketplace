@@ -8,7 +8,7 @@ from django.core.exceptions import ObjectDoesNotExist
 EMAIL_REGEX = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 USERNAME_REGEX = r'^[a-zA-Z0-9_]+$'
 
-class UserRegistrationSerializer(serializers.ModelSerializer):
+class RegistrationSerializer(serializers.ModelSerializer):
     
     def validate_email(self, email): 
         try:            
@@ -23,6 +23,12 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         return email
 
     def validate_username(self, username):
+        try:            
+            User.objects.get(username=username)
+            raise serializers.ValidationError("Már létezik felhasználó a megadott felhasználónévvel.")
+        except ObjectDoesNotExist:
+            pass
+        
         if not re.match(USERNAME_REGEX, username):
             raise serializers.ValidationError("Nem megfelelő formátum. A felhasználónév csak betűket, számokat és aláhúzást tartalmazhat.")
         if len(username) > 16:
@@ -64,6 +70,10 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         self.validate_gender(data['gender'])
         return data
 
+class UploadProfilePictureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('profile_picture',)
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -75,7 +85,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['roles'] = role_list
         return token
 
-class UserLoginSerializer(serializers.ModelSerializer):
+class LoginSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = User

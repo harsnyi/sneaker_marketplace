@@ -11,7 +11,7 @@ export const useLogout = () => {
   const logout = async () => {
     setAuth(null);
     try {
-      await axios.post(LOGOUT_URL, {
+      await axios.get(LOGOUT_URL, {
         withCredentials: true,
       });
     } catch (error) {

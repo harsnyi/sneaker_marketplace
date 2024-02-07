@@ -15,7 +15,7 @@ export const useLogout = () => {
         withCredentials: true,
       });
     } catch (error) {
-      addToast('error', error.message);
+      //addToast('error', error.message);
     }
   };
 

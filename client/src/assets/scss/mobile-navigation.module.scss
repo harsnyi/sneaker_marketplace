@@ -110,7 +110,7 @@
         transition: width 0.2s $animation-cubic;
         border-left: 1px solid color(secondary, 100);
 
-        .sidebar-list {
+        .sidebar_list {
             display: none;
         }
     }
@@ -121,7 +121,7 @@
         .sidebar {
             width: 80%;
 
-            .sidebar-list {
+            .sidebar_list {
                 height: 100%;
                 list-style: none;
                 margin: 0;
@@ -130,7 +130,7 @@
                 display: flex;
                 flex-direction: column;
 
-                .sidebar-list-item {
+                .sidebar_list_item {
                     margin-bottom: 0.5rem;
                     padding: 0.5rem 0;
                     display: flex;
@@ -144,17 +144,17 @@
                         padding: 0 1.5rem;
                     }
 
-                    .list-item-submenu {
+                    .list_item_submenu {
                         padding: 0.5rem 0;
                         font-size: 1.5rem;
 
-                        .submenu-item {
+                        .submenu_item {
                             height: 2rem;
                             padding-left: 2.5rem;
                             margin-bottom: 0.5rem;
 
 
-                            .submenu-item-link {
+                            .submenu_item_link {
                                 position: relative;
                                 display: flex;
                                 align-items: center;
@@ -214,8 +214,8 @@
                         margin-top: auto;
                         margin-bottom: 0;
 
-                        .submenu-item:last-of-type {
-                            .submenu-item-link {
+                        .submenu_item:last-of-type {
+                            .submenu_item_link {
                                 cursor: pointer;
 
                                 svg,

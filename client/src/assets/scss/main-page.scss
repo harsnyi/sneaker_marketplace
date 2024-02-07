@@ -1,36 +1,31 @@
 @import 'variables';
 
 .main_wrapper {
-    background-color: color(secondary, 50);
     height: 100svh;
     width: 100vw;
     display: flex;
+    transition: background-color 0.2s $animation-cubic;
+
+    &.open {
+        background-color: color(secondary, 50);
+        //background-color: color(neutral, 900);
+    }
 
     .main_container {
+        position: relative;
         flex: 1;
-
-
-        .main_header {
-            height: 4rem;
-            background-color: $clr-white;
-            box-shadow: $panel-box-shadow;
-            z-index: 100;
-            padding: 0 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            //margin: 0 auto;
-            //border-radius: $border-radius-1;
-        }
+        background-color: $clr-white;
+        border: 1px solid color(secondary, 300);
+        margin: 1rem;
+        margin-left: 0;
+        padding: .5rem 1rem;
+        border-radius: $border-radius-2;
+        transition: margin-left 0.2s $animation-cubic;
     }
 }
 
 @media only screen and (max-width: $media-query-lg) {
     .main_container {
-        margin: $mobile-header-height 0;
-
-        .main_header {
-            display: none !important;
-        }
+        margin: $mobile-header-height + .5rem .5rem !important;
     }
 }

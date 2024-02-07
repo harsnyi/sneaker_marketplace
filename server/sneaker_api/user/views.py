@@ -8,12 +8,14 @@ from django.contrib.auth import authenticate
 from django.http import JsonResponse, HttpResponse
 from .models import Role, User
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.parsers import MultiPartParser, FormParser
 import logging
 
 from .serializer import (
     MyTokenObtainPairSerializer,
-    UserLoginSerializer,
-    UserRegistrationSerializer
+    LoginSerializer,
+    RegistrationSerializer,
+    UploadProfilePictureSerializer
 )
 
 logging.basicConfig(
@@ -53,7 +55,7 @@ class RegisterView(APIView):
     More logic needs to be done"""
     
     def post(self, request, *args, **kwargs):
-        serializer = UserRegistrationSerializer(data=request.data)
+        serializer = RegistrationSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
             role = Role.objects.create(role=5002, user=user)
@@ -71,7 +73,7 @@ class AuthenticationView(APIView):
     def post(self, request, *args, **kwargs):
         
         #Check if the user credentials are valid
-        serializer = UserLoginSerializer(data=request.data)
+        serializer = LoginSerializer(data=request.data)
         
         if serializer.is_valid():
             
@@ -97,6 +99,20 @@ class AuthenticationView(APIView):
             return JsonResponse({'error': 'Nem létezik a felhasználó.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
         
         return JsonResponse(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    
+class UploadProfilePicture(APIView):
+    parser_classes = [MultiPartParser, FormParser]
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, *args, **kwargs):
+        serializer = UploadProfilePictureSerializer(data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class UpdateAccessTokenView(APIView):
@@ -115,7 +131,7 @@ class UpdateAccessTokenView(APIView):
             # Decode and validate the refresh token
             token = RefreshToken(refresh_token)        
         except Exception:
-            return Response({'error': 'Invalid or expired refresh token'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'error': 'Invalid or expired refresh token'}, status=status.HTTP_401_UNAUTHORIZED)
         
         # Generate a new access token
         access_token = token.access_token
@@ -141,4 +157,4 @@ class LogoutView(APIView):
             return JsonResponse({"message": "Sikeres kijelentkezés."},status=status.HTTP_205_RESET_CONTENT)
         
         except Exception:
-            return JsonResponse({'error': 'Invalid refresh token'}, status=400)
+            return JsonResponse({'error': 'Invalid refresh token'}, status=status.HTTP_401_UNAUTHORIZED)

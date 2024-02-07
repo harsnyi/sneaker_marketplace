@@ -7,9 +7,7 @@ class User(AbstractUser):
     
     username = models.CharField(
         max_length=140,
-        unique=True,
         error_messages={
-            'unique': "Már létezik felhasználó a megadott felhasználónévvel.",
             'required': "Ez a mező kötelező.",
         },
     )
@@ -26,7 +24,10 @@ class User(AbstractUser):
     location = models.CharField(max_length=30, blank=True,null=True)
     birth_date = models.DateField(blank=True,null=True)
     phone_number = models.CharField(max_length=25,blank=True,null=True)
-    profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True)
+    profile_picture = models.ImageField(upload_to=f'profile_pictures/', null=True, blank=True)
+    
+    def __str__(self):
+        return self.user
     
 def validate_allowed_roles(value):
     allowed_roles = [4001, 5002, 6003, 7004]

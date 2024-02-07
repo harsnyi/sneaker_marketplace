@@ -91,3 +91,5 @@ hs_err_pid*
 replay_pid*
 
 db.sqlite3
+
+media

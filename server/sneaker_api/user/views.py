@@ -8,11 +8,17 @@ from django.contrib.auth import authenticate
 from django.http import JsonResponse, HttpResponse
 from .models import Role, User
 from rest_framework.permissions import IsAuthenticated
+import logging
 
 from .serializer import (
     MyTokenObtainPairSerializer,
     UserLoginSerializer,
     UserRegistrationSerializer
+)
+
+logging.basicConfig(
+    format='%(levelname)s - %(message)s',
+    level=logging.INFO
 )
 
 class CheckAccessToken(APIView):
@@ -39,7 +45,7 @@ class ListUsers(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
         user_list = [user.username for user in User.objects.all()]
-        return JsonResponse(user_list, status=status.HTTP_200_OK)
+        return JsonResponse(user_list, safe=False, status=status.HTTP_200_OK)
         
 
 class RegisterView(APIView):
@@ -122,9 +128,10 @@ class UpdateAccessTokenView(APIView):
 class LogoutView(APIView):
     """Blacklists the given refresh token extracted from the cookies"""
     
-    def post(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         
         refresh_token = request.COOKIES.get('refresh_token')
+        logging.info(f"Refresh token: {refresh_token}")
         if not refresh_token:
             return JsonResponse({'error': 'No refresh token found in cookies'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         

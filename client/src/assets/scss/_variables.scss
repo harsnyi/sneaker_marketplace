@@ -11,7 +11,7 @@ $palettes : (neutral: (50: #F5F5F5,
         600: #707070,
         700: #474747,
         800: #333333,
-        900: #0F0F0F,
+        900: #111111,
 
     ), primary: (50: #FFEBE6,
         100: #FFC0B0,
@@ -82,7 +82,7 @@ $palettes : (neutral: (50: #F5F5F5,
 );
 
 // SIZES
-$panel-gap: .5rem;
+$closed-sidebar-width: 5.25rem;
 $mobile-nav-height: 5rem;
 $mobile-header-height: $mobile-nav-height;
 

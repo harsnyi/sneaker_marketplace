@@ -6,44 +6,64 @@
     left: 0;
     bottom: 0;
     height: 100%;
-    width: 18rem;
-    background-color: $clr-white;
+    width: 21rem;
+    background-color: transparent;
     transition: width 0.2s $animation-cubic;
-    padding-top: 1rem;
+    padding: 2rem 0;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    border-right: 2px solid color(secondary, 100);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
 
     &.closed {
-        width: 5.25rem;
+        width: $closed-sidebar-width;
         align-items: center;
 
-        .sidebar-list {
+        .sidebar_header {
+            svg {
+                min-height: 2rem;
+                color: $clr-black
+            }
+        }
+
+        .sidebar_list {
             width: 100%;
 
-            .sidebar-list-item {
+            .sidebar_list_item {
                 h4 {
                     text-align: center;
                     color: color(secondary, 100);
-
                 }
 
-                .list-item-submenu {
-                    .submenu-item {
+                .list_item_submenu {
+                    .submenu_item {
                         display: flex;
                         justify-content: center;
                         align-items: center;
 
-                        .submenu-item-link {
+                        .submenu_item_link {
                             justify-content: center;
 
+                            svg,
+                            span {
+                                color: $clr-black;
+                            }
+
                             svg {
-                                margin-left: 0;
+                                margin: 0;
                             }
 
                             span {
-                                display: none;
+                                position: absolute;
+                                width: 100%;
+                                transform: translateX(50%);
+                                opacity: 0;
                             }
                         }
                     }
@@ -52,17 +72,17 @@
         }
     }
 
-    .sidebar-header {
+    .sidebar_header {
         position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 0 2.5rem;
-        margin-bottom: .5rem;
+        margin-bottom: 1rem;
         height: 2rem;
 
         h1 {
-            //color: color(primary, 500);
+            color: $clr-black;
             cursor: default;
             white-space: nowrap;
             -webkit-user-select: none;
@@ -72,6 +92,7 @@
         }
 
         svg {
+            color: $clr-black;
             font-size: 1.25rem;
             min-width: 1.25rem !important;
             cursor: pointer;
@@ -83,7 +104,7 @@
         }
     }
 
-    .sidebar-list {
+    .sidebar_list {
         list-style: none;
         margin: 0;
         padding: 0;
@@ -91,7 +112,7 @@
         display: flex;
         flex-direction: column;
 
-        .sidebar-list-item {
+        .sidebar_list_item {
             margin-bottom: 0.5rem;
             padding: 0.5rem 0;
             display: flex;
@@ -105,15 +126,15 @@
                 padding: 0 1.5rem;
             }
 
-            .list-item-submenu {
+            .list_item_submenu {
                 padding: 0.5rem 0;
                 font-size: 1.25rem;
 
-                .submenu-item {
+                .submenu_item {
                     height: 2.25rem;
                     margin-bottom: 0.25rem;
 
-                    .submenu-item-link {
+                    .submenu_item_link {
                         position: relative;
                         display: flex;
                         align-items: center;
@@ -121,26 +142,8 @@
                         height: 100%;
                         gap: 1.25rem;
                         background-color: transparent;
-                        //transition: background-color 0.2s $animation-cubic;
 
-                        /*
-                        &.notification-badge {
-                            position: relative;
-
-                            &::after {
-                                content: '';
-                                position: absolute;
-                                top: 50%;
-                                transform: translateY(-50%);
-                                right: 1rem;
-                                width: .75rem;
-                                height: .75rem;
-                                background-color: color(red, 500);
-                                border-radius: 50%;
-
-                            }
-                        }
-                        */
+                        color: $clr-black;
 
                         svg {
                             min-width: 1.25rem !important;
@@ -149,6 +152,11 @@
 
                         span {
                             white-space: nowrap;
+                            position: absolute;
+                            left: 5rem;
+                            opacity: 1;
+                            transform: translateX(0);
+                            transition: all .2s $animation-cubic !important;
                         }
 
                         svg,
@@ -156,6 +164,7 @@
                             transition: color 0.2s $animation-cubic;
                         }
 
+                        /*
                         &::before {
                             content: '';
                             position: absolute;
@@ -167,6 +176,7 @@
                             border-radius: 25px 0 0 25px;
                             transition: width 0.2s $animation-cubic;
                         }
+                        */
 
                         &:hover {
                             //background-color: color(primary, 50);
@@ -201,10 +211,10 @@
                 margin-top: auto;
                 margin-bottom: 0;
 
-                .submenu-item:last-of-type {
+                .submenu_item:last-of-type {
                     margin-bottom: 0;
 
-                    .submenu-item-link {
+                    .submenu_item_link {
                         cursor: pointer;
 
                         svg,
@@ -216,9 +226,10 @@
 
                             svg,
                             span {
-                                color: color(red, 500)
+                                color: color(red, 600)
                             }
 
+                            /*
                             &::before {
                                 content: '';
                                 position: absolute;
@@ -229,6 +240,7 @@
                                 background-color: color(red, 500);
                                 border-radius: $border-radius 0 0 $border-radius-1;
                             }
+                            */
                         }
                     }
                 }

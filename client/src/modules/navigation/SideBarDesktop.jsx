@@ -1,6 +1,6 @@
 import desktopSideStyle from '../../assets/css/desktop-sidebar.module.css';
 
-import React, {useState} from 'react';
+import React from 'react';
 import {NavLink, useNavigate} from 'react-router-dom';
 
 import {BiMessageSquareDetail, BiSearchAlt} from 'react-icons/bi';
@@ -60,15 +60,9 @@ const subMenus = [
   },
 ];
 
-const SideBarDesktop = () => {
-  const [isSideOpen, setIsSideOpen] = useState(true);
-
+const SideBarDesktop = ({isSideOpen, toggleSideBar}) => {
   const navigate = useNavigate();
   const logout = useLogout();
-
-  const toggleSideBar = () => {
-    setIsSideOpen(!isSideOpen);
-  };
 
   const handleOnClick = (e, action) => {
     e.preventDefault();
@@ -88,7 +82,7 @@ const SideBarDesktop = () => {
 
   return (
     <aside className={`${desktopSideStyle['sidebar']} ${!isSideOpen ? desktopSideStyle['closed'] : ''}`}>
-      <div className={desktopSideStyle['sidebar-header']}>
+      <div className={desktopSideStyle['sidebar_header']}>
         {isSideOpen ? (
           <>
             <h1>Bump</h1>
@@ -98,20 +92,20 @@ const SideBarDesktop = () => {
           <BsFillGrid3X3GapFill onClick={toggleSideBar} />
         )}
       </div>
-      <ul className={desktopSideStyle['sidebar-list']}>
+      <ul className={desktopSideStyle['sidebar_list']}>
         {subMenus.map((subMenu, index) => (
-          <li key={index} className={desktopSideStyle['sidebar-list-item']}>
+          <li key={index} className={desktopSideStyle['sidebar_list_item']}>
             <h4>{isSideOpen ? subMenu.title : <GoDotFill />}</h4>
-            <ul className={desktopSideStyle['list-item-submenu']}>
+            <ul className={desktopSideStyle['list_item_submenu']}>
               {subMenu.items.map((item, index) => (
-                <li key={index} className={desktopSideStyle['submenu-item']}>
+                <li key={index} className={desktopSideStyle['submenu_item']}>
                   {item.link === null ? (
-                    <div className={`${desktopSideStyle['submenu-item-link']} ${item.class ? desktopSideStyle[item.class] : ''}`} title={!isSideOpen ? item.text : null} onClick={(e) => handleOnClick(e, item.action)}>
+                    <div className={`${desktopSideStyle['submenu_item_link']} ${item.class ? desktopSideStyle[item.class] : ''}`} title={!isSideOpen ? item.text : null} onClick={(e) => handleOnClick(e, item.action)}>
                       {item.icon}
                       <span>{item.text}</span>
                     </div>
                   ) : (
-                    <NavLink to={item.link} className={`${desktopSideStyle['submenu-item-link']} ${item.class ? desktopSideStyle[item.class] : ''}`} title={!isSideOpen ? item.text : null}>
+                    <NavLink to={item.link} className={`${desktopSideStyle['submenu_item_link']} ${item.class ? desktopSideStyle[item.class] : ''}`} title={!isSideOpen ? item.text : null}>
                       {item.icon}
                       <span>{item.text}</span>
                     </NavLink>

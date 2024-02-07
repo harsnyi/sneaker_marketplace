@@ -60,20 +60,20 @@ const MobileSide = ({mobileNavStyle, sideBarOpen}) => {
   return (
     <div className={`${mobileNavStyle['sidebar-container']} ${!sideBarOpen ? '' : mobileNavStyle['open']}`}>
       <aside className={`${mobileNavStyle['sidebar']} `}>
-        <ul className={mobileNavStyle['sidebar-list']}>
+        <ul className={mobileNavStyle['sidebar_list']}>
           {subMenus.map((subMenu, index) => (
-            <li key={index} className={mobileNavStyle['sidebar-list-item']}>
+            <li key={index} className={mobileNavStyle['sidebar_list_item']}>
               <h4>{subMenu.title}</h4>
-              <ul className={mobileNavStyle['list-item-submenu']}>
+              <ul className={mobileNavStyle['list_item_submenu']}>
                 {subMenu.items.map((item, index) => (
-                  <li key={index} className={mobileNavStyle['submenu-item']}>
+                  <li key={index} className={mobileNavStyle['submenu_item']}>
                     {item.link === null ? (
-                      <div className={mobileNavStyle['submenu-item-link']} title={item.text} onClick={(e) => handleOnClick(e, item.action)}>
+                      <div className={mobileNavStyle['submenu_item_link']} title={item.text} onClick={(e) => handleOnClick(e, item.action)}>
                         {item.icon}
                         <span>{item.text}</span>
                       </div>
                     ) : (
-                      <NavLink to={item.link} className={mobileNavStyle['submenu-item-link']} title={item.text}>
+                      <NavLink to={item.link} className={mobileNavStyle['submenu_item_link']} title={item.text}>
                         {item.icon}
                         <span>{item.text}</span>
                       </NavLink>

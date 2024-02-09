@@ -12,10 +12,9 @@ export const useRefreshToken = () => {
       withCredentials: true,
     });
     setAuth((prev) => {
-      console.log(JSON.stringify(prev));
-      console.log(response.data.access_token);
       return {
         ...prev,
+        username: jwtDecode(response.data.access_token).username,
         roles: jwtDecode(response.data.access_token).roles,
         accessToken: response.data.access_token,
       };

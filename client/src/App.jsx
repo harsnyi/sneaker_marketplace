@@ -7,13 +7,16 @@ import RequireAuth from './modules/auth/RequireAuth';
 import PersistLogin from './modules/auth/PersistLogin';
 
 import Spinner from './component/Spinner';
-import {AnimatePresence} from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 const Authentication = lazy(() => import('./modules/auth/Authentication'));
 const Main = lazy(() => import('./modules/main/Main'));
 const Dashboard = lazy(() => import('./modules/main/Dashboard'));
 
-const Admin = lazy(() => import('./modules/admin/Admin'));
+const User = lazy(() => import('./modules/profile/User'));
+const Profile = lazy(() => import('./modules/profile/Profile'));
+
+//const Admin = lazy(() => import('./modules/admin/Admin'));
 
 const ErrorPage = lazy(() => import('./modules/error/ErrorPage'));
 
@@ -29,7 +32,7 @@ function App() {
 
   return (
     <AnimatePresence mode="wait">
-      <Suspense fallback={<Spinner />}>
+      {/* <Suspense fallback={<Spinner />}> */}
         <Routes location={location} key={location.pathname}>
           {/* public routes */}
           <Route path="/auth" element={<Authentication />} />
@@ -40,8 +43,10 @@ function App() {
               <Route path="/" element={<Main />}>
                 <Route index element={<Dashboard />} />
 
-                <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
-                  <Route path="/profile" element={<Admin />} />
+                <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Contributor, ROLES.Admin]} />}>
+                <Route exact path="/profile/:uname" element={<User />} >
+                  <Route index element={<Profile />}/>
+                </Route>
                 </Route>
               </Route>
             </Route>
@@ -51,7 +56,7 @@ function App() {
           <Route path="/unauthorized" element={<ErrorPage code={403} />} />
           <Route path="*" element={<ErrorPage code={404} />} />
         </Routes>
-      </Suspense>
+      {/* </Suspense> */}
     </AnimatePresence>
   );
 }

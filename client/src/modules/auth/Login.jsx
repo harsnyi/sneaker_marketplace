@@ -103,11 +103,12 @@ const Login = ({setShowResetPass}) => {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
       });
-
+      
       const accessToken = response?.data?.access_token;
       const roles = jwtDecode(accessToken).roles;
+      const username = jwtDecode(accessToken).username;
 
-      setAuth({user: {username: email, email: email}, roles, accessToken});
+      setAuth({username, roles, accessToken});
       setEmail('');
       setPassword('');
 

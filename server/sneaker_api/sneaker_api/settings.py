@@ -1,6 +1,6 @@
 from pathlib import Path
 from datetime import timedelta
-from .env import API_KEY,JWT_KEY
+from .env import API_KEY,JWT_KEY,ALLOWED_ORIGIN,ALLOWED_HOST
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -16,7 +16,7 @@ SECRET_KEY = API_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost']
+ALLOWED_HOSTS = ALLOWED_HOST
 
 
 # Application definition
@@ -86,6 +86,7 @@ SIMPLE_JWT = {
 
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -93,8 +94,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    
-    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "sneaker_api.urls"
@@ -180,6 +179,30 @@ AUTHENTICATION_BACKENDS = ['user.backend.EmailBackend']
 
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
+    ALLOWED_ORIGIN
 ]
+
 CORS_ALLOW_CREDENTIALS = True
+
+# Optional: Allow all methods (GET, POST, PUT, DELETE, etc.)
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'DELETE',
+    'OPTIONS'  # include OPTIONS if you want to allow preflight requests
+]
+
+# Optional: Allow all headers
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+

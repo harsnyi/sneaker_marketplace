@@ -71,4 +71,30 @@
     opacity: 0;
   }
 }
-/*# sourceMappingURL=transition.css.map */
+.stairs .overlay {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 999;
+  background-color: #000;
+}
+.stairs .transition_container {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  display: flex;
+  z-index: 999;
+}
+.stairs .transition_container div {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #FF3300;
+  border-right: 1px solid #989FAD;
+}/*# sourceMappingURL=transition-page.css.map */

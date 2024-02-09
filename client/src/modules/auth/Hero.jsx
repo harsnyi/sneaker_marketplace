@@ -1,5 +1,6 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Gallery from './Gallery';
+import { useEffect, useState } from 'react';
 
 const FOOTER_LINKS = [
   {
@@ -21,22 +22,28 @@ const FOOTER_LINKS = [
 ];
 
 const Hero = () => {
-  var backgroundImagesContext = require.context('../../assets/images/background/small', false, /.*\.jpg$/);
-
-  /*
-  if (window.innerWidth <= 1200) {
-    backgroundImagesContext = require.context('../../assets/images/background/small', false, /.*\.jpg$/);
-  } else {
-    backgroundImagesContext = require.context('../../assets/images/background/medium', false, /.*\.jpg$/);
-  }
-  */
-
-  const backgroundImages = backgroundImagesContext.keys().map((key) => backgroundImagesContext(key));
+  const [shuffledBackgroundImages, setShuffledBackgroundImages] = useState([]);
   const currentYear = new Date().getFullYear();
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  useEffect(() => {
+    var backgroundImagesContext = require.context('../../assets/images/background/small', false, /.*\.jpg$/);
+    const backgroundImages = backgroundImagesContext.keys().map((key) => backgroundImagesContext(key));
+    const shuffledImages = shuffleArray(backgroundImages);
+
+    setShuffledBackgroundImages(shuffledImages);
+  }, []); 
 
   return (
     <div className="hero">
-      <Gallery images={backgroundImages} columns={9} />
+      <Gallery images={shuffledBackgroundImages} columns={9} />
       <div className="hero_content">
         <h1 className="hero_title">Bump</h1>
         {/*Bump!, Under Retail*/}

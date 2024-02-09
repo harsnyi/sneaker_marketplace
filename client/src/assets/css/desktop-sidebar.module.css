@@ -213,11 +213,6 @@
 }
 .sidebar .sidebar_list .sidebar_list_item .list_item_submenu .submenu_item .submenu_item_link span {
   white-space: nowrap;
-  position: absolute;
-  left: 5rem;
-  opacity: 1;
-  transform: translateX(0);
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 .sidebar .sidebar_list .sidebar_list_item .list_item_submenu .submenu_item .submenu_item_link svg,
 .sidebar .sidebar_list .sidebar_list_item .list_item_submenu .submenu_item .submenu_item_link span {

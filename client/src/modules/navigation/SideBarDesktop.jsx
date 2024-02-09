@@ -1,9 +1,9 @@
 import desktopSideStyle from '../../assets/css/desktop-sidebar.module.css';
 
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
+import {useEffect, useState} from 'react';
+import {NavLink, useNavigate} from 'react-router-dom';
+import {useAuth} from '../../hooks/useAuth';
 
 import {BiMessageSquareDetail, BiSearchAlt} from 'react-icons/bi';
 import {BsFillGrid3X3GapFill} from 'react-icons/bs';
@@ -16,49 +16,49 @@ import {PiArrowLineLeftBold} from 'react-icons/pi';
 import {RiAuctionLine, RiLogoutBoxLine} from 'react-icons/ri';
 import {RxDashboard} from 'react-icons/rx';
 import {TfiMore} from 'react-icons/tfi';
-import { useLogout } from '../../hooks/useLogout';
+import {useLogout} from '../../hooks/useLogout';
 
 const generateSubMenus = (auth) => {
   return [
     {
       title: 'Menü',
       items: [
-        { icon: <RxDashboard />, text: 'Kezdőlap', link: '' },
-        { icon: <BiSearchAlt />, text: 'Keresés', link: '/search' },
-        { icon: <MdOutlineNewReleases />, text: 'Újdonság', link: '/release' },
+        {icon: <RxDashboard />, text: 'Kezdőlap', link: ''},
+        {icon: <BiSearchAlt />, text: 'Keresés', link: '/search'},
+        {icon: <MdOutlineNewReleases />, text: 'Újdonság', link: '/release'},
       ],
     },
     {
       title: 'Felhasználó',
       items: [
-        { icon: <CgProfile />, text: 'Profil', link: `/profile/${auth.username}` },
-        { icon: <MdFavoriteBorder />, text: 'Kedvencek', link: '/favorites' },
-        { icon: <BiMessageSquareDetail />, text: 'Üzenetek', link: '/messages', class: 'notification-badge' },
-        { icon: <IoNotificationsOutline />, text: 'Értesítések', link: '/notifications', class: 'notification-badge' },
-        { icon: <MdOutlineSell />, text: 'Eladás', link: '/sell' },
+        {icon: <CgProfile />, text: 'Profil', link: `/profile/${auth.username}`},
+        {icon: <MdFavoriteBorder />, text: 'Kedvencek', link: '/favorites'},
+        {icon: <BiMessageSquareDetail />, text: 'Üzenetek', link: '/messages', class: 'notification-badge'},
+        {icon: <IoNotificationsOutline />, text: 'Értesítések', link: '/notifications', class: 'notification-badge'},
+        {icon: <MdOutlineSell />, text: 'Eladás', link: '/sell'},
       ],
     },
     {
       title: 'Közösség',
       items: [
-        { icon: <MdOutlineExplore />, text: 'Fedezd Fel', link: '/discover' },
-        { icon: <RiAuctionLine />, text: 'Licit', link: '/auction' },
-        { icon: <HiOutlineNewspaper />, text: 'Hírek', link: '/news' },
+        {icon: <MdOutlineExplore />, text: 'Fedezd Fel', link: '/discover'},
+        {icon: <RiAuctionLine />, text: 'Licit', link: '/auction'},
+        {icon: <HiOutlineNewspaper />, text: 'Hírek', link: '/news'},
       ],
     },
     {
       title: 'További',
       items: [
-        { icon: <MdInfoOutline />, text: 'Rólunk', link: '/about' },
-        { icon: <MdOutlinePhoneInTalk />, text: 'Kapcsolat', link: '/contact' },
+        {icon: <MdInfoOutline />, text: 'Rólunk', link: '/about'},
+        {icon: <MdOutlinePhoneInTalk />, text: 'Kapcsolat', link: '/contact'},
       ],
     },
     {
       title: 'Eszközök',
       items: [
-        { icon: <IoSettingsOutline />, text: 'Beállítások', link: '/settings' },
-        { icon: <TfiMore />, text: 'Több', link: '/more' },
-        { icon: <RiLogoutBoxLine />, text: 'Kijelentkezés', link: null, action: 'signOut' },
+        {icon: <IoSettingsOutline />, text: 'Beállítások', link: '/settings'},
+        {icon: <TfiMore />, text: 'Több', link: '/more'},
+        {icon: <RiLogoutBoxLine />, text: 'Kijelentkezés', link: null, action: 'signOut'},
       ],
     },
   ];
@@ -68,8 +68,8 @@ const SideBarDesktop = ({isSideOpen, toggleSideBar}) => {
   const navigate = useNavigate();
   const logout = useLogout();
 
-  const { auth } = useAuth();
-  
+  const {auth} = useAuth();
+
   const subMenus = generateSubMenus(auth);
 
   const handleOnClick = (e, action) => {
@@ -85,6 +85,7 @@ const SideBarDesktop = ({isSideOpen, toggleSideBar}) => {
 
   const signOut = async () => {
     await logout();
+    localStorage.removeItem('isFirstRender');
     navigate('/auth');
   };
 

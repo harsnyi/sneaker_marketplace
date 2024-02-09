@@ -155,11 +155,6 @@
 
                         span {
                             white-space: nowrap;
-                            position: absolute;
-                            left: 5rem;
-                            opacity: 1;
-                            transform: translateX(0);
-                            transition: all .2s $animation-cubic !important;
                         }
 
                         svg,

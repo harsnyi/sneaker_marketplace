@@ -8,6 +8,9 @@ from django.core.exceptions import ObjectDoesNotExist
 EMAIL_REGEX = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 USERNAME_REGEX = r'^[a-zA-Z0-9_]+$'
 
+#Max upload size for profile pictures is 4MB for now
+MAX_PROFILE_PICTURE_SIZE = 1048576
+
 class RegistrationSerializer(serializers.ModelSerializer):
     
     def validate_email(self, email): 
@@ -70,10 +73,24 @@ class RegistrationSerializer(serializers.ModelSerializer):
         self.validate_gender(data['gender'])
         return data
 
+
+
 class UploadProfilePictureSerializer(serializers.ModelSerializer):
+    
+    def validate_profile_picture(self,profile_picture):
+        if profile_picture:
+            if profile_picture.size > MAX_PROFILE_PICTURE_SIZE:
+                raise serializers.ValidationError("Túl nagy a kép mérete (> 1MB)")
+            return profile_picture
+        else:
+            raise serializers.ValidationError("Nem sikerült a kép feltöltése.")
+    
     class Meta:
         model = User
         fields = ('profile_picture',)
+        
+    def validate(self, data):
+        self.validate_profile_picture(data['profile_picture'])
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod

@@ -7,7 +7,7 @@ import RequireAuth from './modules/auth/RequireAuth';
 import PersistLogin from './modules/auth/PersistLogin';
 
 import Spinner from './component/Spinner';
-import {AnimatePresence} from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 const Authentication = lazy(() => import('./modules/auth/Authentication'));
 const Main = lazy(() => import('./modules/main/Main'));
@@ -29,7 +29,7 @@ function App() {
 
   return (
     <AnimatePresence mode="wait">
-      <Suspense fallback={<Spinner />}>
+      {/* <Suspense fallback={<Spinner />}> */}
         <Routes location={location} key={location.pathname}>
           {/* public routes */}
           <Route path="/auth" element={<Authentication />} />
@@ -51,7 +51,7 @@ function App() {
           <Route path="/unauthorized" element={<ErrorPage code={403} />} />
           <Route path="*" element={<ErrorPage code={404} />} />
         </Routes>
-      </Suspense>
+      {/* </Suspense> */}
     </AnimatePresence>
   );
 }

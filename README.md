@@ -2,6 +2,20 @@
 
 ## Kliens
 
+### SCSS Compiler beállítása
+cd sneaker_marketplace
+code .
+
+VSCode: File -> Preferences -> Settings -> Extensions -> Live Sass Compiler Config
+```
+"liveSassCompile.settings.formats": [
+  {
+    "format": "expanded",
+    "extensionName": ".css",
+    "savePath": "/client/src/assets/css"     
+}
+```
+
 ## Szerver
 
 ### Virtuális környezet létrehozása

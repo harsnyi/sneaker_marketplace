@@ -6,8 +6,6 @@ import axios from '../../setup/Axios';
 import {useRef, useState} from 'react';
 import {useMultiStepForm} from '../../hooks/useMultiStepForm';
 
-import {useLoader} from '../../hooks/useLoader';
-import {useLoading} from '../../hooks/useLoading';
 import {useToast} from '../../hooks/useToast';
 
 import {IoMdArrowBack} from 'react-icons/io';
@@ -39,10 +37,11 @@ const MultiStepForm = () => {
   const personalRef = useRef();
 
   //const {showLoader, hideLoader} = useLoader();
-  const {loading, setLoading} = useLoading();
   const {addToast} = useToast();
 
   const [data, setData] = useState(INITIAL_DATA);
+  const [loading, setLoading] = useState(false);
+
   const updateData = (fields) => {
     setData((prev) => {
       return {
@@ -96,10 +95,8 @@ const MultiStepForm = () => {
         setData(INITIAL_DATA);
         goTo(0);
       } catch (error) {
-        console.log(error.response.data);
         addToast('error', error.message);
       } finally {
-        //hideLoader();
         setLoading(false);
       }
     }

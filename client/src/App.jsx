@@ -1,13 +1,12 @@
 import './assets/css/global.css';
 
 import React, {Suspense, lazy} from 'react';
-import {Routes, Route, useLocation} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 
 import RequireAuth from './modules/auth/RequireAuth';
 import PersistLogin from './modules/auth/PersistLogin';
 
 import Spinner from './component/Spinner';
-import { AnimatePresence } from 'framer-motion';
 
 const Authentication = lazy(() => import('./modules/auth/Authentication'));
 const Main = lazy(() => import('./modules/main/Main'));
@@ -15,8 +14,6 @@ const Dashboard = lazy(() => import('./modules/main/Dashboard'));
 
 const User = lazy(() => import('./modules/profile/User'));
 const Profile = lazy(() => import('./modules/profile/Profile'));
-
-//const Admin = lazy(() => import('./modules/admin/Admin'));
 
 const ErrorPage = lazy(() => import('./modules/error/ErrorPage'));
 
@@ -28,36 +25,32 @@ const ROLES = {
 };
 
 function App() {
-  const location = useLocation();
-
   return (
-    <AnimatePresence mode="wait">
-      {/* <Suspense fallback={<Spinner />}> */}
-        <Routes location={location} key={location.pathname}>
-          {/* public routes */}
-          <Route path="/auth" element={<Authentication />} />
+    <Suspense fallback={<Spinner />}>
+      <Routes>
+        {/* public routes */}
+        <Route path="/auth" element={<Authentication />} />
 
-          {/* private routes */}
-          <Route element={<PersistLogin />}>
-            <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Contributor, ROLES.Admin]} />}>
-              <Route path="/" element={<Main />}>
-                <Route index element={<Dashboard />} />
+        {/* private routes */}
+        <Route element={<PersistLogin />}>
+          <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Contributor, ROLES.Admin]} />}>
+            <Route path="/" element={<Main />}>
+              <Route index element={<Dashboard />} />
 
-                <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Contributor, ROLES.Admin]} />}>
-                <Route exact path="/profile/:uname" element={<User />} >
-                  <Route index element={<Profile />}/>
-                </Route>
+              <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Contributor, ROLES.Admin]} />}>
+                <Route exact path="/profile/:uname" element={<User />}>
+                  <Route index element={<Profile />} />
                 </Route>
               </Route>
             </Route>
           </Route>
+        </Route>
 
-          {/* catch all */}
-          <Route path="/unauthorized" element={<ErrorPage code={403} />} />
-          <Route path="*" element={<ErrorPage code={404} />} />
-        </Routes>
-      {/* </Suspense> */}
-    </AnimatePresence>
+        {/* catch all */}
+        <Route path="/unauthorized" element={<ErrorPage code={403} />} />
+        <Route path="*" element={<ErrorPage code={404} />} />
+      </Routes>
+    </Suspense>
   );
 }
 

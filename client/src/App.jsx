@@ -1,12 +1,13 @@
 import './assets/css/global.css';
 
 import React, {Suspense, lazy} from 'react';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, useLocation} from 'react-router-dom';
 
 import RequireAuth from './modules/auth/RequireAuth';
 import PersistLogin from './modules/auth/PersistLogin';
 
 import Spinner from './component/Spinner';
+import {AnimatePresence} from 'framer-motion';
 
 const Authentication = lazy(() => import('./modules/auth/Authentication'));
 const Main = lazy(() => import('./modules/main/Main'));
@@ -24,30 +25,34 @@ const ROLES = {
 };
 
 function App() {
+  const location = useLocation();
+
   return (
-    <Suspense fallback={<Spinner />}>
-      <Routes>
-        {/* public routes */}
-        <Route path="/auth" element={<Authentication />} />
+    <AnimatePresence mode="wait">
+      <Suspense fallback={<Spinner />}>
+        <Routes location={location} key={location.pathname}>
+          {/* public routes */}
+          <Route path="/auth" element={<Authentication />} />
 
-        {/* private routes */}
-        <Route element={<PersistLogin />}>
-          <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Contributor, ROLES.Admin]} />}>
-            <Route path="/" element={<Main />}>
-              <Route index element={<Dashboard />} />
+          {/* private routes */}
+          <Route element={<PersistLogin />}>
+            <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Contributor, ROLES.Admin]} />}>
+              <Route path="/" element={<Main />}>
+                <Route index element={<Dashboard />} />
 
-              <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
-                <Route path="/profile" element={<Admin />} />
+                <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
+                  <Route path="/profile" element={<Admin />} />
+                </Route>
               </Route>
             </Route>
           </Route>
-        </Route>
 
-        {/* catch all */}
-        <Route path="/unauthorized" element={<ErrorPage code={403} />} />
-        <Route path="*" element={<ErrorPage code={404} />} />
-      </Routes>
-    </Suspense>
+          {/* catch all */}
+          <Route path="/unauthorized" element={<ErrorPage code={403} />} />
+          <Route path="*" element={<ErrorPage code={404} />} />
+        </Routes>
+      </Suspense>
+    </AnimatePresence>
   );
 }
 

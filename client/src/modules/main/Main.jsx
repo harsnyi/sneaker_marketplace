@@ -6,6 +6,7 @@ import SideBarDesktop from '../navigation/SideBarDesktop';
 import NavigationMobile from '../navigation/NavigationMobile';
 // import Header from './Header';
 import {Outlet} from 'react-router-dom';
+import Transition from '../../component/Transition';
 
 const Main = () => {
   const isMobile = useMediaQuery({query: '(max-width: 1200px)'});
@@ -20,15 +21,17 @@ const Main = () => {
   }
 
   return (
-    <div className={`main_wrapper ${isSideOpen ? 'open' : ''}`}>
-      {renderSideBar()}
-      <div className="main_container">
-        {/* <Header /> */}
-        <main className="main_content">
-          <Outlet />
-        </main>
+    <Transition>
+      <div className={`main_wrapper ${isSideOpen ? 'open' : ''}`}>
+        {renderSideBar()}
+        <div className="main_container">
+          {/* <Header /> */}
+          <main className="main_content">
+            <Outlet />
+          </main>
+        </div>
       </div>
-    </div>
+    </Transition>
   );
 };
 

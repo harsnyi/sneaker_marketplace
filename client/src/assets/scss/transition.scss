@@ -1,64 +1,20 @@
 @import 'variables';
 
-.slide-in {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #0f0f0f;
-    transform-origin: bottom;
-}
-
-.slide-out {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #0f0f0f;
-    transform-origin: top;
-}
-
-.transition {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 200;
-
-    .transition_columns {
-        display: flex;
-        width: 100%;
-
-        .transition_column {
-            position: relative;
-            width: 20%;
-            border-right: 1px solid color(secondary, 100);
-            height: 100vh;
-            transform: translateY('-101%');
-            background-color: color(primary, 500);
-        }
-    }
-
-    .transition_element {
+.stairs {
+    .transition_container {
+        height: 100vh;
+        width: 100vw;
         position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        height: 50%;
-        width: 0;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 150;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        display: flex;
+        z-index: 99999;
 
-        h1 {
-            font-size: clamp(6rem, 10vw, 12rem);
-            line-height: 0;
-            text-align: center;
-            color: $clr-white;
-            font-family: $font-display;
+        div {
+            height: 100%;
+            width: 100%;
+            background-color: color(primary, 500);
         }
     }
 }

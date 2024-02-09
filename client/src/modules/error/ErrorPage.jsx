@@ -6,6 +6,7 @@ import {useTitle} from '../../hooks/useTitle';
 import Button from '../../component/Button';
 
 import {IoMdArrowBack} from 'react-icons/io';
+import Transition from '../../component/Transition';
 
 const errors = [
   {code: 404, title: 'Hoppá! Valami hiba történt.', message: 'Sajnáljuk, a keresett oldal nem található, vagy megszűnt.'},
@@ -23,27 +24,31 @@ const ErrorPage = ({code}) => {
   };
 
   return error ? (
-    <section className="error_wrapper">
-      <article>
-        <h3>{error.code}</h3>
-        <h1>{error.title}</h1>
-        <p>{error.message}</p>
-        <Button onClick={handleOnClick} className="secondary light" text="Vissza a kezdőlapra">
-          <IoMdArrowBack />
-        </Button>
-      </article>
-    </section>
+    <Transition>
+      <section className="error_wrapper">
+        <article>
+          <h3>{error.code}</h3>
+          <h1>{error.title}</h1>
+          <p>{error.message}</p>
+          <Button onClick={handleOnClick} className="secondary light" text="Vissza a kezdőlapra">
+            <IoMdArrowBack />
+          </Button>
+        </article>
+      </section>
+    </Transition>
   ) : (
-    <section className="error_wrapper">
-      <article>
-        <h3>500</h3>
-        <h1>Hoppá! Valami hiba történt.</h1>
-        <p>Sajnáljuk, váratlan hiba történt.</p>
-        <Button onClick={handleOnClick} className="secondary light" text="Vissza a kezdőlapra">
-          <IoMdArrowBack />
-        </Button>
-      </article>
-    </section>
+    <Transition>
+      <section className="error_wrapper">
+        <article>
+          <h3>500</h3>
+          <h1>Hoppá! Valami hiba történt.</h1>
+          <p>Sajnáljuk, váratlan hiba történt.</p>
+          <Button onClick={handleOnClick} className="secondary light" text="Vissza a kezdőlapra">
+            <IoMdArrowBack />
+          </Button>
+        </article>
+      </section>
+    </Transition>
   );
 };
 

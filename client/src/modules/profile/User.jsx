@@ -10,8 +10,8 @@ import Spinner from '../../component/Spinner';
 const User = () => {
     useTitle('Profil');
 
-    const {uname} = useParams();
-    const [data, setData] = useState(null);
+    const { uname } = useParams();
+    const [user, setUser] = useState({});
     const [loading, setLoading] = useState(false);
 
     const axiosPrivate = useAxiosPrivate();
@@ -19,21 +19,21 @@ const User = () => {
 
     useEffect(() => {
         const fetchData = async () => { 
-        setLoading(true);
+            setLoading(true);
 
-        try {
-            const response = await axiosPrivate.get(`/api/v1/get_profile_data/${uname}`);
-            setData(response.data);
-        } catch (error) {
-            addToast('error', error.message);
-        } finally { 
-            setLoading(false);
-        }
+            try {
+                const response = await axiosPrivate.get(`/api/v1/get_profile_data/${uname}`);
+                setUser(response.data);
+            } catch (error) {
+                addToast('error', error.message);
+            } finally { 
+                setLoading(false);
+            }
         };
 
         fetchData();
 
-    }, []);
+    }, [uname]);
 
      return (
         <>
@@ -41,7 +41,11 @@ const User = () => {
                 <Spinner />
             ) : (
                 <div>
-                <h1>Profil</h1>
+                    <h1>Profil</h1>
+                    <span>{user.username}</span><br/>
+                    <span>{user.last_name + ' '}</span>
+                    <span>{user.first_name}</span><br/>
+                    <span>{user.phone_number}</span><br />
                 </div>
             )}
         </>

@@ -96,6 +96,7 @@ const MultiStepForm = () => {
         setData(INITIAL_DATA);
         goTo(0);
       } catch (error) {
+        console.log(error.response.data);
         addToast('error', error.message);
       } finally {
         //hideLoader();

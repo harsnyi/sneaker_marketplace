@@ -31,6 +31,8 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                border: 1px solid color(secondary, 100);
+                border-radius: 50%;
 
                 img {
                     width: 2rem;

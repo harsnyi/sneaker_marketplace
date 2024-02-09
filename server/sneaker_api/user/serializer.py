@@ -8,10 +8,11 @@ import random
 
 EMAIL_REGEX = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 USERNAME_REGEX = r'^[a-zA-Z0-9_]+$'
+PHONE_REGEX = r'^\+36\d{2}-\d{3}-\d{4}$'
 DEFAULT_PROFILE_NUMBER_START = 1
 DEFAULT_PROFILE_NUMBER_END = 5
 
-#Max upload size for profile pictures is 4MB for now
+#Max upload size for profile pictures is 1MB for now
 MAX_PROFILE_PICTURE_SIZE = 1048576
 
 class RegistrationSerializer(serializers.ModelSerializer):
@@ -48,6 +49,11 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
         return gender
     
+    def validate_phone_number(self, phone_number):
+        if not re.match(PHONE_REGEX, phone_number):
+            raise serializers.ValidationError(f"{phone_number} nem helyes telefonszám.")
+        return phone_number
+        
     def validate_password(self, value):
         if len(value) < 8:
             raise serializers.ValidationError('A jelszónak legalább 8 karakter hosszúnak kell lennie.')
@@ -66,15 +72,16 @@ class RegistrationSerializer(serializers.ModelSerializer):
         fields = ('username','password','last_name','first_name','email','phone_number','gender')
 
     def create(self, validated_data):
-        user = User.objects.create_user(**validated_data)
         default_profile_random = random.randint(DEFAULT_PROFILE_NUMBER_START, DEFAULT_PROFILE_NUMBER_END)
-        validated_data['profile_picture'] = f"default_profile_pictures/{default_profile_random}.jpg"
+        validated_data['profile_picture'] = f"default_profile_pictures/{default_profile_random}.png"
+        user = User.objects.create_user(**validated_data)
         return user
     
     def validate(self, data):
         self.validate_email(data['email'])
         self.validate_username(data['username'])
         self.validate_password(data['password'])
+        self.validate_phone_number(data['phone_number'])
         self.validate_gender(data['gender'])
         return data
 

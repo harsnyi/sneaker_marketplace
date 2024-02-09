@@ -145,9 +145,9 @@ class GetProfilePicture(APIView):
                 'profile_picture_hash:': user.profile_picture_hash,
                 'profile_picture': user.profile_picture.url
             }
-            return JsonResponse(response,status=status.HTTP_200_OK)       
+            return Response(response,status=status.HTTP_200_OK)       
         except Exception:
-            return JsonResponse({'error': 'Error while fetching data.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'error': 'Error while fetching data.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
 class GetProfileData(APIView):
     """Returns the profile data if the user is authenticated"""
@@ -158,16 +158,16 @@ class GetProfileData(APIView):
         try:            
             user = User.objects.get(username=username)
             response = {
-                'user_name:': user.username,
+                'username': user.username,
                 'profile_picture': user.profile_picture.url,
-                'profile_picture_hash:': user.profile_picture_hash,
+                'profile_picture_hash': user.profile_picture_hash,
                 'last_name':user.last_name,
                 'first_name':user.first_name,
                 'phone_number':user.phone_number
             }
-            return JsonResponse(response,status=status.HTTP_200_OK)
+            return Response(response,status=status.HTTP_200_OK)
         except ObjectDoesNotExist:
-            return JsonResponse({'error':'Nem létezik felhasználó a megadott névvel.'},status=status.HTTP_404_NOT_FOUND)
+            return Response({'error':'Nem létezik felhasználó a megadott névvel.'},status=status.HTTP_404_NOT_FOUND)
         
 class UpdateAccessTokenView(APIView):
     """Validate the refresh token stored in the cookie,

@@ -11,6 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
 import logging
 import blurhash
+from django.core.exceptions import ObjectDoesNotExist
 
 from .serializer import (
     MyTokenObtainPairSerializer,
@@ -48,7 +49,7 @@ class ListUsers(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
         user_list = [user.username for user in User.objects.all()]
-        return JsonResponse(user_list, safe=False, status=status.HTTP_200_OK)
+        return Response(user_list, status=status.HTTP_200_OK)
         
 
 class RegisterView(APIView):
@@ -105,6 +106,9 @@ class AuthenticationView(APIView):
     
     
 class UploadProfilePicture(APIView):
+    """The user can upload a profile picture for her/himself and it will be
+    hashed shortly after(Blurhash)"""
+    
     parser_classes = [MultiPartParser, FormParser]
     permission_classes = [IsAuthenticated]
 
@@ -125,7 +129,46 @@ class UploadProfilePicture(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class GetProfilePicture(APIView):
+    """Returns the profile picture and the profile picture hash of the user
+    if the user is authenticated"""
+    
+    permission_classes = [IsAuthenticated]
 
+    def get(self, request, *args, **kwargs):
+        try:
+            user = request.user
+            logging.info(f"Profile picture: {user.profile_picture}")
+            logging.info(f"Profile picture hash: {user.profile_picture_hash}")
+            
+            response = {
+                'profile_picture_hash:': user.profile_picture_hash,
+                'profile_picture': user.profile_picture.url
+            }
+            return JsonResponse(response,status=status.HTTP_200_OK)       
+        except Exception:
+            return JsonResponse({'error': 'Error while fetching data.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+class GetProfileData(APIView):
+    """Returns the profile data if the user is authenticated"""
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request, username, *args, **kwargs):
+        logging.info(f"username: {username}")
+        try:            
+            user = User.objects.get(username=username)
+            response = {
+                'user_name:': user.username,
+                'profile_picture': user.profile_picture.url,
+                'profile_picture_hash:': user.profile_picture_hash,
+                'last_name':user.last_name,
+                'first_name':user.first_name,
+                'phone_number':user.phone_number
+            }
+            return JsonResponse(response,status=status.HTTP_200_OK)
+        except ObjectDoesNotExist:
+            return JsonResponse({'error':'Nem létezik felhasználó a megadott névvel.'},status=status.HTTP_404_NOT_FOUND)
+        
 class UpdateAccessTokenView(APIView):
     """Validate the refresh token stored in the cookie,
     then givin out fresh access token """

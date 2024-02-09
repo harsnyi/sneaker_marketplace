@@ -4,9 +4,12 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .models import Role
 import re
 from django.core.exceptions import ObjectDoesNotExist
+import random
 
 EMAIL_REGEX = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 USERNAME_REGEX = r'^[a-zA-Z0-9_]+$'
+DEFAULT_PROFILE_NUMBER_START = 1
+DEFAULT_PROFILE_NUMBER_END = 5
 
 #Max upload size for profile pictures is 4MB for now
 MAX_PROFILE_PICTURE_SIZE = 1048576
@@ -64,6 +67,8 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
+        default_profile_random = random.randint(DEFAULT_PROFILE_NUMBER_START, DEFAULT_PROFILE_NUMBER_END)
+        validated_data['profile_picture'] = f"default_profile_pictures/{default_profile_random}.jpg"
         return user
     
     def validate(self, data):

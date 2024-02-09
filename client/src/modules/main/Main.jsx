@@ -1,11 +1,13 @@
 import '../../assets/css/main-page.css';
 
 import React, {useState} from 'react';
-import {useMediaQuery} from 'react-responsive';
+import { useMediaQuery } from 'react-responsive';
+import {Outlet} from 'react-router-dom';
+
 import SideBarDesktop from '../navigation/SideBarDesktop';
 import NavigationMobile from '../navigation/NavigationMobile';
-// import Header from './Header';
-import {Outlet} from 'react-router-dom';
+import Header from './Header';
+
 import Transition from '../../component/Transition';
 
 const Main = () => {
@@ -25,7 +27,7 @@ const Main = () => {
       <div className={`main_wrapper ${isSideOpen ? 'open' : ''}`}>
         {renderSideBar()}
         <div className="main_container">
-          {/* <Header /> */}
+          <Header /> 
           <main className="main_content">
             <Outlet />
           </main>

@@ -13,7 +13,10 @@ const Authentication = lazy(() => import('./modules/auth/Authentication'));
 const Main = lazy(() => import('./modules/main/Main'));
 const Dashboard = lazy(() => import('./modules/main/Dashboard'));
 
-const Admin = lazy(() => import('./modules/admin/Admin'));
+const User = lazy(() => import('./modules/profile/User'));
+const Profile = lazy(() => import('./modules/profile/Profile'));
+
+//const Admin = lazy(() => import('./modules/admin/Admin'));
 
 const ErrorPage = lazy(() => import('./modules/error/ErrorPage'));
 
@@ -40,8 +43,10 @@ function App() {
               <Route path="/" element={<Main />}>
                 <Route index element={<Dashboard />} />
 
-                <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
-                  <Route path="/profile" element={<Admin />} />
+                <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Contributor, ROLES.Admin]} />}>
+                <Route exact path="/profile/:uname" element={<User />} >
+                  <Route index element={<Profile />}/>
+                </Route>
                 </Route>
               </Route>
             </Route>

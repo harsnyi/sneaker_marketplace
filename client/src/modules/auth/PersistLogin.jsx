@@ -8,7 +8,7 @@ import Spinner from '../../component/Spinner';
 const PersistLogin = () => {
   const [loading, setLoading] = useState(true);
   const refresh = useRefreshToken();
-  const {auth} = useAuth();
+  const { auth } = useAuth();
 
   const {addToast} = useToast();
 

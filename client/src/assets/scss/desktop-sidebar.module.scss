@@ -1,12 +1,10 @@
 @import './variables';
 
 .sidebar {
-    position: relative;
+    position: sticky;
     top: 0;
-    left: 0;
-    bottom: 0;
-    height: 100%;
-    width: 18rem;
+    height: 100vh;
+    width: $open-sidebar-width;
     background-color: $clr-white;
     transition: width 0.2s $animation-cubic;
     padding: 1rem 0;
@@ -14,6 +12,7 @@
     flex-direction: column;
     overflow-x: hidden;
     border-right: 1px solid color(secondary, 100);
+    z-index: 9999;
 
     // -ms-overflow-style: none;
     // scrollbar-width: none;

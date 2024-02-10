@@ -1,9 +1,14 @@
 import '../../assets/css/authentication.css';
-import Transition from '../../component/Transition';
+
+import React from 'react';
+import {useTitle} from '../../hooks/useTitle';
+
 import AuthTabs from './AuthTabs';
 import Hero from './Hero';
 
 const Authentication = () => {
+  useTitle('Belépés');
+
   return (
     <>
       <section className="auth_page">

@@ -3,7 +3,8 @@ import '../../assets/css/multi-step-form.css';
 import React from 'react';
 
 import axios from '../../setup/Axios';
-import {useRef, useState} from 'react';
+import {useRef, useState, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 import {useMultiStepForm} from '../../hooks/useMultiStepForm';
 
 import {useToast} from '../../hooks/useToast';
@@ -33,13 +34,13 @@ const INITIAL_DATA = {
 const REGISTER_URL = '/api/v1/registration';
 
 const MultiStepForm = () => {
+  const navigate = useNavigate();
   const accountRef = useRef();
   const personalRef = useRef();
-
-  //const {showLoader, hideLoader} = useLoader();
   const {addToast} = useToast();
 
   const [data, setData] = useState(INITIAL_DATA);
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
   const updateData = (fields) => {
@@ -55,12 +56,12 @@ const MultiStepForm = () => {
     {
       label: 'Fiók információ',
       svg: <MdAccountBox />,
-      component: <AccountForm ref={accountRef} {...data} updateData={updateData} />,
+      component: <AccountForm ref={accountRef} {...data} updateData={updateData} err={errors} />,
     },
     {
       label: 'Személyes adatok',
       svg: <FaIdCard />,
-      component: <PersonalForm ref={personalRef} {...data} updateData={updateData} />,
+      component: <PersonalForm ref={personalRef} {...data} updateData={updateData} err={errors} />,
     },
   ]);
 
@@ -71,7 +72,6 @@ const MultiStepForm = () => {
 
     const isValid = personalRef.current.isValid();
     if (isValid) {
-      //showLoader();
       setLoading(true);
       try {
         await axios.post(
@@ -93,9 +93,19 @@ const MultiStepForm = () => {
 
         addToast('success', 'Sikeres regisztráció! Kérjük, jelentkezz be!');
         setData(INITIAL_DATA);
-        goTo(0);
+        navigate('/auth?tab=log');
       } catch (error) {
-        addToast('error', error.message);
+        addToast('error', 'Kérjük, javítsd a hibás mezőket!');
+        Object.entries(error.response.data).forEach(([field, messages]) => {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            [field]: messages[0],
+          }));
+        });
+        // If the error is for the email or username field, navigate to the first step
+        if (error.response.data.email || error.response.data.username) {
+          goTo(0);
+        }
       } finally {
         setLoading(false);
       }

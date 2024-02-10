@@ -71,29 +71,27 @@
     opacity: 0;
   }
 }
-.stairs .overlay {
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  background-color: #000;
-}
-.stairs .transition_container {
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  display: flex;
-  z-index: 999;
-}
-.stairs .transition_container div {
-  position: relative;
-  height: 100%;
+.image img {
   width: 100%;
-  background-color: #FF3300;
-  border-right: 1px solid #989FAD;
-}/*# sourceMappingURL=transition-page.css.map */
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.image .image_placeholder {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: #CFD3D9;
+  animation: pulsate 1.5s infinite ease-in-out;
+}
+
+@keyframes pulsate {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=image.css.map */

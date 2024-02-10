@@ -1,0 +1,31 @@
+@import 'variables';
+
+.image {
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .image_placeholder {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background-color: color(secondary, 100);
+        animation: pulsate 1.5s infinite ease-in-out;
+    }
+}
+
+
+@keyframes pulsate {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.75;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

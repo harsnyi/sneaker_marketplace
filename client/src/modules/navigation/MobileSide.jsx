@@ -54,6 +54,7 @@ const MobileSide = ({mobileNavStyle, sideBarOpen}) => {
 
   const signOut = async () => {
     await logout();
+    localStorage.removeItem('isFirstRender');
     navigate('/auth');
   };
 

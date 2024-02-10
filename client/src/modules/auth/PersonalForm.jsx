@@ -9,8 +9,8 @@ import {FaAngleDown} from 'react-icons/fa';
 const NAME_REGEX = /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+([ -][A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+)*$/;
 const PHONE_REGEX = /^\+36\d{2}-\d{3}-\d{4}$/;
 
-const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, updateData}, ref) => {
-  const [errors, setErrors] = useState({});
+const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, updateData, err}, ref) => {
+  const [errors, setErrors] = useState(err || {});
   const {addToast} = useToast();
 
   useImperativeHandle(ref, () => ({

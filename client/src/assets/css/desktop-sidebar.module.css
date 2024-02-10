@@ -72,11 +72,9 @@
   }
 }
 .sidebar {
-  position: relative;
+  position: sticky;
   top: 0;
-  left: 0;
-  bottom: 0;
-  height: 100%;
+  height: 100vh;
   width: 18rem;
   background-color: #fff;
   transition: width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -85,6 +83,7 @@
   flex-direction: column;
   overflow-x: hidden;
   border-right: 1px solid #CFD3D9;
+  z-index: 9999;
   /*
   ::-webkit-scrollbar {
       display: none;

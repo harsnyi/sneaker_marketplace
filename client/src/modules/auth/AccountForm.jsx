@@ -7,8 +7,8 @@ import {useToast} from '../../hooks/useToast';
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const USERNAME_REGEX = /^(?!.*\s{2})[a-z0-9_. ]+(?<!\s)$/i;
 
-const AccountForm = forwardRef(({email, username, password, passwordConfirmation, updateData}, ref) => {
-  const [errors, setErrors] = useState({});
+const AccountForm = forwardRef(({email, username, password, passwordConfirmation, updateData, err}, ref) => {
+  const [errors, setErrors] = useState(err || {});
   const {addToast} = useToast();
 
   useImperativeHandle(ref, () => ({

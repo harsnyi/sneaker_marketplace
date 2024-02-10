@@ -1,7 +1,6 @@
 import desktopSideStyle from '../../assets/css/desktop-sidebar.module.css';
 
 import React from 'react';
-import {useEffect, useState} from 'react';
 import {NavLink, useNavigate} from 'react-router-dom';
 import {useAuth} from '../../hooks/useAuth';
 

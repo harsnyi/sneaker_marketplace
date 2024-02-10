@@ -9,8 +9,6 @@ import axios from '../../setup/Axios';
 import {useNavigate, useLocation} from 'react-router-dom';
 import {useState} from 'react';
 import {useDebounce} from '../../hooks/useDebounce';
-//import {useLoader} from '../../hooks/useLoader';
-//import {useLoading} from '../../hooks/useLoading';
 import {useToast} from '../../hooks/useToast';
 import {useAuth} from '../../hooks/useAuth';
 
@@ -32,8 +30,6 @@ const Login = ({setShowResetPass}) => {
 
   const {setAuth} = useAuth();
   const {addToast} = useToast();
-  //const {showLoader, hideLoader} = useLoader();
-  //const {loading, setLoading} = useLoading();
 
   useDebounce(
     () => {
@@ -96,14 +92,13 @@ const Login = ({setShowResetPass}) => {
       return;
     }
 
-    //showLoader();
     setLoading(true);
     try {
       const response = await axios.post(LOGIN_URL, JSON.stringify({email: email, password}), {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
       });
-      
+
       const accessToken = response?.data?.access_token;
       const roles = jwtDecode(accessToken).roles;
       const username = jwtDecode(accessToken).username;
@@ -116,7 +111,6 @@ const Login = ({setShowResetPass}) => {
     } catch (error) {
       addToast('error', error.message);
     } finally {
-      //hideLoader();
       setLoading(false);
     }
   };
@@ -133,6 +127,7 @@ const Login = ({setShowResetPass}) => {
           type="email"
           value={email}
           label="E-Mail * "
+          autoFocus={true}
           onChange={(value) => {
             setEmail(value);
           }}

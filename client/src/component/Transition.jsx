@@ -29,7 +29,7 @@ const Transition = ({setAnimating, children}) => {
       top: 0,
     },
     enter: (i) => ({
-      height: '100%',
+      height: '105%',
       transition: {
         duration: 0.3,
         delay: 0.05 * columnOrder[i - 1], // Use the shuffled column order to determine the delay
@@ -46,6 +46,9 @@ const Transition = ({setAnimating, children}) => {
             // Check if the animation of the first column in the shuffled order is complete
             setAnimating(false);
           }
+        },
+        transitionEnd: {
+          display: 'none',
         },
       },
     }),
@@ -66,7 +69,7 @@ const Transition = ({setAnimating, children}) => {
   const handleAnimationComplete = (i) => {
     if (i === numOfColumns) {
       // Delay the setting of isEnterFinished to true to allow the last column to finish its animation
-      setTimeout(() => setIsEnterFinished(true), 250);
+      setTimeout(() => setIsEnterFinished(true), 300);
     }
   };
 

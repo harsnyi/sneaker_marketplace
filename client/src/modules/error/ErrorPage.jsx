@@ -1,45 +1,34 @@
 import '../../assets/css/error-page.css';
 
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 import {useTitle} from '../../hooks/useTitle';
 import Button from '../../component/Button';
 
 import {IoMdArrowBack} from 'react-icons/io';
 
 const errors = [
-  {code: 404, title: 'Hoppá! Valami hiba történt.', message: 'Sajnáljuk, a keresett oldal nem található, vagy megszűnt.'},
-  {code: 403, title: 'Hoppá! Hiányzó jogosultság.', message: 'Sajnáljuk, de nincs jogosultságod a keresett oldal megtekintéséhez.'},
+  {code: 404, title: 'Hibás url cím!', message: 'Sajnáljuk, a keresett oldal nem található, vagy megszűnt.'},
+  {code: 403, title: 'Hiányzó jogosultság!', message: 'Sajnáljuk, de nincs jogosultságod a keresett oldal megtekintéséhez.'},
 ];
 
 const ErrorPage = ({code}) => {
   useTitle(`Hiba`);
   const navigate = useNavigate();
 
-  const error = errors.find((error) => error.code === code);
+  const error = errors.find((error) => error.code === code) || {code: 500, title: 'Valami hiba történt.', message: 'Sajnáljuk, ismeretlen hibába ütköztünk a betöltés során. Kérjük próbáld meg frissíteni az oldalt.'};
 
   const handleOnClick = () => {
     navigate('/');
   };
 
-  return error ? (
-    <section className="error_wrapper">
+  return (
+    <section className="error_wrapper" data-error-code={error.code}>
+      <Link to="/">Bump</Link>
       <article>
-        <h3>{error.code}</h3>
         <h1>{error.title}</h1>
         <p>{error.message}</p>
-        <Button onClick={handleOnClick} className="secondary light" text="Vissza a kezdőlapra">
-          <IoMdArrowBack />
-        </Button>
-      </article>
-    </section>
-  ) : (
-    <section className="error_wrapper">
-      <article>
-        <h3>500</h3>
-        <h1>Hoppá! Valami hiba történt.</h1>
-        <p>Sajnáljuk, váratlan hiba történt.</p>
-        <Button onClick={handleOnClick} className="secondary light" text="Vissza a kezdőlapra">
+        <Button className="primary white" text="Térj vissza a kezdőlapra" onClick={handleOnClick}>
           <IoMdArrowBack />
         </Button>
       </article>

@@ -12,7 +12,7 @@
 
     .main_container {
         flex: 1;
-        background-color: $clr-white;
+        background-color: color(secondary, 50);
 
         .main_header {
             position: sticky;
@@ -54,9 +54,14 @@
         ;
 
         .main_content {
+            //height: calc(100vh - 4rem - 1rem);
             height: calc(100vh - 4rem);
             overflow-y: auto;
+            //margin: .5rem;
             padding: 0.5rem 1rem;
+            background-color: $clr-white;
+            ///border-radius: $border-radius-2;
+            //border: 1px solid color(secondary, 100)
         }
     }
 }

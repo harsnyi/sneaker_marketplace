@@ -73,8 +73,7 @@
 }
 .image img {
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .image .image_placeholder {
   position: relative;

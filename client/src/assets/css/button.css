@@ -121,6 +121,15 @@
 .btn.primary:disabled:active {
   background-color: #FF3300;
 }
+.btn.primary.white {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #B8BDC6;
+}
+.btn.primary.white:hover, .btn.primary.white:active {
+  border-color: #657084;
+  background-color: #E0E0E0;
+}
 .btn.secondary {
   font-weight: 500;
   border: 1px solid #B8BDC6;

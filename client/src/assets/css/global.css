@@ -127,7 +127,6 @@ a {
 
 .link {
   position: relative;
-  width: -moz-fit-content;
   width: fit-content;
   color: #FF3300;
   cursor: pointer;

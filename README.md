@@ -35,11 +35,3 @@ cd .\server\venv
 python .\sneaker_api\manage.py runserver
 ```
 
-## Jogosultságok
-
-```diff
-* Guest : 4001
-! User : 5002
-- Contributor : 6003
-+ Admin : 7004
-```

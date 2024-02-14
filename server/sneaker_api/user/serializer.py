@@ -103,6 +103,7 @@ class UploadProfilePictureSerializer(serializers.ModelSerializer):
         
     def validate(self, data):
         self.validate_profile_picture(data['profile_picture'])
+        return data
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod

@@ -115,6 +115,7 @@ class UploadProfilePicture(APIView):
     def put(self, request, *args, **kwargs):
         user = request.user
         serializer = UploadProfilePictureSerializer(user,data=request.data)
+        logging.info(f"Validating the new profile picture of {user.username}")
         
         if serializer.is_valid():
             profile_picture = serializer.validated_data['profile_picture']

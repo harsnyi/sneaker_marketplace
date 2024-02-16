@@ -15,11 +15,7 @@ const MobileNav = ({mobileNavStyle, toggleSideBar, sideBarOpen}) => {
     <header className={mobileNavStyle['navbar']}>
       <ul className={mobileNavStyle['navbar-list']}>
         <li className={mobileNavStyle['navbar-list-item']}>
-          <h1>
-            Under
-            <br />
-            Retail
-          </h1>
+          <h1>Bump</h1>
         </li>
         {navItems.map((item, index) => (
           <li key={index} className={mobileNavStyle['navbar-list-item']}>

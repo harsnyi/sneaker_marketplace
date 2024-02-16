@@ -6,6 +6,7 @@ import {useTitle} from '../../hooks/useTitle';
 import Button from '../../component/Button';
 
 import {IoMdArrowBack} from 'react-icons/io';
+import Reveal from '../../component/Reveal';
 
 const errors = [
   {code: 404, title: 'Hibás url cím!', message: 'Sajnáljuk, a keresett oldal nem található, vagy megszűnt.'},
@@ -26,8 +27,12 @@ const ErrorPage = ({code}) => {
     <section className="error_wrapper" data-error-code={error.code}>
       <Link to="/">Bump</Link>
       <article>
-        <h1>{error.title}</h1>
-        <p>{error.message}</p>
+        <Reveal>
+          <h1>{error.title}</h1>
+        </Reveal>
+        <Reveal delay={0.05}>
+          <p>{error.message}</p>
+        </Reveal>
         <Button className="primary white" text="Térj vissza a kezdőlapra" onClick={handleOnClick}>
           <IoMdArrowBack />
         </Button>

@@ -35,6 +35,8 @@ const User = () => {
     };
 
     fetchData();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uname]);
 
   return (
@@ -51,7 +53,7 @@ const User = () => {
           <br />
           <span>{user.phone_number}</span>
           <br />
-          <Image src={img} alt={user.username} />
+          <Image src={img} alt={user.username} hash={'L8C5$0[70cyG?K9tEn}s00Fj%7R?'} />
         </div>
       )}
     </>

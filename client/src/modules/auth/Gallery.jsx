@@ -1,5 +1,5 @@
 import React from 'react';
-//import '../../component/Image'
+import Image from '../../component/Image';
 
 const Gallery = ({images, columns}) => {
   const imagePerColumn = Math.floor(images.length / columns);
@@ -7,14 +7,14 @@ const Gallery = ({images, columns}) => {
   const createColumn = (startIndex) => {
     const column = [];
     for (let j = 0; j < imagePerColumn; j++) {
-      {
-        /*column.push(<Image key={startIndex + j} src={images[startIndex + j]} alt="background" />); */
-      }
+      column.push(<Image key={startIndex + j} src={images[startIndex + j]} hash={'L8C5$0[70cyG?K9tEn}s00Fj%7R?'} alt="background" />);
+      /*
       column.push(
         <div key={startIndex + j} className="image">
           <img src={images[startIndex + j]} alt="background" />
         </div>
       );
+      */
     }
     return column;
   };

@@ -1,15 +1,16 @@
 @import 'variables';
 
 .image {
+    position: relative;
+
     img {
-        width: 100%;
         object-fit: cover;
     }
 
     .image_placeholder {
-        position: relative;
-        width: 100px;
-        height: 100px;
+        position: absolute;
+        height: 200px;
+        width: 200px;
         background-color: color(secondary, 100);
         animation: pulsate 1.5s infinite ease-in-out;
     }

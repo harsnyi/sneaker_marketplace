@@ -71,14 +71,16 @@
     opacity: 0;
   }
 }
+.image {
+  position: relative;
+}
 .image img {
-  width: 100%;
   object-fit: cover;
 }
 .image .image_placeholder {
-  position: relative;
-  width: 100px;
-  height: 100px;
+  position: absolute;
+  height: 200px;
+  width: 200px;
   background-color: #CFD3D9;
   animation: pulsate 1.5s infinite ease-in-out;
 }

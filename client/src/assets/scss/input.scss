@@ -42,7 +42,6 @@
             font-size: 0.9rem;
             background-color: transparent;
             border: 1px solid color(secondary, 200);
-
             border-radius: $border-radius-1;
 
             &:-webkit-autofill,
@@ -50,6 +49,13 @@
             &:-webkit-autofill:focus {
                 -webkit-text-fill-color: $clr-black;
                 -webkit-box-shadow: 0 0 0px 1000px $clr-white inset;
+            }
+
+            &.textarea {
+                &~label {
+                    top: 1rem;
+                    transform: translateY(0);
+                }
             }
 
             &:focus {
@@ -60,6 +66,12 @@
                     color: color(secondary, 500);
                     font-size: 1.1rem;
                     background-color: $clr-white;
+                }
+
+                &.textarea {
+                    &~label {
+                        transform: translateY(-50%);
+                    }
                 }
 
                 &~.eye {

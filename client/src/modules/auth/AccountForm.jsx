@@ -34,7 +34,7 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
         }));
       });
 
-      addToast('error', 'Kérjük, töltsd ki a csillaggal jelölt mezőket!');
+      addToast('error', 'Kérjük töltsd ki a csillaggal jelölt mezőket!');
       return false;
     }
 
@@ -42,7 +42,7 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
     if (Object.values(errors).every((x) => x === '')) {
       return true;
     } else {
-      addToast('error', 'Kérjük, javítsd a hibás mezőket!');
+      addToast('error', 'Kérjük javítsd a hibás mezőket!');
       return false;
     }
   };

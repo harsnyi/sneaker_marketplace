@@ -91,11 +91,12 @@ const MultiStepForm = () => {
           }
         );
 
-        addToast('success', 'Sikeres regisztráció! Kérjük, jelentkezz be!');
+        addToast('success', 'Sikeres regisztráció! Kérjük jelentkezz be!');
         setData(INITIAL_DATA);
         navigate('/auth?tab=log');
       } catch (error) {
-        addToast('error', 'Kérjük, javítsd a hibás mezőket!');
+        addToast('error', 'Kérjük javítsd a hibás mezőket!');
+        console.log(error.response.data);
         Object.entries(error.response.data).forEach(([field, messages]) => {
           setErrors((prevErrors) => ({
             ...prevErrors,

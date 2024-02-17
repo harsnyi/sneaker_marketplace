@@ -8,7 +8,9 @@ from .views import(
     ListUsers,
     UploadProfilePicture,
     GetProfileData,
-    GetProfilePicture
+    GetProfilePicture,
+    GetUserData,
+    UpdateUserData
 )
 
 urlpatterns = [
@@ -21,5 +23,7 @@ urlpatterns = [
     path('list_users',ListUsers.as_view(),name='list_users'),
     path('upload_profile_picture',UploadProfilePicture.as_view(),name='upload_profile_picture'),
     path('get_profile_picture',GetProfilePicture.as_view(),name='get_profile_picture'),
-    path('get_profile_data/<str:username>',GetProfileData.as_view(),name='get_profile_data')
+    path('get_profile_data/<str:username>',GetProfileData.as_view(),name='get_profile_data'),
+    path('get_user_data',GetUserData.as_view(),name='get_user_data'),
+    path('update_user_data', UpdateUserData.as_view(), name='update_user_data')
 ]

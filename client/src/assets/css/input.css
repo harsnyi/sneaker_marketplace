@@ -117,6 +117,10 @@
   -webkit-text-fill-color: #000;
   -webkit-box-shadow: 0 0 0px 1000px #fff inset;
 }
+.input_wrapper .input_group .input_field.textarea ~ label {
+  top: 1rem;
+  transform: translateY(0);
+}
 .input_wrapper .input_group .input_field:focus {
   border: 1px solid #657084;
 }
@@ -125,6 +129,9 @@
   color: #657084;
   font-size: 1.1rem;
   background-color: #fff;
+}
+.input_wrapper .input_group .input_field:focus.textarea ~ label {
+  transform: translateY(-50%);
 }
 .input_wrapper .input_group .input_field:focus ~ .eye {
   color: #657084;

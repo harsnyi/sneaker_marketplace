@@ -23,12 +23,14 @@ class User(AbstractUser):
         },
     )
     gender = models.IntegerField(blank=True, null=True)
-    bio = models.TextField(max_length=500, blank=True, null=True)
+    bio = models.TextField(max_length=500, blank=True, null=True, default="")
     location = models.CharField(max_length=30, blank=True, null=True)
     birth_date = models.DateField(blank=True, null=True)
     phone_number = models.CharField(max_length=25, blank=True, null=True)
     profile_picture = models.ImageField(upload_to = user_directory_path, null=True, blank=True)
     profile_picture_hash = models.CharField(max_length=100, blank=True, null=True)
+    username_change_blocking_time = models.DateTimeField(blank=True, null=True)
+    username_change_count = models.IntegerField(default=0)
     
     def __str__(self):
         return self.username

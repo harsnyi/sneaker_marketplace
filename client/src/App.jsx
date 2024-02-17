@@ -15,6 +15,9 @@ const Dashboard = lazy(() => import('./modules/main/Dashboard'));
 const User = lazy(() => import('./modules/profile/User'));
 const Profile = lazy(() => import('./modules/profile/Profile'));
 
+const Settings = lazy(() => import('./modules/settings/Settings'));
+const BasicSettings = lazy(() => import('./modules/settings/BasicSettings'));
+
 const ErrorPage = lazy(() => import('./modules/error/ErrorPage'));
 
 const ROLES = {
@@ -42,6 +45,13 @@ function App() {
                   <Route index element={<Profile />} />
                 </Route>
               </Route>
+
+              <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Contributor, ROLES.Admin]} />}>
+                <Route exact path="/settings" element={<Settings />} >
+                  <Route index element={<BasicSettings />}/>
+                </Route>
+              </Route>
+
             </Route>
           </Route>
         </Route>

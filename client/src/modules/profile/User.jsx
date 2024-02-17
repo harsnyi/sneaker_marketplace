@@ -6,9 +6,6 @@ import {useAxiosPrivate} from '../../hooks/useAxiosPrivate';
 import {useToast} from '../../hooks/useToast';
 
 import Spinner from '../../component/Spinner';
-import Image from '../../component/Image';
-
-import img from '../../assets/images/background/small/1Um3fmYoIBs.jpg';
 
 const User = () => {
   useTitle('Profil');
@@ -52,8 +49,6 @@ const User = () => {
           <span>{user.first_name}</span>
           <br />
           <span>{user.phone_number}</span>
-          <br />
-          <Image src={img} alt={user.username} hash={'L8C5$0[70cyG?K9tEn}s00Fj%7R?'} />
         </div>
       )}
     </>

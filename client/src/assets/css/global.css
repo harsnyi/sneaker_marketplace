@@ -154,6 +154,25 @@ ul {
   list-style-type: none;
 }
 
+textarea {
+  resize: none;
+}
+
+form .field_wrapper {
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5rem;
+}
+form .field_wrapper .input_wrapper {
+  width: 100%;
+}
+
+@media only screen and (max-width: 1200px) {
+  form .field_wrapper {
+    flex-direction: column;
+    row-gap: 0.25rem;
+  }
+}
 @media only screen and (max-width: 768px) {
   html {
     font-size: 0.9rem;

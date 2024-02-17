@@ -13,14 +13,18 @@ const Input = ({type, label, error, success, value, name, onChange, className, a
     onChange(event.target.value);
   };
 
-  const inputType = isPasswordVisible ? 'text' : type;
+  const inputType = type === "textarea" ? "textarea" : (isPasswordVisible ? 'text' : type);
   const inputClassName = className + (error ? ' error' : ' ') + (success ? ' input-success' : ' ');
 
   return (
     <>
       <div className="input_wrapper">
         <div className="input_group">
-          <input type={inputType} value={value} onChange={handleOnChange} name={name} className={inputClassName} placeholder=" " autoFocus={autoFocus} />
+          {type === "textarea" ? (
+            <textarea value={value} onChange={handleOnChange} name={name} className={`${inputClassName} textarea`} rows={7} placeholder=" " autoFocus={autoFocus} />
+          ) : (
+            <input type={inputType} value={value} onChange={handleOnChange} name={name} className={inputClassName} placeholder=" " autoFocus={autoFocus} />
+          )}
           <label>{label}</label>
           {type === 'password' && (isPasswordVisible ? <FaEye onClick={handleTogglePasswordVisibility} className="eye" /> : <FaEyeSlash onClick={handleTogglePasswordVisibility} className="eye" />)}
         </div>

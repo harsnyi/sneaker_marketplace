@@ -92,14 +92,37 @@ ul {
     list-style-type: none;
 }
 
-// Media Queries
+textarea {
+    resize: none;
+}
+
+form {
+    .field_wrapper {
+        display: flex;
+        flex-direction: row;
+        column-gap: 0.5rem;
+
+        .input_wrapper {
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: $media-query-lg) {
+    form {
+        .field_wrapper {
+            flex-direction: column;
+            row-gap: 0.25rem;
+        }
+    }
+}
+
 @media only screen and (max-width: $media-query-md) {
     html {
         font-size: 0.9rem;
     }
 }
 
-// Media Queries - Mobile
 @media only screen and (max-width: $media-query-sm) {
     html {
         font-size: 0.8rem;

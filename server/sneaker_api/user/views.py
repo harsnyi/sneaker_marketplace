@@ -12,12 +12,16 @@ from rest_framework.parsers import MultiPartParser, FormParser
 import logging
 import blurhash
 from django.core.exceptions import ObjectDoesNotExist
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+from django.utils import timezone
 
 from .serializer import (
     MyTokenObtainPairSerializer,
     LoginSerializer,
     RegistrationSerializer,
-    UploadProfilePictureSerializer
+    UploadProfilePictureSerializer,
+    UserUpdateSerializer
 )
 
 logging.basicConfig(
@@ -151,7 +155,7 @@ class GetProfilePicture(APIView):
             return Response({'error': 'Error while fetching data.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
 class GetProfileData(APIView):
-    """Returns the profile data if the user is authenticated"""
+    """Returns the profile data of a user if the user is authenticated"""
     permission_classes = [IsAuthenticated]
     
     def get(self, request, username, *args, **kwargs):
@@ -169,7 +173,60 @@ class GetProfileData(APIView):
             return Response(response,status=status.HTTP_200_OK)
         except ObjectDoesNotExist:
             return Response({'error':'Nem létezik felhasználó a megadott névvel.'},status=status.HTTP_404_NOT_FOUND)
+
+class GetUserData(APIView):
+    """Returns the credentials of the authenticated user based on the auth token"""
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request, *args, **kwargs):
+        try:            
+            user = request.user
+            response = {
+                'username': user.username,
+                'bio':user.bio,
+                'profile_picture': user.profile_picture.url,
+                'profile_picture_hash': user.profile_picture_hash,
+                'last_name':user.last_name,
+                'first_name':user.first_name,
+                'phone_number':user.phone_number,
+                'address':user.location
+            }
+            return Response(response,status=status.HTTP_200_OK)
+        except Exception:
+            return Response({'error': 'Error while fetching data.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class UpdateUserData(APIView):
+    """Updates the user credentials"""
+    permission_classes = [IsAuthenticated]
+    
+    def put(self, request, *args, **kwargs):
+        user = request.user
+        user.username_change_blocking_time = datetime.today()
+        user.username_change_blocking_time += relativedelta(minutes=+ 5 ** user.username_change_count)
+        serializer = UserUpdateSerializer(user, data=request.data, context={'request': request})
+        logging.info(f"{user.username_change_blocking_time}")
+        logging.info(f"{datetime.today()}")
         
+        delta = relativedelta(datetime.today(), user.username_change_blocking_time)
+        delta_minutes = delta.hours * 60 + delta.minutes
+        logging.info(f"{delta}")
+        
+        if True: 
+            if serializer.is_valid():
+                user = serializer.save()
+                user.username_change_count += 1
+                
+                user.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+
+            return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+        return Response({'non_field_errors': f" Ennyi idő múlva módosíthatod a felhasználóneved: {relativedelta(datetime.now(),user.username_change_blocking_time).minutes}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+            
+        
+        
+
 class UpdateAccessTokenView(APIView):
     """Validate the refresh token stored in the cookie,
     then givin out fresh access token """

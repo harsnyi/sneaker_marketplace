@@ -82,13 +82,8 @@ const Login = ({setShowResetPass}) => {
       });
     }
 
-    if (!email || !password) {
-      addToast('error', 'Kérjük, töltsd ki a csillaggal jelölt mezőket!');
-      return;
-    }
-
     if (Object.values(errors).some((error) => error)) {
-      addToast('error', 'Kérjük, javítsd a hibás mezőket!');
+      addToast('error', 'Kérjük javítsd a hibás mezőket!');
       return;
     }
 
@@ -109,7 +104,7 @@ const Login = ({setShowResetPass}) => {
 
       navigate(from, {replace: true});
     } catch (error) {
-      addToast('error', error.message);
+      addToast('error', error.response.data.error);
     } finally {
       setLoading(false);
     }

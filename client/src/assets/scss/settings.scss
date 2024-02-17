@@ -1,0 +1,17 @@
+@import 'variables';
+
+.settings_wrapper {
+    position: relative;
+    flex: 1;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        background-color: $clr-white;
+        padding: 2rem;
+        border-radius: $border-radius-2;
+        border: 1px solid color(secondary, 100);
+        max-width: $media-query-md;
+        margin: 0 auto;
+    }
+}

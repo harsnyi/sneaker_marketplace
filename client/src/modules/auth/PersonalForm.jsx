@@ -35,7 +35,7 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
         }));
       });
 
-      addToast('error', 'Kérjük, töltsd ki a csillaggal jelölt mezőket!');
+      addToast('error', 'Kérjük töltsd ki a csillaggal jelölt mezőket!');
       return false;
     }
 
@@ -43,7 +43,7 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
     if (Object.values(errors).every((x) => x === '')) {
       return true;
     } else {
-      addToast('error', 'Kérjük, javítsd a hibás mezőket!');
+      addToast('error', 'Kérjük javítsd a hibás mezőket!');
       return false;
     }
   };

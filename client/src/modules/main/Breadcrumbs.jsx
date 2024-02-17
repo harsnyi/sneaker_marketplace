@@ -9,7 +9,8 @@ const mapping = {
   favorites: {label: 'Kedvencek', isLink: true},
   messages: {label: 'Üzenetek', isLink: true},
   notifications: {label: 'Értesítések', isLink: true},
-  sell: {label: 'Eladás', isLink: true},
+  sell: { label: 'Eladás', isLink: true },
+  settings: {label: 'Beállítások', isLink: true}
 };
 
 const Breadcrumbs = () => {

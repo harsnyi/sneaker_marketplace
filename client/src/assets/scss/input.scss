@@ -3,6 +3,11 @@
 .input_wrapper {
     margin: 0.5rem 0;
 
+    .input_desc {
+        margin-bottom: .5rem;
+        line-height: 1.8;
+    }
+
     .input_group {
         position: relative;
         display: flex;
@@ -22,7 +27,7 @@
             padding: 0 0.2rem;
         }
 
-        .eye {
+        .input_svg {
             position: absolute;
             top: 50%;
             right: 1rem;
@@ -34,6 +39,10 @@
             z-index: 1;
             background-color: transparent;
             color: color(secondary, 300);
+
+            &.success {
+                color: color(green, 600) !important;
+            }
         }
 
         .input_field {
@@ -74,7 +83,7 @@
                     }
                 }
 
-                &~.eye {
+                &~.input_svg {
                     color: color(secondary, 500);
                 }
             }
@@ -90,7 +99,7 @@
                     background-color: $clr-white;
                 }
 
-                &~.eye {
+                &~.input_svg {
                     color: $clr-black;
                 }
 

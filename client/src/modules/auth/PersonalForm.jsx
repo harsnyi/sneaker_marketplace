@@ -110,6 +110,7 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
           }}
           className="input_field"
           error={errors.lastName}
+          success={lastName && !errors.lastName}
           autoFocus
         />
         <Input
@@ -121,6 +122,7 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
           }}
           className="input_field"
           error={errors.firstName}
+          success={firstName && !errors.firstName}
         />
       </div>
       <Input
@@ -132,6 +134,7 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
         }}
         className="input_field"
         error={errors.phoneNumber}
+        success={phoneNumber && !errors.phoneNumber}
       />
       <div className="select_wrapper">
         <select

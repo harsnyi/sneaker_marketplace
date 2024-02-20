@@ -74,6 +74,10 @@
 .input_wrapper {
   margin: 0.5rem 0;
 }
+.input_wrapper .input_desc {
+  margin-bottom: 0.5rem;
+  line-height: 1.8;
+}
 .input_wrapper .input_group {
   position: relative;
   display: flex;
@@ -92,7 +96,7 @@
   transition: 0.2s;
   padding: 0 0.2rem;
 }
-.input_wrapper .input_group .eye {
+.input_wrapper .input_group .input_svg {
   position: absolute;
   top: 50%;
   right: 1rem;
@@ -104,6 +108,9 @@
   z-index: 1;
   background-color: transparent;
   color: #989FAD;
+}
+.input_wrapper .input_group .input_svg.success {
+  color: #38DB00 !important;
 }
 .input_wrapper .input_group .input_field {
   padding: 1rem 2rem 1rem 1rem;
@@ -133,7 +140,7 @@
 .input_wrapper .input_group .input_field:focus.textarea ~ label {
   transform: translateY(-50%);
 }
-.input_wrapper .input_group .input_field:focus ~ .eye {
+.input_wrapper .input_group .input_field:focus ~ .input_svg {
   color: #657084;
 }
 .input_wrapper .input_group .input_field:invalid, .input_wrapper .input_group .input_field:not(:placeholder-shown) {
@@ -145,7 +152,7 @@
   font-size: 1.1rem;
   background-color: #fff;
 }
-.input_wrapper .input_group .input_field:invalid ~ .eye, .input_wrapper .input_group .input_field:not(:placeholder-shown) ~ .eye {
+.input_wrapper .input_group .input_field:invalid ~ .input_svg, .input_wrapper .input_group .input_field:not(:placeholder-shown) ~ .input_svg {
   color: #000;
 }
 .input_wrapper .input_group .input_field:invalid:focus, .input_wrapper .input_group .input_field:not(:placeholder-shown):focus {

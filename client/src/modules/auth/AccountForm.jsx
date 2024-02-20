@@ -164,6 +164,7 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
         }}
         className="input_field"
         error={errors.email}
+        success={email && !errors.email}
         autoFocus
       />
       <Input
@@ -175,6 +176,7 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
         }}
         className="input_field"
         error={errors.username}
+        success={username && !errors.username}
       />
       <div className="field_wrapper">
         <Input

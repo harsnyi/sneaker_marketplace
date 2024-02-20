@@ -1,8 +1,8 @@
 import '../assets/css/input.css';
 import {useState} from 'react';
-import {FaEye, FaEyeSlash} from 'react-icons/fa';
+import {FaEye, FaEyeSlash, FaCheck} from 'react-icons/fa';
 
-const Input = ({type, label, error, success, value, name, onChange, className, autoFocus}) => {
+const Input = ({type, label, description, error, success, value, name, onChange, className, autoFocus, ...props}) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
 
   const handleTogglePasswordVisibility = () => {
@@ -13,22 +13,20 @@ const Input = ({type, label, error, success, value, name, onChange, className, a
     onChange(event.target.value);
   };
 
-  const inputType = type === "textarea" ? "textarea" : (isPasswordVisible ? 'text' : type);
-  const inputClassName = className + (error ? ' error' : ' ') + (success ? ' input-success' : ' ');
+  const inputType = type === 'textarea' ? 'textarea' : isPasswordVisible ? 'text' : type;
+  const inputClassName = className + (error ? ' error' : ' ') + (success ? ' success' : ' ');
 
   return (
     <>
       <div className="input_wrapper">
+        {/* description && <p className="input_desc">{description}</p> */}
         <div className="input_group">
-          {type === "textarea" ? (
-            <textarea value={value} onChange={handleOnChange} name={name} className={`${inputClassName} textarea`} rows={7} placeholder=" " autoFocus={autoFocus} />
-          ) : (
-            <input type={inputType} value={value} onChange={handleOnChange} name={name} className={inputClassName} placeholder=" " autoFocus={autoFocus} />
-          )}
+          {type === 'textarea' ? <textarea value={value} onChange={handleOnChange} name={name} className={`${inputClassName} textarea`} rows={props.rows} placeholder=" " autoFocus={autoFocus} /> : <input type={inputType} value={value} onChange={handleOnChange} name={name} className={inputClassName} placeholder=" " autoFocus={autoFocus} />}
           <label>{label}</label>
-          {type === 'password' && (isPasswordVisible ? <FaEye onClick={handleTogglePasswordVisibility} className="eye" /> : <FaEyeSlash onClick={handleTogglePasswordVisibility} className="eye" />)}
+          {type === 'password' && (isPasswordVisible ? <FaEye onClick={handleTogglePasswordVisibility} className="input_svg" /> : <FaEyeSlash onClick={handleTogglePasswordVisibility} className="input_svg" />)}
+          {success && <FaCheck className="input_svg success" />}
         </div>
-        {error && <span className="error_msg">{error}</span>}
+        {error && <p className="error_msg">{error}</p>}
       </div>
     </>
   );

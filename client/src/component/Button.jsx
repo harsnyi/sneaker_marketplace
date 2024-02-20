@@ -12,7 +12,7 @@ const Button = ({children, className, loading, text, ...attributes}) => {
       ) : (
         <>
           {children}
-          <span>{text}</span>
+          {text && <span>{text}</span>}
         </>
       )}
     </button>

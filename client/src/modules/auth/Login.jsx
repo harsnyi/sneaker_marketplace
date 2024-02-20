@@ -129,6 +129,7 @@ const Login = ({setShowResetPass}) => {
           className="input_field"
           name="lgn-email"
           error={errors.email}
+          success={email && !errors.email}
         />
         <Input
           type="password"

@@ -1,17 +1,18 @@
 import '../../assets/css/settings.css';
 
-import { useTitle } from '../../hooks/useTitle';
+import {useTitle} from '../../hooks/useTitle';
 import {Outlet} from 'react-router-dom';
 
-const Settings = () => { 
-    useTitle('Beállítások');
+import SettingsNav from './SettingsNav';
 
-    return (
-        <>
-            <h1>Settings</h1>
-            <Outlet />
-        </>
-    );
-}
+const Settings = () => {
+  useTitle('Beállítások');
+  return (
+    <section className="settings_section">
+      <SettingsNav />
+      <Outlet />
+    </section>
+  );
+};
 
 export default Settings;

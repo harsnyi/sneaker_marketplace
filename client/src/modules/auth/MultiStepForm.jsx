@@ -3,7 +3,7 @@ import '../../assets/css/multi-step-form.css';
 import React from 'react';
 
 import axios from '../../setup/Axios';
-import {useRef, useState, useEffect} from 'react';
+import {useRef, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useMultiStepForm} from '../../hooks/useMultiStepForm';
 
@@ -12,10 +12,8 @@ import {useToast} from '../../hooks/useToast';
 import {IoMdArrowBack} from 'react-icons/io';
 import {IoMdArrowForward} from 'react-icons/io';
 import {FaCheck} from 'react-icons/fa6';
-import {HiPencilSquare} from 'react-icons/hi2';
-import {MdAccountBox} from 'react-icons/md';
+import {MdAccountBox, MdDoneAll} from 'react-icons/md';
 import {FaIdCard} from 'react-icons/fa';
-
 import Button from '../../component/Button';
 import AccountForm from './AccountForm';
 import PersonalForm from './PersonalForm';
@@ -147,7 +145,7 @@ const MultiStepForm = () => {
             </Button>
           ) : (
             <Button type="submit" text="Regisztráció" className="primary" loading={loading}>
-              <HiPencilSquare />
+              <MdDoneAll />
             </Button>
           )}
         </div>

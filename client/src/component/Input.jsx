@@ -21,7 +21,7 @@ const Input = ({type, label, description, error, success, value, name, onChange,
       <div className="input_wrapper">
         {/* description && <p className="input_desc">{description}</p> */}
         <div className="input_group">
-          {type === 'textarea' ? <textarea value={value} onChange={handleOnChange} name={name} className={`${inputClassName} textarea`} rows={props.rows} placeholder=" " autoFocus={autoFocus} /> : <input type={inputType} value={value} onChange={handleOnChange} name={name} className={inputClassName} placeholder=" " autoFocus={autoFocus} />}
+          {type === 'textarea' ? <textarea value={value} onChange={handleOnChange} name={name} className={`${inputClassName} textarea`} placeholder=" " autoFocus={autoFocus} {...props} /> : <input type={inputType} value={value} onChange={handleOnChange} name={name} className={inputClassName} placeholder=" " autoFocus={autoFocus} {...props} />}
           <label>{label}</label>
           {type === 'password' && (isPasswordVisible ? <FaEye onClick={handleTogglePasswordVisibility} className="input_svg" /> : <FaEyeSlash onClick={handleTogglePasswordVisibility} className="input_svg" />)}
           {success && <FaCheck className="input_svg success" />}

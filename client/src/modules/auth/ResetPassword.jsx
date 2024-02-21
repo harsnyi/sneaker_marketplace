@@ -1,7 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
 
-// import {useLoader} from '../../hooks/useLoader';
 import {useDebounce} from '../../hooks/useDebounce';
 
 import Input from '../../component/Input';
@@ -16,8 +15,6 @@ const ResetPassword = ({setShowResetPass}) => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
-
-  // const {showLoader, hideLoader} = useLoader();
 
   useDebounce(
     () => {
@@ -63,12 +60,13 @@ const ResetPassword = ({setShowResetPass}) => {
             type="email"
             value={email}
             label="E-Mail * "
+            autoFocus={true}
             onChange={(value) => {
               setEmail(value);
             }}
             className="input_field"
-            name="lgn-email"
             error={errors.email}
+            success={errors.email === '' && email !== ''}
           />
           <Button type="submit" text="Jelszó Helyreállítása" className="primary" loading={loading}>
             <HiArrowPath />

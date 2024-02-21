@@ -368,7 +368,7 @@
   margin: 2rem 0 1rem 0;
   font-size: 2rem;
 }
-.auth_page .auth_container .reset-password_wrapper .reset-password_body p {
+.auth_page .auth_container .reset-password_wrapper .reset-password_body p:not(.error_msg) {
   color: #5C6678;
   margin-bottom: 1rem;
 }

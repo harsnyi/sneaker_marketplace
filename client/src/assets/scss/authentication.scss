@@ -315,7 +315,7 @@
                     font-size: 2rem;
                 }
 
-                p {
+                p:not(.error_msg) {
                     color: color(secondary, 600);
                     margin-bottom: 1rem;
                 }

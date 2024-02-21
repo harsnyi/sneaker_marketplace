@@ -84,6 +84,7 @@
   width: 18rem;
   background-color: #F0F1F3;
   border-right: 1px solid #CFD3D9;
+  z-index: 999;
 }
 .settings_section .settings_nav .settings_nav_list .settings_nav_list_item:not(:first-child) {
   margin-top: 1.5rem;
@@ -117,6 +118,24 @@
 .settings_section .settings_nav .settings_nav_list .settings_nav_list_item ul li .link.active::before {
   background-color: #000;
   transform: scaleX(1);
+}
+.settings_section .settings_edit_wrapper {
+  margin-left: 18rem;
+  flex: 1;
+  padding: 1.5rem 2rem;
+}
+.settings_section .settings_edit_wrapper .form_box {
+  max-width: 768px;
+  margin: 0 auto;
+}
+.settings_section .settings_edit_wrapper .form_box h1 {
+  margin: 1rem 0 2rem 0;
+  font-size: 2rem;
+}
+.settings_section .settings_edit_wrapper .form_box form {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
 }
 .settings_section .settings_wrapper {
   margin-left: 18rem;
@@ -201,12 +220,4 @@
 .settings_section .settings_wrapper .settings_box .user_info .info_row .info_box .info_label,
 .settings_section .settings_wrapper .settings_box .user_info .info_row .info_box .info_value {
   font-size: 1rem;
-}
-.settings_section .settings_wrapper form {
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  padding: 0 2rem;
-  max-width: 768px;
-  margin: 0 auto;
 }/*# sourceMappingURL=settings.css.map */

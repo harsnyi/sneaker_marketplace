@@ -93,7 +93,7 @@
   transform: translateY(-50%);
   color: #989FAD;
   pointer-events: none;
-  transition: 0.2s;
+  transition: transfrom 0.2s, font-size 0.2s, color 0.2s, top 0.2s;
   padding: 0 0.2rem;
 }
 .input_wrapper .input_group .input_svg {
@@ -128,8 +128,13 @@
   top: 1rem;
   transform: translateY(0);
 }
+.input_wrapper .input_group .input_field:disabled {
+  background-color: #F0F1F3;
+  cursor: not-allowed;
+}
 .input_wrapper .input_group .input_field:focus {
   border: 1px solid #657084;
+  background-color: #fff;
 }
 .input_wrapper .input_group .input_field:focus ~ label {
   top: 0;
@@ -145,12 +150,16 @@
 }
 .input_wrapper .input_group .input_field:invalid, .input_wrapper .input_group .input_field:not(:placeholder-shown) {
   border: 1px solid #000;
+  background-color: #fff;
 }
 .input_wrapper .input_group .input_field:invalid ~ label, .input_wrapper .input_group .input_field:not(:placeholder-shown) ~ label {
   top: 0;
   color: #000;
   font-size: 1.1rem;
   background-color: #fff;
+}
+.input_wrapper .input_group .input_field:invalid.textarea ~ label, .input_wrapper .input_group .input_field:not(:placeholder-shown).textarea ~ label {
+  transform: translateY(-50%);
 }
 .input_wrapper .input_group .input_field:invalid ~ .input_svg, .input_wrapper .input_group .input_field:not(:placeholder-shown) ~ .input_svg {
   color: #000;
@@ -160,6 +169,7 @@
 }
 .input_wrapper .input_group .input_field.error {
   border: 2px solid #F02522;
+  background-color: #fff;
 }
 .input_wrapper .input_group .input_field.error ~ label {
   color: #F02522;

@@ -13,6 +13,7 @@
         width: $open-sidebar-width;
         background-color: color(secondary, 50);
         border-right: 1px solid color(secondary, 100);
+        z-index: 999;
 
         .settings_nav_list {
             .settings_nav_list_item {
@@ -62,6 +63,28 @@
         }
     }
 
+    .settings_edit_wrapper {
+        margin-left: $open-sidebar-width;
+        flex: 1;
+        padding: 1.5rem 2rem;
+
+        .form_box {
+            max-width: $media-query-md;
+            margin: 0 auto;
+
+            h1 {
+                margin: 1rem 0 2rem 0;
+                font-size: 2rem;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                background-color: $clr-white;
+            }
+        }
+    }
+
     .settings_wrapper {
         margin-left: $open-sidebar-width;
         flex: 1;
@@ -94,7 +117,6 @@
                 }
 
                 div {
-                    //padding: .5rem 0;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
@@ -164,15 +186,6 @@
                     }
                 }
             }
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            background-color: $clr-white;
-            padding: 0 2rem;
-            max-width: $media-query-md;
-            margin: 0 auto;
         }
     }
 }

@@ -127,7 +127,6 @@ const Login = ({setShowResetPass}) => {
             setEmail(value);
           }}
           className="input_field"
-          name="lgn-email"
           error={errors.email}
           success={email && !errors.email}
         />
@@ -139,7 +138,6 @@ const Login = ({setShowResetPass}) => {
             setPassword(value);
           }}
           className="input_field"
-          name="lgn-pass"
           error={errors.password}
         />
 

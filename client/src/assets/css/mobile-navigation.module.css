@@ -149,7 +149,7 @@
 .sidebar-container {
   position: fixed;
   width: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 1000;
   height: calc(100vh - 10rem);
   top: 5rem;

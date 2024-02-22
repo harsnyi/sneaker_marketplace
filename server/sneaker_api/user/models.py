@@ -48,6 +48,8 @@ class Role(models.Model):
         return f"{self.user.username} - {self.role}"
     
 class ChangedUsername(models.Model):
+    """Storing the previous usernames of a user"""
+    
     previous_username = models.CharField(
         max_length=140,
         error_messages={

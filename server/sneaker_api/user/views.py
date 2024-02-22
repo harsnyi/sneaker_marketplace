@@ -10,7 +10,6 @@ from rest_framework.parsers import MultiPartParser, FormParser
 import logging
 import blurhash
 from django.core.exceptions import ObjectDoesNotExist
-from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from django.utils import timezone
 

@@ -93,3 +93,5 @@ replay_pid*
 db.sqlite3
 
 profile_pictures
+
+filter_words

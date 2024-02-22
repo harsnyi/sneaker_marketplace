@@ -24,6 +24,9 @@ from .serializer import (
     UserUpdateSerializer
 )
 
+# PENALTY_FOR_CHANGING_USERNAME ** user.username_change_count will be the blocking time
+PENALTY_FOR_CHANGING_USERNAME = 5
+
 logging.basicConfig(
     format='%(levelname)s - %(asctime)s - %(message)s',
     level=logging.INFO
@@ -150,7 +153,7 @@ class GetProfilePicture(APIView):
                 'profile_picture_hash:': user.profile_picture_hash,
                 'profile_picture': user.profile_picture.url
             }
-            return Response(response,status=status.HTTP_200_OK)       
+            return Response(response,status=status.HTTP_200_OK)
         except Exception:
             return Response({'error': 'Error while fetching data.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
@@ -179,7 +182,7 @@ class GetUserData(APIView):
     permission_classes = [IsAuthenticated]
     
     def get(self, request, *args, **kwargs):
-        try:            
+        try:
             user = request.user
             response = {
                 'username': user.username,
@@ -200,33 +203,48 @@ class UpdateUserData(APIView):
     permission_classes = [IsAuthenticated]
     
     def put(self, request, *args, **kwargs):
-        user = request.user
-        user.username_change_blocking_time = datetime.today()
-        user.username_change_blocking_time += relativedelta(minutes=+ 5 ** user.username_change_count)
-        serializer = UserUpdateSerializer(user, data=request.data, context={'request': request})
-        logging.info(f"{user.username_change_blocking_time}")
-        logging.info(f"{datetime.today()}")
-        
-        delta = relativedelta(datetime.today(), user.username_change_blocking_time)
-        delta_minutes = delta.hours * 60 + delta.minutes
-        logging.info(f"{delta}")
-        
-        if True: 
+        try:
+            user = request.user
+            
+            serializer = UserUpdateSerializer(user, data=request.data, context={'request': request})
+            
             if serializer.is_valid():
-                user = serializer.save()
-                user.username_change_count += 1
+                new_username = serializer.validated_data['username']
+                if new_username != user.username:
+                    logging.info(f"User {user.username} wants to change username to {new_username}")
+                    
+                    if user.username_change_count < 1:
+                        user.username_change_blocking_time = timezone.localtime(timezone.now())
+                        logging.info(f"Blocking time for user {user.username} for the first time is {user.username_change_blocking_time}")
+                    
+                    elif user.username_change_count >= 1:
+                        if timezone.localtime(timezone.now()) > user.username_change_blocking_time:
+                            logging.info(f"Enabled to change?  TRUE")
+                            
+                            delta = relativedelta(minutes= PENALTY_FOR_CHANGING_USERNAME ** user.username_change_count)
+                            new_blocking_date = timezone.localtime(timezone.now()) + delta
+                            user.username_change_blocking_time = new_blocking_date
+                            logging.info(f"The penalty for changing username so often is {delta}")
+                            logging.info(f"New blocking date is {new_blocking_date}")
+                        else:
+                            blocking_delta = relativedelta(user.username_change_blocking_time,timezone.localtime(timezone.now()))
+                            logging.info(f"blocking_delta seconds: {blocking_delta.seconds}")
+                            logging.info(f"blocking_delta minutes: {blocking_delta.minutes}")
+                            logging.info(f"blocking_delta hours: {blocking_delta.hours}")
+                            error_message = f'Nem módosíthatod a felhasználóneved eddig: {blocking_delta.hours} óra,{blocking_delta.minutes} perc,{blocking_delta.seconds} másodperc'
+                            return Response({'non_field_errors': error_message}, status=status.HTTP_403_FORBIDDEN)
+                    
+                    user.username_change_count += 1
                 
+                user = serializer.save()
                 user.save()
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({'message':'Sikeres módosítás'},status=status.HTTP_200_OK)
 
             return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception:
+            return Response({'error': 'Error while fetching data.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
-        return Response({'non_field_errors': f" Ennyi idő múlva módosíthatod a felhasználóneved: {relativedelta(datetime.now(),user.username_change_blocking_time).minutes}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
-            
-        
-        
-
 class UpdateAccessTokenView(APIView):
     """Validate the refresh token stored in the cookie,
     then givin out fresh access token """

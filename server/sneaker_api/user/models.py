@@ -46,3 +46,16 @@ class Role(models.Model):
     
     def __str__(self):
         return f"{self.user.username} - {self.role}"
+    
+class ChangedUsername(models.Model):
+    previous_username = models.CharField(
+        max_length=140,
+        error_messages={
+            'required': "Ez a mező kötelező.",
+        },
+    )
+    time_of_change = models.DateTimeField(null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    
+    def __str__(self):
+        return f"{self.user.username} - {self.previous_username}"

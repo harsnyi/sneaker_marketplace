@@ -6,7 +6,7 @@ from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate
 from django.http import JsonResponse, HttpResponse
-from .models import Role, User
+from .models import Role, User, ChangedUsername
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
 import logging
@@ -213,11 +213,7 @@ class UpdateUserData(APIView):
                 if new_username != user.username:
                     logging.info(f"User {user.username} wants to change username to {new_username}")
                     
-                    if user.username_change_count < 1:
-                        user.username_change_blocking_time = timezone.localtime(timezone.now())
-                        logging.info(f"Blocking time for user {user.username} for the first time is {user.username_change_blocking_time}")
-                    
-                    elif user.username_change_count >= 1:
+                    if user.username_change_count >= 1:
                         if timezone.localtime(timezone.now()) > user.username_change_blocking_time:
                             logging.info(f"Enabled to change?  TRUE")
                             
@@ -231,10 +227,22 @@ class UpdateUserData(APIView):
                             logging.info(f"blocking_delta seconds: {blocking_delta.seconds}")
                             logging.info(f"blocking_delta minutes: {blocking_delta.minutes}")
                             logging.info(f"blocking_delta hours: {blocking_delta.hours}")
-                            error_message = f'Nem módosíthatod a felhasználóneved eddig: {blocking_delta.hours} óra,{blocking_delta.minutes} perc,{blocking_delta.seconds} másodperc'
+                            
+                            #There is gotta be a nicer way for this
+                            if blocking_delta.days > 0:
+                                error_message = f'Nem módosíthatod a felhasználóneved eddig: {blocking_delta.days} nap'
+                            elif blocking_delta.hours > 0:
+                                error_message = f'Nem módosíthatod a felhasználóneved eddig: {blocking_delta.hours} óra'
+                            else: 
+                                error_message = f'Nem módosíthatod a felhasználóneved eddig: {blocking_delta.minutes} perc, {blocking_delta.seconds} másodperc'
+                            
                             return Response({'non_field_errors': error_message}, status=status.HTTP_403_FORBIDDEN)
                     
                     user.username_change_count += 1
+                    ChangedUsername.objects.create(
+                        previous_username=user.username,
+                        user=user,
+                        time_of_change=timezone.localtime(timezone.now()))
                 
                 user = serializer.save()
                 user.save()

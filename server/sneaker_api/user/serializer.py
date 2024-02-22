@@ -1,6 +1,7 @@
 from .models import User, Role
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from django.utils import timezone
 import random
 import logging
 
@@ -31,6 +32,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         default_profile_random = random.randint(DEFAULT_PROFILE_NUMBER_START, DEFAULT_PROFILE_NUMBER_END)
         validated_data['profile_picture'] = f"default_profile_pictures/{default_profile_random}.png"
+        validated_data['username_change_blocking_time'] = timezone.localtime(timezone.now())
         user = User.objects.create_user(**validated_data)
         return user
     

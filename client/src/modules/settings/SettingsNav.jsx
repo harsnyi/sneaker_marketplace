@@ -1,6 +1,6 @@
 import {NavLink} from 'react-router-dom';
 
-import {MdAccountCircle} from 'react-icons/md';
+import {MdAccountCircle, MdQuestionMark} from 'react-icons/md';
 import {IoNotifications} from 'react-icons/io5';
 import {HiLockClosed} from 'react-icons/hi';
 
@@ -25,7 +25,7 @@ const nav = [
   },
   {
     title: 'Egyéb',
-    titleIcon: <MdAccountCircle />,
+    titleIcon: <MdQuestionMark />,
     items: [
       {text: 'Megjelenés', link: '/'},
       {text: 'Segítség és kapcsolat', link: '/'},

@@ -162,7 +162,8 @@
 .settings_section .settings_wrapper .settings_box.image_box img {
   width: 7rem;
   height: 7rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
 }
 .settings_section .settings_wrapper .settings_box.image_box div {

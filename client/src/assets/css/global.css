@@ -127,6 +127,7 @@ a {
 
 .link {
   position: relative;
+  width: -moz-fit-content;
   width: fit-content;
   color: #FF3300;
   cursor: pointer;
@@ -161,7 +162,8 @@ textarea {
 form .field_wrapper {
   display: flex;
   flex-direction: row;
-  column-gap: 0.5rem;
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
 }
 form .field_wrapper .input_wrapper {
   width: 100%;

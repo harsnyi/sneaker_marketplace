@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {useDebounce} from '../../hooks/useDebounce';
+import {useAuth} from '../../hooks/useAuth';
 import {useAxiosPrivate} from '../../hooks/useAxiosPrivate';
 import {useToast} from '../../hooks/useToast';
 import {motion} from 'framer-motion';
@@ -17,6 +18,7 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
+  const {setAuth} = useAuth();
   const axiosPrivate = useAxiosPrivate();
   const {addToast} = useToast();
 
@@ -148,6 +150,10 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
           bio: formData.bio,
           address: formData.address,
         }));
+        setAuth((prev) => ({
+          ...prev,
+          username: formData.username,
+        }));
         toggleForm();
       })
       .catch((error) => {
@@ -159,7 +165,7 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
   };
 
   return (
-    <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94]}} className="settings_edit_wrapper">
+    <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94]}} className="settings_edit_wrapper">
       <div className="form_box">
         <p className="link" onClick={toggleForm}>
           Vissza

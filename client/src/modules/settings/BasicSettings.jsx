@@ -7,7 +7,7 @@ import BsProfilePicForm from './BsProfilePicForm';
 import BsUserForm from './BsUserForm';
 import BsAddressForm from './BsAddressForm';
 
-import Button from '../../component/Button';
+import Button from '../form/Button';
 import Spinner from '../../component/Spinner';
 //import Modal from '../../component/Modal';
 
@@ -134,11 +134,14 @@ const BasicSettings = () => {
                 <Button className="secondary" onClick={toggleBsProfilePicForm}>
                   <AiOutlineEdit />
                 </Button>
-                <img src="https://via.placeholder.com/150" alt="Profilkép" />
-                <div>
-                  <span className="image_box_name">tesztelek</span>
-                  <span className="image_box_rank">Contributor</span>
-                  <span className="image_box_address">Szentes, Magyarország</span>
+                <h3>Fénykép</h3>
+                <div className="image_box_content">
+                  <img src="https://via.placeholder.com/150" alt="Profilkép" />
+                  <div>
+                    <span className="image_box_name">tesztelek</span>
+                    <span className="image_box_rank">Contributor</span>
+                    <span className="image_box_address">Szentes, Magyarország</span>
+                  </div>
                 </div>
               </article>
 
@@ -159,7 +162,7 @@ const BasicSettings = () => {
                     {label: 'Felhasználónév', value: formData.username || 'Nincs megadva'},
                     {label: 'Telefonszám', value: formData.phoneNumber || 'Nincs megadva'},
                   ],
-                  [{label: 'Bemutatkozás', value: formData.bio || 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime, aliquam?', span: true}],
+                  [{label: 'Bemutatkozás', value: formData.bio || 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta voluptate eveniet soluta? Modi, id? Minima ea eum repudiandae ex molestiae!', span: true}],
                 ]}
               />
 

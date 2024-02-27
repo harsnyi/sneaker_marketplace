@@ -97,11 +97,11 @@
   justify-content: space-between;
 }
 .main_wrapper .main_container .main_header .breadcrumbs .link {
-  color: #000;
+  color: #242424;
   font-size: 1rem;
 }
 .main_wrapper .main_container .main_header .breadcrumbs .link::before {
-  background-color: #000;
+  background-color: #242424;
 }
 .main_wrapper .main_container .main_header .breadcrumbs .last-crumb {
   color: #FF3300;
@@ -119,16 +119,14 @@
 .main_wrapper .main_container .main_header .header_img img {
   width: 2rem;
   height: 2rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 50%;
 }
 .main_wrapper .main_container .main_header .header_img svg {
   font-size: 1.5rem;
   width: 1.5rem;
   height: 1.5rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 50%;
 }
 .main_wrapper .main_container .main_content {

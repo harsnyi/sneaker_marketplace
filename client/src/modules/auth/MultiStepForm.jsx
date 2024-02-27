@@ -14,7 +14,7 @@ import {IoMdArrowForward} from 'react-icons/io';
 import {FaCheck} from 'react-icons/fa6';
 import {MdAccountBox, MdDoneAll} from 'react-icons/md';
 import {FaIdCard} from 'react-icons/fa';
-import Button from '../../component/Button';
+import Button from '../form/Button';
 import AccountForm from './AccountForm';
 import PersonalForm from './PersonalForm';
 

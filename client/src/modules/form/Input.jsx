@@ -1,4 +1,4 @@
-import '../assets/css/input.css';
+import '../../assets/css/input.css';
 import {useState} from 'react';
 import {FaEye, FaEyeSlash, FaCheck} from 'react-icons/fa';
 

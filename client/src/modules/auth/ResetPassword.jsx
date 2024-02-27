@@ -3,8 +3,8 @@ import {useState} from 'react';
 
 import {useDebounce} from '../../hooks/useDebounce';
 
-import Input from '../../component/Input';
-import Button from '../../component/Button';
+import Input from '../form/Input';
+import Button from '../form/Button';
 import {motion} from 'framer-motion';
 
 import {HiArrowPath} from 'react-icons/hi2';

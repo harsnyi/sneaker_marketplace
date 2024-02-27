@@ -29,19 +29,19 @@
 
             .breadcrumbs {
                 .link {
-                    color: $clr-black;
+                    color: $clr-font;
                     font-size: 1rem;
 
                     &::before {
-                        background-color: $clr-black;
+                        background-color: $clr-font;
                     }
                 }
 
                 .last-crumb {
-                    color: #FF3300;
+                    color: color(primary, 500);
 
                     &::before {
-                        background-color: #FF3300;
+                        background-color: color(primary, 500);
                     }
                 }
             }

@@ -5,10 +5,10 @@ import {useAxiosPrivate} from '../../hooks/useAxiosPrivate';
 import {useToast} from '../../hooks/useToast';
 import {motion} from 'framer-motion';
 
-import Input from '../../component/Input';
-import Button from '../../component/Button';
+import Input from '../form/Input';
+import Button from '../form/Button';
 
-import {GiSaveArrow} from 'react-icons/gi';
+import {HiDownload} from 'react-icons/hi';
 
 const USERNAME_REGEX = /^(?!.*\s{2})[a-z0-9_. ]+(?<!\s)$/i;
 const NAME_REGEX = /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+([ -][A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+)*$/;
@@ -168,9 +168,9 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
     <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94]}} className="settings_edit_wrapper">
       <div className="form_box">
         <p className="link" onClick={toggleForm}>
-          Vissza
+          Mégse
         </p>
-        <h1> Adatok frissítése</h1>
+        <h1>Adatok frissítése</h1>
         <form onSubmit={handleFormSubmit}>
           <Input
             type="text"
@@ -247,7 +247,7 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
           />
 
           <Button type="submit" text="Változtatások mentése" className="primary" loading={loading}>
-            <GiSaveArrow />
+            <HiDownload />
           </Button>
         </form>
       </div>

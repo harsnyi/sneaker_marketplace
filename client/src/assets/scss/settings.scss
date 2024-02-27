@@ -75,6 +75,15 @@
             h1 {
                 margin: 1rem 0 2rem 0;
                 font-size: 2rem;
+
+                &.page_title {
+                    margin-bottom: 0;
+                }
+            }
+
+            .page_desc {
+                color: color(secondary, 600);
+                margin-bottom: 2rem;
             }
 
             form {
@@ -105,34 +114,37 @@
             border: 1px solid color(secondary, 100);
 
             &.image_box {
-                display: flex;
-                flex-direction: row;
-                gap: 1.5rem;
 
-                img {
-                    width: 7rem;
-                    height: 7rem;
-                    object-fit: cover;
-                    border-radius: $border-radius-50;
-                }
-
-                div {
+                .image_box_content {
                     display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
+                    flex-direction: row;
+                    gap: 1.5rem;
 
-                    .image_box_name {
-                        font-size: 1.5rem;
-                        font-weight: 600;
+                    img {
+                        width: 7rem;
+                        height: 7rem;
+                        object-fit: cover;
+                        border-radius: $border-radius-50;
                     }
 
-                    .image_box_rank {
-                        text-transform: uppercase;
-                    }
+                    div {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
 
-                    .image_box_rank,
-                    .image_box_address {
-                        color: color(secondary, 600);
+                        .image_box_name {
+                            font-size: 1.5rem;
+                            font-weight: 600;
+                        }
+
+                        .image_box_rank {
+                            text-transform: uppercase;
+                        }
+
+                        .image_box_rank,
+                        .image_box_address {
+                            color: color(secondary, 600);
+                        }
                     }
                 }
             }
@@ -186,6 +198,15 @@
                     }
                 }
             }
+        }
+    }
+}
+
+@media only screen and (max-width: $media-query-lg) {
+    .settings_section {
+        .settings_nav {
+            height: calc(100vh - 2 * $mobile-nav-height);
+            top: $mobile-nav-height;
         }
     }
 }

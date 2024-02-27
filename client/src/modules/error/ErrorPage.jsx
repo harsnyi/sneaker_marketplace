@@ -3,7 +3,7 @@ import '../../assets/css/error-page.css';
 import React from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import {useTitle} from '../../hooks/useTitle';
-import Button from '../../component/Button';
+import Button from '../form/Button';
 
 import {IoMdArrowBack} from 'react-icons/io';
 import Reveal from '../../component/Reveal';

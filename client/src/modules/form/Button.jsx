@@ -1,8 +1,8 @@
-import '../assets/css/button.css';
+import '../../assets/css/button.css';
 
-import Spinner from './Spinner';
+import Spinner from '../../component/Spinner';
 
-const Button = ({children, className, loading, text, ...attributes}) => {
+const Button = ({children, className, loading, disabled, text, ...attributes}) => {
   const classN = className ? `btn ${className}` : 'btn';
 
   return (

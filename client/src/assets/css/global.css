@@ -104,12 +104,12 @@ html {
   line-height: 1.6;
   font-size: 1rem;
   letter-spacing: normal;
-  color: #000;
+  color: #242424;
 }
 
 a {
   text-decoration: none;
-  color: #000;
+  color: #242424;
 }
 
 .spinner {
@@ -127,7 +127,6 @@ a {
 
 .link {
   position: relative;
-  width: -moz-fit-content;
   width: fit-content;
   color: #FF3300;
   cursor: pointer;
@@ -162,8 +161,7 @@ textarea {
 form .field_wrapper {
   display: flex;
   flex-direction: row;
-  -moz-column-gap: 0.5rem;
-       column-gap: 0.5rem;
+  column-gap: 0.5rem;
 }
 form .field_wrapper .input_wrapper {
   width: 100%;

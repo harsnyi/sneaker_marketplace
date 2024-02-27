@@ -132,6 +132,13 @@
   margin: 1rem 0 2rem 0;
   font-size: 2rem;
 }
+.settings_section .settings_edit_wrapper .form_box h1.page_title {
+  margin-bottom: 0;
+}
+.settings_section .settings_edit_wrapper .form_box .page_desc {
+  color: #5C6678;
+  margin-bottom: 2rem;
+}
 .settings_section .settings_edit_wrapper .form_box form {
   display: flex;
   flex-direction: column;
@@ -154,32 +161,31 @@
   border-radius: 1rem;
   border: 1px solid #CFD3D9;
 }
-.settings_section .settings_wrapper .settings_box.image_box {
+.settings_section .settings_wrapper .settings_box.image_box .image_box_content {
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
 }
-.settings_section .settings_wrapper .settings_box.image_box img {
+.settings_section .settings_wrapper .settings_box.image_box .image_box_content img {
   width: 7rem;
   height: 7rem;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 50%;
 }
-.settings_section .settings_wrapper .settings_box.image_box div {
+.settings_section .settings_wrapper .settings_box.image_box .image_box_content div {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.settings_section .settings_wrapper .settings_box.image_box div .image_box_name {
+.settings_section .settings_wrapper .settings_box.image_box .image_box_content div .image_box_name {
   font-size: 1.5rem;
   font-weight: 600;
 }
-.settings_section .settings_wrapper .settings_box.image_box div .image_box_rank {
+.settings_section .settings_wrapper .settings_box.image_box .image_box_content div .image_box_rank {
   text-transform: uppercase;
 }
-.settings_section .settings_wrapper .settings_box.image_box div .image_box_rank,
-.settings_section .settings_wrapper .settings_box.image_box div .image_box_address {
+.settings_section .settings_wrapper .settings_box.image_box .image_box_content div .image_box_rank,
+.settings_section .settings_wrapper .settings_box.image_box .image_box_content div .image_box_address {
   color: #5C6678;
 }
 .settings_section .settings_wrapper .settings_box button {
@@ -221,4 +227,11 @@
 .settings_section .settings_wrapper .settings_box .user_info .info_row .info_box .info_label,
 .settings_section .settings_wrapper .settings_box .user_info .info_row .info_box .info_value {
   font-size: 1rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  .settings_section .settings_nav {
+    height: calc(100vh - 10rem);
+    top: 5rem;
+  }
 }/*# sourceMappingURL=settings.css.map */

@@ -3,11 +3,12 @@ import {motion} from 'framer-motion';
 import {useCallback, useState} from 'react';
 import cuid from 'cuid';
 
+import {useAuth} from '../../hooks/useAuth';
+import {useAxiosPrivate} from '../../hooks/useAxiosPrivate';
+import {useToast} from '../../hooks/useToast';
+
 import Button from '../form/Button';
 import Dropzone from '../form/Dropzone';
-
-import {useAuth} from '../../hooks/useAuth';
-import {useToast} from '../../hooks/useToast';
 
 import {HiUpload} from 'react-icons/hi';
 
@@ -16,14 +17,16 @@ const BsProfilePicForm = ({formData, setFormData, toggleForm}) => {
   const [loading, setLoading] = useState(false);
 
   const {setAuth} = useAuth();
+  const axiosPrivate = useAxiosPrivate();
   const {addToast} = useToast();
 
   const onDrop = useCallback((acceptedFiles) => {
     acceptedFiles.map((file) => {
       const reader = new FileReader();
 
-      reader.onload = function (e) {
-        setImages((prevState) => [...prevState, {id: cuid(), src: e.target.result}]);
+      reader.onload = function () {
+        console.log(file);
+        setImages((prevState) => [...prevState, {id: cuid(), src: file.path}]);
       };
 
       reader.readAsDataURL(file);
@@ -31,20 +34,22 @@ const BsProfilePicForm = ({formData, setFormData, toggleForm}) => {
     });
   }, []);
 
-  const onDropRejected = useCallback((fileRejections) => {
+  const onDropRejected = (fileRejections) => {
     if (fileRejections[0].errors[0].code === 'file-too-large') {
       addToast('error', 'A fájl mérete túl nagy. A megengedet méret 1MB.');
     } else {
       addToast('error', 'Hibás fájl formátum.');
     }
-  });
+  };
 
   const onFileDialogCancel = useCallback(() => {
     setImages([]);
   }, []);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
+
+    if (loading) return;
 
     if (images.length === 0) {
       addToast('warning', 'Először tölts fel egy képet a módosításhoz.');
@@ -52,20 +57,35 @@ const BsProfilePicForm = ({formData, setFormData, toggleForm}) => {
     }
 
     setLoading(true);
-    try {
-      console.log(images);
-    } catch (error) {
-      addToast('error', 'Hiba történt a kép feltöltése közben.');
-    } finally {
-      setLoading(false);
-    }
+    await axiosPrivate
+      .put('/api/v1/upload_profile_picture', {
+        profile_picture: images[0].src,
+      })
+      .then(() => {
+        addToast('success', 'Fénykép mentve!');
+        setFormData((prevData) => ({
+          ...prevData,
+          profilePicture: images[0].src,
+        }));
+        setAuth((prev) => ({
+          ...prev,
+          profilePicture: images[0].src,
+        }));
+        toggleForm();
+      })
+      .catch((error) => {
+        addToast('error', 'Hiba adódott a mentés során. Kérjük próbáld újra.');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
     <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94]}} className="settings_edit_wrapper">
       <div className="form_box">
         <p className="link" onClick={toggleForm}>
-          Mégse
+          Mégsem
         </p>
         <h1 className="page_title">Fénykép feltöltése</h1>
         <p className="page_desc">Maximum 1 darab képet tölthetsz fel, amely nem lehet nagyobb mint 1MB.</p>

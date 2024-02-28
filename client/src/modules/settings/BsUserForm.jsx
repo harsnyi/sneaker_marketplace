@@ -130,7 +130,7 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
     }
 
     setLoading(true);
-    axiosPrivate
+    await axiosPrivate
       .put('/api/v1/update_user_data', {
         username: formData.username,
         last_name: formData.lastname,
@@ -168,9 +168,10 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
     <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94]}} className="settings_edit_wrapper">
       <div className="form_box">
         <p className="link" onClick={toggleForm}>
-          Mégse
+          Mégsem
         </p>
-        <h1>Adatok frissítése</h1>
+        <h1 className="page_title">Adatok frissítése</h1>
+        <p className="page_desc">Figyelem! Az alábbi információk publikusak a többi felhasználó számára.</p>
         <form onSubmit={handleFormSubmit}>
           <Input
             type="text"

@@ -50,7 +50,13 @@ const INITIAL_DATA = {
   lastname: '',
   bio: '',
   phoneNumber: '',
-  address: '',
+  address: {
+    country: '',
+    city: '',
+    zip: '',
+    street: '',
+  },
+  profilePicture: '',
 };
 
 const BasicSettings = () => {
@@ -75,14 +81,16 @@ const BasicSettings = () => {
       await axiosPrivate
         .get(`/api/v1/get_user_data`)
         .then((response) => {
-          setFormData({
+          setFormData((prev) => ({
+            ...prev,
             username: response.data.username,
             firstname: response.data.first_name,
             lastname: response.data.last_name,
             bio: response.data.bio,
             phoneNumber: response.data.phone_number,
-            address: response.data.location,
-          });
+            address: response.data.address || INITIAL_DATA.address,
+            profilePicture: response.data.profile_picture,
+          }));
         })
         .catch((error) => {
           addToast('error', error.message);
@@ -91,14 +99,6 @@ const BasicSettings = () => {
           setLoading(false);
         });
     };
-
-    /*
-    if (!isFormOpen) {
-      fetchData();
-
-      [isFormOpen]
-    }
-    */
 
     fetchData();
 
@@ -138,18 +138,13 @@ const BasicSettings = () => {
                 <div className="image_box_content">
                   <img src="https://via.placeholder.com/150" alt="Profilkép" />
                   <div>
-                    <span className="image_box_name">tesztelek</span>
+                    <span className="image_box_name">{formData.username}</span>
                     <span className="image_box_rank">Contributor</span>
                     <span className="image_box_address">Szentes, Magyarország</span>
                   </div>
                 </div>
               </article>
 
-              {/*
-            <Modal isOpen={isFormOpen} close={toggleForm} title="Adatok szerkesztése">
-              <BsUserForm formData={formData} setFormData={setFormData} />
-              </Modal>
-               */}
               <SettingsBox
                 title="Adatok"
                 edit={toggleBsUserForm}
@@ -171,12 +166,12 @@ const BasicSettings = () => {
                 edit={toggleBsAddressForm}
                 data={[
                   [
-                    {label: 'Ország', value: 'Magyarország'},
-                    {label: 'Város', value: 'Szentes'},
+                    {label: 'Ország', value: formData.address.country || 'Nincs megadva'},
+                    {label: 'Város', value: formData.address.city || 'Nincs megadva'},
                   ],
                   [
-                    {label: 'Irányítószám', value: '6600'},
-                    {label: 'Utca, házszám', value: 'Dózsa Gy. u 168.'},
+                    {label: 'Irányítószám', value: formData.address.zip || 'Nincs megadva'},
+                    {label: 'Utca, házszám', value: formData.address.street || 'Nincs megadva'},
                   ],
                 ]}
               />

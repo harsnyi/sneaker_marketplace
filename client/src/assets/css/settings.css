@@ -144,10 +144,96 @@
   flex-direction: column;
   background-color: #fff;
 }
+.settings_section .settings_edit_wrapper .form_box .address_grid {
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-template-rows: 1fr;
+  gap: 2rem;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  border-radius: 1rem;
+  border: 1px solid #CFD3D9;
+  padding: 1rem 1.5rem;
+  overflow: hidden;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article h5 {
+  color: #989FAD;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article:hover {
+  border: 1px solid #657084;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article.add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #CFD3D9;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article.add:hover {
+  border: 1px dashed #657084;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article.add h4 {
+  text-align: center;
+  white-space: nowrap;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article.add svg {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article.add svg,
+.settings_section .settings_edit_wrapper .form_box .address_grid article.add h4 {
+  color: #FF3300;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article.address {
+  display: flex;
+  flex-direction: column;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article.address .delete {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article.address .delete svg {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article.address h4 {
+  font-size: 1.25rem;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article.address div {
+  padding: 1rem 0;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article.address .default {
+  display: flex;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article.address .default svg {
+  margin-right: 0.75rem;
+  color: #38DB00;
+}
+.settings_section .settings_edit_wrapper .form_box .address_grid article.address .secondary:not(.delete) {
+  border-radius: 0.5rem;
+}
 .settings_section .settings_wrapper {
   margin-left: 18rem;
   flex: 1;
   padding: 1.5rem 2rem;
+}
+.settings_section .settings_wrapper .page_title svg.spin {
+  animation: spin 15s linear infinite;
 }
 .settings_section .settings_wrapper .page_desc {
   color: #5C6678;

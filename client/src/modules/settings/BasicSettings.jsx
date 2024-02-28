@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useMemo} from 'react';
 import {useAxiosPrivate} from '../../hooks/useAxiosPrivate';
 import {useToast} from '../../hooks/useToast';
 import {motion} from 'framer-motion';
@@ -50,12 +50,24 @@ const INITIAL_DATA = {
   lastname: '',
   bio: '',
   phoneNumber: '',
-  address: {
-    country: '',
-    city: '',
-    zip: '',
-    street: '',
-  },
+  addresses: [
+    {
+      name: 'Otthon',
+      country: 'Magyarország',
+      city: 'Budapest',
+      zip: '1111',
+      street: 'Valami utca 11.',
+      default: true,
+    },
+    {
+      name: 'Munkahely',
+      country: 'Magyarország',
+      city: 'Budapest',
+      zip: '2222',
+      street: 'Valami utca 22.',
+      default: false,
+    },
+  ],
   profilePicture: '',
 };
 
@@ -88,7 +100,7 @@ const BasicSettings = () => {
             lastname: response.data.last_name,
             bio: response.data.bio,
             phoneNumber: response.data.phone_number,
-            address: response.data.address || INITIAL_DATA.address,
+            addresses: response.data.address || INITIAL_DATA.addresses,
             profilePicture: response.data.profile_picture,
           }));
         })
@@ -104,6 +116,10 @@ const BasicSettings = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const defaultAddress = useMemo(() => {
+    return formData.addresses.find((address) => address.default) || formData.addresses[0];
+  }, [formData.addresses]);
 
   const toggleBsProfilePicForm = () => {
     setIsBsProfilePicFormOpen(!isBsProfilePicFormOpen);
@@ -166,12 +182,12 @@ const BasicSettings = () => {
                 edit={toggleBsAddressForm}
                 data={[
                   [
-                    {label: 'Ország', value: formData.address.country || 'Nincs megadva'},
-                    {label: 'Város', value: formData.address.city || 'Nincs megadva'},
+                    {label: 'Ország', value: defaultAddress.country || 'Nincs megadva'},
+                    {label: 'Város', value: defaultAddress.city || 'Nincs megadva'},
                   ],
                   [
-                    {label: 'Irányítószám', value: formData.address.zip || 'Nincs megadva'},
-                    {label: 'Utca, házszám', value: formData.address.street || 'Nincs megadva'},
+                    {label: 'Irányítószám', value: defaultAddress.zip || 'Nincs megadva'},
+                    {label: 'Utca, házszám', value: defaultAddress.street || 'Nincs megadva'},
                   ],
                 ]}
               />

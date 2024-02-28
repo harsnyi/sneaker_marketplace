@@ -167,11 +167,22 @@ form .field_wrapper .input_wrapper {
   width: 100%;
 }
 
+.overflow_ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .page_title {
   font-size: 2rem;
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.page_desc {
+  color: #5C6678;
+  margin-bottom: 2rem;
 }
 
 @media only screen and (max-width: 1200px) {

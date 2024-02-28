@@ -45,6 +45,7 @@
                             color: $clr-black;
 
                             &::before {
+                                bottom: 2px;
                                 background-color: $clr-black
                             }
 
@@ -82,11 +83,6 @@
                 }
             }
 
-            .page_desc {
-                color: color(secondary, 600);
-                margin-bottom: 2rem;
-            }
-
             form {
                 display: flex;
                 flex-direction: column;
@@ -111,6 +107,7 @@
                     border: 1px solid color(secondary, 100);
                     padding: 1rem 1.5rem;
                     overflow: hidden;
+                    min-height: 22rem;
 
                     h5 {
                         color: color(secondary, 300);
@@ -127,7 +124,8 @@
                         flex-direction: column;
                         align-items: center;
                         justify-content: center;
-                        border: 1px dashed color(secondary, 100);
+                        border: 1px dashed color(secondary, 300);
+                        background-color: color(secondary, 50);
 
                         &:hover {
                             border: 1px dashed color(secondary, 500);
@@ -174,7 +172,7 @@
                             padding: 1rem 0;
                         }
 
-                        .default {
+                        .default_address {
                             display: flex;
                             align-items: center;
                             padding-top: .5rem;
@@ -187,6 +185,7 @@
                         }
 
                         .secondary:not(.delete) {
+                            margin-top: auto;
                             border-radius: $border-radius;
                         }
                     }
@@ -207,11 +206,6 @@
                     animation: spin 15s linear infinite;
                 }
             }
-        }
-
-        .page_desc {
-            color: color(secondary, 600);
-            margin-bottom: 2rem;
         }
 
         .settings_box {

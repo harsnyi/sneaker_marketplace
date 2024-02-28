@@ -110,6 +110,7 @@
   color: #000;
 }
 .settings_section .settings_nav .settings_nav_list .settings_nav_list_item ul li .link::before {
+  bottom: 2px;
   background-color: #000;
 }
 .settings_section .settings_nav .settings_nav_list .settings_nav_list_item ul li .link.active {
@@ -135,10 +136,6 @@
 .settings_section .settings_edit_wrapper .form_box h1.page_title {
   margin-bottom: 0;
 }
-.settings_section .settings_edit_wrapper .form_box .page_desc {
-  color: #5C6678;
-  margin-bottom: 2rem;
-}
 .settings_section .settings_edit_wrapper .form_box form {
   display: flex;
   flex-direction: column;
@@ -162,6 +159,7 @@
   border: 1px solid #CFD3D9;
   padding: 1rem 1.5rem;
   overflow: hidden;
+  min-height: 22rem;
 }
 .settings_section .settings_edit_wrapper .form_box .address_grid article h5 {
   color: #989FAD;
@@ -176,7 +174,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px dashed #CFD3D9;
+  border: 1px dashed #989FAD;
+  background-color: #F0F1F3;
 }
 .settings_section .settings_edit_wrapper .form_box .address_grid article.add:hover {
   border: 1px dashed #657084;
@@ -214,17 +213,18 @@
 .settings_section .settings_edit_wrapper .form_box .address_grid article.address div {
   padding: 1rem 0;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.address .default {
+.settings_section .settings_edit_wrapper .form_box .address_grid article.address .default_address {
   display: flex;
   align-items: center;
   padding-top: 0.5rem;
   padding-bottom: 1rem;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.address .default svg {
+.settings_section .settings_edit_wrapper .form_box .address_grid article.address .default_address svg {
   margin-right: 0.75rem;
   color: #38DB00;
 }
 .settings_section .settings_edit_wrapper .form_box .address_grid article.address .secondary:not(.delete) {
+  margin-top: auto;
   border-radius: 0.5rem;
 }
 .settings_section .settings_wrapper {
@@ -234,10 +234,6 @@
 }
 .settings_section .settings_wrapper .page_title svg.spin {
   animation: spin 15s linear infinite;
-}
-.settings_section .settings_wrapper .page_desc {
-  color: #5C6678;
-  margin-bottom: 2rem;
 }
 .settings_section .settings_wrapper .settings_box {
   position: relative;

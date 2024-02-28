@@ -108,12 +108,23 @@ form {
     }
 }
 
+.overflow_ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .page_title {
     font-size: 2rem;
     display: flex;
     align-items: center;
     gap: 1rem;
     //font-family: $font-secondary;
+}
+
+.page_desc {
+    color: color(secondary, 600);
+    margin-bottom: 2rem;
 }
 
 @media only screen and (max-width: $media-query-lg) {

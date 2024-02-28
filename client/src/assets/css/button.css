@@ -130,6 +130,16 @@
   border-color: #657084;
   background-color: #B8B8B8;
 }
+.btn.primary.red {
+  background-color: #F02522;
+  border: 1px solid #DA221F;
+}
+.btn.primary.red:hover {
+  background-color: #DA221F;
+}
+.btn.primary.red:active {
+  background-color: #AA1A18;
+}
 .btn.secondary {
   font-weight: 500;
   border: 1px solid #B8BDC6;
@@ -149,6 +159,16 @@
 }
 .btn.secondary.light:hover, .btn.secondary.light:active {
   border-color: #F0F1F3;
+}
+.btn.secondary.dark {
+  color: #fff;
+  background-color: #141414;
+}
+.btn.secondary.dark:hover {
+  background-color: #292929;
+}
+.btn.secondary.dark:active {
+  background-color: #3D3D3D;
 }
 .btn.tertiary {
   text-transform: capitalize;

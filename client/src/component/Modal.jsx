@@ -1,11 +1,10 @@
 import '../assets/css/modal.css';
-
 import React, {useRef, useEffect} from 'react';
-import Button from './Button';
-
+import {AnimatePresence, motion} from 'framer-motion';
+import Button from '../modules/form/Button';
 import {MdClose} from 'react-icons/md';
 
-const Modal = ({children, isOpen, close, title}) => {
+const Modal = ({children, isOpen, close}) => {
   const modalRef = useRef();
 
   useEffect(() => {
@@ -24,20 +23,20 @@ const Modal = ({children, isOpen, close, title}) => {
     };
   }, [isOpen, close]);
 
-  return isOpen ? (
-    <section className="modal_wrapper">
-      <div className="modal" ref={modalRef}>
-        <Button className="secondary close" onClick={close}>
-          <MdClose />
-        </Button>
-        <p className="link" onClick={close}>
-          Vissza
-        </p>
-        <h1 className="modal_title"> {title}</h1>
-        {children}
-      </div>
-    </section>
-  ) : null;
+  return (
+    <AnimatePresence mode="wait">
+      {isOpen && (
+        <motion.section className="modal_wrapper" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} transition={{duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94]}}>
+          <motion.div className="modal" ref={modalRef} initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} transition={{duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94]}}>
+            <Button className="secondary close" onClick={close}>
+              <MdClose />
+            </Button>
+            {children}
+          </motion.div>
+        </motion.section>
+      )}
+    </AnimatePresence>
+  );
 };
 
 export default Modal;

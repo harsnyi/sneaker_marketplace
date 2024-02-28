@@ -46,6 +46,7 @@
                 gap: 0.25rem;
                 cursor: pointer;
 
+                /*
                 &::after {
                     content: '';
                     position: absolute;
@@ -59,6 +60,7 @@
                     border-top-right-radius: 25px;
                     transition: height 0.2s $animation-cubic;
                 }
+                */
 
                 &.nolink {
                     cursor: default;
@@ -295,6 +297,7 @@
                     transition: color 0.2s $animation-cubic;
                 }
 
+                /*
                 &::after {
                     content: '';
                     position: absolute;
@@ -308,6 +311,7 @@
                     border-top-right-radius: 25px;
                     transition: height 0.2s $animation-cubic;
                 }
+                */
 
                 &:hover {
 

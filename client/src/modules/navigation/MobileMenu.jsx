@@ -1,25 +1,28 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useLocation} from 'react-router-dom';
 
 import {useAuth} from '../../hooks/useAuth';
 
-import {BiSearchAlt} from 'react-icons/bi';
+import {IoGrid} from 'react-icons/io5';
+import {BiSearchAlt, BiSolidSearchAlt2} from 'react-icons/bi';
 import {CgProfile} from 'react-icons/cg';
-import {MdOutlineSell} from 'react-icons/md';
-import {HiOutlineInboxIn} from 'react-icons/hi';
+import {MdOutlineSell, MdSell, MdAccountCircle} from 'react-icons/md';
+import {HiOutlineInboxIn, HiInboxIn} from 'react-icons/hi';
 import {RxDashboard} from 'react-icons/rx';
 
 const generateMenu = (auth) => {
   return [
-    {icon: <RxDashboard />, text: 'Kezdőlap', link: ''},
-    {icon: <BiSearchAlt />, text: 'Keresés', link: '/search'},
-    {icon: <MdOutlineSell />, text: 'Eladás', link: '/sell'},
-    {icon: <HiOutlineInboxIn />, text: 'Üzenetek', link: '/inbox'},
-    {icon: <CgProfile />, text: 'Profil', link: `/profile/${auth.username}`},
+    {icon: <RxDashboard />, activeIcon: <IoGrid />, text: 'Kezdőlap', link: '/'},
+    {icon: <BiSearchAlt />, activeIcon: <BiSolidSearchAlt2 />, text: 'Keresés', link: '/search'},
+    {icon: <MdOutlineSell />, activeIcon: <MdSell />, text: 'Eladás', link: '/sell'},
+    {icon: <HiOutlineInboxIn />, activeIcon: <HiInboxIn />, text: 'Üzenetek', link: '/inbox'},
+    {icon: <CgProfile />, activeIcon: <MdAccountCircle />, text: 'Profil', link: `/profile/${auth.username}`},
   ];
 };
 
 const MobileMenu = ({mobileNavStyle}) => {
+  const location = useLocation();
+
   const {auth} = useAuth();
   const menuItems = generateMenu(auth);
 
@@ -29,7 +32,7 @@ const MobileMenu = ({mobileNavStyle}) => {
         {menuItems.map((item, index) => (
           <li key={index} className={mobileNavStyle['menu-list-item']}>
             <NavLink to={item.link} className={mobileNavStyle['menu-list-item-link']}>
-              {item.icon}
+              {location.pathname === item.link ? item.activeIcon : item.icon}
               <span>{item.text}</span>
             </NavLink>
           </li>

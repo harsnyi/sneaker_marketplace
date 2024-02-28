@@ -115,19 +115,21 @@
   align-items: center;
   gap: 0.25rem;
   cursor: pointer;
-}
-.navbar .navbar-list .navbar-list-item .navbar-list-item-link::after {
-  content: "";
-  position: absolute;
-  width: 60%;
-  height: 0;
-  background-color: #FF3300;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-  transition: height 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /*
+  &::after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 0;
+      background-color: color(primary, 500);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+      transition: height 0.2s $animation-cubic;
+  }
+  */
 }
 .navbar .navbar-list .navbar-list-item .navbar-list-item-link.nolink {
   cursor: default;
@@ -305,6 +307,21 @@
   justify-content: center;
   align-items: center;
   gap: 0.25rem;
+  /*
+  &::after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 0;
+      background-color: color(primary, 500);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+      transition: height 0.2s $animation-cubic;
+  }
+  */
 }
 .menubar .menu-list .menu-list-item .menu-list-item-link svg {
   font-size: 1.75rem;
@@ -312,19 +329,6 @@
 .menubar .menu-list .menu-list-item .menu-list-item-link svg,
 .menubar .menu-list .menu-list-item .menu-list-item-link span {
   transition: color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.menubar .menu-list .menu-list-item .menu-list-item-link::after {
-  content: "";
-  position: absolute;
-  width: 60%;
-  height: 0;
-  background-color: #FF3300;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-  transition: height 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .menubar .menu-list .menu-list-item .menu-list-item-link:hover svg,
 .menubar .menu-list .menu-list-item .menu-list-item-link:hover span {

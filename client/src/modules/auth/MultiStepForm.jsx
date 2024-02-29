@@ -95,7 +95,7 @@ const MultiStepForm = () => {
       } catch (error) {
         addToast('error', 'Kérjük javítsd a hibás mezőket!');
         console.log(error.response.data);
-        Object.entries(error.response.data).forEach(([field, messages]) => {
+        Object.entries(error.response.data.message).forEach(([field, messages]) => {
           setErrors((prevErrors) => ({
             ...prevErrors,
             [field]: messages[0],

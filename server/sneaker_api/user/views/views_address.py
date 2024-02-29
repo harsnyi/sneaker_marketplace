@@ -29,13 +29,14 @@ class AddNewAddress(APIView):
                     serializer.save()
                     user.address_count += 1
                     user.save()
-                    return Response({'message':'Sikeres feltöltés'},status=status.HTTP_200_OK)
+                    return Response({'message': 'Sikeres feltöltés.'}, status=status.HTTP_200_OK)
                 
-                return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                return Response({'message': serializer.errors}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
-            return Response({'error': 'Egy felhasználónak maximum 5 címe lehet.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
-        except:
-            return Response({'error': 'Hiba új cím hozzáadása közben.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'message': 'Egy felhasználónak maximum 5 címe lehet.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
+        
+        except Exception as error:
+            return Response({'message': 'Hiba új cím hozzáadása közben.', 'error': str(error)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class GetAllAddresses(APIView):
     """Returns the addresses associated with the user"""
@@ -46,9 +47,10 @@ class GetAllAddresses(APIView):
             user = request.user
             addresses = Address.objects.filter(user = user)
             serializer = AddressSerializer(addresses,many=True)
-            return Response({'response':serializer.data},status=status.HTTP_200_OK)
-        except:
-            return Response({'error': 'Hiba a cím lekérése közben.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'message': serializer.data}, status=status.HTTP_200_OK)
+        
+        except Exception as error:
+            return Response({'message': 'Hiba a cím lekérése közben.', 'error': str(error)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class GetAddress(APIView):
     """Returns the specific address associated with the user"""
@@ -59,13 +61,14 @@ class GetAddress(APIView):
             user = request.user
             try:
                 address = Address.objects.get(id=id, user=user)
-            except:
-                return Response({'error': 'A cím nem található.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            except Exception as error:
+                return Response({'message': 'A cím nem található.', 'error': str(error)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
             serializer = AddressSerializer(address)
-            return Response({'response':serializer.data},status=status.HTTP_200_OK)
-        except:
-            return Response({'error': 'Hiba a cím lekérése közben.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'message': serializer.data}, status=status.HTTP_200_OK)
+        
+        except Exception as error:
+            return Response({'message': 'Hiba a cím lekérése közben.', 'error': str(error)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class UpdateAddress(APIView):
     """Returns the specific address associated with the user"""
@@ -75,8 +78,9 @@ class UpdateAddress(APIView):
         user = request.user
         try:
             address = Address.objects.get(id=id, user=user)
-        except:
-            return Response({'error': 'A cím nem található.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        except Exception as error:
+            return Response({'message': 'A cím nem található.', 'error': str(error)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
         serializer = AddNewAddressSerializer(data=request.data)
         if serializer.is_valid():
@@ -89,8 +93,8 @@ class UpdateAddress(APIView):
             address.is_default = serializer.validated_data['is_default']
             
             address.save()
-            return Response({'response':"Cím sikeresen módosítva."}, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'message': 'Cím sikeresen módosítva.'}, status=status.HTTP_200_OK)
+        return Response({'message': serializer.errors}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
         
 class DeleteAddress(APIView):
@@ -101,10 +105,11 @@ class DeleteAddress(APIView):
         user = request.user
         try:
             address = Address.objects.get(id=id, user=user)
-        except:
-            return Response({'error': 'A cím nem található.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        except Exception as error:
+            return Response({'message': 'A cím nem található.','error': str(error)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
         address.delete()
         user.address_count -= 1
         user.save()
-        return Response({'response':"Cím sikeresen törölve."},status=status.HTTP_200_OK)
+        return Response({'message': 'Cím sikeresen törölve.'}, status=status.HTTP_200_OK)

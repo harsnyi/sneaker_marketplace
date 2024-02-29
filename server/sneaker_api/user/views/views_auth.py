@@ -30,9 +30,9 @@ class RegisterView(APIView):
             
             # Send email here, etc.
             logging.info("Sikeres regisztrálás.")
-            return JsonResponse({"message": "Felhasználó sikeresen regisztrálva"},status=status.HTTP_201_CREATED)
+            return Response({'message': 'Felhasználó sikeresen regisztrálva'}, status=status.HTTP_201_CREATED)
 
-        return JsonResponse(serializer.errors,status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({'message': serializer.errors}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class AuthenticationView(APIView):
@@ -45,7 +45,6 @@ class AuthenticationView(APIView):
         serializer = LoginSerializer(data=request.data)
         
         if serializer.is_valid():
-            
             email = serializer.validated_data['email']
             password = serializer.validated_data['password']
             user = authenticate(request, username=email, password=password)
@@ -66,9 +65,9 @@ class AuthenticationView(APIView):
                 
                 return response
                 
-            return JsonResponse({'error': 'Nem létezik a felhasználó.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
+            return Response({'message': 'Nem létezik a felhasználó.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
         
-        return JsonResponse(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({'message': serializer.errors}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
 
 class CheckAccessToken(APIView):
@@ -102,21 +101,22 @@ class UpdateAccessTokenView(APIView):
 
         #Check if there is no refresh token between the cookies
         if not refresh_token:
-            return JsonResponse({'error': 'No refresh token found in cookies'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'message': 'No refresh token found in cookies'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
         try:
             # Decode and validate the refresh token
             token = RefreshToken(refresh_token)        
-        except Exception:
-            return Response({'error': 'Invalid or expired refresh token'}, status=status.HTTP_401_UNAUTHORIZED)
+        except Exception as error:
+            return Response({'message': 'Invalid or expired refresh token', 'error': str(error)}, status=status.HTTP_401_UNAUTHORIZED)
         
         # Generate a new access token
         access_token = token.access_token
 
+        #TODO Response üzenet elé 'message'
         response_data = {
             'access_token': str(access_token),
         }
-        return JsonResponse(response_data, status=status.HTTP_200_OK)
+        return Response(response_data, status=status.HTTP_200_OK)
 
 
 class LogoutView(APIView):
@@ -126,13 +126,13 @@ class LogoutView(APIView):
         
         refresh_token = request.COOKIES.get('refresh_token')
         if not refresh_token:
-            return JsonResponse({'error': 'No refresh token found in cookies'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'message': 'No refresh token found in cookies'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
         try:
             refresh = RefreshToken(refresh_token)
             refresh.blacklist()
             logging.info("Sikeres kijelentkezés.")
-            return JsonResponse({"message": "Sikeres kijelentkezés."},status=status.HTTP_205_RESET_CONTENT)
+            return Response({'message': 'Sikeres kijelentkezés.'}, status=status.HTTP_205_RESET_CONTENT)
         
-        except Exception:
-            return JsonResponse({'error': 'Invalid refresh token'}, status=status.HTTP_401_UNAUTHORIZED)
+        except Exception as error:
+            return Response({'message': 'Invalid refresh token', 'error': str(error)}, status=status.HTTP_401_UNAUTHORIZED)

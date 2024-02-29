@@ -41,11 +41,10 @@ class UploadProfilePicture(APIView):
                 user.profile_picture_hash = hash
                 user.save()
                 serializer.save()
-        
-            
-            return Response(serializer.data, status=status.HTTP_200_OK)
+                
+            return Response({'message': 'Sikeres feltöltés.'}, status=status.HTTP_200_OK)
         else:
-            return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'message': serializer.errors}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class GetProfilePicture(APIView):
     """Returns the profile picture and the profile picture hash of the user
@@ -63,9 +62,10 @@ class GetProfilePicture(APIView):
                 'profile_picture_hash:': user.profile_picture_hash,
                 'profile_picture': user.profile_picture.url
             }
-            return Response(response,status=status.HTTP_200_OK)
-        except Exception:
-            return Response({'error': 'Error while fetching data.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'message': response}, status=status.HTTP_200_OK)
+        
+        except Exception as error:
+            return Response({'message': 'Hiba a lekérdezés közben.', 'error': str(error)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class GetUserData(APIView):
@@ -85,9 +85,9 @@ class GetUserData(APIView):
                 'phone_number':user.phone_number,
                 'address':user.location
             }
-            return Response(response,status=status.HTTP_200_OK)
-        except Exception:
-            return Response({'error': 'Error while fetching data.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'message': response}, status=status.HTTP_200_OK)
+        except Exception as error:
+            return Response({'message': 'Hiba a lekérdezés közben.', 'error': str(error)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
 
 class UpdateUserData(APIView):
@@ -128,7 +128,7 @@ class UpdateUserData(APIView):
                             else: 
                                 error_message = f'Nem módosíthatod a felhasználóneved eddig: {blocking_delta.minutes} perc, {blocking_delta.seconds} másodperc'
                             
-                            return Response({'non_field_errors': error_message}, status=status.HTTP_403_FORBIDDEN)
+                            return Response({'message': error_message}, status=status.HTTP_403_FORBIDDEN)
                     
                     user.username_change_count += 1
                     ChangedUsername.objects.create(
@@ -138,8 +138,9 @@ class UpdateUserData(APIView):
                 
                 user = serializer.save()
                 user.save()
-                return Response({'message':'Sikeres módosítás'},status=status.HTTP_200_OK)
+                return Response({'message': 'Sikeres módosítás'}, status=status.HTTP_200_OK)
 
-            return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        except Exception:
-            return Response({'error': 'Error while fetching data.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'message': serializer.errors}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        except Exception as error:
+            return Response({'message': 'Hiba a lekérdezés közben.', 'error': str(error)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

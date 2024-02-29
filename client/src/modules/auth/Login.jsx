@@ -104,7 +104,7 @@ const Login = ({setShowResetPass}) => {
 
       navigate(from, {replace: true});
     } catch (error) {
-      addToast('error', error.response.data.error);
+      addToast('error', error.response.data.message);
     } finally {
       setLoading(false);
     }

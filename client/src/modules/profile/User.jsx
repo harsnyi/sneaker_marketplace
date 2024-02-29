@@ -23,7 +23,7 @@ const User = () => {
 
       try {
         const response = await axiosPrivate.get(`/api/v1/get_profile_data/${uname}`);
-        setUser(response.data);
+        setUser(response.data.message);
       } catch (error) {
         addToast('error', error.message);
       } finally {

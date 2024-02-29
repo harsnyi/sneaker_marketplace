@@ -13,7 +13,7 @@ const Header = () => {
     const fetchImage = async () => {
       try {
         const response = await axiosPrivate.get('/api/v1/get_profile_picture');
-        setImage(response.data);
+        setImage(response.data.message);
       } catch (error) {
         // console.log(error);
       }

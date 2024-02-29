@@ -24,7 +24,7 @@ class GetProfileData(APIView):
     
     def get(self, request, username, *args, **kwargs):
         logging.info(f"username: {username}")
-        try:            
+        try:
             user = User.objects.get(username=username)
             response = {
                 'username': user.username,
@@ -34,6 +34,7 @@ class GetProfileData(APIView):
                 'first_name':user.first_name,
                 'phone_number':user.phone_number
             }
-            return Response(response,status=status.HTTP_200_OK)
-        except ObjectDoesNotExist:
-            return Response({'error':'Nem létezik felhasználó a megadott névvel.'},status=status.HTTP_404_NOT_FOUND)
+            return Response({'message': response},status=status.HTTP_200_OK)
+        
+        except ObjectDoesNotExist as error:
+            return Response({'message':'Nem létezik felhasználó a megadott névvel.', 'error': str(error)},status=status.HTTP_404_NOT_FOUND)

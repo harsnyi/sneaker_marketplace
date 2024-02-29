@@ -95,13 +95,13 @@ const BasicSettings = () => {
         .then((response) => {
           setFormData((prev) => ({
             ...prev,
-            username: response.data.username,
-            firstname: response.data.first_name,
-            lastname: response.data.last_name,
-            bio: response.data.bio,
-            phoneNumber: response.data.phone_number,
-            addresses: response.data.address || INITIAL_DATA.addresses,
-            profilePicture: response.data.profile_picture,
+            username: response.data.message.username,
+            firstname: response.data.message.first_name,
+            lastname: response.data.message.last_name,
+            bio: response.data.message.bio,
+            phoneNumber: response.data.message.phone_number,
+            addresses: response.data.message.address || INITIAL_DATA.addresses,
+            profilePicture: response.data.message.profile_picture,
           }));
         })
         .catch((error) => {

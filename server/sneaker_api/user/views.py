@@ -258,15 +258,18 @@ class AddNewAddress(APIView):
     def post(self, request, *args, **kwargs):
         try:
             user = request.user
-            serializer = AddNewAddressSerializer(data=request.data)
-            if serializer.is_valid():
-                serializer.validated_data['user'] = user
-                serializer.save()
-                user.address_count += 1
-                user.save()
-                return Response({'message':'Sikeres feltöltés'},status=status.HTTP_200_OK)
+            if user.address_count < 5:
+                serializer = AddNewAddressSerializer(data=request.data)
+                if serializer.is_valid():
+                    serializer.validated_data['user'] = user
+                    serializer.save()
+                    user.address_count += 1
+                    user.save()
+                    return Response({'message':'Sikeres feltöltés'},status=status.HTTP_200_OK)
+                
+                return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
-            return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'error': 'Egy felhasználónak maximum 5 címe lehet.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
         except:
             return Response({'error': 'Hiba új cím hozzáadása közben.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
@@ -300,6 +303,32 @@ class GetAddress(APIView):
         except:
             return Response({'error': 'Hiba a cím lekérése közben.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class UpdateAddress(APIView):
+    """Returns the specific address associated with the user"""
+    permission_classes = [IsAuthenticated]
+    
+    def put(self, request, id, *args, **kwargs):
+        user = request.user
+        try:
+            address = Address.objects.get(id=id, user=user)
+        except:
+            return Response({'error': 'A cím nem található.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        serializer = AddNewAddressSerializer(data=request.data)
+        if serializer.is_valid():
+            
+            address.name = serializer.validated_data['name']
+            address.country = serializer.validated_data['country']
+            address.city = serializer.validated_data['city']
+            address.zip = serializer.validated_data['zip']
+            address.street = serializer.validated_data['street']
+            address.is_default = serializer.validated_data['is_default']
+            
+            address.save()
+            return Response({'response':"Cím sikeresen módosítva."}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        
 class DeleteAddress(APIView):
     """Deletes the clicked address"""
     permission_classes = [IsAuthenticated]
@@ -312,6 +341,8 @@ class DeleteAddress(APIView):
             return Response({'error': 'A cím nem található.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
         address.delete()
+        user.address_count -= 1
+        user.save()
         return Response({'response':"Cím sikeresen törölve."},status=status.HTTP_200_OK)
 
 class UpdateAccessTokenView(APIView):

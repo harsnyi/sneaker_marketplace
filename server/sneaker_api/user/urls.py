@@ -14,7 +14,8 @@ from .views import(
     AddNewAddress,
     GetAllAddresses,
     GetAddress,
-    DeleteAddress
+    DeleteAddress,
+    UpdateAddress
 )
 
 urlpatterns = [
@@ -34,4 +35,5 @@ urlpatterns = [
     path('get_addresses',GetAllAddresses.as_view(),name='get_all_address'),
     path('get_address/<int:id>',GetAddress.as_view(),name='get_address'),
     path('delete_address/<int:id>',DeleteAddress.as_view(),name='delete_address'),
+    path('update_address/<int:id>',UpdateAddress.as_view(),name='update_address')
 ]

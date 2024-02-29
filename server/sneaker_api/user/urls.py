@@ -1,21 +1,31 @@
 from django.urls import path
-from .views import(
-    UpdateAccessTokenView,
-    RegisterView,
-    LogoutView,
-    AuthenticationView,
-    CheckAccessToken,
-    ListUsers,
-    UploadProfilePicture,
-    GetProfileData,
-    GetProfilePicture,
-    GetUserData,
-    UpdateUserData,
+
+from .views.views_address import (
     AddNewAddress,
     GetAllAddresses,
     GetAddress,
     DeleteAddress,
     UpdateAddress
+)
+
+from .views.views_auth import (
+    UpdateAccessTokenView,
+    RegisterView,
+    LogoutView,
+    AuthenticationView,
+    CheckAccessToken
+)
+
+from .views.views_profile import (
+    UploadProfilePicture,
+    UpdateUserData,
+    GetProfilePicture,
+    GetUserData
+)
+
+from .views.views_user import (
+    GetProfileData,
+    ListUsers
 )
 
 urlpatterns = [

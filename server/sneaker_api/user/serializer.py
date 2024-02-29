@@ -1,4 +1,4 @@
-from .models import User, Role
+from .models import User, Address, Role
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.utils import timezone
@@ -88,3 +88,15 @@ class LoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('email', 'password')
+
+class AddNewAddressSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Address
+        fields = ('name', 'country', 'city', 'zip', 'street', 'is_default')
+        
+class AddressSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Address
+        fields = ('id','name', 'country', 'city', 'zip', 'street', 'is_default')

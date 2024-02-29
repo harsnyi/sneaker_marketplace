@@ -10,7 +10,11 @@ from .views import(
     GetProfileData,
     GetProfilePicture,
     GetUserData,
-    UpdateUserData
+    UpdateUserData,
+    AddNewAddress,
+    GetAllAddresses,
+    GetAddress,
+    DeleteAddress
 )
 
 urlpatterns = [
@@ -25,5 +29,9 @@ urlpatterns = [
     path('get_profile_picture',GetProfilePicture.as_view(),name='get_profile_picture'),
     path('get_profile_data/<str:username>',GetProfileData.as_view(),name='get_profile_data'),
     path('get_user_data',GetUserData.as_view(),name='get_user_data'),
-    path('update_user_data', UpdateUserData.as_view(), name='update_user_data')
+    path('update_user_data', UpdateUserData.as_view(), name='update_user_data'),
+    path('add_address',AddNewAddress.as_view(),name='add_address'),
+    path('get_addresses',GetAllAddresses.as_view(),name='get_all_address'),
+    path('get_address/<int:id>',GetAddress.as_view(),name='get_address'),
+    path('delete_address/<int:id>',DeleteAddress.as_view(),name='delete_address'),
 ]

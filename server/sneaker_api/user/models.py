@@ -31,6 +31,7 @@ class User(AbstractUser):
     profile_picture_hash = models.CharField(max_length=100, blank=True, null=True)
     username_change_blocking_time = models.DateTimeField(blank=True, null=True)
     username_change_count = models.IntegerField(default=0)
+    address_count = models.IntegerField(default=0)
     
     def __str__(self):
         return self.username
@@ -40,6 +41,18 @@ def validate_allowed_roles(value):
     if value not in allowed_roles:
         raise ValidationError(f"{value} nem egy valós jogosultság. A jogosultságok: {allowed_roles}.")
 
+class Address(models.Model):
+    name = models.CharField(max_length=30, null=True)
+    country = models.CharField(max_length=30, null=True)
+    city = models.CharField(max_length=30, null=True)
+    zip = models.IntegerField(null=True)
+    street = models.CharField(max_length=50, null=True)
+    is_default = models.BooleanField(default=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.name}"
+    
 class Role(models.Model):
     role = models.IntegerField(validators=[validate_allowed_roles],null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)

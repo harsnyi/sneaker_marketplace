@@ -4,7 +4,7 @@ from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate
 from django.http import JsonResponse, HttpResponse
-from .models import Role, User, ChangedUsername
+from .models import Role, Address, User, ChangedUsername
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
 import logging
@@ -18,7 +18,9 @@ from .serializer import (
     LoginSerializer,
     RegistrationSerializer,
     UploadProfilePictureSerializer,
-    UserUpdateSerializer
+    UserUpdateSerializer,
+    AddNewAddressSerializer,
+    AddressSerializer
 )
 
 # PENALTY_FOR_CHANGING_USERNAME ** user.username_change_count will be the blocking time
@@ -248,8 +250,70 @@ class UpdateUserData(APIView):
             return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         except Exception:
             return Response({'error': 'Error while fetching data.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+class AddNewAddress(APIView):
+    """The user can add a new address for him/herself"""
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request, *args, **kwargs):
+        try:
+            user = request.user
+            serializer = AddNewAddressSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.validated_data['user'] = user
+                serializer.save()
+                user.address_count += 1
+                user.save()
+                return Response({'message':'Sikeres feltöltés'},status=status.HTTP_200_OK)
             
+            return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except:
+            return Response({'error': 'Hiba új cím hozzáadása közben.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class GetAllAddresses(APIView):
+    """Returns the addresses associated with the user"""
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            user = request.user
+            addresses = Address.objects.filter(user = user)
+            serializer = AddressSerializer(addresses,many=True)
+            return Response({'response':serializer.data},status=status.HTTP_200_OK)
+        except:
+            return Response({'error': 'Hiba a cím lekérése közben.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class GetAddress(APIView):
+    """Returns the specific address associated with the user"""
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request, id, *args, **kwargs):
+        try:
+            user = request.user
+            try:
+                address = Address.objects.get(id=id, user=user)
+            except:
+                return Response({'error': 'A cím nem található.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
+            serializer = AddressSerializer(address)
+            return Response({'response':serializer.data},status=status.HTTP_200_OK)
+        except:
+            return Response({'error': 'Hiba a cím lekérése közben.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class DeleteAddress(APIView):
+    """Deletes the clicked address"""
+    permission_classes = [IsAuthenticated]
+    
+    def delete(self, request, id, *args, **kwargs):
+        user = request.user
+        try:
+            address = Address.objects.get(id=id, user=user)
+        except:
+            return Response({'error': 'A cím nem található.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+        address.delete()
+        return Response({'response':"Cím sikeresen törölve."},status=status.HTTP_200_OK)
+
 class UpdateAccessTokenView(APIView):
     """Validate the refresh token stored in the cookie,
     then givin out fresh access token """

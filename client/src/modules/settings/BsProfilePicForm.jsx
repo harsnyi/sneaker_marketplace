@@ -25,8 +25,7 @@ const BsProfilePicForm = ({formData, setFormData, toggleForm}) => {
       const reader = new FileReader();
 
       reader.onload = function () {
-        console.log(file);
-        setImages((prevState) => [...prevState, {id: cuid(), src: file.path}]);
+        setImages((prevState) => [...prevState, {id: cuid(), file: file}]);
       };
 
       reader.readAsDataURL(file);
@@ -59,22 +58,27 @@ const BsProfilePicForm = ({formData, setFormData, toggleForm}) => {
     setLoading(true);
     await axiosPrivate
       .put('/api/v1/upload_profile_picture', {
-        profile_picture: images[0].src,
+        profile_picture: images[0].file,
+      }, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       })
-      .then(() => {
-        addToast('success', 'Fénykép mentve!');
+      .then((response) => {
+        console.log(response)
         setFormData((prevData) => ({
           ...prevData,
-          profilePicture: images[0].src,
+          profilePicture: response.data.message,
         }));
         setAuth((prev) => ({
           ...prev,
-          profilePicture: images[0].src,
+          profilePicture: response.data.message,
         }));
         toggleForm();
+        addToast('success', 'Fénykép mentve!');
       })
       .catch((error) => {
-        addToast('error', 'Hiba adódott a mentés során. Kérjük próbáld újra.');
+        addToast('error', error.response.data.message);
       })
       .finally(() => {
         setLoading(false);

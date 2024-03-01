@@ -47,7 +47,7 @@ class Address(models.Model):
     city = models.CharField(max_length=30, null=True)
     zip = models.IntegerField(null=True)
     street = models.CharField(max_length=50, null=True)
-    is_default = models.BooleanField(default=False)
+    default = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)
 
     def __str__(self):

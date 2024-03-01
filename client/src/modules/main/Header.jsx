@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
-import {useAxiosPrivate} from '../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../hooks/useAxiosPrivate';
+import { useAuth } from '../../hooks/useAuth';
 
 import {CgProfile} from 'react-icons/cg';
 import Breadcrumbs from './Breadcrumbs';
@@ -7,6 +8,7 @@ import Breadcrumbs from './Breadcrumbs';
 const Header = () => {
   const [image, setImage] = useState(null);
 
+  const { auth } = useAuth();
   const axiosPrivate = useAxiosPrivate();
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const Header = () => {
     fetchImage();
 
     // eslint-disable-next-line
-  }, []);
+  }, [auth.profilePicture]);
 
   return (
     <nav className="main_header">

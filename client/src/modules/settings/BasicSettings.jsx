@@ -50,24 +50,13 @@ const INITIAL_DATA = {
   lastname: '',
   bio: '',
   phoneNumber: '',
-  addresses: [
-    {
-      name: 'Otthon',
-      country: 'Magyarország',
-      city: 'Budapest',
-      zip: '1111',
-      street: 'Valami utca 11.',
-      default: true,
-    },
-    {
-      name: 'Munkahely',
-      country: 'Magyarország',
-      city: 'Budapest',
-      zip: '2222',
-      street: 'Valami utca 22.',
-      default: false,
-    },
-  ],
+  address: {
+    name: '',
+    country: '',
+    city: '',
+    zip: '',
+    street: '',
+  },
   profilePicture: '',
 };
 
@@ -100,12 +89,18 @@ const BasicSettings = () => {
             lastname: response.data.message.last_name,
             bio: response.data.message.bio,
             phoneNumber: response.data.message.phone_number,
-            addresses: response.data.message.address || INITIAL_DATA.addresses,
+            address: {
+              name: response.data.message.address.name,
+              country: response.data.message.address.country,
+              city: response.data.message.address.city,
+              zip: response.data.message.address.zip,
+              street: response.data.message.address.street,
+            },
             profilePicture: response.data.message.profile_picture,
           }));
         })
         .catch((error) => {
-          addToast('error', error.message);
+          addToast('error', error.response.data.message);
         })
         .finally(() => {
           setLoading(false);
@@ -116,10 +111,6 @@ const BasicSettings = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const defaultAddress = useMemo(() => {
-    return formData.addresses.find((address) => address.default) || formData.addresses[0];
-  }, [formData.addresses]);
 
   const toggleBsProfilePicForm = () => {
     setIsBsProfilePicFormOpen(!isBsProfilePicFormOpen);
@@ -152,7 +143,7 @@ const BasicSettings = () => {
                 </Button>
                 <h3>Fénykép</h3>
                 <div className="image_box_content">
-                  <img src="https://via.placeholder.com/150" alt="Profilkép" />
+                  <img src={'http://localhost:8000' + formData.profilePicture} alt="Profilkép" />
                   <div>
                     <span className="image_box_name">{formData.username}</span>
                     <span className="image_box_rank">Contributor</span>
@@ -182,12 +173,12 @@ const BasicSettings = () => {
                 edit={toggleBsAddressForm}
                 data={[
                   [
-                    {label: 'Ország', value: defaultAddress.country || 'Nincs megadva'},
-                    {label: 'Város', value: defaultAddress.city || 'Nincs megadva'},
+                    {label: 'Ország', value: formData.address.country || 'Nincs megadva'},
+                    {label: 'Város', value: formData.address.city || 'Nincs megadva'},
                   ],
                   [
-                    {label: 'Irányítószám', value: defaultAddress.zip || 'Nincs megadva'},
-                    {label: 'Utca, házszám', value: defaultAddress.street || 'Nincs megadva'},
+                    {label: 'Irányítószám', value: formData.address.zip || 'Nincs megadva'},
+                    {label: 'Utca, házszám', value: formData.address.street || 'Nincs megadva'},
                   ],
                 ]}
               />

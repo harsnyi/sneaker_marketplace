@@ -93,10 +93,10 @@ class AddNewAddressSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Address
-        fields = ('name', 'country', 'city', 'zip', 'street', 'is_default')
+        fields = ('name', 'country', 'city', 'zip', 'street', 'default')
         
 class AddressSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Address
-        fields = ('id','name', 'country', 'city', 'zip', 'street', 'is_default')
+        fields = ('id','name', 'country', 'city', 'zip', 'street', 'default')

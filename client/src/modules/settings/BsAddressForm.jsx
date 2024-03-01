@@ -1,5 +1,8 @@
 import {motion} from 'framer-motion';
-import {useState} from 'react';
+import { useState, useEffect } from 'react';
+
+import {useAxiosPrivate} from '../../hooks/useAxiosPrivate';
+import {useToast} from '../../hooks/useToast';
 
 import Button from '../form/Button';
 import Modal from '../../component/Modal';
@@ -9,17 +12,39 @@ import {AiFillEdit, AiOutlineEdit} from 'react-icons/ai';
 import {FaCheck} from 'react-icons/fa';
 import {TbCircleOff} from 'react-icons/tb';
 
-const BsAddressForm = ({formData, setFormData, toggleForm}) => {
+const BsAddressForm = ({ formData, setFormData, toggleForm }) => {
+  const [addresses, setAddresses] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [isModifyOpen, setIsModifyOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState(null);
 
+  const axiosPrivate = useAxiosPrivate();
+  const {addToast} = useToast();
+
+  useEffect(() => { 
+
+    const fetchAddresses = async () => {
+      await axiosPrivate.get('/api/v1/get_addresses')
+        .then((response) => { 
+          setAddresses(response.data.message);
+        })
+        .catch((error) => { 
+          addToast('error', error.response.data.message);
+        });
+    };
+
+    fetchAddresses();
+
+  }, []);
+
   const openModifyAddress = (e, index) => {
     e.preventDefault();
     e.stopPropagation();
     setIsModifyOpen(true);
-    setSelectedAddress(formData.addresses[index]);
+    setSelectedAddress(addresses[index]);
   };
 
   const handleModifyAddress = async (e) => {
@@ -34,13 +59,26 @@ const BsAddressForm = ({formData, setFormData, toggleForm}) => {
     e.preventDefault();
     e.stopPropagation();
     setIsDeleteOpen(true);
-    setSelectedAddress(formData.addresses[index]);
+    setSelectedAddress(addresses[index]);
   };
 
   const handleDeleteAddress = async (e) => {
     e.preventDefault();
 
-    console.log('Deleting address...', selectedAddress);
+    if (!selectedAddress) return;
+
+    //TODO: if (selectedAddress.default) return;
+
+    setLoading(true);
+    await axiosPrivate.delete(`/api/v1/delete_address/${selectedAddress.id}`)
+      .then((response) => { 
+        addToast('success', response.data.message);
+        setAddresses((prev) => prev.filter((address) => address.id !== selectedAddress.id));
+        setSelectedAddress(null);
+      })
+      .catch((error) => { 
+        addToast('error', error.response.data.message);
+      });
 
     setIsDeleteOpen(false);
   };
@@ -75,7 +113,7 @@ const BsAddressForm = ({formData, setFormData, toggleForm}) => {
             <Button className="secondary" text="Mégsem" onClick={() => setIsDeleteOpen(false)}>
               <TbCircleOff />
             </Button>
-            <Button className="primary red" text="Törlés" onClick={(e) => handleDeleteAddress(e)}>
+            <Button className="primary red" text="Törlés" loading={loading} onClick={(e) => handleDeleteAddress(e)}>
               <MdDeleteOutline />
             </Button>
           </div>
@@ -97,7 +135,7 @@ const BsAddressForm = ({formData, setFormData, toggleForm}) => {
               </article>
             </div>
 
-            {formData.addresses
+            {addresses
               .sort((_, b) => (b.default ? 1 : -1))
               .map((address, index) => {
                 return (

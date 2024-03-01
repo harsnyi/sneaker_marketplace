@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from ..models import ChangedUsername
+from ..models import ChangedUsername, Address
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
 import logging
@@ -42,7 +42,7 @@ class UploadProfilePicture(APIView):
                 user.save()
                 serializer.save()
                 
-            return Response({'message': 'Sikeres feltöltés.'}, status=status.HTTP_200_OK)
+            return Response({'message': user.profile_picture.url}, status=status.HTTP_200_OK)
         else:
             return Response({'message': serializer.errors}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
@@ -75,15 +75,25 @@ class GetUserData(APIView):
     def get(self, request, *args, **kwargs):
         try:
             user = request.user
+            try:
+                address = Address.objects.get(user=user, default=True)
+            except Exception as error:
+                return Response({'message': 'A cím nem található.', 'error': str(error)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
             response = {
                 'username': user.username,
-                'bio':user.bio,
+                'bio': user.bio,
                 'profile_picture': user.profile_picture.url,
                 'profile_picture_hash': user.profile_picture_hash,
-                'last_name':user.last_name,
-                'first_name':user.first_name,
-                'phone_number':user.phone_number,
-                'address':user.location
+                'last_name': user.last_name,
+                'first_name': user.first_name,
+                'phone_number': user.phone_number,
+                'address': {'name': address.name,
+                            'city': address.city,
+                            'country': address.country,
+                            'zip': address.zip,
+                            'street': address.street
+                            }
             }
             return Response({'message': response}, status=status.HTTP_200_OK)
         except Exception as error:

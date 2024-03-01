@@ -102,7 +102,7 @@ const MultiStepForm = () => {
           }));
         });
         // If the error is for the email or username field, navigate to the first step
-        if (error.response.data.email || error.response.data.username) {
+        if (error.response.data.message.email || error.response.data.message.username) {
           goTo(0);
         }
       } finally {

@@ -39,12 +39,12 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
     }
 
     // Check for other errors
-    if (Object.values(errors).every((x) => x === '')) {
-      return true;
-    } else {
+    if (Object.values(errors).some((x) => x !== '')) {
       addToast('error', 'Kérjük javítsd a hibás mezőket!');
       return false;
     }
+
+    return true;
   };
 
   useDebounce(

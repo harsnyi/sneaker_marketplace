@@ -41,7 +41,7 @@
             color: color(secondary, 300);
 
             &.success {
-                color: color(green, 600) !important;
+                color: color(green, 500) !important;
             }
         }
 
@@ -138,7 +138,7 @@
 
     .error_msg {
         //color: lighten($color: color(red, base), $amount: 10);
-        color: color(red, 500);
+        color: color(red, 500) !important;
         font-size: 1rem;
     }
 }

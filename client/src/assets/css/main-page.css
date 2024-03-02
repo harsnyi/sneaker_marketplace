@@ -119,14 +119,16 @@
 .main_wrapper .main_container .main_header .header_img img {
   width: 2rem;
   height: 2rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
 }
 .main_wrapper .main_container .main_header .header_img svg {
   font-size: 1.5rem;
   width: 1.5rem;
   height: 1.5rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
 }
 .main_wrapper .main_container .main_content {

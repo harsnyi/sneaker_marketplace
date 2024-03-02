@@ -164,7 +164,7 @@ const BasicSettings = () => {
                     {label: 'Felhasználónév', value: formData.username || 'Nincs megadva'},
                     {label: 'Telefonszám', value: formData.phoneNumber || 'Nincs megadva'},
                   ],
-                  [{label: 'Bemutatkozás', value: formData.bio || 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta voluptate eveniet soluta? Modi, id? Minima ea eum repudiandae ex molestiae!', span: true}],
+                  [{label: 'Bemutatkozás', value: formData.bio || 'Nincs megadva', span: true}],
                 ]}
               />
 

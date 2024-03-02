@@ -41,6 +41,10 @@
                 &.icon_red {
                     color: color(red, 500)
                 }
+
+                &.icon_green {
+                    color: color(green, 500);
+                }
             }
         }
 
@@ -49,6 +53,11 @@
 
             p {
                 color: color(secondary, 600);
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
             }
         }
 

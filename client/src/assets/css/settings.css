@@ -178,7 +178,7 @@
   background-color: #F0F1F3;
 }
 .settings_section .settings_edit_wrapper .form_box .address_grid article.add:hover {
-  border: 1px dashed #657084;
+  border: 1px dashed #48505E;
 }
 .settings_section .settings_edit_wrapper .form_box .address_grid article.add h4 {
   text-align: center;
@@ -221,7 +221,7 @@
 }
 .settings_section .settings_edit_wrapper .form_box .address_grid article.address .default_address svg {
   margin-right: 0.75rem;
-  color: #38DB00;
+  color: #3DF100;
 }
 .settings_section .settings_edit_wrapper .form_box .address_grid article.address .secondary:not(.delete) {
   margin-top: auto;
@@ -251,7 +251,8 @@
 .settings_section .settings_wrapper .settings_box.image_box .image_box_content img {
   width: 7rem;
   height: 7rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
 }
 .settings_section .settings_wrapper .settings_box.image_box .image_box_content div {

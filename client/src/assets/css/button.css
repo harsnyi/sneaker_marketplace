@@ -140,6 +140,17 @@
 .btn.primary.red:active {
   background-color: #AA1A18;
 }
+.btn.primary.green {
+  background-color: #3DF100;
+  border: 1px solid #38DB00;
+  color: #242424;
+}
+.btn.primary.green:hover {
+  background-color: #38DB00;
+}
+.btn.primary.green:active {
+  background-color: #2BAB00;
+}
 .btn.secondary {
   font-weight: 500;
   border: 1px solid #B8BDC6;

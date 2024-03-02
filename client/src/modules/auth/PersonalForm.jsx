@@ -10,7 +10,7 @@ const NAME_REGEX = /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+([ -][A-ZÁ�
 const PHONE_REGEX = /^\+36\d{2}-\d{3}-\d{4}$/;
 
 const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, updateData, err}, ref) => {
-  const [errors, setErrors] = useState(err || {});
+  const [errors, setErrors] = useState({}); // err || {} esetén a memóriába ragad a hibaüzenet, ezért hibát okozhat
   const {addToast} = useToast();
 
   useImperativeHandle(ref, () => ({
@@ -18,6 +18,8 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
   }));
 
   const isValid = () => {
+    console.log(errors);
+
     const inputFields = {
       firstName,
       lastName,
@@ -40,12 +42,12 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
     }
 
     // Check for other errors
-    if (Object.values(errors).every((x) => x === '')) {
-      return true;
-    } else {
+    if (Object.values(errors).some((x) => x !== '')) {
       addToast('error', 'Kérjük javítsd a hibás mezőket!');
       return false;
     }
+
+    return true;
   };
 
   useDebounce(

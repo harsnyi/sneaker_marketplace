@@ -94,7 +94,6 @@ const MultiStepForm = () => {
         navigate('/auth?tab=log');
       } catch (error) {
         addToast('error', 'Kérjük javítsd a hibás mezőket!');
-        console.log(error.response.data);
         Object.entries(error.response.data.message).forEach(([field, messages]) => {
           setErrors((prevErrors) => ({
             ...prevErrors,
@@ -112,7 +111,7 @@ const MultiStepForm = () => {
   };
 
   return (
-    <form className="multi_step_form" onSubmit={(e) => onSubmit(e)}>
+    <form className="multi_step_form" onSubmit={onSubmit}>
       <div className="form_header">
         {steps.map((step, index) => (
           <React.Fragment key={index}>

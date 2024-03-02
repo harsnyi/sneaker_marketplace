@@ -83,6 +83,20 @@
                 background-color: color(red, 700);
             }
         }
+
+        &.green {
+            background-color: color(green, 500);
+            border: 1px solid color(green, 600);
+            color: $clr-font;
+
+            &:hover {
+                background-color: color(green, 600);
+            }
+
+            &:active {
+                background-color: color(green, 700);
+            }
+        }
     }
 
     &.secondary {

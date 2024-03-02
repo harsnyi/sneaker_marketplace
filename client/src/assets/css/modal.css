@@ -109,11 +109,18 @@
 .modal_wrapper .modal .modal_title svg.icon_red {
   color: #F02522;
 }
+.modal_wrapper .modal .modal_title svg.icon_green {
+  color: #3DF100;
+}
 .modal_wrapper .modal .modal_content {
   padding: 1rem 0;
 }
 .modal_wrapper .modal .modal_content p {
   color: #5C6678;
+}
+.modal_wrapper .modal .modal_content form {
+  display: flex;
+  flex-direction: column;
 }
 .modal_wrapper .modal .modal_actions {
   display: flex;

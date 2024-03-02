@@ -57,15 +57,18 @@ const BsProfilePicForm = ({formData, setFormData, toggleForm}) => {
 
     setLoading(true);
     await axiosPrivate
-      .put('/api/v1/upload_profile_picture', {
-        profile_picture: images[0].file,
-      }, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
+      .put(
+        '/api/v1/upload_profile_picture',
+        {
+          profile_picture: images[0].file,
+        },
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
         }
-      })
+      )
       .then((response) => {
-        console.log(response)
         setFormData((prevData) => ({
           ...prevData,
           profilePicture: response.data.message,

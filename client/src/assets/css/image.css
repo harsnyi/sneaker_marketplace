@@ -75,7 +75,8 @@
   position: relative;
 }
 .image img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .image .image_placeholder {
   position: absolute;

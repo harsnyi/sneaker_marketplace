@@ -7,8 +7,7 @@ import {useToast} from '../../hooks/useToast';
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const USERNAME_REGEX = /^(?!.*\s{2})[a-z0-9_. ]+(?<!\s)$/i;
 
-const AccountForm = forwardRef(({email, username, password, passwordConfirmation, updateData, err}, ref) => {
-  const [errors, setErrors] = useState(err || {});
+const AccountForm = forwardRef(({email, username, password, passwordConfirmation, updateData, errors, setErrors}, ref) => {
   const {addToast} = useToast();
 
   useImperativeHandle(ref, () => ({
@@ -162,7 +161,6 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
         onChange={(value) => {
           updateData({email: value});
         }}
-        className="input_field"
         error={errors.email}
         success={email && !errors.email}
         autoFocus
@@ -174,7 +172,6 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
         onChange={(value) => {
           updateData({username: value});
         }}
-        className="input_field"
         error={errors.username}
         success={username && !errors.username}
       />
@@ -186,7 +183,6 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
           onChange={(value) => {
             updateData({password: value});
           }}
-          className="input_field"
           error={errors.password}
         />
         <Input
@@ -196,7 +192,6 @@ const AccountForm = forwardRef(({email, username, password, passwordConfirmation
           onChange={(value) => {
             updateData({passwordConfirmation: value});
           }}
-          className="input_field"
           error={errors.passwordConfirmation}
         />
       </div>

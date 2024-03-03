@@ -64,7 +64,6 @@ const ResetPassword = ({setShowResetPass}) => {
             onChange={(value) => {
               setEmail(value);
             }}
-            className="input_field"
             error={errors.email}
             success={errors.email === '' && email !== ''}
           />

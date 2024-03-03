@@ -54,12 +54,12 @@ const MultiStepForm = () => {
     {
       label: 'Fiók információ',
       svg: <MdAccountBox />,
-      component: <AccountForm ref={accountRef} {...data} updateData={updateData} err={errors} />,
+      component: <AccountForm ref={accountRef} {...data} updateData={updateData} errors={errors} setErrors={setErrors} />,
     },
     {
       label: 'Személyes adatok',
       svg: <FaIdCard />,
-      component: <PersonalForm ref={personalRef} {...data} updateData={updateData} err={errors} />,
+      component: <PersonalForm ref={personalRef} {...data} updateData={updateData} errors={errors} setErrors={setErrors} />,
     },
   ]);
 

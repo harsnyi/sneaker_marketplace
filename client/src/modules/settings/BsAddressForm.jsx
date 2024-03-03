@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 
 import {useAxiosPrivate} from '../../hooks/useAxiosPrivate';
 import {useToast} from '../../hooks/useToast';
+import {useDebounce} from '../../hooks/useDebounce';
 
 import Button from '../form/Button';
 import Input from '../form/Input';
@@ -13,7 +14,9 @@ import {AiFillEdit, AiOutlineEdit} from 'react-icons/ai';
 import {FaCheck} from 'react-icons/fa';
 import {TbCircleOff} from 'react-icons/tb';
 
-const AddForm = ({toggleAddForm}) => {
+const ZIP_REGEX = /^[0-9]{4}$/;
+
+const AddForm = ({toggleAddForm, addresses}) => {
   const [addAddressData, setAddAddressData] = useState({
     name: '',
     country: '',
@@ -34,6 +37,58 @@ const AddForm = ({toggleAddForm}) => {
 
   const axiosPrivate = useAxiosPrivate();
   const {addToast} = useToast();
+
+  useDebounce(
+    () => {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        name: '',
+      }));
+    },
+    500,
+    [addAddressData.name]
+  );
+
+  useDebounce(
+    () => {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        country: '',
+      }));
+    },
+    500,
+    [addAddressData.country]
+  );
+
+  useDebounce(
+    () => {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        city: '',
+      }));
+    },
+    500,
+    [addAddressData.city]
+  );
+
+  useDebounce(
+    () => {
+      // Validate zip
+      if (addAddressData.zip && !ZIP_REGEX.test(addAddressData.zip)) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          zip: 'Az irányítószámnak 4 számjegyből kell állnia.',
+        }));
+      } else {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          zip: '',
+        }));
+      }
+    },
+    500,
+    [addAddressData.zip]
+  );
 
   const handleAddAddress = async (e) => {
     e.preventDefault();
@@ -70,6 +125,21 @@ const AddForm = ({toggleAddForm}) => {
       return;
     }
 
+    if (addAddressData.zip && !ZIP_REGEX.test(addAddressData.zip)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        zip: 'Az irányítószámnak 4 számjegyből kell állnia.',
+      }));
+    }
+
+    // If the name is already in use
+    if (addresses.some((address) => address.name.toLowerCase() === addAddressData.name.toLowerCase())) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        name: 'Ez a név már használatban van.',
+      }));
+    }
+
     if (Object.values(errors).some((x) => x !== '')) {
       addToast('error', 'Kérjük javítsd a hibás mezőket!');
       return;
@@ -83,7 +153,7 @@ const AddForm = ({toggleAddForm}) => {
         Új cím hozzáadása
       </h1>
       <div className="modal_content">
-        <form onSubmit={handleAddAddress}>
+        <form>
           <Input
             type="text"
             value={addAddressData.name}
@@ -91,7 +161,6 @@ const AddForm = ({toggleAddForm}) => {
             onChange={(value) => {
               setAddAddressData((prev) => ({...prev, name: value}));
             }}
-            className="input_field"
             autoFocus
             error={errors.name}
             success={addAddressData.name && !errors.name}
@@ -103,7 +172,6 @@ const AddForm = ({toggleAddForm}) => {
             onChange={(value) => {
               setAddAddressData((prev) => ({...prev, country: value}));
             }}
-            className="input_field"
             error={errors.country}
             success={addAddressData.country && !errors.country}
           />
@@ -115,7 +183,6 @@ const AddForm = ({toggleAddForm}) => {
               onChange={(value) => {
                 setAddAddressData((prev) => ({...prev, city: value}));
               }}
-              className="input_field"
               error={errors.city}
               success={addAddressData.city && !errors.city}
             />
@@ -126,7 +193,6 @@ const AddForm = ({toggleAddForm}) => {
               onChange={(value) => {
                 setAddAddressData((prev) => ({...prev, zip: value}));
               }}
-              className="input_field"
               error={errors.zip}
               success={addAddressData.zip && !errors.zip}
             />
@@ -138,7 +204,6 @@ const AddForm = ({toggleAddForm}) => {
             onChange={(value) => {
               setAddAddressData((prev) => ({...prev, street: value}));
             }}
-            className="input_field"
             error={errors.street}
             success={addAddressData.street && !errors.street}
           />
@@ -179,12 +244,62 @@ const ModifyForm = ({selectedAddress, setSelectedAddress, setAddresses, toggleMo
   const axiosPrivate = useAxiosPrivate();
   const {addToast} = useToast();
 
+  useDebounce(
+    () => {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        name: '',
+      }));
+    },
+    500,
+    [modifyAddressData.name]
+  );
+
+  useDebounce(
+    () => {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        country: '',
+      }));
+    },
+    500,
+    [modifyAddressData.country]
+  );
+
+  useDebounce(
+    () => {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        city: '',
+      }));
+    },
+    500,
+    [modifyAddressData.city]
+  );
+
+  useDebounce(
+    () => {
+      // Validate zip
+      if (modifyAddressData.zip && !ZIP_REGEX.test(modifyAddressData.zip)) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          zip: 'Az irányítószámnak 4 számjegyből kell állnia.',
+        }));
+      } else {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          zip: '',
+        }));
+      }
+    },
+    500,
+    [modifyAddressData.zip]
+  );
+
   const handleModifyAddress = async (e) => {
     e.preventDefault();
 
     console.log('Modifying address...', selectedAddress);
-
-    toggleModifyForm();
   };
 
   return (
@@ -193,7 +308,64 @@ const ModifyForm = ({selectedAddress, setSelectedAddress, setAddresses, toggleMo
         <AiFillEdit />
         A(z) '{selectedAddress.name}' cím szerkesztése
       </h1>
-      <div className="modal_content"></div>
+      <div className="modal_content">
+        <form>
+          <Input
+            type="text"
+            value={modifyAddressData.name}
+            label="Név *"
+            onChange={(value) => {
+              setModifyAddressData((prev) => ({...prev, name: value}));
+            }}
+            autoFocus
+            error={errors.name}
+            success={modifyAddressData.name && !errors.name}
+            disabled
+          />
+          <Input
+            type="text"
+            value={modifyAddressData.country}
+            label="Ország *"
+            onChange={(value) => {
+              setModifyAddressData((prev) => ({...prev, country: value}));
+            }}
+            error={errors.country}
+            success={modifyAddressData.country && !errors.country}
+          />
+          <div className="field_wrapper">
+            <Input
+              type="text"
+              value={modifyAddressData.city}
+              label="Város * "
+              onChange={(value) => {
+                setModifyAddressData((prev) => ({...prev, city: value}));
+              }}
+              error={errors.city}
+              success={modifyAddressData.city && !errors.city}
+            />
+            <Input
+              type="text"
+              value={modifyAddressData.zip}
+              label="Irányítószám * "
+              onChange={(value) => {
+                setModifyAddressData((prev) => ({...prev, zip: value}));
+              }}
+              error={errors.zip}
+              success={modifyAddressData.zip && !errors.zip}
+            />
+          </div>
+          <Input
+            type="text"
+            value={modifyAddressData.street}
+            label="Utca, házszám"
+            onChange={(value) => {
+              setModifyAddressData((prev) => ({...prev, street: value}));
+            }}
+            error={errors.street}
+            success={modifyAddressData.street && !errors.street}
+          />
+        </form>
+      </div>
       <div className="modal_actions">
         <Button className="secondary" text="Mégsem" onClick={toggleModifyForm}>
           <TbCircleOff />
@@ -307,7 +479,7 @@ const BsAddressForm = ({formData, setFormData, toggleForm}) => {
   return (
     <>
       <Modal isOpen={isAddOpen} close={toggleAddForm}>
-        <AddForm toggleAddForm={toggleAddForm} />
+        <AddForm toggleAddForm={toggleAddForm} addresses={addresses} />
       </Modal>
 
       {selectedAddress && (

@@ -126,7 +126,6 @@ const Login = ({setShowResetPass}) => {
           onChange={(value) => {
             setEmail(value);
           }}
-          className="input_field"
           error={errors.email}
           success={email && !errors.email}
         />
@@ -137,7 +136,6 @@ const Login = ({setShowResetPass}) => {
           onChange={(value) => {
             setPassword(value);
           }}
-          className="input_field"
           error={errors.password}
         />
 

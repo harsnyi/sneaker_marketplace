@@ -184,7 +184,6 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
                 username: value,
               }));
             }}
-            className="input_field"
             error={errors.username}
             success={formData.username && !errors.username}
           />
@@ -199,7 +198,6 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
                   lastname: value,
                 }));
               }}
-              className="input_field"
               error={errors.lastname}
               success={formData.lastname && !errors.lastname}
             />
@@ -213,7 +211,6 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
                   firstname: value,
                 }));
               }}
-              className="input_field"
               error={errors.firstname}
               success={formData.firstname && !errors.firstname}
             />
@@ -228,7 +225,6 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
                 phoneNumber: value,
               }));
             }}
-            className="input_field"
             error={errors.phoneNumber}
             success={formData.phoneNumber && !errors.phoneNumber}
           />
@@ -242,7 +238,6 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
                 bio: value,
               }));
             }}
-            className="input_field"
             rows={7}
             error={errors.bio}
           />

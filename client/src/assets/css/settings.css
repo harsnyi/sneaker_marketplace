@@ -153,13 +153,13 @@
   background-color: #fff;
   width: 100%;
   height: 100%;
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
   border-radius: 1rem;
   border: 1px solid #CFD3D9;
   padding: 1rem 1.5rem;
   overflow: hidden;
   min-height: 22rem;
+  transition: border 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .settings_section .settings_edit_wrapper .form_box .address_grid article h5 {
   color: #989FAD;
@@ -178,7 +178,7 @@
   background-color: #F0F1F3;
 }
 .settings_section .settings_edit_wrapper .form_box .address_grid article.add:hover {
-  border: 1px dashed #48505E;
+  border: 1px solid #657084;
 }
 .settings_section .settings_edit_wrapper .form_box .address_grid article.add h4 {
   text-align: center;

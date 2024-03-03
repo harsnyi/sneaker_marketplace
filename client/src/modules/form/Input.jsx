@@ -2,7 +2,7 @@ import '../../assets/css/input.css';
 import {useState} from 'react';
 import {FaEye, FaEyeSlash, FaCheck} from 'react-icons/fa';
 
-const Input = ({type, label, description, error, success, value, name, onChange, className, autoFocus, ...props}) => {
+const Input = ({type, label, description, error, success, disabled, value, name, onChange, className, autoFocus, ...props}) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
 
   const handleTogglePasswordVisibility = () => {
@@ -14,14 +14,14 @@ const Input = ({type, label, description, error, success, value, name, onChange,
   };
 
   const inputType = type === 'textarea' ? 'textarea' : isPasswordVisible ? 'text' : type;
-  const inputClassName = className + (error ? ' error' : ' ') + (success ? ' success' : ' ');
+  const inputClassName = className + (error ? ' error' : ' ') + (success ? ' success' : ' ') + (disabled ? ' disabled' : '');
 
   return (
     <>
       <div className="input_wrapper">
         {/* description && <p className="input_desc">{description}</p> */}
         <div className="input_group">
-          {type === 'textarea' ? <textarea value={value} onChange={handleOnChange} name={name} className={`${inputClassName} textarea`} placeholder=" " autoFocus={autoFocus} {...props} /> : <input type={inputType} value={value} onChange={handleOnChange} name={name} className={inputClassName} placeholder=" " autoFocus={autoFocus} {...props} />}
+          {type === 'textarea' ? <textarea value={value} onChange={handleOnChange} name={name} className={`input_field textarea ${inputClassName}`} placeholder=" " autoFocus={autoFocus} {...props} /> : <input type={inputType} value={value} onChange={handleOnChange} name={name} className={`input_field ${inputClassName}`} placeholder=" " autoFocus={autoFocus} disabled={disabled} {...props} />}
           <label>{label}</label>
           {type === 'password' && (isPasswordVisible ? <FaEye onClick={handleTogglePasswordVisibility} className="input_svg" /> : <FaEyeSlash onClick={handleTogglePasswordVisibility} className="input_svg" />)}
           {success && <FaCheck className="input_svg success" />}

@@ -9,8 +9,7 @@ import {FaAngleDown} from 'react-icons/fa';
 const NAME_REGEX = /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+([ -][A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+)*$/;
 const PHONE_REGEX = /^\+36\d{2}-\d{3}-\d{4}$/;
 
-const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, updateData, err}, ref) => {
-  const [errors, setErrors] = useState({}); // err || {} esetén a memóriába ragad a hibaüzenet, ezért hibát okozhat
+const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, updateData, errors, setErrors}, ref) => {
   const {addToast} = useToast();
 
   useImperativeHandle(ref, () => ({
@@ -18,8 +17,6 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
   }));
 
   const isValid = () => {
-    console.log(errors);
-
     const inputFields = {
       firstName,
       lastName,
@@ -110,7 +107,6 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
           onChange={(value) => {
             updateData({lastName: value});
           }}
-          className="input_field"
           error={errors.lastName}
           success={lastName && !errors.lastName}
           autoFocus
@@ -122,7 +118,6 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
           onChange={(value) => {
             updateData({firstName: value});
           }}
-          className="input_field"
           error={errors.firstName}
           success={firstName && !errors.firstName}
         />
@@ -134,7 +129,6 @@ const PersonalForm = forwardRef(({firstName, lastName, phoneNumber, gender, upda
         onChange={(value) => {
           updateData({phoneNumber: value});
         }}
-        className="input_field"
         error={errors.phoneNumber}
         success={phoneNumber && !errors.phoneNumber}
       />

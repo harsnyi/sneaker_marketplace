@@ -7,6 +7,7 @@ import {motion} from 'framer-motion';
 
 import Input from '../form/Input';
 import Button from '../form/Button';
+import Textarea from '../form/TextArea';
 
 import {HiDownload} from 'react-icons/hi';
 
@@ -168,7 +169,7 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
     <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94]}} className="settings_edit_wrapper">
       <div className="form_box">
         <p className="link" onClick={toggleForm}>
-          Mégsem
+          Vissza
         </p>
         <h1 className="page_title">Adatok frissítése</h1>
         <p className="page_desc">Figyelem! Az alábbi információk publikusak a többi felhasználó számára.</p>
@@ -228,8 +229,7 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
             error={errors.phoneNumber}
             success={formData.phoneNumber && !errors.phoneNumber}
           />
-          <Input
-            type="textarea"
+          <Textarea
             value={formData.bio}
             label="Bemutatkozás"
             onChange={(value) => {
@@ -239,7 +239,6 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
               }));
             }}
             rows={7}
-            error={errors.bio}
           />
 
           <Button type="submit" text="Változtatások mentése" className="primary" loading={loading}>

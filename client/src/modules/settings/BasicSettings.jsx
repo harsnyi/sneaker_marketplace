@@ -173,11 +173,11 @@ const BasicSettings = () => {
                 edit={toggleBsAddressForm}
                 data={[
                   [
+                    {label: 'Név', value: formData.address.name || 'Nincs megadva'},
                     {label: 'Ország', value: formData.address.country || 'Nincs megadva'},
-                    {label: 'Város', value: formData.address.city || 'Nincs megadva'},
                   ],
                   [
-                    {label: 'Irányítószám', value: formData.address.zip || 'Nincs megadva'},
+                    {label: 'Város, irányítószám', value: formData.address.city + ', ' + formData.address.zip || 'Nincs megadva'},
                     {label: 'Utca, házszám', value: formData.address.street || 'Nincs megadva'},
                   ],
                 ]}

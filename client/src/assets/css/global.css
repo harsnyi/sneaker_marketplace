@@ -180,11 +180,15 @@ form .field_wrapper .input_wrapper {
   display: flex;
   align-items: center;
   gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .page_desc {
   color: #5C6678;
+  margin: 0 auto;
   margin-bottom: 2rem;
+  max-width: 900px;
 }
 
 @media only screen and (max-width: 1200px) {

@@ -88,8 +88,17 @@ $open-sidebar-width: 18rem;
 $mobile-nav-height: 5rem;
 $mobile-header-height: $mobile-nav-height;
 
+// MAX WIDTH
+$max-width-300: 300px;
+$max-width-600: 600px;
+$max-width-700: 700px;
+$max-width-800: 800px;
+$max-width-900: 900px;
+$max-width-1200: 1200px;
+
 // OTHER
 $panel-box-shadow: 0 0 5px rgba(48, 54, 65, 0.15);
+
 // BORDER RADIUS
 $border-radius: .5rem;
 $border-radius-1: 1rem;

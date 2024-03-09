@@ -119,12 +119,16 @@ form {
     display: flex;
     align-items: center;
     gap: 1rem;
+    max-width: $max-width-900;
+    margin: 0 auto;
     //font-family: $font-secondary;
 }
 
 .page_desc {
     color: color(secondary, 600);
+    margin: 0 auto;
     margin-bottom: 2rem;
+    max-width: $max-width-900;
 }
 
 @media only screen and (max-width: $media-query-lg) {

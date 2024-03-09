@@ -47,11 +47,10 @@ function App() {
               </Route>
 
               <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Contributor, ROLES.Admin]} />}>
-                <Route exact path="/settings" element={<Settings />} >
-                  <Route index element={<BasicSettings />}/>
+                <Route exact path="/settings" element={<Settings />}>
+                  <Route index element={<BasicSettings />} />
                 </Route>
               </Route>
-
             </Route>
           </Route>
         </Route>

@@ -13,6 +13,7 @@ import {MdAddCircle, MdAddCircleOutline, MdDelete, MdDeleteOutline} from 'react-
 import {AiFillEdit, AiOutlineEdit} from 'react-icons/ai';
 import {FaCheck} from 'react-icons/fa';
 import {TbCircleOff} from 'react-icons/tb';
+import CheckBox from '../form/CheckBox';
 
 const ZIP_REGEX = /^[0-9]{4}$/;
 
@@ -23,6 +24,7 @@ const AddForm = ({toggleAddForm, addresses}) => {
     city: '',
     zip: '',
     street: '',
+    default: false,
   });
 
   const [errors, setErrors] = useState({
@@ -31,6 +33,7 @@ const AddForm = ({toggleAddForm, addresses}) => {
     city: '',
     zip: '',
     street: '',
+    default: '',
   });
 
   const [loading, setLoading] = useState(false);
@@ -101,6 +104,7 @@ const AddForm = ({toggleAddForm, addresses}) => {
       city: '',
       zip: '',
       street: '',
+      default: '',
     });
 
     const inputFields = {
@@ -207,6 +211,14 @@ const AddForm = ({toggleAddForm, addresses}) => {
             error={errors.street}
             success={addAddressData.street && !errors.street}
           />
+          <CheckBox
+            label="Alapértelmezett cím"
+            value={addAddressData.default}
+            onChange={(value) => {
+              setAddAddressData((prevState) => ({...prevState, default: value}));
+            }}
+            error={errors.default}
+          />
         </form>
       </div>
       <div className="modal_actions">
@@ -228,7 +240,7 @@ const ModifyForm = ({selectedAddress, setSelectedAddress, setAddresses, toggleMo
     city: selectedAddress.city,
     zip: selectedAddress.zip,
     street: selectedAddress.street,
-    // default: selectedAddress.default,
+    default: selectedAddress.default,
   });
 
   const [errors, setErrors] = useState({
@@ -237,6 +249,7 @@ const ModifyForm = ({selectedAddress, setSelectedAddress, setAddresses, toggleMo
     city: '',
     zip: '',
     street: '',
+    default: '',
   });
 
   const [loading, setLoading] = useState(false);
@@ -298,6 +311,8 @@ const ModifyForm = ({selectedAddress, setSelectedAddress, setAddresses, toggleMo
 
   const handleModifyAddress = async (e) => {
     e.preventDefault();
+
+    // TODO: validate
 
     console.log('Modifying address...', selectedAddress);
   };
@@ -363,6 +378,14 @@ const ModifyForm = ({selectedAddress, setSelectedAddress, setAddresses, toggleMo
             }}
             error={errors.street}
             success={modifyAddressData.street && !errors.street}
+          />
+          <CheckBox
+            label="Alapértelmezett cím"
+            value={modifyAddressData.default}
+            onChange={(value) => {
+              setModifyAddressData((prevState) => ({...prevState, default: value}));
+            }}
+            error={errors.default}
           />
         </form>
       </div>
@@ -497,7 +520,7 @@ const BsAddressForm = ({formData, setFormData, toggleForm}) => {
       <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94]}} className="settings_edit_wrapper">
         <div className="form_box">
           <p className="link" onClick={toggleForm}>
-            Mégsem
+            Vissza
           </p>
           <h1 className="page_title">Címek kezelése</h1>
           <p className="page_desc">Itt kezelheted a címeidet és adhatsz hozzá újakat.</p>

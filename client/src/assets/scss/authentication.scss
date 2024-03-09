@@ -47,7 +47,7 @@
                 font-weight: 400;
                 margin: 0;
                 text-align: center;
-                max-width: 700px;
+                max-width: $max-width-700;
                 padding: 0 1.5rem;
             }
 
@@ -163,7 +163,7 @@
             position: relative;
             margin: 0 auto;
             width: 100%;
-            max-width: 700px;
+            max-width: $max-width-700;
 
             .tabs_header {
                 position: relative;
@@ -305,7 +305,7 @@
             position: relative;
             margin: 0 auto;
             width: 100%;
-            max-width: 700px;
+            max-width: $max-width-700;
 
             .reset-password_body {
                 position: relative;
@@ -386,7 +386,7 @@
 
         .hero {
             border-radius: $border-radius-1;
-            max-width: 700px;
+            max-width: $max-width-700;
             margin: 2rem auto;
             transform: scale(1);
             gap: .5rem;

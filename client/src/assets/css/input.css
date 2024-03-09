@@ -85,6 +85,58 @@
   flex-direction: column;
   margin: 0.2rem 0;
 }
+.input_wrapper .input_group .checkbox {
+  padding: 1rem;
+  background-color: transparent;
+  border: 1px solid #B8BDC6;
+  border-radius: 1rem;
+  cursor: pointer;
+  height: 51px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.input_wrapper .input_group .checkbox label {
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.input_wrapper .input_group .checkbox.checked {
+  border: 1px solid #000;
+}
+.input_wrapper .input_group .checkbox.checked label {
+  color: #000;
+}
+.input_wrapper .input_group .checkbox.checked .checkbox_input {
+  background-color: #009FFD;
+  border: none;
+}
+.input_wrapper .input_group .checkbox.error {
+  border: 2px solid #F02522;
+  background-color: #fff;
+}
+.input_wrapper .input_group .checkbox.error label {
+  color: #F02522;
+}
+.input_wrapper .input_group .checkbox .checkbox_input {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid #B8BDC6;
+  background-color: #F0F1F3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input_wrapper .input_group .checkbox .checkbox_input svg {
+  width: 1rem;
+  height: 1rem;
+  color: #fff;
+}
 .input_wrapper .input_group label {
   position: absolute;
   top: 50%;
@@ -99,7 +151,7 @@
 .input_wrapper .input_group .input_svg {
   position: absolute;
   top: 50%;
-  right: 1rem;
+  right: 1.5rem;
   transform: translateY(-50%);
   width: 1rem;
   height: 1rem;

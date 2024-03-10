@@ -32,7 +32,7 @@ const Dashboard = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="dashboard">
+        <div className="page_wrapper">
           <h1>Kezdőlap</h1>
           <p>Üdvözöllek a kezdőlapon!</p>
           <button onClick={fetchUsers}>Fetch Users</button>

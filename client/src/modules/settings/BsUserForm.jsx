@@ -169,13 +169,13 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
   };
 
   return (
-    <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94]}} className="settings_edit_wrapper">
+    <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94]}} className="page_wrapper">
       <div className="form_box">
         <p className="link" onClick={toggleForm}>
           Vissza
         </p>
         <h1 className="page_title">Adatok frissítése</h1>
-        <p className="page_desc">Figyelem! Az alábbi információk publikusak a többi felhasználó számára.</p>
+        <p className="page_desc mb-2">Figyelem! Az alábbi információk publikusak a többi felhasználó számára.</p>
         <form onSubmit={handleFormSubmit}>
           <Input
             type="text"

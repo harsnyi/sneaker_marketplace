@@ -41,7 +41,7 @@ const User = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div>
+        <div className="page_wrapper">
           <h1>Profil</h1>
           <span>{user.username}</span>
           <br />

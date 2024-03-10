@@ -111,6 +111,24 @@ $font-display: 'BiggerDisplay';
 $font-primary: 'Roboto Condensed', sans-serif;
 $font-secondary: 'Roboto Condensed Bold', sans-serif;
 
+// MARGINS
+$margin-bottoms : (0_5: .5rem,
+    1: 1rem,
+    1_5: 1.5rem,
+    2: 2rem,
+    2_5: 2.5rem,
+    3: 3rem,
+    3_5: 3.5rem,
+    4: 4rem,
+    4_5: 4.5rem,
+    5: 5rem,
+);
+
+@each $key, $value in $margin-bottoms {
+    .mb-#{$key} {
+        margin-bottom: $value !important;
+    }
+}
 
 // FUNCTIONS
 @function color($color, $tone) {

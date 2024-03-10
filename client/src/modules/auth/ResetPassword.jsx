@@ -31,7 +31,7 @@ const ResetPassword = ({setShowResetPass}) => {
         }));
       }
     },
-    500,
+    0,
     [email]
   );
 

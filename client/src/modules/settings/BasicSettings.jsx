@@ -128,11 +128,11 @@ const BasicSettings = () => {
   return (
     <>
       {!isBsProfilePicFormOpen && !isBsUserFormOpen && !isBsAddressFormOpen ? (
-        <motion.div initial={initialLoad ? false : {x: isBsProfilePicFormOpen || isBsUserFormOpen || isBsAddressFormOpen ? '100%' : '-100%'}} animate={{x: '0'}} exit={{x: isBsProfilePicFormOpen || isBsUserFormOpen || isBsAddressFormOpen ? '-100%' : '100%'}} transition={{duration: 0.3, ease: [0.5, 0.46, 0.45, 0.94]}} className="settings_wrapper">
+        <motion.div initial={initialLoad ? false : {x: isBsProfilePicFormOpen || isBsUserFormOpen || isBsAddressFormOpen ? '100%' : '-100%'}} animate={{x: '0'}} exit={{x: isBsProfilePicFormOpen || isBsUserFormOpen || isBsAddressFormOpen ? '-100%' : '100%'}} transition={{duration: 0.3, ease: [0.5, 0.46, 0.45, 0.94]}} className="page_wrapper">
           <h1 className="page_title">
             <MdAccountCircle /> Személyes adatok
           </h1>
-          <p className="page_desc">Ezen az oldalon módosíthatod a profiloddal kapcsolatos információkat és a személyes adataidat is.</p>
+          <p className="page_desc mb-2">Ezen az oldalon módosíthatod a profiloddal kapcsolatos információkat és a személyes adataidat is.</p>
 
           {loading ? (
             <Spinner />

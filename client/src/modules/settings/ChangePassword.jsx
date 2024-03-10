@@ -86,12 +86,12 @@ const ChangePassword = () => {
       {codeSent ? (
         <ValidateCodeForm toggleForm={toggleValidateCode} />
       ) : (
-        <motion.div initial={initialLoad ? false : {x: codeSent ? '100%' : '-100%'}} animate={{x: '0'}} exit={{x: codeSent ? '-100%' : '100%'}} transition={{duration: 0.3, ease: [0.5, 0.46, 0.45, 0.94]}} className="settings_edit_wrapper">
+        <motion.div initial={initialLoad ? false : {x: codeSent ? '100%' : '-100%'}} animate={{x: '0'}} exit={{x: codeSent ? '-100%' : '100%'}} transition={{duration: 0.3, ease: [0.5, 0.46, 0.45, 0.94]}} className="page_wrapper">
           <div className="form_box">
             <h1 className="page_title">
               <MdAccountCircle /> Jelszó csere
             </h1>
-            <p className="page_desc">Küldünk egy levelet az e-mail címedre, majd a benne található 6 számjegyű kód megadásával beállíthatod az új jelszavadat.</p>
+            <p className="page_desc mb-2">Küldünk egy levelet az e-mail címedre, majd a benne található 6 számjegyű kód megadásával beállíthatod az új jelszavadat.</p>
 
             <form onSubmit={handleFormSubmit}>
               <Input

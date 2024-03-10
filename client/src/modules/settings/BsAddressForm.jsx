@@ -517,13 +517,13 @@ const BsAddressForm = ({formData, setFormData, toggleForm}) => {
         </Modal>
       )}
 
-      <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94]}} className="settings_edit_wrapper">
+      <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94]}} className="page_wrapper">
         <div className="form_box">
           <p className="link" onClick={toggleForm}>
             Vissza
           </p>
           <h1 className="page_title">Címek kezelése</h1>
-          <p className="page_desc">Itt kezelheted a címeidet és adhatsz hozzá újakat.</p>
+          <p className="page_desc mb-2">Itt kezelheted a címeidet és adhatsz hozzá újakat.</p>
           <div className="address_grid">
             <div className="address_box">
               <article className="add" onClick={toggleAddForm}>

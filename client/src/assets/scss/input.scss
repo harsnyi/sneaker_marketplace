@@ -5,7 +5,7 @@
 
     .input_desc {
         margin-bottom: .5rem;
-        line-height: 1.8;
+        line-height: 1.6;
     }
 
     .input_group {
@@ -32,6 +32,14 @@
                 left: 0;
                 transform: none;
                 user-select: none;
+            }
+
+            &:hover {
+                border: 1px solid color(secondary, 500);
+
+                label {
+                    color: color(secondary, 500);
+                }
             }
 
             &.checked {

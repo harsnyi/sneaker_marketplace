@@ -89,13 +89,13 @@ const BsProfilePicForm = ({setFormData, toggleForm}) => {
   };
 
   return (
-    <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94]}} className="settings_edit_wrapper">
+    <motion.div initial={{x: '100%'}} animate={{x: '0'}} exit={{x: '100%'}} transition={{duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94]}} className="page_wrapper">
       <div className="form_box">
         <p className="link" onClick={toggleForm}>
           Vissza
         </p>
         <h1 className="page_title">Fénykép feltöltése</h1>
-        <p className="page_desc">Maximum 1 darab képet tölthetsz fel, amely nem lehet nagyobb mint 1MB.</p>
+        <p className="page_desc mb-2">Maximum 1 darab képet tölthetsz fel, amely nem lehet nagyobb mint 1MB.</p>
         <form onSubmit={handleFormSubmit}>
           <Dropzone onDrop={onDrop} accept={'image/*'} multiple={false} maxFiles={1} maxSize={1048576} onDropRejected={onDropRejected} onFileDialogCancel={onFileDialogCancel} />
           <Button type="submit" className="primary" text="Kép módosítása" loading={loading}>

@@ -45,6 +45,14 @@ a {
     color: $clr-font;
 }
 
+.fallback {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: $clr-white;
+    z-index: 999;
+}
+
 .spinner {
     position: absolute;
     top: 50%;
@@ -122,6 +130,11 @@ form {
     text-overflow: ellipsis;
 }
 
+.page_wrapper {
+    flex: 1;
+    padding: 1.5rem 2rem;
+}
+
 .page_title {
     font-size: 2rem;
     display: flex;
@@ -135,7 +148,6 @@ form {
 .page_desc {
     color: color(secondary, 600);
     margin: 0 auto;
-    margin-bottom: 2rem;
     max-width: $max-width-800;
 }
 

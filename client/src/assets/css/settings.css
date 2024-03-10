@@ -1,3 +1,43 @@
+.mb-0_5 {
+  margin-bottom: 0.5rem !important;
+}
+
+.mb-1 {
+  margin-bottom: 1rem !important;
+}
+
+.mb-1_5 {
+  margin-bottom: 1.5rem !important;
+}
+
+.mb-2 {
+  margin-bottom: 2rem !important;
+}
+
+.mb-2_5 {
+  margin-bottom: 2.5rem !important;
+}
+
+.mb-3 {
+  margin-bottom: 3rem !important;
+}
+
+.mb-3_5 {
+  margin-bottom: 3.5rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 4rem !important;
+}
+
+.mb-4_5 {
+  margin-bottom: 4.5rem !important;
+}
+
+.mb-5 {
+  margin-bottom: 5rem !important;
+}
+
 @keyframes bg-animation {
   0% {
     background-position: 0% 50%;
@@ -120,39 +160,114 @@
   background-color: #000;
   transform: scaleX(1);
 }
-.settings_section .settings_edit_wrapper {
+.settings_section .page_wrapper {
   margin-left: 18rem;
-  flex: 1;
-  padding: 1.5rem 2rem;
 }
-.settings_section .settings_edit_wrapper .form_box {
+.settings_section .page_wrapper .settings_box {
+  position: relative;
+  padding: 1rem 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 1rem;
+  border: 1px solid #CFD3D9;
+}
+.settings_section .page_wrapper .settings_box.image_box .image_box_content {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+.settings_section .page_wrapper .settings_box.image_box .image_box_content img {
+  width: 7rem;
+  height: 7rem;
+  min-width: 7rem;
+  min-height: 7rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.settings_section .page_wrapper .settings_box.image_box .image_box_content div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.settings_section .page_wrapper .settings_box.image_box .image_box_content div .image_box_name {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.settings_section .page_wrapper .settings_box.image_box .image_box_content div .image_box_rank {
+  text-transform: uppercase;
+}
+.settings_section .page_wrapper .settings_box.image_box .image_box_content div .image_box_rank,
+.settings_section .page_wrapper .settings_box.image_box .image_box_content div .image_box_address {
+  color: #5C6678;
+}
+.settings_section .page_wrapper .settings_box button {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  border-radius: 50%;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+}
+.settings_section .page_wrapper .settings_box:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.settings_section .page_wrapper .settings_box h3 {
+  margin-bottom: 1rem;
+}
+.settings_section .page_wrapper .settings_box .user_info {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.settings_section .page_wrapper .settings_box .user_info .info_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.settings_section .page_wrapper .settings_box .user_info .info_row:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.settings_section .page_wrapper .settings_box .user_info .info_row.full_row {
+  grid-template-columns: 1fr;
+}
+.settings_section .page_wrapper .settings_box .user_info .info_row .info_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.settings_section .page_wrapper .settings_box .user_info .info_row .info_box .info_label {
+  color: #5C6678;
+}
+.settings_section .page_wrapper .settings_box .user_info .info_row .info_box .info_label,
+.settings_section .page_wrapper .settings_box .user_info .info_row .info_box .info_value {
+  font-size: 1rem;
+}
+.settings_section .page_wrapper .form_box {
   max-width: 800px;
   margin: 0 auto;
 }
-.settings_section .settings_edit_wrapper .form_box .link {
+.settings_section .page_wrapper .form_box .link {
   margin-bottom: 1rem;
 }
-.settings_section .settings_edit_wrapper .form_box h1 {
+.settings_section .page_wrapper .form_box h1 {
   margin: 1rem 0 2rem 0;
   font-size: 2rem;
 }
-.settings_section .settings_edit_wrapper .form_box h1.page_title {
+.settings_section .page_wrapper .form_box h1.page_title {
   margin-top: 0;
   margin-bottom: 0;
 }
-.settings_section .settings_edit_wrapper .form_box form {
+.settings_section .page_wrapper .form_box form {
   display: flex;
   flex-direction: column;
   background-color: #fff;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid {
+.settings_section .page_wrapper .form_box .address_grid {
   height: auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   grid-template-rows: 1fr;
   gap: 2rem;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article {
+.settings_section .page_wrapper .form_box .address_grid article {
   position: relative;
   background-color: #fff;
   width: 100%;
@@ -165,15 +280,15 @@
   min-height: 22rem;
   transition: border 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article h5 {
+.settings_section .page_wrapper .form_box .address_grid article h5 {
   color: #989FAD;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article:hover {
+.settings_section .page_wrapper .form_box .address_grid article:hover {
   border: 1px solid #657084;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.add {
+.settings_section .page_wrapper .form_box .address_grid article.add {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -181,141 +296,55 @@
   border: 1px dashed #989FAD;
   background-color: #F0F1F3;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.add:hover {
+.settings_section .page_wrapper .form_box .address_grid article.add:hover {
   border: 1px solid #657084;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.add h4 {
+.settings_section .page_wrapper .form_box .address_grid article.add h4 {
   text-align: center;
   white-space: nowrap;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.add svg {
+.settings_section .page_wrapper .form_box .address_grid article.add svg {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.add svg,
-.settings_section .settings_edit_wrapper .form_box .address_grid article.add h4 {
+.settings_section .page_wrapper .form_box .address_grid article.add svg,
+.settings_section .page_wrapper .form_box .address_grid article.add h4 {
   color: #FF3300;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.address {
+.settings_section .page_wrapper .form_box .address_grid article.address {
   display: flex;
   flex-direction: column;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.address .delete {
+.settings_section .page_wrapper .form_box .address_grid article.address .delete {
   position: absolute;
   top: 0.5rem;
   right: 1rem;
   border-radius: 50%;
   padding: 0.5rem;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.address .delete svg {
+.settings_section .page_wrapper .form_box .address_grid article.address .delete svg {
   margin-bottom: 0;
   font-size: 1rem;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.address h4 {
+.settings_section .page_wrapper .form_box .address_grid article.address h4 {
   font-size: 1.25rem;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.address div {
+.settings_section .page_wrapper .form_box .address_grid article.address div {
   padding: 1rem 0;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.address .default_address {
+.settings_section .page_wrapper .form_box .address_grid article.address .default_address {
   display: flex;
   align-items: center;
   padding-top: 0.5rem;
   padding-bottom: 1rem;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.address .default_address svg {
+.settings_section .page_wrapper .form_box .address_grid article.address .default_address svg {
   margin-right: 0.75rem;
   color: #3DF100;
 }
-.settings_section .settings_edit_wrapper .form_box .address_grid article.address .secondary:not(.delete) {
+.settings_section .page_wrapper .form_box .address_grid article.address .secondary:not(.delete) {
   margin-top: auto;
   border-radius: 0.5rem;
-}
-.settings_section .settings_wrapper {
-  margin-left: 18rem;
-  flex: 1;
-  padding: 1.5rem 2rem;
-}
-.settings_section .settings_wrapper .page_title svg.spin {
-  animation: spin 15s linear infinite;
-}
-.settings_section .settings_wrapper .settings_box {
-  position: relative;
-  padding: 1rem 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
-  border-radius: 1rem;
-  border: 1px solid #CFD3D9;
-}
-.settings_section .settings_wrapper .settings_box.image_box .image_box_content {
-  display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
-}
-.settings_section .settings_wrapper .settings_box.image_box .image_box_content img {
-  width: 7rem;
-  height: 7rem;
-  min-width: 7rem;
-  min-height: 7rem;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 50%;
-}
-.settings_section .settings_wrapper .settings_box.image_box .image_box_content div {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.settings_section .settings_wrapper .settings_box.image_box .image_box_content div .image_box_name {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-.settings_section .settings_wrapper .settings_box.image_box .image_box_content div .image_box_rank {
-  text-transform: uppercase;
-}
-.settings_section .settings_wrapper .settings_box.image_box .image_box_content div .image_box_rank,
-.settings_section .settings_wrapper .settings_box.image_box .image_box_content div .image_box_address {
-  color: #5C6678;
-}
-.settings_section .settings_wrapper .settings_box button {
-  position: absolute;
-  top: 0.5rem;
-  right: 1rem;
-  border-radius: 50%;
-  padding: 0.5rem;
-  font-size: 1.1rem;
-}
-.settings_section .settings_wrapper .settings_box:not(:last-child) {
-  margin-bottom: 2rem;
-}
-.settings_section .settings_wrapper .settings_box h3 {
-  margin-bottom: 1rem;
-}
-.settings_section .settings_wrapper .settings_box .user_info {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-.settings_section .settings_wrapper .settings_box .user_info .info_row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.settings_section .settings_wrapper .settings_box .user_info .info_row:not(:last-child) {
-  margin-bottom: 1rem;
-}
-.settings_section .settings_wrapper .settings_box .user_info .info_row.full_row {
-  grid-template-columns: 1fr;
-}
-.settings_section .settings_wrapper .settings_box .user_info .info_row .info_box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.settings_section .settings_wrapper .settings_box .user_info .info_row .info_box .info_label {
-  color: #5C6678;
-}
-.settings_section .settings_wrapper .settings_box .user_info .info_row .info_box .info_label,
-.settings_section .settings_wrapper .settings_box .user_info .info_row .info_box .info_value {
-  font-size: 1rem;
 }
 
 @media only screen and (max-width: 1200px) {

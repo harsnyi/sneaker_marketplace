@@ -11,6 +11,7 @@ const nav = [
     items: [
       {text: 'Személyes adatok', link: '/settings'},
       {text: 'Jelszó csere', link: '/settings/changepassword'},
+      {text: 'Kezelés', link: '/settings/manage'},
     ],
   },
   {

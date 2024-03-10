@@ -109,12 +109,12 @@ const SideBarDesktop = ({isSideOpen, toggleSideBar}) => {
                 <li key={index} className={desktopSideStyle['submenu_item']}>
                   {item.link === null ? (
                     <div className={`${desktopSideStyle['submenu_item_link']} ${item.class ? desktopSideStyle[item.class] : ''}`} title={!isSideOpen ? item.text : null} onClick={(e) => handleOnClick(e, item.action)}>
-                      {location.pathname === item.link ? item.activeIcon : item.icon}
+                      {location.pathname.startsWith(item.link) ? item.activeIcon : item.icon}
                       <span>{item.text}</span>
                     </div>
                   ) : (
                     <NavLink to={item.link} className={`${desktopSideStyle['submenu_item_link']} ${item.class ? desktopSideStyle[item.class] : ''}`} title={!isSideOpen ? item.text : null}>
-                      {location.pathname === item.link ? item.activeIcon : item.icon}
+                      {location.pathname.startsWith(item.link) ? item.activeIcon : item.icon}
                       <span>{item.text}</span>
                     </NavLink>
                   )}

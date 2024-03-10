@@ -30,7 +30,12 @@ const ROLES = {
 
 function App() {
   return (
-    <Suspense fallback={<Spinner />}>
+    <Suspense
+      fallback={
+        <section className="fallback">
+          <Spinner />
+        </section>
+      }>
       <Routes>
         {/* public routes */}
         <Route path="/auth" element={<Authentication />} />

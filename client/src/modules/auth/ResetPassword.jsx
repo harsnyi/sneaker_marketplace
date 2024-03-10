@@ -7,7 +7,7 @@ import Input from '../form/Input';
 import Button from '../form/Button';
 import {motion} from 'framer-motion';
 
-import {HiArrowPath} from 'react-icons/hi2';
+import {AiOutlineSend} from 'react-icons/ai';
 
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
@@ -54,7 +54,7 @@ const ResetPassword = ({setShowResetPass}) => {
       </p>
       <div className="reset-password_body">
         <h1>Elfelejtett jelszó</h1>
-        <p>Add meg a regisztáció során használt e-mail címed, majd a levélben kapott linkre kattintva kövesd a további instrukciókat új jelszavad beállításához.</p>
+        <p>Küldünk egy levelet az e-mail címedre, majd a benne található 6 számjegyű kód megadásával beállíthatod az új jelszavadat.</p>
         <form onSubmit={handleFormSubmit}>
           <Input
             type="email"
@@ -65,10 +65,10 @@ const ResetPassword = ({setShowResetPass}) => {
               setEmail(value);
             }}
             error={errors.email}
-            success={errors.email === '' && email !== ''}
+            success={email && !errors.email}
           />
-          <Button type="submit" text="Jelszó Helyreállítása" className="primary" loading={loading}>
-            <HiArrowPath />
+          <Button type="submit" text="Kód küldése" className="primary" loading={loading}>
+            <AiOutlineSend />
           </Button>
         </form>
       </div>

@@ -10,7 +10,7 @@ const nav = [
     titleIcon: <MdAccountCircle />,
     items: [
       {text: 'Személyes adatok', link: '/settings'},
-      {text: 'Jelszó csere', link: '/'},
+      {text: 'Jelszó csere', link: '/settings/changepassword'},
     ],
   },
   {
@@ -45,7 +45,7 @@ const SettingsNav = () => {
             <ul>
               {item.items.map((subItem, index) => (
                 <li key={index} className="settings_nav_subitem">
-                  <NavLink to={subItem.link} className="link">
+                  <NavLink end to={subItem.link} className="link">
                     {subItem.text}
                   </NavLink>
                 </li>

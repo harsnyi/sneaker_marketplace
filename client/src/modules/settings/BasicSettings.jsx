@@ -1,6 +1,7 @@
-import {useEffect, useState, useMemo} from 'react';
+import {useEffect, useState} from 'react';
 import {useAxiosPrivate} from '../../hooks/useAxiosPrivate';
 import {useToast} from '../../hooks/useToast';
+import {useQueryParam, BooleanParam} from 'use-query-params';
 import {motion} from 'framer-motion';
 
 import BsProfilePicForm from './BsProfilePicForm';
@@ -11,7 +12,7 @@ import Button from '../form/Button';
 import Spinner from '../../component/Spinner';
 //import Modal from '../../component/Modal';
 
-import {IoSettings} from 'react-icons/io5';
+import {MdAccountCircle} from 'react-icons/md';
 import {AiOutlineEdit} from 'react-icons/ai';
 
 const InfoBox = ({label, value}) => (
@@ -65,9 +66,9 @@ const BasicSettings = () => {
   const [formData, setFormData] = useState(INITIAL_DATA);
   const [initialLoad, setInitialLoad] = useState(true);
 
-  const [isBsProfilePicFormOpen, setIsBsProfilePicFormOpen] = useState(false);
-  const [isBsUserFormOpen, setIsBsUserFormOpen] = useState(false);
-  const [isBsAddressFormOpen, setIsBsAddressFormOpen] = useState(false);
+  const [isBsProfilePicFormOpen, setIsBsProfilePicFormOpen] = useQueryParam('profilepicform', BooleanParam);
+  const [isBsUserFormOpen, setIsBsUserFormOpen] = useQueryParam('userform', BooleanParam);
+  const [isBsAddressFormOpen, setIsBsAddressFormOpen] = useQueryParam('addressform', BooleanParam);
 
   const axiosPrivate = useAxiosPrivate();
   const {addToast} = useToast();
@@ -129,7 +130,7 @@ const BasicSettings = () => {
       {!isBsProfilePicFormOpen && !isBsUserFormOpen && !isBsAddressFormOpen ? (
         <motion.div initial={initialLoad ? false : {x: isBsProfilePicFormOpen || isBsUserFormOpen || isBsAddressFormOpen ? '100%' : '-100%'}} animate={{x: '0'}} exit={{x: isBsProfilePicFormOpen || isBsUserFormOpen || isBsAddressFormOpen ? '-100%' : '100%'}} transition={{duration: 0.3, ease: [0.5, 0.46, 0.45, 0.94]}} className="settings_wrapper">
           <h1 className="page_title">
-            <IoSettings /> Személyes adatok
+            <MdAccountCircle /> Személyes adatok
           </h1>
           <p className="page_desc">Ezen az oldalon módosíthatod a profiloddal kapcsolatos információkat és a személyes adataidat is.</p>
 
@@ -187,7 +188,7 @@ const BasicSettings = () => {
         </motion.div>
       ) : null}
 
-      {isBsProfilePicFormOpen ? <BsProfilePicForm formData={formData} setFormData={setFormData} toggleForm={toggleBsProfilePicForm} /> : null}
+      {isBsProfilePicFormOpen ? <BsProfilePicForm setFormData={setFormData} toggleForm={toggleBsProfilePicForm} /> : null}
       {isBsUserFormOpen ? <BsUserForm formData={formData} setFormData={setFormData} toggleForm={toggleBsUserForm} /> : null}
       {isBsAddressFormOpen ? <BsAddressForm formData={formData} setFormData={setFormData} toggleForm={toggleBsAddressForm} /> : null}
     </>

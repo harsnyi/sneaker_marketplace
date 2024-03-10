@@ -12,7 +12,7 @@ import Dropzone from '../form/Dropzone';
 
 import {HiUpload} from 'react-icons/hi';
 
-const BsProfilePicForm = ({formData, setFormData, toggleForm}) => {
+const BsProfilePicForm = ({setFormData, toggleForm}) => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
 

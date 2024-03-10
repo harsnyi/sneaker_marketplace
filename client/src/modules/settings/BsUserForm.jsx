@@ -123,6 +123,9 @@ const BsUserForm = ({formData, setFormData, toggleForm}) => {
           [input]: 'A mező kitöltése kötelező.',
         }));
       });
+
+      addToast('error', 'Kérjük töltsd ki a csillaggal jelölt mezőket!');
+      return;
     }
 
     if (Object.values(errors).some((error) => error)) {

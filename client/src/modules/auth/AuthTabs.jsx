@@ -1,4 +1,4 @@
-import {useQueryParam, StringParam} from 'use-query-params';
+import {useQueryParam, StringParam, BooleanParam} from 'use-query-params';
 import {useState, useEffect} from 'react';
 import {motion} from 'framer-motion';
 
@@ -9,7 +9,7 @@ import ResetPassword from './ResetPassword';
 const AuthTabs = () => {
   const [tab = 'log', setTab] = useQueryParam('tab', StringParam);
 
-  const [showResetPass, setShowResetPass] = useState(false);
+  const [showResetPass, setShowResetPass] = useQueryParam('resetpass', BooleanParam);
 
   const [initialLoad, setInitialLoad] = useState(true);
 

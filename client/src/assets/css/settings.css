@@ -126,14 +126,18 @@
   padding: 1.5rem 2rem;
 }
 .settings_section .settings_edit_wrapper .form_box {
-  max-width: 768px;
+  max-width: 800px;
   margin: 0 auto;
+}
+.settings_section .settings_edit_wrapper .form_box .link {
+  margin-bottom: 1rem;
 }
 .settings_section .settings_edit_wrapper .form_box h1 {
   margin: 1rem 0 2rem 0;
   font-size: 2rem;
 }
 .settings_section .settings_edit_wrapper .form_box h1.page_title {
+  margin-top: 0;
   margin-bottom: 0;
 }
 .settings_section .settings_edit_wrapper .form_box form {
@@ -144,7 +148,7 @@
 .settings_section .settings_edit_wrapper .form_box .address_grid {
   height: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   grid-template-rows: 1fr;
   gap: 2rem;
 }
@@ -238,7 +242,7 @@
 .settings_section .settings_wrapper .settings_box {
   position: relative;
   padding: 1rem 1.5rem;
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
   border-radius: 1rem;
   border: 1px solid #CFD3D9;

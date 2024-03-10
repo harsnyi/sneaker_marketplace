@@ -71,14 +71,19 @@
 
 
         .form_box {
-            max-width: $media-query-md;
+            max-width: $max-width-800;
             margin: 0 auto;
+
+            .link {
+                margin-bottom: 1rem;
+            }
 
             h1 {
                 margin: 1rem 0 2rem 0;
                 font-size: 2rem;
 
                 &.page_title {
+                    margin-top: 0;
                     margin-bottom: 0;
                 }
             }
@@ -92,7 +97,7 @@
             .address_grid {
                 height: auto;
                 display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
                 grid-template-rows: 1fr;
                 gap: 2rem;
 
@@ -211,7 +216,7 @@
         .settings_box {
             position: relative;
             padding: 1rem 1.5rem;
-            max-width: $max-width-900;
+            max-width: $max-width-800;
             margin: 0 auto;
             border-radius: $border-radius-1;
             border: 1px solid color(secondary, 100);

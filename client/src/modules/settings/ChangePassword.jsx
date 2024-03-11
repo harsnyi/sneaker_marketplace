@@ -77,8 +77,9 @@ const ChangePassword = () => {
     }
 
     setLoading(true);
-    // TODO: Send email with code
+    // TODO: Generate and send code
     setCodeSent(true);
+    setLoading(false);
   };
 
   return (

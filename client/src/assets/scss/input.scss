@@ -8,6 +8,70 @@
         line-height: 1.6;
     }
 
+    .otp_group {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 1rem;
+        margin: 0.2rem 0;
+
+        &~.error_msg {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .input_field {
+            width: 4rem;
+            // height: 53px;
+            // aspect-ratio: 1/1;
+            padding: 1rem;
+            outline: none;
+            font-size: 1rem;
+            background-color: transparent;
+            border: 1px solid color(secondary, 200);
+            border-radius: $border-radius-1;
+            text-align: center;
+
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus {
+                -webkit-text-fill-color: $clr-black;
+                -webkit-box-shadow: 0 0 0px 1000px $clr-white inset;
+            }
+
+            &:disabled {
+                background-color: color(secondary, 50);
+                cursor: not-allowed;
+            }
+
+            &:focus {
+                border: 1px solid color(secondary, 500);
+                background-color: $clr-white;
+            }
+
+            &:invalid,
+            &:not(:placeholder-shown) {
+                border: 1px solid $clr-black;
+                background-color: $clr-white;
+
+                &:focus {
+                    outline: 2px solid color(secondary, 100);
+                }
+            }
+
+            &.error {
+                border: 2px solid color(red, 500);
+                background-color: $clr-white;
+
+                &:focus {
+                    outline: 2px solid color(red, 100);
+                }
+            }
+        }
+    }
+
     .input_group {
         position: relative;
         display: flex;
@@ -21,7 +85,7 @@
             border: 1px solid color(secondary, 200);
             border-radius: $border-radius-1;
             cursor: pointer;
-            height: 51px; // HARDCODED
+            height: 53px; // HARDCODED
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -116,7 +180,7 @@
         .input_field {
             padding: 1rem 2rem 1rem 1rem;
             outline: none;
-            font-size: 0.9rem;
+            font-size: 1rem;
             background-color: transparent;
             border: 1px solid color(secondary, 200);
             border-radius: $border-radius-1;

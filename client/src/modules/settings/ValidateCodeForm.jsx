@@ -6,6 +6,7 @@ import Button from '../form/Button';
 
 import {IoMdCheckmarkCircleOutline} from 'react-icons/io';
 import {HiArrowPath} from 'react-icons/hi2';
+import OtpInput from '../form/OtpInput';
 
 const ValidateCodeForm = ({toggleForm}) => {
   const [loading, setLoading] = useState(false);
@@ -25,6 +26,9 @@ const ValidateCodeForm = ({toggleForm}) => {
         <h1 className="page_title">Csekkold a leveleid</h1>
         <p className="page_desc mb-2">Elküldtünk egy 6 számjegyből álló kódot az általad megadott e-mail címre.</p>
         <form onSubmit={handleFormSubmit}>
+          <div className="mb-2">
+            <OtpInput numberOfDigits={6} correctOTP={'123456'} />
+          </div>
           <Button type="submit" className="primary" text="Megerősítés" loading={loading}>
             <IoMdCheckmarkCircleOutline />
           </Button>

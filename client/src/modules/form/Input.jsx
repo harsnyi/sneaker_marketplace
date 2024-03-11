@@ -17,18 +17,16 @@ const Input = ({type, label, description, error, success, disabled, value, name,
   const inputClassName = (className ? className : '') + (error ? ' error' : '') + (success ? ' success' : '') + (disabled ? ' disabled' : '');
 
   return (
-    <>
-      <div className="input_wrapper">
-        {/* description && <p className="input_desc">{description}</p> */}
-        <div className="input_group">
-          <input type={inputType} value={value} onChange={handleOnChange} name={name} className={`input_field ${inputClassName}`} placeholder=" " autoFocus={autoFocus} disabled={disabled} {...props} />
-          <label>{label}</label>
-          {type === 'password' && (isPasswordVisible ? <FaEye onClick={handleTogglePasswordVisibility} className="input_svg" /> : <FaEyeSlash onClick={handleTogglePasswordVisibility} className="input_svg" />)}
-          {success && <FaCheck className="input_svg success" />}
-        </div>
-        {error && <p className="error_msg">{error}</p>}
+    <div className="input_wrapper">
+      {/* description && <p className="input_desc">{description}</p> */}
+      <div className="input_group">
+        <input type={inputType} value={value} onChange={handleOnChange} name={name} className={`input_field ${inputClassName}`} placeholder=" " autoFocus={autoFocus} disabled={disabled} {...props} />
+        <label>{label}</label>
+        {type === 'password' && (isPasswordVisible ? <FaEye onClick={handleTogglePasswordVisibility} className="input_svg" /> : <FaEyeSlash onClick={handleTogglePasswordVisibility} className="input_svg" />)}
+        {success && <FaCheck className="input_svg success" />}
       </div>
-    </>
+      {error && <p className="error_msg">{error}</p>}
+    </div>
   );
 };
 

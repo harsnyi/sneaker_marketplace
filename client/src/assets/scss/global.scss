@@ -151,10 +151,16 @@ form {
     max-width: $max-width-800;
 }
 
+@each $key, $value in $margin-bottoms {
+    .mb-#{$key} {
+        margin-bottom: $value !important;
+    }
+}
+
 @media only screen and (max-width: $media-query-lg) {
     form {
         .field_wrapper {
-            flex-direction: column;
+            flex-direction: column !important;
             row-gap: 0.25rem;
         }
     }

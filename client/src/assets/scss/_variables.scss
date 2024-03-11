@@ -124,12 +124,6 @@ $margin-bottoms : (0_5: .5rem,
     5: 5rem,
 );
 
-@each $key, $value in $margin-bottoms {
-    .mb-#{$key} {
-        margin-bottom: $value !important;
-    }
-}
-
 // FUNCTIONS
 @function color($color, $tone) {
     @if map-has-key($palettes, $color) {
